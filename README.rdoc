@@ -1,28 +1,27 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+First attempt at Critiq
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Databases so far:
+  Users:
+    (_) user_id
+    (_) products (set of product_ids)
+    (_) image-links (store in /images/users/{id}/filename)
+    (x) name
+    (x) link
+    (x) age
+  
+  Products:
+    (_) product_id
+    (_) image-link (store in /images/products/{id}/filename)
+    (_) features (set of featur_ids)
+    (x) name
+    (x) description
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Still Needed
+  Features:
+    (_) feature_id
+    (_) name
+    (_) description to vote_count mapping
+

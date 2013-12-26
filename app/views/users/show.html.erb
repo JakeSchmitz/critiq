@@ -1,16 +1,35 @@
 <%- model_class = User -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="page-header row">
+  <h1 style="float: left;"><% if has_user_image? %><%= image_tag @user.pictures.first.attachment.url(:medium) %><% else %><%= image_tag "/images/missing-user-avatar.png", :style => "x200>" %><% end %> <%=t '.title', :default => @user.username %></h1>
 </div>
 
-<dl class="dl-horizontal">
+<dl class="dl-horizontal row">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @user.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
   <dd><%= @user.age %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @user.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
   <dd><%= @user.link %></dd>
 </dl>
+<h1>Here come some pics</h1>
+<% nested_form_for @user, :html => { :multipart => true}  do |f| %>
+  <% f.fields_for :pictures do |pic| %>
+    <h2>Enjoy <%= @user.name %>'s collection of pictures</h2>
+    <% if !pic.object.nil? %>
+      <div class="user-pic"> 
+        <%= link_to pic.object.attachment.url(:medium) %>
+        <% if current_user.id == @user.id %>
+          <%= pic.check_box :_destroy %>
+        <% end %>
+      </div>
+    <% else %>
+      <h2> User Has No Images, How Sad :( </h2>
+    <% end %>
+  <% end %>
+<% end %>
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

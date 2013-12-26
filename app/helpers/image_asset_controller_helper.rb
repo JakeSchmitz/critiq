@@ -1,0 +1,2 @@
+module ImageAssetControllerHelper
+end

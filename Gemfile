@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '2.1'
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'protected_attributes'
+gem 'paperclip', '~> 3.0'
+gem 'simple_form'
+gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 
 group :production do
   gem "pg"

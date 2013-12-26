@@ -1,0 +1,5 @@
+<%= form_for(:session, url: signin_path, :class => 'navbar-form pull-right') do |f| %>
+	<div id="nav_login_email"><%= f.text_field :email, placeholder: 'email' %></div>
+	<div id="nav_login_password" ><%= f.password_field :password, placeholder: 'password' %></div>
+	<div id="nav_login_button"><%= f.submit "Login", class: "btn btn-small btn-primary" %></div>
+<% end %>

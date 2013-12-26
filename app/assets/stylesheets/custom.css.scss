@@ -1,0 +1,182 @@
+@import "bootstrap";
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6{
+  line-height: 1;
+  text-align: center;
+  color: #bbb;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+h1 {
+  font-size: 5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 2.0em;
+  letter-spacing: -1.5px;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 2.0em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.control-label {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  font-weight: normal;
+  color: #bbb;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.5em;
+  text-align: center;
+  color: #fff;
+}
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.9em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 12px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  /*@include box_sizing; */
+}
+
+input {
+  height: auto !important;
+}
+
+.form-actions {
+  margin-left: auto;
+  margin-right: auto;
+  background-color:transparent;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .error;
+}
+
+.btn-primary {
+  text-shadow: 0 -1px 0 rgba(.25, 0, 0, 0);
+}
+
+#nav_login_email, #nav_login_password, #nav_login_button {
+  width: 75px;
+  padding-right: 20px;
+  padding-top: 0px;
+  display: inline-block;
+}
+
+#nav_login_email, #nav_login_password {
+  padding-top: 5px;
+}
+
+#nav_login_button {
+  padding-top: 5px;
+}
+
+.file_upload_wrapper {
+  opacity: 100;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  z-index: 2;
+}
+
+.file_upload_wrapper:hover {
+  opacity: 0.5;
+}
+

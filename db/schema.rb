@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117060538) do
+ActiveRecord::Schema.define(version: 20131221081025) do
+
+  create_table "image_assets", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "user_id"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -19,6 +31,13 @@ ActiveRecord::Schema.define(version: 20131117060538) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "user_image_assets", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -27,6 +46,16 @@ ActiveRecord::Schema.define(version: 20131117060538) do
     t.text     "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "hashed_password"
+    t.string   "username"
+    t.integer  "salt"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.string   "email"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

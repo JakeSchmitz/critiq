@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221081025) do
+ActiveRecord::Schema.define(version: 20140104203302) do
+
+  create_table "features", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "upvotes"
+    t.integer  "downvotes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "product_id"
+  end
 
   create_table "image_assets", force: true do |t|
     t.datetime "created_at"
@@ -23,6 +33,8 @@ ActiveRecord::Schema.define(version: 20131221081025) do
     t.integer  "user_id"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.integer  "product_id",              default: -1
+    t.integer  "feature_id",              default: -1
   end
 
   create_table "products", force: true do |t|

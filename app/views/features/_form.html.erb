@@ -1,0 +1,40 @@
+<%= nested_form_for [@product, @feature], :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+  <% if @feature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feature.errors.count, "error") %> prohibited this feature from being saved:</h2>
+
+      <ul>
+      <% @feature.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row span12">
+    <div class="span4">
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_area :description %>
+      </div>
+    </div>
+    <div class="span4" style="float: left">
+      <%= f.fields_for :pictures do |picture| %>
+        <% if !picture.object.nil? and picture.object.new_record? %>
+          <div class="control-group">
+            <%= picture.label "Image", :class => 'control-label' %>
+            <div class="controls btn file_upload_wrapper" style="margin-left: 20px">
+              <%= picture.file_field :attachment  %>
+            </div>
+          </div>  
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="actions row" style="margin-left: 60px; margin-top: 20px">
+    <%= f.submit nil, :class => 'btn btn-primary'%>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<% if !@product.features.empty? %>
+  <div class="row feature-grid">
+    <h2>Here are the features for <%= @product.name %> </h2>
+    <% @product.features.each do |feature| %>
+      <% if !feature.new_record? and !feature.name.nil? %>
+				<div class="feature-thumb span2">
+
+					 <div class="row">
+				    <% if !feature.pictures.empty? %>
+				      <%= image_tag feature.pictures.first.attachment.url(:thumb) %>
+				    <% else %>
+				      <h2>Sorry no image</h2>
+				      <%= image_tag "/images/missing-image.jpg" %>
+				    <% end %> 
+				  </div>
+
+					<p>
+					  <strong>Name:</strong>
+					  <%= feature.name %>
+					</p>
+
+					<p>
+					  <strong>Description:</strong>
+					  <%= feature.description %>
+					</p>
+					<div class="btn-group" >
+						<%= link_to 'Yeah:  ' + feature.upvotes.to_s ,
+											product_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id), class: "btn btn-success" %>
+						<%= link_to 'Meh:  ' + feature.downvotes.to_s,
+											product_feature_downvote_path(:product_id => @product.id, :feature_id => feature.id), class: "btn btn-danger" %>
+					</div>
+				</div>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <h2>There are no features set up for <%= @product.name %>. </h2>
+<% end %>

@@ -10,22 +10,30 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    set_product
+    @features = Feature.where(:product_id => params[:product_id])
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @product.pictures.build
+    @product.user_id = current_user.id
   end
 
   # GET /products/1/edit
   def edit
+    set_product
+    @product.pictures.build
+    @product.features.build
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @pictures = @product.pictures.build
+    @pictures.user_id = current_user.id
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -40,8 +48,9 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    set_product
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update_attributes(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,6 +78,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :image, :description)
+      params.require(:product).permit(:name, :image, :description, :pictures, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes], product_pic_attributes: [:attachment_attributes, :attachment, :id, :product_pic_attributes])
     end
 end

@@ -1,5 +1,14 @@
 Critiq0::Application.routes.draw do
-  resources :products
+  
+  resources :products do
+    resources :pictures
+    resources :features do
+      resources :pictures
+      get 'upvote'  => :upvote
+      get 'downvote'  => :downvote
+    end
+  end
+
   resources :users do
     resources :pictures
   end

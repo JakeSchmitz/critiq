@@ -44,6 +44,8 @@ module SessionsHelper
   def has_user_image?
   	if signed_in?
    		!current_user.pictures.first.nil?
+   	else
+   		false
    	end
   end
 

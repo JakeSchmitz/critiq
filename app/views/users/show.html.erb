@@ -1,44 +1,37 @@
 <%- model_class = User -%>
 <div class="page-header row">
-  <h1 style="float: left;"><% if has_user_image? %><%= image_tag @user.pictures.first.attachment.url(:medium) %><% else %><%= image_tag "/images/missing-user-avatar.png", :style => "x200>" %><% end %> <%=t '.title', :default => @user.username %></h1>
-</div>
-
-<dl class="dl-horizontal row">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @user.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
-  <dd><%= @user.age %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-  <dd><%= @user.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
-  <dd><%= @user.link %></dd>
-</dl>
-<h1>Here come some pics</h1>
-<% nested_form_for @user, :html => { :multipart => true}  do |f| %>
-  <% f.fields_for :pictures do |pic| %>
-    <h2>Enjoy <%= @user.name %>'s collection of pictures</h2>
-    <% if !pic.object.nil? %>
-      <div class="user-pic"> 
-        <%= link_to pic.object.attachment.url(:medium) %>
-        <% if current_user.id == @user.id %>
-          <%= pic.check_box :_destroy %>
-        <% end %>
-      </div>
+  <div class="span2">
+    <h1 style="float: left;">
+    <% if has_image? %>
+      <%= image_tag @user.pictures.last.attachment.url(:medium) %>
     <% else %>
-      <h2> User Has No Images, How Sad :( </h2>
-    <% end %>
-  <% end %>
-<% end %>
-
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              users_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_user_path(@user), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              user_path(@user),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+      <%= image_tag "/images/missing-user-avatar.png" %>
+    <% end %> 
+    </br><%=t '.title', :default => @user.username %></h1>
+  </div>
+  <div class="span4 offset2 user-info" style="padding-top: 100px">
+    <dl class="dl-horizontal row">
+      <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+      <dd><%= @user.name %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
+      <dd><%= @user.age %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+      <dd><%= @user.email %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
+      <dd><%= @user.link %></dd>
+    </dl>
+    <% if @user.id == current_user.id %><%= render :partial => 'profile_management_buttons' %><% end %>
+  </div>
 </div>
+<% if has_image? %>
+  <h2>Here come some pics for <%= @user.name %></h2>
+  <div id="grid" class="row span9">
+    <% @user.pictures.each do |pic| %>
+      <% if pic.attachment.file? and pic.user_id == @user.id %>
+        <%= image_tag pic.attachment.url(:thumb), :style => "padding-right: 40px" %>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>
+<% end %>

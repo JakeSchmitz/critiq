@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'protected_attributes'
 gem 'paperclip', '~> 3.0'
 gem 'simple_form'
+gem "cocaine"
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 
 group :production do

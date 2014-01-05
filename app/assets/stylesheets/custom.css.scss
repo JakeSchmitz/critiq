@@ -168,7 +168,7 @@ input {
   padding-top: 5px;
 }
 
-.file_upload_wrapper {
+div.file_upload_wrapper {
   opacity: 100;
   cursor: pointer;
   position: relative;
@@ -176,7 +176,22 @@ input {
   z-index: 2;
 }
 
-.file_upload_wrapper:hover {
+div.file_upload_wrapper:hover {
   opacity: 0.5;
 }
 
+div.user-pic {
+  margin-left: auto;
+  margin-right: auto;
+  float: center;  
+}
+
+div.product-pic {
+  margin-left: auto;
+  margin-right: auto;
+  float: center;  
+}
+
+.btn-group { 
+  display: inline; 
+}

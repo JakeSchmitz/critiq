@@ -1,16 +1,20 @@
-<%= form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @product, :html => { :class => 'form-horizontal span8', :multipart => true } do |f| %>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :image, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :image, :class => 'text_field' %>
-    </div>
-  </div>
+  <%= f.fields_for :pictures do |picture| %>
+    <% if picture.object.new_record? %>
+      <div class="control-group">
+        <%= picture.label "Image", :class => 'control-label' %>
+        <div class="controls btn file_upload_wrapper"  style="float: left; display: inline">
+          <%= picture.file_field :attachment  %>
+        </div>
+      </div>  
+    <% end %>
+  <% end %>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">

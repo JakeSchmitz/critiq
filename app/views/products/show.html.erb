@@ -1,22 +1,31 @@
 <%- model_class = Product -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="row" style="margin-top: 50px">
+  <div class="span2">
+    <% if !@product.pictures.empty? %>
+      <%= image_tag @product.product_pic.attachment.url(:medium) %>
+    <% else %>
+      <h2>Sorry no image</h2>
+      <%= image_tag "/images/missing-image.jpg" %>
+    <% end %> 
+    </br><h2 style="float: left;"><%=t '.title', :default => @product.name %></h2>
+  </div>
+  <div class="span6 user-info" style="padding-top: 75px">
+    <dl class="dl-horizontal">
+      <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+      <dd><%= @product.name %> </dd>
+      <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+      <dd><%= @product.description %></dd>
+    </dl>
+  </div>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @product.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= @product.image %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @product.description %></dd>
-</dl>
-
+<%= render :partial => 'product_features' %>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               products_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_product_path(@product), :class => 'btn' %>
+  <%= link_to t('.new_feature', :default => t("helpers.links.new_feature")),
+              new_product_feature_path(@product), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               product_path(@product),
               :method => 'delete',

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :age, :password, :password_confirmation, :image_asset, :remember_token, :username, :link, 
                   :pictures, :attachment, :attachment_attributes, :pictures_attributes
   has_secure_password
-  has_many :pictures, class_name: "ImageAsset", foreign_key: "user_id", :as => :attachable, dependent: :destroy, :autosave => true
+  has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, dependent: :destroy, :autosave => true
   accepts_nested_attributes_for :pictures, :allow_destroy => true
   after_update :save_pictures
 
@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
 
     def save_pictures
       self.pictures.each do |asset| 
+        asset.user_id = self.id
         asset.save!
       end 
     end 

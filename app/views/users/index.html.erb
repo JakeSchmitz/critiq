@@ -2,6 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<div class="row">
+  <ul class="thumbnails">
+    <% @users.each do |user| %>
+      <%= render :partial => 'user_thumb' , locals: { user: user } %>
+    <% end %>
+  </ul>
+</div>  
 <table class="table table-striped">
   <thead>
     <tr>

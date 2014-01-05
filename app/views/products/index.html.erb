@@ -21,7 +21,7 @@
         <td><%= product.image %></td>
         <td><%= product.description %></td>
         <td><%=l product.created_at %></td>
-        <% if product.user_id == current_user.id %>
+        <% if product.user_id == @user.id %>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_product_path(product), :class => 'btn btn-mini' %>

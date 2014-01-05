@@ -72,6 +72,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_profile_picture
+    if !params[:image_id].nil?
+      set_user
+      @img = ImageAsset.find(params[:image_id])
+      if @img.user_id == @user.id
+        @user.profile_picture = @img
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -81,7 +91,7 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :username, :id, :age, :email, 
-          :link, :password, :password_confirmation, :pictures,
+          :link, :password, :password_confirmation, :pictures, :profile_picture, :image_id,
           pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes])
     end 
 

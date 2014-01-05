@@ -11,6 +11,7 @@ Critiq0::Application.routes.draw do
 
   resources :users do
     resources :pictures
+    get 'propic/:image_id/' => :change_profile_picture, as: 'profile_pic_path'
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :image_assets

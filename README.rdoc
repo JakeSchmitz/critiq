@@ -4,24 +4,30 @@ First attempt at Critiq
 
 Databases so far:
   Users:
-    (_) user_id
-    (_) products (set of product_ids)
-    (_) image-links (store in /images/users/{id}/filename)
+    (x) user_id
+    (x) products 
+        (_) Show product thumbnails
+    (_) images
+        (_) Profile pic
+        (_) Pic management
     (x) name
-    (x) link
+    (x) link 
+        (_) social media icons/ links
     (x) age
   
   Products:
-    (_) product_id
-    (_) image-link (store in /images/products/{id}/filename)
-    (_) features (set of featur_ids)
+    (x) product_id
+    (x) images
+        (_) Product Profile Pic
+        (_) Pic Management
+    (x) features 
+        (x) Feature Callouts (shown on each product for each product)
     (x) name
     (x) description
 
-
-Still Needed
   Features:
-    (_) feature_id
-    (_) name
-    (_) description to vote_count mapping
+    (x) feature_id
+    (x) name
+    (x) description 
+    (x) votes up/ votes down
 

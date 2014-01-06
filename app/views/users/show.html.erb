@@ -1,37 +1,39 @@
 <%- model_class = User -%>
-<div class="page-header row">
-  <div class="span2">
-    <h1 style="float: left;">
-    <% if has_image? %>
-      <%= image_tag @user.pictures.last.attachment.url(:medium) %>
-    <% else %>
-      <%= image_tag "/images/missing-user-avatar.png" %>
-    <% end %> 
-    </br><%=t '.title', :default => @user.username %></h1>
+<div class="container">
+  <div class="page-header row">
+    <div class="span2">
+      <h1 style="float: left;">
+      <% if has_image? %>
+        <%= image_tag @user.pictures.last.attachment.url(:medium) %>
+      <% else %>
+        <%= image_tag "/images/missing-user-avatar.png" %>
+      <% end %> 
+      </br><%=t '.title', :default => @user.username %></h1>
+    </div>
+    <div class="span4 offset2 user-info" style="padding-top: 100px">
+      <dl class="dl-horizontal row">
+        <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+        <dd><%= @user.name %></dd>
+        <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
+        <dd><%= @user.age %></dd>
+        <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+        <dd><%= @user.email %></dd>
+        <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
+        <dd><%= @user.link %></dd>
+      </dl>
+      <% if @user.id == current_user.id %><%= render :partial => 'profile_management_buttons' %><% end %>
+    </div>
   </div>
-  <div class="span4 offset2 user-info" style="padding-top: 100px">
-    <dl class="dl-horizontal row">
-      <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-      <dd><%= @user.name %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
-      <dd><%= @user.age %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-      <dd><%= @user.email %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
-      <dd><%= @user.link %></dd>
-    </dl>
-    <% if @user.id == current_user.id %><%= render :partial => 'profile_management_buttons' %><% end %>
-  </div>
-</div>
-<% if has_image? %>
-  <h2>Here come some pics for <%= @user.name %></h2>
-  <div id="grid" class="row span9">
-    <% @user.pictures.each do |pic| %>
-      <% if pic.attachment.file? and pic.user_id == @user.id %>
-        <%= image_tag pic.attachment.url(:thumb), :style => "padding-right: 40px" %>
+  <% if has_image? %>
+    <h2>Here come some pics for <%= @user.name %></h2>
+    <div id="grid" class="row span9">
+      <% @user.pictures.each do |pic| %>
+        <% if pic.attachment.file? and pic.user_id == @user.id %>
+          <%= image_tag pic.attachment.url(:thumb), :style => "padding-right: 40px" %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-<% else %>
-  <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>
-<% end %>
+    </div>
+  <% else %>
+    <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>
+  <% end %>
+</div>

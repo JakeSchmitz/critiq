@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <title><%= content_for?(:title) ? yield(:title) : "Critiq0" %></title>
     <%= csrf_meta_tags %>
 
@@ -38,20 +40,11 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div class="container">
-        <div class="row">
-          <div class="span9">
-            <%= bootstrap_flash %>
-            <%= yield %>
-          </div>
-          <%= render 'layouts/sidebar' %>
-        </div><!--/row-->
-      </br>
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
-
-    </div> <!-- /container -->
-
+    <%= bootstrap_flash %>
+    <%= yield %>
+    </br>
+    <footer>
+      <p>&copy; Company 2013</p>
+    </footer>
   </body>
 </html>

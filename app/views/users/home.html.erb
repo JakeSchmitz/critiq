@@ -1,16 +1,26 @@
-<h1>Welcome To Critiq</h1>
-
-<br>
-
+<div class="hero-unit home-banner">
+	<div class="container">
+	  <div class="row span4 offset4">    
+	   	<% if !signed_in? %>
+		    <div style=" padding-top: 180px; padding-left: 60px;"><%= button_to 'Sign Up', new_user_path, :method => "get", :class => "btn btn-primary"%><%= button_to 'Sign In', signin_path, :method => "get", :class => "btn btn-info", :style => 'margin-left: 3px;'%>
+		    </div>
+	    <% end %>
+	  </div>  
+	</div>
+</div>
+</br>
 <div class="container">
-
-  <div class="row">
-
-    <div class="span4">
-      <h3>Join The Club</h3>      
-      <div style="margin-left: auto; marigin-right: 50px"><%= button_to 'New User', new_user_path, :method => "get", :class => "btn btn-primary"%></div>
-    </div>  
-
-  </div>
- 
+	<div class="row" style="width: 100%;">
+		<h1 style="text-align: center">Meet The Team</h1>
+	</div>
+	<ul class="thumbnails">
+		<li class="span5 thumbnail" style="margin-left: 60px;">
+			<%= image_tag '/images/kens-face.png' %>
+			<h3>Kenneth Hsia</h3>
+		</li>
+		<li class="span5 thumbnail">
+			<%= image_tag '/images/jakes-face.png', :class => 'img-circle' %>
+			<h3>Jacob Schmitz</h3>
+		</li>
+	</ul>
 </div>

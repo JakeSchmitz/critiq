@@ -1,27 +1,16 @@
-<div class="feature-thumb span4">
-
-	 <div class="row">
-    <% if !feature.pictures.empty? %>
-      <%= image_tag feature.pictures.first.attachment.url(:thumb) %>
-    <% else %>
-      <h2>Sorry no image</h2>
-      <%= image_tag "/images/missing-image.jpg" %>
-    <% end %> 
-  </div>
-
+<div class="span2 thumbnail feature-callout">
+	<% if !feature.pictures.empty? %>
+		<%= image_tag feature.pictures.last.attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%' %>
+		</br>
+		<h4><%= feature.name %></h4>
+	<% end %>
 	<p>
-	  <strong>Name:</strong>
-	  <%= feature.name %>
-	</p>
-
-	<p>
-	  <strong>Description:</strong>
 	  <%= feature.description %>
 	</p>
-	<div class="btn-group" >
-		<%= link_to 'Yeah:  ' + feature.upvotes.to_s ,
-							feature_upvote_path(feature), class: "btn btn-success" %>
-		<%= link_to 'Meh:  ' + feature.downvotes.to_s,
-							feature_downvote_path(feature), class: "btn btn-danger" %>
+	<div class="btn-group" style="padding-right: 5px">
+		<%= link_to 'Yeh ' + feature.upvotes.to_s ,
+							product_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id), class: "btn btn-success" %>
+		<%= link_to 'Meh ' + feature.downvotes.to_s,
+							product_feature_downvote_path(:product_id => @product.id, :feature_id => feature.id), class: "btn btn-danger" %>
 	</div>
 </div>

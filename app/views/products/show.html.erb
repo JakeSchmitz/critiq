@@ -1,5 +1,5 @@
 <%- model_class = Product -%>
-<div class="row" style="margin-top: 50px">
+<div class="container" style="margin-top: 50px">
   <div class="span2">
     <% if !@product.pictures.empty? %>
       <%= image_tag @product.product_pic.attachment.url(:medium) %>
@@ -17,18 +17,19 @@
       <dd><%= @product.description %></dd>
     </dl>
   </div>
-</div>
-<%= render :partial => 'product_features' %>
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              products_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_product_path(@product), :class => 'btn' %>
-  <%= link_to t('.new_feature', :default => t("helpers.links.new_feature")),
-              new_product_feature_path(@product), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              product_path(@product),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+
+  <%= render :partial => 'product_features' %>
+  <div class="form-actions" >
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                products_path, :class => 'btn'  %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_product_path(@product), :class => 'btn' %>
+    <%= link_to t('.new_feature', :default => t("helpers.links.new_feature")),
+                new_product_feature_path(@product), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                product_path(@product),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  </div>
 </div>

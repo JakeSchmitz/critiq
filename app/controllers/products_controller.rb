@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new(product_params)
       @pictures = @product.pictures.build
-      @product.user_id = current_user.id || current_user.user_id
+      @product.user_id = current_user.id 
       respond_to do |format|
         if @product.save
           format.html { redirect_to @product, notice: 'Product was successfully created.' }

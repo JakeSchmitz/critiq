@@ -1,42 +1,54 @@
 <%- model_class = Product -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+<div class="hero-unit product-banner">
+  <div class="span3 ">
+    <div class="page-header">
+      <h2>Campaigns</h2>
+    </div>
+    <h4><%= link_to 'Create One', new_product_path %></h4>
+  </div>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:image) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= link_to product.id, product_path(product) %></td>
-        <td><%= product.name %></td>
-        <td><%= product.image %></td>
-        <td><%= product.description %></td>
-        <td><%=l product.created_at %></td>
-        <% if product.user_id == @user.id %>
-          <td>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_product_path(product), :class => 'btn btn-mini' %>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        product_path(product),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-mini btn-danger' %>
-          </td>
-        <% end %>
-      </tr>
+<div class="container">
+  <ul class="row thumbnails">
+    <% @products.each do |p| %>
+      <%= render :partial => 'product_thumb', locals: { product: p } %>
     <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
+  </ul>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:name) %></th>
+        <th><%= model_class.human_attribute_name(:image) %></th>
+        <th><%= model_class.human_attribute_name(:description) %></th>
+        <th><%= model_class.human_attribute_name(:created_at) %></th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= link_to product.id, product_path(product) %></td>
+          <td><%= product.name %></td>
+          <td><%= product.image %></td>
+          <td><%= product.description %></td>
+          <td><%=l product.created_at %></td>
+          <% if product.user_id == @user.id %>
+            <td>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                          edit_product_path(product), :class => 'btn btn-mini' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          product_path(product),
+                          :method => :delete,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-mini btn-danger' %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
             new_product_path,
             :class => 'btn btn-primary' %>
+</div>
+

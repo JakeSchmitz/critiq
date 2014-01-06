@@ -2,11 +2,13 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  min-height: 720px
 }
 
 body {
   /*background-image: url(asset-path("green_background.jpg"));*/
-  background-color: #8B8B84;
+  padding-top: 0px;
+  background-color: #F0F0F0 ;
 }
 
 p, ol, ul, td {
@@ -19,18 +21,6 @@ pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
-}
-
-a {
-  color: #bbb;
-  &:visited {
-    color: #800080;
-  }
-  &:hover {
-    color: #f0f;
-    height: 30px;
-    background-color: #808;
-  }
 }
 
 div {
@@ -66,74 +56,10 @@ div {
   }
 }
 
-/* Purple * /
-$bgDefault      : #9b59b6;
-$bgHighlight    : #8e44ad;
-$colDefault     : #ecf0f1;
-$colHover       : #ecdbff; 
-/* Red */
-$bgDefault      : #e74c3c;
-$bgHighlight    : #c0392b;
-$colDefault     : #ecf0f1;
-$colHover       : #ffbbbc; /*/
-/* Green * /
-$bgDefault      : #2ecc71;
-$bgHighlight    : #27ae60;
-$colDefault     : #ecf0f1;
-$colHover       : #d1ffed; /*/
-/* Orange * /
-$bgDefault      : #e67e22;
-$bgHighlight    : #d35400;
-$colDefault     : #ecf0f1;
-$colHover       : #ffe6d1; /*/
-
-
-/* --- Style --- */
-.navbar-default, navbar-inner {
-    background-color: $bgDefault;
-    border-color: $bgHighlight;
-    .navbar-brand {
-        color: $colDefault;
-        &:hover, &:focus {
-            color: $colHover; }}
-    .navbar-nav {
-        > li {
-            > a {
-                color: $colDefault;
-                &:hover, &:focus {
-                    color: $colHover;   }}}
-        .active {
-            > a, > a:hover, > a:focus {
-                color: $colHover;
-                background-color: $bgHighlight; }}
-        .open {
-            > a, > a:hover, > a:focus {
-                color: $colHover;
-                background-color: $bgHighlight;
-                .caret {
-                    border-top-color: $colHover;
-                    border-bottom-color: $colHover; }}}
-        > .dropdown {
-            > a {
-                .caret {
-                    border-top-color: $colDefault;
-                    border-bottom-color: $colDefault; }
-                &:hover, &:focus {
-                    .caret {
-                        border-top-color: $colHover;
-                        border-bottom-color: $colHover; }}}}}
-    .navbar-toggle {
-        border-color: $bgHighlight;
-        &:hover, &:focus {
-            background-color: $bgHighlight; }
-        .icon-bar {
-            background-color: $colDefault; }}}
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: $colDefault;
-        &:hover, &:focus {
-            color: $colHover;
-            background-color: $bgHighlight; }}
+.home-banner {
+    background: url(/images/critiq-banner.png) no-repeat top center fixed;
+    -webkit-background-size: cover;
+    min-height: 300px;
+    background-size: cover;
 }
-
 

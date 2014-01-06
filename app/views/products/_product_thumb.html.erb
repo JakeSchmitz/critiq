@@ -1,0 +1,7 @@
+<div class="span2 thumbnail product-callout">
+	<% if !product.pictures.empty? %>
+		<%= image_tag product.pictures.last.attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%' %>
+		</br>
+		<h3><%= link_to product.name, product %></h3>
+	<% end %>
+</div>

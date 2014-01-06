@@ -7,6 +7,7 @@ Critiq0::Application.routes.draw do
       get 'upvote'  => :upvote
       get 'downvote'  => :downvote
     end
+    get 'love' => :love
   end
 
   resources :users do

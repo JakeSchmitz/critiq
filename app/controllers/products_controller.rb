@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new(product_params)
       @pictures = @product.pictures.build
+      @product_pic = @pictures
       @product.user_id = current_user.id 
       respond_to do |format|
         if @product.save
@@ -75,6 +76,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  def love
+    if !current_user.nil? 
+      @product = Product.find(params[:product_id])
+      if !@product.lovers.includes(current_user)
+        @product.lovers.build(current_user)
+        if @product.save
+          format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to @product }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+    redirect_to @product, nodice: 'Something fucked up'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -85,4 +103,16 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :image, :description, :user_id, :pictures, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes], product_pic_attributes: [:attachment_attributes, :attachment, :id, :product_pic_attributes])
     end
+
+    def loved?
+      if !current_user.nil?
+        @product = Product.find(params[:product_id])
+        if @product.lovers.contains(current_user)
+          true
+        end
+        false
+      end
+      true
+    end
+
 end

@@ -3,5 +3,4 @@ module ProductsHelper
   	set_product
     !@product.features.empty?
   end
-
 end

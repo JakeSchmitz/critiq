@@ -2,11 +2,13 @@ class Product < ActiveRecord::Base
 	belongs_to :user, :foreign_key => "user_id"
   has_many :lovers, class_name: "User"
 	has_many :features
+  has_many :comments
 	has_one :product_pic, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, dependent: :destroy, :autosave => true
   accepts_nested_attributes_for :product_pic, :allow_destroy => true
 	has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, dependent: :destroy, :autosave => true
   accepts_nested_attributes_for :pictures, :allow_destroy => true
   accepts_nested_attributes_for :features, :allow_destroy => true
+  accepts_nested_attributes_for :comments, :allow_destroy => true
   attr_accessible :name, :description, :pictures, :lovers, :pictures_attributes, :product_pic, :product_pic_attricbutes, :features
   after_update :save_everything
   private

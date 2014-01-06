@@ -149,16 +149,14 @@ input {
 #nav_login_email, #nav_login_password, #nav_login_button {
   width: 75px;
   padding-right: 20px;
-  padding-top: 0px;
   display: inline-block;
 }
 
-#nav_login_email, #nav_login_password {
-  padding-top: 5px;
-}
-
 #nav_login_button {
-  padding-top: 5px;
+  .btn {
+    margin-top: -7px;
+  }
+  margin-top: 0px;
 }
 
 div.file_upload_wrapper {
@@ -191,6 +189,7 @@ div.product-pic {
 
 .navbar {
   .navbar-inner {
+    box-shadow: 0px 2px 2px #545;
     background-color: #6d2cfa;
     background-image: none;
   }

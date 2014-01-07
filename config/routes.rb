@@ -2,6 +2,7 @@ Critiq0::Application.routes.draw do
 
   resources :products do
     resources :pictures
+    resources :likes
     resources :comments do
       
     end

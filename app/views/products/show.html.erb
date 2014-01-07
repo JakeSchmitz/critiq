@@ -1,7 +1,7 @@
 <%- model_class = Product -%>
 <div class="container" style="padding-top: 50px">
   <div class="row">
-    <div class="span2 offset1">
+    <div class="span2 offset1 thumbnail">
       <% if !@product.pictures.empty? %>
         <%= image_tag @product.product_pic.attachment.url(:medium) %>
       <% else %>
@@ -11,7 +11,7 @@
       </br><h2 style="float: left;"><%=t '.title', :default => @product.name %></h2>
     </div>
     <div class="span6 offset1 user-info" style="padding-top: 75px">
-      <dl class="dl-horizontal">
+      <dl class="dl-horizontal" style="color: #fff">
         <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
         <dd><%= @product.name %> </dd>
         <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>

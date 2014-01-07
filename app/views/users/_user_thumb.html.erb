@@ -2,6 +2,6 @@
 	<% if !user.profile_picture.nil? %>
 		<%= image_tag user.profile_picture.attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%' %>
 		</br>
-		<h3><%= link_to user.name, user %></h3>
+		<h4><%= link_to user.name, user %></h4>
 	<% end %>
 </div>

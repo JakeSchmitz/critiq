@@ -79,15 +79,20 @@ class ProductsController < ApplicationController
   def love
     if signed_in?
       @product = Product.find(params[:product_id])
-      if !@product.lovers.exists?(current_user.id)  
+      if !@product.likes.exists?(:user_id => current_user.id)  
         respond_to do |format|
-          if  @product.lovers.create(:id => current_user.id, :product_id => @product.id)
+          if  @product.likes.create(:user_id => current_user.id, :product_id => @product.id)
             format.html { redirect_to @product, notice: 'Product was successfully updated.' }
             format.json { head :no_content }
           else
             format.html { redirect_to @product, notice: 'Not allowed to love' }
             format.json { render json: @product.errors, status: :unprocessable_entity }
           end
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to @product, notice: 'User has already liked this!' }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
         end
       end
     end

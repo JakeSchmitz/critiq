@@ -77,20 +77,20 @@ class ProductsController < ApplicationController
   end
 
   def love
-    if !current_user.nil? 
+    if signed_in?
       @product = Product.find(params[:product_id])
-      if !@product.lovers.includes(current_user)
-        @product.lovers.build(current_user)
-        if @product.save
-          format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { redirect_to @product }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
+      if !@product.lovers.exists?(current_user.id)  
+        respond_to do |format|
+          if  @product.lovers.create(:id => current_user.id, :product_id => @product.id)
+            format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+            format.json { head :no_content }
+          else
+            format.html { redirect_to @product, notice: 'Not allowed to love' }
+            format.json { render json: @product.errors, status: :unprocessable_entity }
+          end
         end
       end
     end
-    redirect_to @product, nodice: 'Something fucked up'
   end
 
   private
@@ -101,7 +101,8 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :image, :description, :user_id, :pictures, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes], product_pic_attributes: [:attachment_attributes, :attachment, :id, :product_pic_attributes])
+      params.require(:product).permit(:name, :image, :description, :id, :pictures, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes], product_pic_attributes: [:attachment_attributes, :attachment, :id, :product_pic_attributes],
+                                      lovers: [:product_id, :user_id])
     end
 
     def loved?

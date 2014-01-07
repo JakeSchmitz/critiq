@@ -97,7 +97,7 @@ class FeaturesController < ApplicationController
         format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'upvote' }
+        format.html { render action: 'downvote' }
         format.json { render json: @feature.errors, status: :unprocessable_entity }
       end
     end

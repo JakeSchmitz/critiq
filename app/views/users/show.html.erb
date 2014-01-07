@@ -8,25 +8,21 @@
       <% else %>
         <%= image_tag "/images/missing-user-avatar.png" %>
       <% end %> 
-      </br><%=t '.title', :default => @user.username %></h1>
+      </br><%=t '.title', :default => @user.name %></h1>
     </div>
     <div class="span4 offset2 user-info" style="padding-top: 100px">
       <dl class="dl-horizontal row">
         <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
         <dd><%= @user.name %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:age) %>:</strong></dt>
-        <dd><%= @user.age %></dd>
         <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
         <dd><%= @user.email %></dd>
-        <dt><strong><%= model_class.human_attribute_name(:link) %>:</strong></dt>
-        <dd><%= @user.link %></dd>
       </dl>
       <% if @user.id == current_user.id %><%= render :partial => 'profile_management_buttons' %><% end %>
     </div>
   </div>
   <% if has_image? %>
     <h2>Here come some pics for <%= @user.name %></h2>
-    <div id="grid" class="row span9">
+    <div id="grid" class="row span10" style="padding: 20px;">
       <% @user.pictures.each do |pic| %>
         <% if pic.attachment.file? and pic.user_id == @user.id %>
           <%= image_tag pic.attachment.url(:thumb), :style => "padding-right: 40px" %>
@@ -35,5 +31,12 @@
     </div>
   <% else %>
     <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>
+  <% end %>
+  <% if !@user.products.empty? %>
+    <ul class="row thumbnails span10" style="padding:20px;">
+      <% @user.products.each do |p| %>
+        <%= render :partial => '/products/product_thumb', locals: { product: p } %>
+      <% end %>
+    </ul>
   <% end %>
 </div>

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   validates :email, :presence => true
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
-  attr_accessible :name, :email, :age, :password, :password_confirmation, :image_asset, :remember_token, :username, :link, 
+  attr_accessible :id, :name, :email, :age, :password, :password_confirmation, :image_asset, :remember_token, :username, :link, :user_id, :product_id,
                   :pictures, :attachment, :attachment_attributes, :pictures_attributes, :profile_picture, :profile_picture_attibutes
   has_secure_password
   has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, dependent: :destroy, :autosave => true

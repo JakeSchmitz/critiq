@@ -17,7 +17,7 @@
         <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
         <dd><%= @user.email %></dd>
       </dl>
-      <% if @user.id == current_user.id %><%= render :partial => 'profile_management_buttons' %><% end %>
+      <% if @user.id == current_user.id %><div class="offset1"><%= render :partial => 'profile_management_buttons' %></div><% end %>
     </div>
   </div>
   <div class="row span12">

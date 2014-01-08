@@ -10,8 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="row span12">
-    <div class="span4">
+  <div class="row">
+    <div class="span3">
       <div class="field">
         <%= f.label :name %><br>
         <%= f.text_field :name %>
@@ -21,12 +21,12 @@
         <%= f.text_area :description %>
       </div>
     </div>
-    <div class="span4" style="float: left">
+    <div class="span3" style="float: left;">
       <%= f.fields_for :pictures do |picture| %>
         <% if !picture.object.nil? and picture.object.new_record? %>
           <div class="control-group">
-            <%= picture.label "Image", :class => 'control-label' %>
-            <div class="controls btn file_upload_wrapper" style="margin-left: 20px">
+            <%= picture.label "Image (optional)" %>
+            <div class="controls btn file_upload_wrapper" style="margin-left: -30px;">
               <%= picture.file_field :attachment  %>
             </div>
           </div>  

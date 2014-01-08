@@ -1,4 +1,4 @@
-@import "bootstrap";
+@import "cosmo";
 
 /* universal */
 
@@ -8,6 +8,7 @@ html {
 
 body {
   margin-top: 40px;
+  padding-top: 20px;
 }
 
 section {
@@ -189,9 +190,10 @@ div.product-pic {
 
 .navbar {
   .navbar-inner {
-    box-shadow: 0px 2px 2px #545;
     background-color: #6d2cfa;
     background-image: none;
+    box-shadow: 0 1px 10px #545;
+    border: none;
   }
   .nav {
     > li {
@@ -208,6 +210,11 @@ div.product-pic {
 
 .thumbnail {
   background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 2px 2px #ccc;
+  .btn {
+    float: center;
+  }
 }
 
 .alert {

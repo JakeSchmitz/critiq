@@ -5,6 +5,7 @@
 .user-callout {
 	background-color: #fff;
 	min-height: 180px;
+	box-shadow: 2px 2px 2px #ccc;
 	min-width: 110px;
 	padding-left: auto;
 	padding-right: auto;
@@ -14,7 +15,7 @@
 .user-banner {
     background: url(/images/community.jpg) no-repeat top center fixed;
     -webkit-background-size: cover;
-    height: 300px;
+    height: 400px;
     background-size: cover;
 }
 

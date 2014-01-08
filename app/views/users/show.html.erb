@@ -1,16 +1,16 @@
 <%- model_class = User -%>
 <div class="container">
-  <div class="page-header row">
-    <div class="span2">
-      <h1 style="float: left;">
+  <div class="row well well-lg">
+    <div class="span4">
+      <h2 style="float: left; padding-left: 20px;">
       <% if has_image? %>
         <%= image_tag @user.pictures.last.attachment.url(:medium) %>
       <% else %>
         <%= image_tag "/images/missing-user-avatar.png" %>
       <% end %> 
-      </br><%=t '.title', :default => @user.name %></h1>
+      </br><%=t '.title', :default => @user.name %></h2>
     </div>
-    <div class="span4 offset2 user-info" style="padding-top: 100px">
+    <div class="span4 user-info" style="padding-top: 100px">
       <dl class="dl-horizontal row">
         <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
         <dd><%= @user.name %></dd>
@@ -20,23 +20,29 @@
       <% if @user.id == current_user.id %><%= render :partial => 'profile_management_buttons' %><% end %>
     </div>
   </div>
-  <% if has_image? %>
-    <h2>Here come some pics for <%= @user.name %></h2>
-    <div id="grid" class="row span10" style="padding: 20px;">
-      <% @user.pictures.each do |pic| %>
-        <% if pic.attachment.file? and pic.user_id == @user.id %>
-          <%= image_tag pic.attachment.url(:thumb), :style => "padding-right: 40px" %>
-        <% end %>
+  <div class="row span12">
+    <div class="span5 pull-left">
+      <% if !@user.products.empty? %>
+        <ul class="row thumbnails span8 offset2" style="padding:20px;">
+          <% @user.products.each do |p| %>
+            <%= render :partial => '/products/product_thumb', locals: { product: p } %>
+          <% end %>
+        </ul>
       <% end %>
     </div>
-  <% else %>
-    <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>
-  <% end %>
-  <% if !@user.products.empty? %>
-    <ul class="row thumbnails span10" style="padding:20px;">
-      <% @user.products.each do |p| %>
-        <%= render :partial => '/products/product_thumb', locals: { product: p } %>
+    <div class="span5 pull-right">
+      <% if has_image? %>
+        <h2>Here come some pics for <%= @user.name %></h2>
+        <div id="grid" class="row span12 offset1" style="padding: 20px;">
+          <% @user.pictures.each do |pic| %>
+            <% if pic.attachment.file? and pic.user_id == @user.id %>
+              <%= image_tag pic.attachment.url(:thumb), :style => "padding-right: 40px" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>
       <% end %>
-    </ul>
-  <% end %>
+    </div>
+  </div>
 </div>

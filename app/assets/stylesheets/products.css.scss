@@ -5,7 +5,7 @@
 .product-banner {
     background: url(/images/product-banner.jpg) no-repeat top center fixed;
     -webkit-background-size: cover;
-    height: 300px;
+    height: 400px;
     background-size: cover;
 }
 
@@ -13,6 +13,23 @@
 	min-height: 150px;
 	min-width: 120px;
 	background-color: #fff;
+	box-shadow: 2px 2px 2px #ccc;
 	padding:10px;
 	margin-bottom: 10px;
+}
+
+.media {
+	padding: 20px;
+	margin: 0px;
+	background-color: #fff;
+	box-shadow: 5px 5px 5px #ccc;
+	border-bottom: 2px solid #ddd;
+	.media-body {
+		margin-top: -100px;
+		padding-top: 0px;
+		float: center;
+		> h4 {
+			float: center;
+		}
+	}
 }

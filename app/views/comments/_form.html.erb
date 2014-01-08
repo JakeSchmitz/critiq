@@ -1,27 +1,22 @@
-<div class="span3">
+<div class="comment-box span6">
   <%= nested_form_for [@product, @comment] do |f| %>
     <% if @comment.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
         <ul>
-        <% @comment.errors.full_messages.each do |msg| %>
+        <% @product.comments.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
       </div>
     <% end %>
-
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= f.text_area "title" %>
-    </div>
-    <div class="field">
-      <%= f.label "Comment" %><br>
-      <%= f.text_area :body %>
+    <div class="comment-form">
+      <%= f.text_area :title, :placeholder => "Title your post" %>
+      <%= f.text_area :body, :placeholder => "Body of your post", :maxlength => 1000 %>
     </div>
     <div class="actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit nil, :class => 'btn btn-primary pull-right' %>
     </div>
   <% end %>
 </div>

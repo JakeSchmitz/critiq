@@ -12,7 +12,11 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     set_product
-    @features = Feature.where(:product_id => params[:product_id])
+    @product ||= Product.find( :id => params[:product_id])
+    @features = Feature.where(:product_id => @product.id)
+    @comments = Comment.where(:product_id => @product.id)
+    @product ||= Product.find(params[:id])
+    @comment = Comment.new
   end
 
   # GET /products/new
@@ -101,7 +105,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.find(params[:id]) || Product.find(params[:product_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -112,7 +116,7 @@ class ProductsController < ApplicationController
 
     def loved?
       if !current_user.nil?
-        @product = Product.find(params[:product_id])
+        @product = Product.find(params[:product_id]) || Product.find(params[:id])
         if @product.lovers.contains(current_user)
           true
         end

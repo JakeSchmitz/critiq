@@ -7,7 +7,7 @@
 	<p>
 	  <%= feature.description %>
 	</p>
-	<div class="btn-group" style="padding-right: 5px">
+	<div class="btn-group">
 		<%= link_to 'Yeh ' + feature.upvotes.to_s ,
 							product_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id), class: "btn btn-success" %>
 		<%= link_to 'Meh ' + feature.downvotes.to_s,

@@ -1,13 +1,15 @@
 <ul class="media-list">
-	<% @product.comments.each do |comment| %>
-		<li class="media">
-			<a class="pull-left" href="#">
+	<% @comments.each do |comment| %>
+		<% if !comment.user.nil? %>
+			<li class="media">
 				<%= image_tag comment.user.profile_picture.attachment.url(:thumb) %>
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading"><%= comment.title %></h4>
-				<p><%= comment.body %></p>
-			</div>
-		</li>
+				<div class="comment-user"><%= link_to comment.user.name, user_path(comment.user) %>
+				</div>
+				<div class="media-body pull-left" style="margin-left: 120px;">
+					<h4 class="media-heading"><%= comment.title %></h4>
+					<p><%= comment.body %></p>
+				</div>
+			</li>
+		<% end %>
 	<% end %>
 </ul>

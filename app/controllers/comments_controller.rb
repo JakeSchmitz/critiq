@@ -12,14 +12,18 @@ class CommentsController < ApplicationController
   def show
     set_comment
     @user = User.find(@comment.user_id)
+    @product = Product.find(params[:id])
+    @comments = Comment.find(:product_id => @product.id)
   end
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+    @comment.user = current_user
     @comment.product_id = params[:product_id]
     @product = Product.find(params[:product_id])
+    @user = User.find(current_user.id)
   end
 
   # GET /comments/1/edit
@@ -31,11 +35,13 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     if signed_in?
+      @product = Product.find(params[:product_id]) || Product.find(params[:id])
       @comment = Comment.new(comment_params)
       @comment.user_id ||= current_user.id
       @comment.user = current_user
-      @comment.product_id ||= params[:product_id]
-      @product = Product.find(params[:product_id])
+      @comment.product_id ||= params[:product_id] 
+      @user = User.find(current_user)
+      @product.comments.create(comment_params)
       respond_to do |format|
         if @comment.save
           format.html { redirect_to @product, notice: 'Comment was successfully created.' }
@@ -81,10 +87,11 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+      @product = Product.find(params[:product_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:title, :comment_id, :product_id, :user_id, :body)
+      params.require(:comment).permit(:title, :comment_id, :product_id, :user_id, :user, :body, :commentable_id)
     end
 end

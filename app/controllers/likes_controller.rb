@@ -3,8 +3,6 @@ class LikesController < ApplicationController
 		if signed_in?
 			@like = Like.new(like_params)
 			@like.user_id = current_user.id
-			@like.product_id = params[:product_id]
-			@product = Product.find(params[:product_id])
 			respond_to do |format| 
 				if @like.save!
 					format.html { redirect_to @product, notice: 'Product was liked'}
@@ -19,6 +17,6 @@ class LikesController < ApplicationController
 
 	private
 		def like_params
-      params.require(:like).permit(:id, :product_id, :user_id)
+      params.require(:like).permit(:id, :likeable_id, :product_id, :likeable_type, :user_id)
     end
 end

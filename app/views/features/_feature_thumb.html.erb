@@ -19,9 +19,9 @@
 	  <%= @feature.description %>
 	</p>
 	<div class="btn-group" >
-		<%= link_to 'Yeah:  ' + @feature.upvotes.to_s ,
+		<%= link_to 'Yeah:  ' + @feature.upvotes.length.to_s ,
 							feature_upvote_path(@feature), class: "btn btn-success" %>
-		<%= link_to 'Meh:  ' + @feature.downvotes.to_s,
+		<%= link_to 'Meh:  ' + @feature.downvotes.length.to_s,
 							feature_downvote_path(@feature), class: "btn btn-danger" %>
 	</div>
 </div>

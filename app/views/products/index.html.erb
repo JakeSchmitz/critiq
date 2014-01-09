@@ -2,14 +2,14 @@
 <div class="hero-unit product-banner">
   <div class="span3" style="margin-left: -20px;">
     <div class="page-header">
-      <h2>Campaigns</h2>
+      <h2><strong>Campaigns</strong></h2>
     </div>
     <h4><%= link_to 'Create One', new_product_path, :class => 'btn btn-info' %></h4>
   </div>
 </div>
 <div class="container">
   <ul class="row thumbnails">
-    <% @products.each do |p| %>
+    <% @top_products.each do |p| %>
       <%= render :partial => 'product_thumb', locals: { product: p } %>
     <% end %>
   </ul>

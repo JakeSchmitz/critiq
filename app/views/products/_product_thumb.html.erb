@@ -1,9 +1,9 @@
 <div class="span2 thumbnail product-callout">
 	<% if !product.pictures.empty? %>
-		<%= image_tag product.pictures.first.attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%' %>
+		<%= image_tag product.pictures.first.attachment.url(:thumb), :class => 'img-rounded' %>
 		</br>
 		<h4><%= link_to product.name, product %></h4>
 		<%= link_to 'Give Love  ' + product.likes.length.to_s,
-							product_love_path(product.id), class: "btn btn-success", :style => 'margin-left: 20px;' %>
+							product_love_path(product.id), class: "btn btn-success", :style => 'margin-left: 7px;' %>
 	<% end %>
 </div>

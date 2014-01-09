@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @top_products = @products.order("rating desc")
     @user = current_user
   end
 
@@ -21,9 +22,13 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
-    @product.pictures.build
-    @product.user_id = current_user.id
+    if signed_in?
+      @product = Product.new
+      @product.pictures.build
+      @product.user_id = current_user.id
+    else
+      redirect_to signup_path, :notice => 'Please sign up before creating anything!'
+    end
   end
 
   # GET /products/1/edit
@@ -38,6 +43,7 @@ class ProductsController < ApplicationController
   def create
     if signed_in?
       @product = Product.new(product_params)
+      @product.rating = 0
       @pictures = @product.pictures.build
       @product_pic = @pictures
       @product.user_id = current_user.id 
@@ -81,11 +87,13 @@ class ProductsController < ApplicationController
   end
 
   def love
+    @product = Product.find(params[:product_id])
+    update_rating
     if signed_in?
-      @product = Product.find(params[:product_id])
-      if !@product.likes.exists?(:user_id => current_user.id)  
+      if !@product.likes.exists?(:user_id => current_user.id)
         respond_to do |format|
-          if  @product.likes.create(:user_id => current_user.id, :product_id => @product.id)
+          if  @product.likes.create(:user_id => current_user.id)
+            update_rating
             format.html { redirect_to @product, notice: 'Product was successfully updated.' }
             format.json { head :no_content }
           else
@@ -99,6 +107,11 @@ class ProductsController < ApplicationController
           format.json { render json: @product.errors, status: :unprocessable_entity }
         end
       end
+    else
+      respond_to do |format|
+        format.html { redirect_to @product, notice: 'Please sign in before weighing in!' }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -110,8 +123,16 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :image, :description, :id, :pictures, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes], product_pic_attributes: [:attachment_attributes, :attachment, :id, :product_pic_attributes],
+      params.require(:product).permit(:name, :rating, :image, :description, :id, :pictures, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes], product_pic_attributes: [:attachment_attributes, :attachment, :id, :product_pic_attributes],
                                       lovers: [:product_id, :user_id])
+    end
+
+    def update_rating
+      @product.rating = @product.likes.length * 10
+      @product.features.each do |f|
+        @product.rating = @product.rating + f.upvotes.length
+      end
+      @product.save
     end
 
     def loved?

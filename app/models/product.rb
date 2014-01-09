@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, :allow_destroy => true
   accepts_nested_attributes_for :features, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
-  attr_accessible :name, :description, :pictures, :pictures_attributes, :product_pic, :product_pic_attricbutes, :features, likes: [:product_id, :user_id]
+  attr_accessible :name, :description, :rating, :pictures, :pictures_attributes, :product_pic, :product_pic_attricbutes, :features, likes: [:product_id, :user_id]
   after_update :save_everything
 
   def liked?(id, type)
@@ -34,10 +34,6 @@ class Product < ActiveRecord::Base
       self.features.each do |f|
       	f.product = self
       	f.save!
-      end
-      self.lovers.each do |e|
-        e.product_id = self.id
-        e.save!
       end
     end 
 

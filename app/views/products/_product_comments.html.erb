@@ -1,11 +1,11 @@
 <ul class="media-list">
 	<% @comments.each do |comment| %>
 		<% if !comment.user.nil? %>
-			<li class="media">
+			<li class="media span6">
 				<%= image_tag comment.user.profile_picture.attachment.url(:thumb) %>
 				<div class="comment-user"><%= link_to comment.user.name, user_path(comment.user) %>
 				</div>
-				<div class="media-body pull-left" style="margin-left: 120px;">
+				<div class="media-body pull-left span4" style="margin-left: 120px;">
 					<h4 class="media-heading"><%= comment.title %></h4>
 					<p><%= comment.body %></p>
 				</div>

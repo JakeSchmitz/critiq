@@ -11,6 +11,7 @@ class FeaturesController < ApplicationController
   # GET /features/1.json
   def show
     set_feature
+    @product = Product.find(params[:product_id])
     @feature.pictures.build
   end
 
@@ -33,8 +34,6 @@ class FeaturesController < ApplicationController
     @product = Product.find(params[:product_id])
     @feature = Feature.new(feature_params)
     @feature.product_id = @product.id
-    @feature.upvotes = 0
-    @feature.downvotes = 0
     respond_to do |format|
       if @feature.save
         format.html { redirect_to product_path(@product), notice: 'Feature was successfully created.' }
@@ -74,33 +73,56 @@ class FeaturesController < ApplicationController
   end
 
   def upvote
-    @feature = Feature.find(params[:feature_id])
     @product = Product.find(params[:product_id])
-    @feature.upvotes = @feature.upvotes + 1
-    respond_to do |format|
-      if @feature.save!
-        format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
-        format.json { head :no_content }
+    if signed_in? 
+      @feature = Feature.find(params[:feature_id])
+      if !@feature.upvotes.nil? and !@feature.upvotes.exists?(:user_id => current_user.id)
+        @feature.upvotes.build(:user_id => current_user.id)
+        respond_to do |format|
+          if @feature.save!
+            @product.rating = @product.rating + 1
+            @product.save
+            format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
+            format.json { head :no_content }
+          else
+            format.html { render action: 'upvote' }
+            format.json { render json: @feature.errors, status: :unprocessable_entity }
+          end
+        end
       else
-        format.html { render action: 'upvote' }
+        respond_to do |format|
+          format.html { redirect_to @product, notice: 'You can only give your support once for each feature.' }
+          format.json { render json: @feature.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @product, notice: 'Please sign in before weighing in.' }
         format.json { render json: @feature.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def downvote
-    @feature = Feature.find(params[:feature_id])
-    @product = Product.find(params[:product_id])
-    @feature.downvotes = @feature.downvotes + 1
-    respond_to do |format|
-      if @feature.save!
-        format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'downvote' }
+    if signed_in?
+      @feature = Feature.find(params[:feature_id])
+      @product = Product.find(params[:product_id])
+      @feature.downvotes.build(:user_id => current_user.id)
+      respond_to do |format|
+        if @feature.save!
+          format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'upvote' }
+          format.json { render json: @feature.errors, status: :unprocessable_entity }
+        end
+      end
+    else 
+      respond_to do |format|
+        format.html { redirect_to @product, notice: 'Please sign in before weighing in.' }
         format.json { render json: @feature.errors, status: :unprocessable_entity }
       end
-    end
+    end 
   end
 
   private

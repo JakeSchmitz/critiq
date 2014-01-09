@@ -19,11 +19,9 @@
 	  <%= @feature.description %>
 	</p>
 	<div class="btn-group" >
-		<%= link_to 'Yeah:  ' + @feature.upvotes.to_s ,
-							feature_upvote_path(@feature), class: "btn btn-success" %>
-		<%= link_to 'Meh:  ' + @feature.downvotes.to_s,
-							feature_downvote_path(@feature), class: "btn btn-danger" %>
+		<%= link_to 'Votes: ' + @feature.upvotes.length.to_s ,
+							product_feature_upvote_path(:product_id => @product.id, :feature_id => @feature.id), class: "btn btn-success" %>
 	</div>
 </div>
-<%= link_to 'Edit', edit_feature_path(@feature) %> |
-<%= link_to 'Back', features_path %>
+<%= link_to 'Edit', edit_product_feature_path(:id => @feature.id) %> |
+<%= link_to 'Back', product_path %>

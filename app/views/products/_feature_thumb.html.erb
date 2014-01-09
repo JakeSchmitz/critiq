@@ -2,15 +2,13 @@
 	<% if !feature.pictures.empty? %>
 		<%= image_tag feature.pictures.last.attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%' %>
 		</br>
-		<h4><%= feature.name %></h4>
+		<h4><%= link_to feature.name, product_feature_path(:id => feature.id, :product_id => @product.id) %></h4>
 	<% end %>
 	<p>
 	  <%= feature.description %>
 	</p>
-	<div class="btn-group">
-		<%= link_to 'Yeh ' + feature.upvotes.to_s ,
+	<div class="btn-group" style="margin-left: 20px;">
+		<%= link_to 'Votes: ' + feature.upvotes.length.to_s ,
 							product_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id), class: "btn btn-success" %>
-		<%= link_to 'Meh ' + feature.downvotes.to_s,
-							product_feature_downvote_path(:product_id => @product.id, :feature_id => feature.id), class: "btn btn-danger" %>
 	</div>
 </div>

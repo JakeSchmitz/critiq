@@ -1,9 +1,13 @@
-<div class="span2 thumbnail product-callout">
+<div class="span3 thumbnail product-thumb">
 	<% if !product.pictures.empty? %>
-		<%= image_tag product.pictures.first.attachment.url(:thumb), :class => 'img-rounded' %>
+		<%= image_tag product.product_pic.attachment.url(:medium), :class => 'img-rounded', :style => 'height: 200px' %>
 		</br>
 		<h4><%= link_to product.name, product %></h4>
-		<%= link_to 'Give Love  ' + product.likes.length.to_s,
-							product_love_path(product.id), class: "btn btn-success", :style => 'margin-left: 7px;' %>
+		<% if !product.likes.exists?(:user_id => current_user.id) %>
+			<%= link_to 'Show Love',
+							product_love_path(product.id), class: "btn btn-success", :style => 'margin-left: 25%; float: center;' %>
+		<% else %>
+			<p>Rating: <%= product.rating.to_s %></p>
+		<% end %>
 	<% end %>
 </div>

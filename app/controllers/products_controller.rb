@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   def show
     set_product
     @product ||= Product.find( :id => params[:product_id])
+    @product.pictures.build
     @features = Feature.where(:product_id => @product.id)
     @comments = Comment.where(:product_id => @product.id)
     @product ||= Product.find(params[:id])
@@ -44,8 +45,7 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new(product_params)
       @product.rating = 0
-      @pictures = @product.pictures.build
-      @product_pic = @pictures
+      
       @product.user_id = current_user.id 
       respond_to do |format|
         if @product.save
@@ -66,6 +66,7 @@ class ProductsController < ApplicationController
   def update
     set_product
     respond_to do |format|
+      @product_pic = @product.pictures.last
       if @product.update_attributes(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }

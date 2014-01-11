@@ -2,10 +2,21 @@
 	<% @comments.each do |comment| %>
 		<% if !comment.user.nil? %>
 			<li class="media span6">
-				<%= image_tag comment.user.profile_picture.attachment.url(:thumb) %>
-				<div class="comment-user"><%= link_to comment.user.name, user_path(comment.user) %>
+				<div class="comment-vote-buttons pull-left" style="margin-top: 30px; margin-left: 10px;">
+					<%= link_to product_comment_upvote_path(:product_id => @product.id, :comment_id => comment.id) do %>
+						<span class="icon-plus"></span>
+					<% end %>
+					<h5 style="margin: 0px;"><%= comment.rating %></h5>
+					<%= link_to product_comment_downvote_path(:product_id => @product.id, :comment_id => comment.id) do %>
+						<span class="icon-minus"></span>
+					<% end %>
 				</div>
-				<div class="media-body pull-left span4" style="margin-left: 120px;">
+				<div class="user-info pull-left" style="margin-left: 5px; margin-top: 10px">
+					<%= image_tag comment.user.profile_picture.attachment.url(:thumb), style: 'height: 100px; max-width: 100px;' %>
+					<div class="comment-user" style="margin-left: 10%"><%= link_to comment.user.name, user_path(comment.user) %>
+					</div>
+				</div>
+				<div class="media-body" style="margin-top: 5px; float: center">
 					<h4 class="media-heading"><%= comment.title %></h4>
 					<p><%= comment.body %></p>
 				</div>

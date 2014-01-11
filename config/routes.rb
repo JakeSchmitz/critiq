@@ -4,7 +4,8 @@ Critiq0::Application.routes.draw do
     resources :pictures
     resources :likes
     resources :comments do
-      
+      get 'upvote' => :upvote
+      get 'downvote' => :downvote
     end
     resources :features do
       resources :pictures
@@ -16,7 +17,7 @@ Critiq0::Application.routes.draw do
 
   resources :users do
     resources :pictures
-    get 'propic/:image_id/' => :change_profile_picture, as: 'profile_pic_path'
+    get 'propic/:image_id/' => :change_profile_picture, as: 'profile_pic'
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :image_assets

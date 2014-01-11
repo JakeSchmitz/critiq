@@ -3,9 +3,9 @@ class Product < ActiveRecord::Base
   has_many :likes, :as => :likeable
 	has_many :features
   has_many :comments, :as => :commentable
-	has_one :product_pic, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, dependent: :destroy, :autosave => true
+	has_one :product_pic, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
   accepts_nested_attributes_for :product_pic, :allow_destroy => true
-	has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, dependent: :destroy, :autosave => true
+	has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
   accepts_nested_attributes_for :pictures, :allow_destroy => true
   accepts_nested_attributes_for :features, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
@@ -27,6 +27,7 @@ class Product < ActiveRecord::Base
 
     def save_everything
     	self.product_pic = self.pictures.last
+      self.product_pic.save
       self.pictures.each do |asset| 
       	asset.product_id = self.id
         asset.save!

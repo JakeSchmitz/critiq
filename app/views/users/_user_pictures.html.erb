@@ -1,0 +1,17 @@
+<% if has_image? %>
+  <h2>Here come <%= @user.name %>'s pictures</h2>
+  <div id="grid" class="row span5" style="margin-left: 0px;">
+    <% @user.pictures.each do |pic| %>
+      <% if pic.attachment.file? and pic.user_id == @user.id %>
+        <div class="thumbnail span2">
+          <%= image_tag pic.attachment.url(:thumb), :style => "padding: 5px; height: 100px;" %>
+          <% if current_user.id == @user.id %>
+            <%= link_to 'Set Pic', user_profile_pic_path(:user_id => current_user.id, :image_id => pic.id), :class => 'btn btn-success', :style => 'margin-left: 25%' %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>
+<% end %>

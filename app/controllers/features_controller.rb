@@ -78,10 +78,9 @@ class FeaturesController < ApplicationController
       @feature = Feature.find(params[:feature_id])
       if !@feature.upvotes.nil? and !@feature.upvotes.exists?(:user_id => current_user.id)
         @feature.upvotes.build(:user_id => current_user.id)
+        @product.rating = @product.rating + 1
         respond_to do |format|
-          if @feature.save!
-            @product.rating = @product.rating + 1
-            @product.save
+          if @feature.save and @product.save
             format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
             format.json { head :no_content }
           else

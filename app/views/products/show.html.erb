@@ -1,7 +1,7 @@
 <%- model_class = Product -%>
 <div class="container">
   <div class="row well well-lg">
-    <div class="span4" style="padding-top: 20px;">
+    <div class="span3" style="padding-top: 20px;">
       <% if !@product.pictures.empty? %>
         <%= image_tag @product.product_pic.attachment.url(:medium) %>
       <% else %>
@@ -11,7 +11,7 @@
       <h2 style="float: center;"><%=t '.title', :default => @product.name %></h2>
       <p style="float: center; margin-top: -25px">Rating: <%= @product.rating %></p>
     </div>
-    <div class="span6 offset1" style="margin-top: 50px;">
+    <div class="span8" style="margin-top: 50px;">
       <dl class="dl-horizontal" style="color: #333">
         <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
         <dd><%= @product.name %> </dd>
@@ -29,7 +29,7 @@
   </div>
   </br>
   <div class="span12">
-    <div class="row span5">
+    <div class="row span6">
       <%= render :partial => 'product_features' %>
     </div>
     <div class="prduct-comment-form span6">

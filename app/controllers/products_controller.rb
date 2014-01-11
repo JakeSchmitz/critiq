@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     @product ||= Product.find( :id => params[:product_id])
     @product.pictures.build
     @features = Feature.where(:product_id => @product.id)
-    @comments = Comment.where(:product_id => @product.id)
+    @comments = Comment.where(:product_id => @product.id).order('rating DESC')
     @product ||= Product.find(params[:id])
     @comment = Comment.new
   end

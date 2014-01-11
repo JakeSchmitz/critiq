@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.all.order('rating DESC')
   end
 
   # GET /comments/1
@@ -80,6 +80,58 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comments_url }
       format.json { head :no_content }
+    end
+  end
+
+  def upvote
+    @product = Product.find(params[:product_id])
+    if signed_in? 
+      @comment = Comment.find(params[:comment_id])
+      if !@comment.upvotes.nil? and !@comment.upvotes.exists?(:user_id => current_user.id) and !@comment.downvotes.exists?(:user_id => current_user.id)
+        @comment.upvotes.build(:user_id => current_user.id)
+        @comment.rating = @comment.rating + 1
+        @comment.save
+        respond_to do |format|
+          format.html { redirect_to @product, notice: 'Comment was successfully updated.' }
+          format.json { head :no_content }
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to @product, notice: 'You can only give your support once for each comment.' }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @product, notice: 'Please sign in before weighing in.' }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def downvote
+    @product = Product.find(params[:product_id])
+    if signed_in? 
+      @comment = Comment.find(params[:comment_id])
+      if !@comment.downvotes.nil? and !@comment.downvotes.exists?(:user_id => current_user.id) and !@comment.upvotes.exists?(:user_id => current_user.id)
+        @comment.downvotes.build(:user_id => current_user.id)
+        @comment.rating = @comment.rating - 1
+        @comment.save
+        respond_to do |format|
+          format.html { redirect_to @product, notice: 'Comment was successfully updated.' }
+          format.json { head :no_content }
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to @product, notice: 'You can only give your support once for each comment.' }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @product, notice: 'Please sign in before weighing in.' }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -3,7 +3,7 @@
 		<%= image_tag product.product_pic.attachment.url(:medium), :class => 'img-rounded', :style => 'height: 200px' %>
 		</br>
 		<h4><%= link_to product.name, product %></h4>
-		<% if !product.likes.exists?(:user_id => current_user.id) %>
+		<% if signed_in? and !product.likes.exists?(:user_id => current_user.id) %>
 			<%= link_to 'Show Love',
 							product_love_path(product.id), class: "btn btn-success", :style => 'margin-left: 25%; float: center;' %>
 		<% else %>

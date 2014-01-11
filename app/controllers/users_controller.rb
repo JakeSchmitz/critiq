@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user.pictures.build
+    @top_products = @user.products.order("rating desc")
   end
 
   # GET /users/new
@@ -49,7 +50,6 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    @user.pictures.build
     respond_to do |format|
       if @user.update_attributes(user_params)
         #ImageAsset.new(:attachment => @user[:p, :user_id => @user.id)
@@ -74,12 +74,17 @@ class UsersController < ApplicationController
 
   def change_profile_picture
     if !params[:image_id].nil?
-      set_user
+      @user = User.find(params[:user_id])
       @img = ImageAsset.find(params[:image_id])
       if @img.user_id == @user.id
+        if !@user.pictures.exists?(@img)
+          @user.pictures.create(@img, :user_id => @user.id)
+        end
         @user.profile_picture = @img
+        @user.save
       end
     end
+    redirect_to @user
   end
 
   private

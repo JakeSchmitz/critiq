@@ -21,17 +21,23 @@
     </div>
   </div>
   <div class="row span12">
-    <div class="span6 offset0">
-      <% if !@top_products.empty? %>
-        <ul class="row thumbnails" style="padding:5px;">
-          <% @top_products.each do |p| %>
-            <%= render :partial => '/products/product_thumb', locals: { product: p } %>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-    <div class="span5 pull-right">
-    <%= render :partial => 'user_pictures' %>
+    <ul class="nav nav-tabs" id="user-tabs">
+      <li class="active"><a href="#user-products" data-toggle="tab">Products</a></li>
+      <li><a href="#user-pictures" data-toggle="tab">Pictures</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane span10" id="user-products">
+        <%= render :partial => 'user_products' %>
+      </div>
+      <div class="tab-pane span10" id="user-pictures">
+        <%= render :partial => 'user_pictures' %>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  $(function () {
+    $('#user-tabs a[href="#user-products"]').tab('show')
+  })
+</script>

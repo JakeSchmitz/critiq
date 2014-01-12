@@ -34,7 +34,6 @@ class User < ActiveRecord::Base
         asset.user_id = self.id
         asset.save!
       end 
-      self.profile_picture.save
     end 
 
 end

@@ -76,11 +76,12 @@ class UsersController < ApplicationController
     if !params[:image_id].nil?
       @user = User.find(params[:user_id])
       @img = ImageAsset.find(params[:image_id])
-      if @img.user_id == @user.id
-        if !@user.pictures.exists?(@img)
-          @user.pictures.create(@img, :user_id => @user.id)
-        end
+      @old_propic = @user.profile_picture
+      if @img.user_id == @user.id 
         @user.profile_picture = @img
+        if !@user.pictures.exists?(@old_propic)
+          @user.pictures.create(:user_id => @user.id, :attachment => @old_propic.attachment, :attachable_id => @old_propic.attachable_id)
+        end
         @user.save
       end
     end

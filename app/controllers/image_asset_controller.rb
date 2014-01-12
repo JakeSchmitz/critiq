@@ -3,7 +3,8 @@ class ImageAssetsController < ApplicationController
 	before_filter :load_attachable
 
 	def create
-		@image_asset = @attachable.pictures.build(params[:image_asset])
+		# @image_asset = @attachable.pictures.build(params[:image_asset])
+    @image_asset = ImageAsset.new(image_assets_params)
 		@image_asset.save
 		respond_with @image_asset
 	end

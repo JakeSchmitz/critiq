@@ -1,0 +1,7 @@
+<% if !@top_products.empty? %>
+  <ul class="row thumbnails" style="padding:5px;">
+    <% @top_products.each do |p| %>
+      <%= render :partial => '/products/product_thumb', locals: { product: p } %>
+    <% end %>
+  </ul>
+<% end %>

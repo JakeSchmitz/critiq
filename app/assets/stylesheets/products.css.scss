@@ -22,7 +22,8 @@
 	padding: 10px;
 	margin: 0px;
 	background-color: #fff;
-	box-shadow: 5px 5px 5px #ccc;
+	box-shadow: 5px 5px 8px #ddd;
+	border: 1px solid #ddd;
 	border-bottom: 2px solid #ddd;
 	.media-body {
 		margin-top: -100px;
@@ -32,4 +33,8 @@
 			float: center;
 		}
 	}
+}
+
+#product-features {
+	margin: 20px;
 }

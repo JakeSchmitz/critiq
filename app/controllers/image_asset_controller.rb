@@ -9,6 +9,11 @@ class ImageAssetsController < ApplicationController
 		respond_with @image_asset
 	end
 
+  def new
+    @image_asset = ImageAsset.new(image_assets_params)
+    @image_asset.save
+  end
+
 	def update
     @asset = @attachable.pictures.find(params[:id])
     if @asset.update_attributes(params[:image_asset])

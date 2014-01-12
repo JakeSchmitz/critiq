@@ -1,6 +1,6 @@
 <% if has_image? %>
   <h2>Here come <%= @user.name %>'s pictures</h2>
-  <div id="grid" class="row span5" style="margin-left: 0px;">
+  <div id="grid" class="row" style="margin-left: 0px;">
     <% @user.pictures.each do |pic| %>
       <% if pic.attachment.file? and pic.user_id == @user.id %>
         <div class="thumbnail span2">
@@ -11,6 +11,9 @@
         </div>
       <% end %>
     <% end %>
+  </div>
+  <div class="row upload_form">
+    <%= render :partial => 'user_image_upload_form' %>
   </div>
 <% else %>
   <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>

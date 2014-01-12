@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
     @comments = Comment.where(:product_id => @product.id).order('rating DESC')
     @product ||= Product.find(params[:id])
     @comment = Comment.new
+    @likers = Array.new
+    @product.likes.each do |like|
+      @likers << User.find(like.user_id)
+    end
   end
 
   # GET /products/new

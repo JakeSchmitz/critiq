@@ -9,8 +9,14 @@
       <a class="brand" href="/"><%= image_tag '/images/critiq-outline.png', style: 'width: 150px; margin-top: -3px;' %></a>
       <div class="container nav-collapse">
         <ul class="nav">
-          <li><%= link_to "Discover Creations", "/products"  %></li>
-          <li><%= link_to "Meet Users", "/users"  %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/products">Creations</a></li>
+              <li><a href="/users">Users</a></li>
+            </ul>
+          </li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
         <div style="display:inline-block;" class="pull-right">
           <% if !signed_in? %>

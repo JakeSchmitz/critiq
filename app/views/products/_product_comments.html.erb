@@ -1,7 +1,7 @@
 <ul class="media-list">
 	<% @comments.each do |comment| %>
 		<% if !comment.user.nil? %>
-			<li class="media span6">
+			<li class="media">
 				<div class="comment-vote-buttons pull-left" style="margin-top: 30px; margin-left: 10px;">
 					<%= link_to product_comment_upvote_path(:product_id => @product.id, :comment_id => comment.id) do %>
 						<span class="icon-plus"></span>

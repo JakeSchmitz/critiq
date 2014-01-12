@@ -1,4 +1,4 @@
-<div class="span3 thumbnail feature-callout" style="color: #fff; min-height: 400px;">
+<div class="span2 thumbnail feature-callout" style="color: #fff; min-height: 250px;">
 	<% if !feature.pictures.empty? %>
 		<%= image_tag feature.pictures.last.attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%' %>
 		</br>
@@ -7,7 +7,8 @@
 	<p>
 	  <%= feature.description %>
 	</p>
-	<div class="btn-group" style="margin-left: 30%;">
+	</br>
+	<div class="btn-group" style="margin-left: 20px;">
 		<%= link_to 'Votes: ' + feature.upvotes.length.to_s ,
 							product_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id), class: "btn btn-success" %>
 	</div>

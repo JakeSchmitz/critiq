@@ -13,7 +13,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @user.pictures.build
+    @pictures = @user.pictures
+    if current_user.id == @user.id
+      @pictures.build
+    end
+    @propic = ImageAsset.find(@user.propic_id)
     @top_products = @user.products.order("rating desc")
   end
 
@@ -76,12 +80,8 @@ class UsersController < ApplicationController
     if !params[:image_id].nil?
       @user = User.find(params[:user_id])
       @img = ImageAsset.find(params[:image_id])
-      @old_propic = @user.profile_picture
-      if @img.user_id == @user.id 
-        @user.profile_picture = @img
-        if !@user.pictures.exists?(@old_propic)
-          @user.pictures.create(:user_id => @user.id, :attachment => @old_propic.attachment, :attachable_id => @old_propic.attachable_id)
-        end
+      if @img.user_id == @user.id
+        @user.propic_id = params[:image_id]
         @user.save
       end
     end

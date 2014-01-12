@@ -1,10 +1,12 @@
 <%- model_class = User -%>
 <div class="container">
-  <div class="row well well-lg">
-    <div class="span4">
-      <h2 style="float: left; padding-left: 20px;">
-      <% if has_image? %>
-        <%= image_tag @user.profile_picture.attachment.url(:medium) %>
+  <div class="row">
+    <div class="span6">
+      <h2 style="float: left; padding: 5px;">
+      <% if has_propic? %>
+        <%= image_tag @propic.attachment.url(:large), :style => 'min-width: 300; max-height: 350px;' %>
+      <% elsif has_image? %>
+        <%- image_tag @user.pictures.last.attachment.url(:large) %>
       <% else %>
         <%= image_tag "/images/missing-user-avatar.png" %>
       <% end %> 
@@ -26,7 +28,7 @@
       <li><a href="#user-pictures" data-toggle="tab">Pictures</a></li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane span10" id="user-products">
+      <div class="tab-pane active span10" id="user-products">
         <%= render :partial => 'user_products' %>
       </div>
       <div class="tab-pane span10" id="user-pictures">

@@ -1,0 +1,11 @@
+<% if !@likers.empty? %>
+	<div class="row" style="margin: 20px;">
+	  <ul class="thumbnails">
+	    <% @likers.each do |liker| %>
+	      <%= render :partial => '/users/user_thumb' , locals: { user: liker } %>
+	    <% end %>
+	  </ul>
+	</div>  
+<% else %>
+  <h2>Nobody likes this yet </h2>
+<% end %>

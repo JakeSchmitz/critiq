@@ -28,19 +28,35 @@
     </div>
   </div>
   </br>
-  <div class="span12">
-    <div class="row span6">
-      <%= render :partial => 'product_features' %>
-    </div>
-    <div class="prduct-comment-form span6">
-      <%= render :partial => '/comments/form' %>
-      <% if !@product.comments.empty? %> 
-        <div style="padding-top: 200px; padding-left: 30px;">
-          <%= render :partial => 'product_comments' %>
-        </div>
-      <% else %>
-        <h2>Product Has No Comments!</h2>
-      <% end %>
+  <div class="row span12">
+    <ul class="nav nav-tabs" id="product-tabs">
+      <li><a href="#product-features" data-toggle="tab">Features</a></li>
+      <li><a href="#product-comments" data-toggle="tab">Comments</a></li>
+      <li><a href="#product-likers" data-toggle="tab">Likers</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane row span10" id="product-features">
+        <%= render :partial => 'product_features' %>
+      </div>
+      <div class="tab-pane row span10" id="product-comments">
+        <%= render :partial => '/comments/form' %>
+        <% if !@product.comments.empty? %> 
+          <div style="padding-top: 20px; padding-left: 30px;">
+            <%= render :partial => 'product_comments' %>
+          </div>
+        <% else %>
+          <h2>Product Has No Comments!</h2>
+        <% end %>
+      </div>
+      <div class="tab-pane row span12" id="product-likers">
+        <%= render :partial => 'product_likers' %>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  $(function () {
+    $('#product-tabs a[href="#product-features"]').tab('show')
+  })
+</script>

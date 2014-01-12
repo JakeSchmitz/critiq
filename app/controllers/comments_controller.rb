@@ -44,8 +44,11 @@ class CommentsController < ApplicationController
       @product.comments.create(comment_params)
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to @product, notice: 'Comment was successfully created.' }
+          format.html { redirect_to product_path(@product) + '#product-comments', notice: 'Comment was successfully created.' }
           format.json { render action: 'show', status: :created, location: @comment }
+          format.js { render :js => 'function () {
+    $(\'#product-tabs a[href="#product-features"]\').tab(\'show\')
+  }' }
         else
           format.html { render action: 'new' }
           format.json { render json: @product.errors, status: :unprocessable_entity }

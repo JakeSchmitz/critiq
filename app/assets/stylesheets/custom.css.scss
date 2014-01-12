@@ -172,18 +172,6 @@ div.file_upload_wrapper:hover {
   opacity: 0.5;
 }
 
-div.user-pic {
-  margin-left: auto;
-  margin-right: auto;
-  float: center;  
-}
-
-div.product-pic {
-  margin-left: auto;
-  margin-right: auto;
-  float: center;  
-}
-
 .btn-group { 
   display: inline; 
 }
@@ -192,7 +180,7 @@ div.product-pic {
   .navbar-inner {
     background-color: #6d2cfa;
     background-image: none;
-    box-shadow: 0px 2px 10px 3px #545;
+    box-shadow: 0px 1px 3px 1px #545;
     border: none;
   }
   .nav {
@@ -200,10 +188,21 @@ div.product-pic {
       padding-top: 3px;
       color: #fff;
       text-shadow: none;
+      .dropdown-open {
+        > dropdown-toggle {
+          color: #5B9C64;
+        }
+      } 
       > a {
         font-weight: bold;
         color: #fff;
         text-shadow: none;
+      }
+    }
+    .dropdown-toggle {
+      .caret {
+        margin-top: 0px;
+        color: #fff;
       }
     }
   }

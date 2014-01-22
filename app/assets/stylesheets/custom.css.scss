@@ -211,9 +211,7 @@ div.file_upload_wrapper:hover {
 .thumbnail {
   background-color: #fff;
   box-shadow: 2px 2px 2px #ccc;
-  .btn {
-    float: center;
-  }
+  text-align: center;
 }
 
 .alert {
@@ -226,4 +224,12 @@ div.file_upload_wrapper:hover {
 
 .tab-pane {
   padding: 20px;
+}
+
+.pic-modal {
+  left: 40%;
+  right: 40%;
+  top: 5%;
+  overflow: visible;
+  text-align: center;
 }

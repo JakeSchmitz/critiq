@@ -4,11 +4,16 @@
     <% @user.pictures.each do |pic| %>
       <% if pic.attachment.file? and pic.user_id == @user.id %>
         <div class="thumbnail span2">
-          <%= image_tag pic.attachment.url(:thumb), :style => "padding: 5px; height: 100px;" %>
+          <a href="#user-picture-modal<%= pic.id.to_s %>" data-toggle="modal">
+            <%= image_tag pic.attachment.url(:thumb)%>
+          </a>
           <% if current_user.id == @user.id %>
-            <%= link_to 'Set Pic', user_profile_pic_path(:user_id => current_user.id, :image_id => pic.id), :class => 'btn btn-success', :style => 'margin-left: 25%' %>
+            <div style="position: relative;">
+              <%= link_to 'Set Pic', user_profile_pic_path(:user_id => current_user.id, :image_id => pic.id), :class => 'btn btn-success', :style => 'bottom: 0px;' %>
+            </div>
           <% end %>
         </div>
+        <%= render :partial => 'user_pic_modal', :locals => { pic: pic } %>
       <% end %>
     <% end %>
   </div>

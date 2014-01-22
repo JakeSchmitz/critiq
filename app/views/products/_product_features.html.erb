@@ -2,7 +2,9 @@
 	<div class="row">
 	  <ul class="thumbnails">
 	    <% @product.features.each do |feature| %>
-	      <%= render :partial => 'feature_thumb' , locals: { feature: feature } %>
+	    	<div class="span2">
+	      	<%= render :partial => 'feature_thumb' , locals: { feature: feature } %>
+	      </div>
 	    <% end %>
 	  </ul>
 	</div>  

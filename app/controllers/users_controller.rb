@@ -17,7 +17,11 @@ class UsersController < ApplicationController
     if current_user.id == @user.id
       @pictures.build
     end
-    @propic = ImageAsset.find(@user.propic_id)
+    if !@user.propic_id.nil?
+      @propic = ImageAsset.find(@user.propic_id)
+    else
+      @propic = @user.pictures.last
+    end
     @top_products = @user.products.order("rating desc")
   end
 
@@ -37,6 +41,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.propic_id = @user.pictures.last.id
     respond_to do |format|
       if @user.save
         #@user.pictures.build
@@ -100,6 +105,11 @@ class UsersController < ApplicationController
           :link, :password, :password_confirmation, :pictures, :profile_picture, :image_id, :product_id, :user_id,
           pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes])
     end 
+
+    def has_propic?
+      @user = User.find(params[:id])
+      !@user.propic_id.nil?
+    end
 
     def signed_in_user
       unless signed_in?

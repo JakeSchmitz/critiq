@@ -1,0 +1,17 @@
+<div class="modal fade pic-modal" id="user-picture-modal<%= pic.id.to_s %>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <%= image_tag pic.attachment.url(:large), style: 'width: 80%; max-height: 100%;' %>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-footer">
+        <h6 style="float: left; margin-left: 30px;">Uploaded at: <%= pic.created_at.to_s.humanize %></h6>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <% if current_user.id == @user.id %>
+          <%= link_to 'Set Pic', user_profile_pic_path(:user_id => current_user.id, :image_id => pic.id), :class => 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

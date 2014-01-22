@@ -19,3 +19,27 @@
     background-size: cover;
 }
 
+#user-picture-modal { 
+	left: 50%;
+	right: 50%;
+	top: 5%;
+	overflow: visible;
+	text-align: center;
+}
+
+.modal {
+	padding: 0px;
+	background: none;	
+	.modal-dialog {
+		padding: 0px;		
+	}
+}
+
+.thumbnail {
+	min-height: 160px;
+	> a > img {
+		width: 120px;
+		max-height: 120px;
+		padding: 3px;
+	}
+}

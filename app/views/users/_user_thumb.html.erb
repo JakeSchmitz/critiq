@@ -1,7 +1,11 @@
 <div class="span2 thumbnail user-callout">
 	<% if !user.propic_id.nil? %>
 		<%= image_tag ImageAsset.find(user.propic_id).attachment.url(:thumb), :class => 'img-rounded', :style => 'height: 100px;' %>
-		</br>
-		<h4><%= link_to user.name, user %></h4>
+	<% elsif !user.pictures.empty? %>
+    <%= image_tag user.pictures.last.attachment.url(:large), :style => 'max-width: 100px; max-height: 100px;' %>
+	<% else %>
+		<%= image_tag "/images/missing-user-avatar.png", :style => 'width: 100px' %>
 	<% end %>
+	</br>
+	<h4><%= link_to user.name, user %></h4>
 </div>

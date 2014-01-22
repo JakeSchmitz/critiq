@@ -6,7 +6,7 @@
       <% if has_propic? %>
         <%= image_tag @propic.attachment.url(:large), :style => 'min-width: 300; max-height: 350px;' %>
       <% elsif has_image? %>
-        <%- image_tag @user.pictures.last.attachment.url(:large) %>
+        <%= image_tag @user.pictures.last.attachment.url(:large), :style => 'min-width: 300; max-height: 350px;' %>
       <% else %>
         <%= image_tag "/images/missing-user-avatar.png" %>
       <% end %> 

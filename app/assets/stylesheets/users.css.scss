@@ -36,10 +36,19 @@
 }
 
 .thumbnail {
-	min-height: 160px;
+	border-radius: 2px;
+	padding: 0px;
 	> a > img {
-		width: 120px;
-		max-height: 120px;
-		padding: 3px;
+		max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    border-radius: 2px;
 	}
+}
+
+.user-pic-thumb {
+	height: 100px;
+	width: auto;
+	overflow: hidden;
 }

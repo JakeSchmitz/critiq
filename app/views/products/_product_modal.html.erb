@@ -1,0 +1,20 @@
+<div class="modal fade product-modal" id="product-modal<%= product.id.to_s %>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="float: right; padding: 5px;">&times;</button>
+      <div class="modal-body">
+        <div class="modal-product-attributes" style="float: left; padding: 5px;">
+          <div class="modal-pic" style="float: right; width: 50%; align: top; padding: 5px;">
+            <%= image_tag product.product_pic.attachment.url(:medium), style: 'padding: 5px;' %>
+          </div>
+          <h4><%= product.name %></h4>
+          <p style="text-align: left;"><%= product.description %></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <h6 style="float: left; margin-left: 30px;">Uploaded at: <%= product.created_at.to_s.humanize %></h6>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

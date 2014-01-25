@@ -227,9 +227,15 @@ div.file_upload_wrapper:hover {
 }
 
 .pic-modal {
-  left: 40%;
-  right: 40%;
-  top: 5%;
+  left: 50%;
+  top: 10%;
   overflow: visible;
   text-align: center;
+}
+
+.modal {
+  max-width: 560px;
+  width: auto;
+  overflow: visible;
+  left: 50%;
 }

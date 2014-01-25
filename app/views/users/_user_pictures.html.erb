@@ -3,23 +3,20 @@
   <div id="grid" class="row" style="margin-left: 0px;">
     <% @user.pictures.each do |pic| %>
       <% if pic.attachment.file? and pic.user_id == @user.id %>
-        <div class="thumbnail span2">
+        <div class="thumbnail span2 user-pic-thumb">
           <a href="#user-picture-modal<%= pic.id.to_s %>" data-toggle="modal">
             <%= image_tag pic.attachment.url(:thumb)%>
           </a>
-          <% if current_user.id == @user.id %>
-            <div style="position: relative;">
-              <%= link_to 'Set Pic', user_profile_pic_path(:user_id => current_user.id, :image_id => pic.id), :class => 'btn btn-success', :style => 'bottom: 0px;' %>
-            </div>
-          <% end %>
         </div>
         <%= render :partial => 'user_pic_modal', :locals => { pic: pic } %>
       <% end %>
     <% end %>
   </div>
-  <div class="row upload_form">
-    <%= render :partial => 'user_image_upload_form' %>
-  </div>
+  <% if current_user.id == @user.id %>
+    <div class="row upload_form">
+      <%= render :partial => 'user_image_upload_form' %>
+    </div>
+  <% end %>
 <% else %>
   <h2>Unfortunately <%= @user.name %> doesn't have any pictures yet</h2>
 <% end %>

@@ -93,6 +93,15 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def upload_picture
+    @user = User.find(params[:user_id])
+    if @user.id == current_user.id
+      @user.pictures.build(params[:image_asset])
+      @user.save
+    end
+    redirect_to @user
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

@@ -11,6 +11,7 @@
   <ul class="row thumbnails">
     <% @top_products.each do |p| %>
       <%= render :partial => 'product_thumb', locals: { product: p } %>
+      <%= render :partial => 'product_modal', :locals => { product: p } %>
     <% end %>
   </ul>
 </div>

@@ -1,13 +1,36 @@
-<% if !@product.features.empty? %>
-	<div class="row">
-	  <ul class="thumbnails">
-	    <% @product.features.each do |feature| %>
-	    	<div class="span2">
-	      	<%= render :partial => 'feature_thumb' , locals: { feature: feature } %>
-	      </div>
-	    <% end %>
-	  </ul>
-	</div>  
-<% else %>
-  <h2>There are no features set up for <%= @product.name %>. </h2>
-<% end %>
+<div class="single-features">
+	<% if !@single_features.nil? and !@single_features.features.empty? %>
+		<div class="row">
+		  <ul class="thumbnails">
+		    <% @single_features.features.each do |feature| %>
+		    	<div class="span2">
+		      	<%= render :partial => 'feature_thumb' , locals: { feature: feature } %>
+		      </div>
+		    <% end %>
+		  </ul>
+		</div>  
+		<% if signed_in? and current_user.id == @product.user_id %>
+			<%= link_to 'New Standalone Feature', new_product_feature_group_feature_path(:product_id => @product.id, :feature_group_id => @single_features.id), :class => 'btn btn-info' %>
+		<% end %>
+	<% else %>
+	  <h2>There are no individual features set up for <%= @product.name %>. </h2>
+	<% end %>
+</div>
+<div class="comparison-features">
+	<% if !@comparison_features.nil? %>
+		<div class="row">
+		  <ul class="thumbnails">
+		    <% @comparison_features.each do |comp_feature| %>
+		    	<div class="span2">
+		      	<%= render :partial => 'comparison_feature_thumb' , locals: { feature_group: comp_feature } %>
+		      </div>
+		    <% end %>
+		  </ul>
+		</div>  
+		<% if signed_in? and current_user.id == @product.user_id %>
+			<%= link_to 'New Comparative Feature', new_product_feature_group_path(:product_id => @product.id, :feature_group_id => @single_features.id), :class => 'btn btn-info' %>
+		<% end %>
+	<% else %>
+		<h2>No Comparative Features Have Been Set Up For <%= @product.name %>. </h2>
+	<% end %> 
+</div>

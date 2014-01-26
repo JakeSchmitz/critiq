@@ -1,0 +1,23 @@
+<div class="modal fade user-modal" id="user-modal<%= user.id.to_s %>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="float: right; padding: 5px;">&times;</button>
+      <div class="modal-body">
+        <div class="modal-user-attributes" style="float: left; padding: 5px;">
+          <div class="modal-pic" style="align: top; padding: 2px;">
+            <% if !user.propic_id.nil? %>
+              <%= image_tag ImageAsset.find(user.propic_id).attachment.url(:large), style: 'padding: 5px;' %>
+            <% else %>
+              <%= image_tag user.pictures.last.attachment.url(:large), style: 'padding: 5px;' %>
+            <% end %>
+          </div>
+          <h4><%= user.name %></h4>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <h6 style="float: left; margin-left: 30px;">Joined on: <%= user.created_at.to_s.humanize %></h6>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

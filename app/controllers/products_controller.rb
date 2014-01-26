@@ -15,7 +15,13 @@ class ProductsController < ApplicationController
     set_product
     @product ||= Product.find( :id => params[:product_id])
     @product.pictures.build
-    @features = Feature.where(:product_id => @product.id)
+    @feature_groups = FeatureGroup.where(:product => @product)
+    @comparison_features = @feature_groups.where.not(name: 'singletons', description: 'lorem')
+    @single_features = @feature_groups.where(:name => 'singletons', :description => 'lorem').first
+    if @single_features.nil?
+      @single_features = FeatureGroup.create(:product_id => @product.id, :name => 'singletons', :description => 'lorem')
+      @single_features.save
+    end
     @comments = Comment.where(:product_id => @product.id).order('rating DESC')
     @product ||= Product.find(params[:id])
     @comment = Comment.new
@@ -49,7 +55,7 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new(product_params)
       @product.rating = 0
-      
+      @product.feature_groups.build(:name => 'singletons', :description => 'lorem')
       @product.user_id = current_user.id 
       respond_to do |format|
         if @product.save

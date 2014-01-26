@@ -1,0 +1,27 @@
+<h1>Listing feature_groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feature_groups.each do |feature_group| %>
+      <tr>
+        <td><%= feature_group.name %></td>
+        <td><%= link_to 'Show', feature_group %></td>
+        <td><%= link_to 'Edit', edit_feature_group_path(feature_group) %></td>
+        <td><%= link_to 'Destroy', feature_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Feature group', new_feature_group_path %>

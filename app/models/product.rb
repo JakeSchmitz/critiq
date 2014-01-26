@@ -1,15 +1,15 @@
 class Product < ActiveRecord::Base
 	belongs_to :user, :foreign_key => "user_id"
   has_many :likes, :as => :likeable
-	has_many :features
+	has_many :feature_groups
   has_many :comments, :as => :commentable
 	has_one :product_pic, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
   accepts_nested_attributes_for :product_pic, :allow_destroy => true
 	has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
   accepts_nested_attributes_for :pictures, :allow_destroy => true
-  accepts_nested_attributes_for :features, :allow_destroy => true
+  accepts_nested_attributes_for :feature_groups, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
-  attr_accessible :name, :description, :rating, :pictures, :pictures_attributes, :product_pic, :product_pic_attricbutes, :features, likes: [:product_id, :user_id]
+  attr_accessible :name, :description, :rating, :pictures, :pictures_attributes, :product_pic, :product_pic_attricbutes, :feature_groups, likes: [:product_id, :user_id]
   after_update :save_everything
 
   def liked?(id, type)

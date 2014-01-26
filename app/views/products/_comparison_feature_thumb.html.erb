@@ -1,0 +1,13 @@
+<div class="thumbnail comparison-feature-callout" style="color: #fff;">
+	<h3 style="text-align: center;"><%= comp_feature.name %></h3>
+	<% if !comp_feature.pictures.empty? %>
+		<%= image_tag comp_feature.pictures.last.attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%; border-radius: 2px;' %>
+		</br>
+		<h4><%= link_to feature.name, product_feature_group_path(:id => comp_feature.id, :product_id => @product.id) %></h4>
+	<% end %>
+	<p><%= comp_feature.description %></p>
+	<div>
+		<%= link_to 'Votes: ' + feature.upvotes.length.to_s ,
+							product_feature_group_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id), class: "btn btn-success", :style => 'width: 100%; vertical-align: top; border-radius: 1px;' %>
+	</div>
+</div>

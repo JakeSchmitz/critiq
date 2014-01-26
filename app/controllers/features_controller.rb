@@ -18,7 +18,8 @@ class FeaturesController < ApplicationController
   # GET /product/pid/features/new
   def new
     @product = Product.find(params[:product_id])
-    @feature = @product.features.build
+    @feature_group = FeatureGroup.find(params[:feature_group_id])
+    @feature = @feature_group.features.build
     @feature.pictures.build
   end
 
@@ -32,8 +33,10 @@ class FeaturesController < ApplicationController
   # POST /features.json
   def create
     @product = Product.find(params[:product_id])
+    @feature_group = FeatureGroup.find(params[:feature_group_id])
     @feature = Feature.new(feature_params)
     @feature.product_id = @product.id
+    @feature.feature_group_id = @feature_group.id
     respond_to do |format|
       if @feature.save
         format.html { redirect_to product_path(@product), notice: 'Feature was successfully created.' }

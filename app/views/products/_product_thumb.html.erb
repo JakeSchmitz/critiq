@@ -1,7 +1,7 @@
 <div class="thumbnail span3 product-thumb" style="text-align: center; height: 300px;">
 	<% if !product.pictures.empty? %>
 		<a href="#product-modal<%= product.id.to_s %>" data-toggle="modal">
-			<%= image_tag product.product_pic.attachment.url(:large), :class => 'img-rounded', :style => 'width: 100%; overflow: hidden; padding: 0px;' %>
+			<%= image_tag product.product_pic.attachment.url(:large), :class => 'img-rounded', :style => 'max-height: 75%; width: 100%; overflow: hidden; padding: 0px;' %>
 		</a>
 		</br>
 		<h4><%= link_to product.name, product %></h4>

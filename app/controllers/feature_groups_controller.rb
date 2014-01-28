@@ -30,7 +30,7 @@ class FeatureGroupsController < ApplicationController
     @feature_group.product_id = @product.id
     respond_to do |format|
       if @feature_group.save
-        format.html { redirect_to @feature_group, notice: 'Feature group was successfully created.' }
+        format.html { redirect_to @product, notice: 'Feature group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @feature_group }
       else
         format.html { render action: 'new' }
@@ -42,9 +42,10 @@ class FeatureGroupsController < ApplicationController
   # PATCH/PUT /feature_groups/1
   # PATCH/PUT /feature_groups/1.json
   def update
+    set_feature_group
     respond_to do |format|
       if @feature_group.update(feature_group_params)
-        format.html { redirect_to @feature_group, notice: 'Feature group was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Feature group was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -63,10 +64,12 @@ class FeatureGroupsController < ApplicationController
     end
   end
 
+  helper_method :can_user_vote
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feature_group
       @feature_group = FeatureGroup.find(params[:id])
+      @product = Product.find(params[:product_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

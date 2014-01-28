@@ -1,4 +1,4 @@
-<%= nested_form_for [@product, @feature_group], :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+<%= nested_form_for [@product, FeatureGroup.new], :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
   <% if @feature_group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@feature_group.errors.count, "error") %> prohibited this feature group from being saved:</h2>
@@ -14,6 +14,10 @@
   <div class="field">
     <h4>Comparison Title</h4>
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <h4>Description</h4>
+    <%= f.text_area :description, :style => 'height: 150px'%>
   </div>
   <div class="actions">
     <%= f.submit nil, :class => 'btn btn-primary'%>

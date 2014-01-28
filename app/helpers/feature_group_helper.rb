@@ -1,2 +1,0 @@
-module FeatureGroupHelper
-end

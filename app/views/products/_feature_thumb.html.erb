@@ -1,12 +1,13 @@
-<div class="thumbnail feature-callout" style="color: #fff;">
+<div class="thumbnail feature-callout" style="background-color: #fff;">
 	<% if !feature.pictures.empty? %>
-		<%= image_tag feature.pictures.last.attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%; border-radius: 2px;' %>
-		</br>
+		<div class="img-rounded thumb-ratio" style="background-image: url('<%= feature.pictures.last.attachment.url(:thumb) %>'); border-radius: 2px;"></div>
 		<h4><%= link_to feature.name, product_feature_group_feature_path(:id => feature.id, :product_id => @product.id, :feature_group_id => feature.feature_group_id) %></h4>
 	<% end %>
-	<p><%= feature.description %></p>
+
 	<div>
-		<%= link_to 'Votes: ' + feature.upvotes.length.to_s ,
+		<% if vote %>
+			<%= link_to 'Votes: ' + feature.upvotes.length.to_s ,
 							product_feature_group_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id), class: "btn btn-success", :style => 'width: 100%; vertical-align: top; border-radius: 1px;' %>
+		<% end %>					
 	</div>
 </div>

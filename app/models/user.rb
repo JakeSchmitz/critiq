@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  validates :name, presence: true
+  validates :email, presence: true
   before_create :create_remember_token
   has_many :products
   has_many :comments
@@ -7,7 +9,7 @@ class User < ActiveRecord::Base
   has_one :profile_picture, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
   validates :name, :presence => true
   validates :email, :presence => true
-  attr_accessible :idxw, :name, :email, :age, :password, :password_confirmation, :image_asset, :remember_token, :link, :user_id, :product_id,
+  attr_accessible :id, :name, :email, :age, :password, :password_confirmation, :image_asset, :remember_token, :link, :user_id, :product_id,
                   :pictures, :attachment, :attachment_attributes, :pictures_attributes, :profile_picture, :profile_picture_attibutes
   has_secure_password
   has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
@@ -21,6 +23,14 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def swagger 
+    swag = 0
+    self.products.each do |p|
+      swag += p.rating
+    end
+    return swag
   end
 
   private

@@ -32,8 +32,7 @@ textarea {
 h1, h2, h3, h4, h5, h6{
   line-height: 1;
   text-align: center;
-  color: #000;
-  /* font-family:"Lato Normal 400", sans-serif; */
+  font-family:"Lato Normal 400", serif;
 }
 
 h1 {
@@ -60,8 +59,7 @@ p {
   font-size: 1.1em;
   line-height: 1.5em;
   text-align: center;
-  color: #000;
-  /* font-family:"Lato Normal 400", sans-serif; */
+  font-family:"Lato Normal 400", sans-serif; 
 }
 
 /* header */
@@ -180,7 +178,7 @@ div.file_upload_wrapper:hover {
   .navbar-inner {
     background-color: #6d2cfa;
     background-image: none;
-    box-shadow: 0px 1px 3px 1px #545;
+    box-shadow: 0px 1px 4px 1px #657;
     border: none;
   }
   .nav {
@@ -210,7 +208,6 @@ div.file_upload_wrapper:hover {
 
 .thumbnail {
   color: #fff;
-  box-shadow: 2px 2px 2px #ccc;
   text-align: center;
 }
 
@@ -238,15 +235,37 @@ div.file_upload_wrapper:hover {
   width: auto;
   overflow: visible;
   left: 50%;
+  bottom: auto;
 }
 
 .thumb-ratio{
     position:relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100% ; /* % of width, defines aspect ratio*/
+    width: 0;
+    height: 100%;
+    padding-right: 100% ; /* % of width, defines aspect ratio*/
     
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;  
+}
+
+.thumb-functions {
+  height: 30px;
+  padding-top: 5px;
+  background: rgba(15, 15, 15, 0.9);
+  opacity: .8;
+  > p > a > h4 {
+    opacity: 1;
+  }
+  margin-top: 0px;
+}
+
+.tiny-thumb-ratio {
+  width: 30px;
+  height: 30px;
+  padding-right: 5px;
+  padding-top: 0px;
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
 }

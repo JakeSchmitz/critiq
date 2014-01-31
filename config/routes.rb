@@ -22,6 +22,7 @@ Critiq0::Application.routes.draw do
     resources :pictures 
     post 'pictures/new' => :upload_picture, as: 'pic_upload'
     get 'propic/:image_id/' => :change_profile_picture, as: 'profile_pic'
+    get 'dashboard' => :dashboard
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :image_assets

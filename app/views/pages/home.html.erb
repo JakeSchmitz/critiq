@@ -1,8 +1,12 @@
 <div class="hero-unit home-banner">
 	<div class="container">
-	  <div class="row">    
+		<div class="hero-text">
+			<h1>Curated Feedback,</h1>
+			<h1>From Users Who Care</h1>
+		</div>
+	  <div>    
 	   	<% if !signed_in? %>
-		    <div class="offset5" style=" padding-top: 180px; padding-left: 0px;"><%= button_to 'Sign Up', new_user_path, :method => "get", :class => "btn btn-primary"%><%= button_to 'Sign In', signin_path, :method => "get", :class => "btn btn-info", :style => 'margin-left: 3px;'%>
+		    <div><%= button_to 'Sign Up', new_user_path, :method => "get", :class => "btn btn-primary", style: 'margin-top: 10px;'%><%= button_to 'Sign In', signin_path, :method => "get", :class => "btn btn-info"%>
 		    </div>
 	    <% end %>
 	  </div>  

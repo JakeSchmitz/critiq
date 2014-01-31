@@ -85,9 +85,9 @@ class UsersController < ApplicationController
     if !params[:image_id].nil?
       @user = User.find(params[:user_id])
       @img = ImageAsset.find(params[:image_id])
-      if @img.user_id == @user.id
+      if @img.user_id == current_user.id
         @user.propic_id = params[:image_id]
-        @user.save
+        @user.save!
       end
     end
     redirect_to @user
@@ -100,6 +100,16 @@ class UsersController < ApplicationController
       @user.save
     end
     redirect_to @user
+  end
+
+  def dashboard 
+    @user = User.find(params[:user_id])
+    if current_user.id == @user.id
+      prepare_dash_charts
+    end
+    respond_to do |format|
+      format.html
+    end
   end
 
   private
@@ -130,5 +140,66 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def prepare_dash_charts
+      seconds_per_day = (60 * 60 * 24)
+      @products = @user.products
+      # hash from product_id -> array of daily likes of product
+      @product_likes = Hash.new
+      # hash from product_id -> array of rating from each day
+      @product_ratings = Hash.new
+      # hashes from product_id -> gchart 
+      @daily_likes = Hash.new
+      @cummulative_ratings = Hash.new
+      @products.each do |product|
+        total_likes = 0
+        cumm_rating = 0
+        # how many days has this product existed
+        existance_length = (Time.now.to_i - product.created_at.to_i) / seconds_per_day
+        # array contains number of likes from date
+        @product_likes[product.id] = Array.new(existance_length, 0)
+        @product_ratings[product.id] = Array.new(existance_length, 0)
+        dates = Array.new(existance_length)
+        dates.each_with_index.map { |x,i| (existance_length - i).to_s }
+        puts dates.to_s
+        product.likes.order('created_at ASC').each do |like|
+          day_liked = (like.created_at.to_i - product.created_at.to_i) / seconds_per_day
+          @product_likes[product.id][day_liked] += 1
+          @product_ratings[product.id][day_liked..existance_length] =   @product_ratings[product.id][day_liked..existance_length].map { |r| r + 10 }
+          puts @product_ratings[product.id].to_s
+          total_likes += 1
+        end
+        product.feature_groups.each do |fg|
+          fg.features.each do |flike|
+            day_liked = (flike.created_at.to_i - product.created_at.to_i) / seconds_per_day
+            cumm_rating += 1
+            @product_ratings[product.id][day_liked..existance_length] = @product_ratings[product.id][day_liked..existance_length].map { |r| r += 1 }
+          end
+        end
+        puts @product_ratings[product.id].to_s
+        @daily_likes[product.id] = Gchart.line(
+                                      :type => 'line',
+                                      :size => '250x200',
+                                      :title => 'Daily Likes',
+                                      :data => @product_likes[product.id],
+                                      :axis_with_label => 'x, y',
+                                      :axis_labels => [dates],
+                                      :max_value => @product_likes[product.id].max,
+                                      :min_value => 0,
+                                      :legend => ['Daily Likes'],
+                                      )
+        @cummulative_ratings[product.id] = Gchart.line(
+                                      :type => 'line',
+                                      :size => '250x200',
+                                      :title => 'Daily Rating',
+                                      :data => @product_ratings[product.id],
+                                      :axis_with_label => 'x, y',
+                                      :axis_labels => [dates],
+                                      :max_value => @product_ratings[product.id].last + 10,
+                                      :min_value => 0,
+                                      :legend => ['Daily Likes'],
+                                      )
+      end
     end
 end

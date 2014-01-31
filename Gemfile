@@ -10,6 +10,8 @@ gem 'paperclip', '~> 3.0'
 gem 'simple_form'
 gem "cocaine"
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
+gem "turbolinks"
+gem "googlecharts", :require => "gchart"
 
 group :production do
   gem "pg"

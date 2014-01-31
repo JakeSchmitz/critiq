@@ -3,7 +3,7 @@
     <div class="modal-content">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="padding: 5px;">&times;</button>
       <div class="modal-body">
-        <%= image_tag pic.attachment.url(:large), style: 'width: 95%; max-height: 100%;' %>
+        <%= image_tag pic.attachment.url(:large), style: 'max-height: 360px;  max-width: 480px; text-align: center;' %>
       </div>
       <div class="modal-footer">
         <h6 style="float: left; margin-left: 30px;">Uploaded at: <%= pic.created_at.to_s.humanize %></h6>

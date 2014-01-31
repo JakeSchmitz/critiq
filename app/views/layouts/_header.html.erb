@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/"><%= image_tag '/images/critiq-outline.png', style: 'width: 150px; margin-top: -3px;' %></a>
+      <a class="brand" href="#" id="showLeft"><%= image_tag '/images/critiq-outline.png', style: 'width: 150px; margin-top: -3px;' %></a>
       <div class="container nav-collapse">
         <ul class="nav">
           <li class="dropdown">
@@ -29,3 +29,6 @@
     </div>
   </div>
 </nav>
+
+<%= render :partial => '/layouts/left-navbar' %>
+

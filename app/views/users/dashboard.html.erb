@@ -1,0 +1,40 @@
+<div class="container" style="margin-top: 50px;">
+	<div class="row row-header">
+		<h2><%= @user.name.camelize %>'s dashboard</h2>
+	</div>
+	<div class="pull-left span2">
+		<%= render :partial => 'user_thumb' , locals: { user: @user } %>
+	</div>
+	<% if signed_in? and current_user.id == @user.id %>
+		<div class="span9" style="padding-left: 5%;">
+	    <ul class="nav nav-tabs" id="creation-tabs">
+	    	<% @products.each do |product| %>
+	    		<li><a href="#creation<%= product.id %>" data-toggle="tab"><%= product.name.camelize %></a></li>
+	    	<% end %>
+	    </ul>
+	    <div class="tab-content">
+	    	<% @products.each do |product| %>
+	    		<div class="tab-pane" id="creation<%= product.id %>">
+	    			<div class="pull-left span2" style="margin-left: -40px;">
+	    				<%= render :partial => '/products/product_thumb', locals: {product: product} %>
+	    			</div>
+	    			<div class="pull-right span6">
+	    				<%= image_tag(@daily_likes[product.id]) %>
+	    				<%= image_tag(@cummulative_ratings[product.id]) %>
+	    			</div>
+	    		</div>
+	    	<% end %>
+	    </div>
+	  </div>
+	<% else %>
+		<h2>Only <%= @user.name.camelize %> may view this dashboard</h2>
+	<% end %>
+</div>
+
+<% if !@user.products.first.nil? %>
+	<script>
+	  $(function () {
+	    $('#creation-tabs a[href="#creation<%= @user.products.first.id %>"]').tab('show')
+	  })
+	</script>
+<% end %>

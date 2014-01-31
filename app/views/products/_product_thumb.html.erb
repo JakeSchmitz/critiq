@@ -1,15 +1,24 @@
-<div class="thumbnail span3 product-thumb" style="text-align: center; height: 300px;">
+<div class="thumbnail span2 product-thumb" style="text-align: center;">
 	<% if !product.pictures.empty? %>
 		<a href="#product-modal<%= product.id.to_s %>" data-toggle="modal">
-			<%= image_tag product.product_pic.attachment.url(:large), :class => 'img-rounded', :style => 'max-height: 75%; width: 100%; overflow: hidden; padding: 0px;' %>
+			<div class="thumb-ratio" style="background-image: url(<%= asset_path product.product_pic.attachment.url(:large) %>);"></div>
 		</a>
-		</br>
-		<h4><%= link_to product.name, product %></h4>
-		<% if signed_in? and !product.likes.exists?(:user_id => current_user.id) %>
-			<%= link_to 'Show Love',
-							product_love_path(product.id), class: "btn btn-success" %>
-		<% else %>
-			<p>Rating: <%= product.rating.to_s %></p>
-		<% end %>
 	<% end %>
+	<div class="product-thumb-content">
+		<h4><%= link_to product.name, product %></h4>
+		<div class="product-thumb-description">
+			<p class="small"><%= truncate product.description, length: 80 %></p> 
+		</div>
+	</div>
+	<div class="thumb-functions">
+		<span class="badge pull-left" style="margin-left: 10px; background: rgba(130, 130, 130, 1);"><%= product.rating %></span>
+		<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path ImageAsset.find(product.user.propic_id).attachment.url(:thumb) %>'); padding: 0px; margin-top: -5px;"></div></a>
+	</div>
 </div>
+
+		<!--	<% if signed_in? and !product.likes.exists?(:user_id => current_user.id) %>
+				<%= link_to 'Show Love',
+								product_love_path(product.id), class: "btn btn-success" %>
+			<% else %>
+				<p>Rating: <%= product.rating.to_s %></p>
+			<% end %> -->

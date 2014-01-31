@@ -1,15 +1,32 @@
-<div class="span2 thumbnail user-callout">
+<div class="thumbnail span2 user-thumb">
 	<a href="#user-modal<%= user.id.to_s %>" data-toggle="modal">
 		<% if !user.propic_id.nil? %>
-			<%= image_tag ImageAsset.find(user.propic_id).attachment.url(:thumb), :class => 'img-rounded', :style => 'width: 100%; max-height: 120px; overflow: hidden' %>
+			<div class="thumb-ratio" style="background-image: url('<%= asset_path ImageAsset.find(user.propic_id).attachment.url(:large) %>');"></div>
 		<% elsif !user.pictures.empty? %>
-	    <%= image_tag user.pictures.last.attachment.url(:large), :style => 'width: 100%; max-height: 120px;' %>
+	    <div class="thumb-ratio alternate-pic" style="background-image: url('<%= asset_path user.pictures.last.attachment.url(:large) %>');"></div>
 		<% else %>
-			<%= image_tag "/images/missing-user-avatar.png", :style => 'width: 100px' %>
+			<div class="thumb-ratio" style="background-image: url('/images/missing-user-avatar.png');"></div>
 		<% end %>
 	</a>
-	</br>
-	<h4><%= link_to user.name, user %></h4>
+	<div class="user-thumb-content">
+		<h4><%= link_to user.name, user %></h4>
+		<div class="user-mini-products">
+			<% if user.products.size == 0 %>
+				<h5 style="padding: 5px;"><%= user.name %> Hasn't Created Anything Yet</h5>
+			<% else %>
+				<% user.products.order('created_at DESC').first(3).each do |product| %>
+					<div class="buffer" style="margin-left: 15%;">
+						<a href="products/<%= product.id %>">
+						<div class="thumb-ratio tiny-thumb-ratio" style="background-image: url('<%= asset_path product.product_pic.attachment.url(:thumb) %>'); margin-right: 5px;"></div>
+						</a>
+					</div>
+				<% end %>
+			<% end %>	
+		</div>
+	</div>
+	<div class="thumb-functions">
+		<p><%= user.products.nil? ? 0 : user.products.size.to_s %> Creation<%= user.products.size != 1 ? 's' : '' %></p>
+	</div>
 </div>
 
 <%= render :partial => '/users/user_modal', :locals => { user: user } %>

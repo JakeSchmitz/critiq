@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 	belongs_to :user, :foreign_key => "user_id"
+  validates :name, presence: true
+  validates :description, presence: true
   has_many :likes, :as => :likeable
 	has_many :feature_groups
   has_many :comments, :as => :commentable
@@ -32,7 +34,7 @@ class Product < ActiveRecord::Base
       	asset.product_id = self.id
         asset.save!
       end 
-      self.features.each do |f|
+      self.feature_groups.each do |f|
       	f.product = self
       	f.save!
       end

@@ -138,11 +138,15 @@ class ProductsController < ApplicationController
                                       lovers: [:product_id, :user_id])
     end
 
+    # product rating = (10 * product_likes) + sum(feature_likes for each feature)
     def update_rating
       @product.rating = @product.likes.length * 10
-      @product.features.each do |f|
-        @product.rating = @product.rating + f.upvotes.length
+      @product.feature_groups.where.not(name: 'singletons', description: 'lorem').each do |fg|
+        fg.features.each do |f|
+          @product.rating = @product.rating + f.upvotes.length
+        end
       end
+      # here we should somehow incorporate comments on the product into the rating
       @product.save
     end
 

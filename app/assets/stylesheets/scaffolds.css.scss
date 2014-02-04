@@ -2,13 +2,10 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  min-height: 720px
 }
 
 body {
-  /*background-image: url(asset-path("green_background.jpg"));*/
   padding-top: 0px;
-  background-color: #ffffff;
 }
 
 p, ol, ul, td {
@@ -54,14 +51,5 @@ div {
     font-size: 12px;
     list-style: square;
   }
-}
-
-.home-banner {
-    background: url(/images/critiq-banner.png) no-repeat top center fixed;
-    -webkit-background-size: cover;
-    min-height: 400px;
-    background-size: cover;
-    color: #eeeeee;
-    text-align: center;
 }
 

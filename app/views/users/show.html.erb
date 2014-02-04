@@ -1,6 +1,24 @@
 <%- model_class = User -%>
+<div style="width: 100%; overflow: hidden;">
+<div class="user-cover"></div></div>
 <div class="container">
-  <div class="row">
+  <div class="row span10">
+    <div class="span2 offset2 user-rating">
+      <h3><%= @user.name %>'s rating: <%= @user.swagger %></h3>
+    </div>
+    <div class="span3 user-face">
+      <% if has_propic? %>
+        <%= image_tag @propic.attachment.url(:large), :style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
+      <% elsif has_image? %>
+        <%= image_tag @user.pictures.last.attachment.url(:large),:style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
+      <% else %>
+        <%= image_tag "/images/missing-user-avatar.png", :style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
+      <% end %> 
+      <h1><%= @user.name %></h1>
+    </div>
+    <div class="span2 user-followers"><h3>Followers: <%= @user.lovers %></h3></div>
+  </div>
+  <div class="row" style="margin-top: 50px;">
     <div class="span6">
       <h2 style="float: left; padding: 5px;">
       <% if has_propic? %>
@@ -22,6 +40,7 @@
       <% if @user.id == current_user.id %><div class="offset1"><%= render :partial => 'profile_management_buttons' %></div><% end %>
     </div>
   </div>
+  <div class="background-splatter"></div>
   <div class="span12">
     <ul class="nav nav-tabs" id="user-tabs">
       <li class="active"><a href="#user-products" data-toggle="tab">Creations</a></li>

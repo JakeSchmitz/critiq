@@ -2,9 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.hero-text {
-  margin-top: -20px;
-  font-family: "Times New Roman", Times, serif;
+.home-banner {
+  background: url(/images/Home-banner.jpg) no-repeat top center fixed;
+  -webkit-background-size: cover;
+  height: 400px;
+  width: 100%;
+  color: #eeeeee;
+  font-weight: thinner;
+  z-index: -1;
   text-align: center;
-  padding-bottom: 20px;
+  border-radius: 0px;
+  .hero-header {
+	  margin-top: -20px;
+	  font-family: "Times New Roman", Times, serif;
+	  text-align: center;
+	  padding-bottom: 20px;
+	  color: #fff;
+	  border-bottom: 2px solid rgba(200, 200, 200, .5);
+	  width: 60%;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+	.hero-description {
+		padding: 20px;
+		width: 80%;
+		margin-left: auto;
+	  margin-right: auto;
+	}
 }

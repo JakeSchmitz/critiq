@@ -33,6 +33,14 @@ class User < ActiveRecord::Base
     return swag
   end
 
+  def lovers
+    luvrs = 0
+    self.products.each do |p|
+      luvrs += p.likes.length
+    end
+    return luvrs
+  end
+
   private
 
     def create_remember_token

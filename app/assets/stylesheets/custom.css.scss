@@ -9,6 +9,17 @@ html {
 body {
   margin-top: 40px;
   padding-top: 20px;
+  overflow-x: hidden;
+}
+
+.background-splatter {
+  position: absolute;
+  background-image: url('/images/svg/splatters.svg');
+  background-size: cover;
+  height: 100%;
+  width: 90%;
+  z-index: -1;
+  opacity: .05;
 }
 
 section {
@@ -33,27 +44,9 @@ h1, h2, h3, h4, h5, h6{
   line-height: 1;
   text-align: center;
   font-family:"Lato Normal 400", serif;
+  color: #606060;
 }
 
-h1 {
-  font-size: 5em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-}
-
-h2 {
-  font-size: 2.0em;
-  letter-spacing: -1.5px;
-  margin-bottom: 30px;
-  font-weight: normal;
-}
-
-h3 {
-  font-size: 2.0em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  font-weight: normal;
-}
 
 p {
   font-size: 1.1em;
@@ -86,8 +79,7 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
+  border-top: 1px solid #dddddd;
 }
 
 footer a {
@@ -176,7 +168,8 @@ div.file_upload_wrapper:hover {
 
 .navbar {
   .navbar-inner {
-    background-color: #6d2cfa;
+    background-color: #92729b;
+    
     background-image: none;
     box-shadow: 0px 1px 4px 1px #657;
     border: none;
@@ -204,6 +197,12 @@ div.file_upload_wrapper:hover {
       }
     }
   }
+}
+
+/* fucking caret needs to be white */
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
 }
 
 .thumbnail {
@@ -268,4 +267,41 @@ div.file_upload_wrapper:hover {
   float: left;
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn-outline {
+  text-align: center;
+  border: 2px solid #fff;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  .btn-clear {
+    background: rgba(254, 254, 254, 0.0);
+    color: #fff;
+    > h4 {
+      color: #fff;
+    }
+  }
+}
+
+.blurb-row {
+  text-align: center;
+  .blurb-icon {
+    width: 200px;
+  }
+}
+
+> a:hover {
+  underline: none;
+}
+
+.pretty-divider {
+  background-image: url('/images/svg/Underlines.svg');
+  background-size: cover;
+  opacity: .6;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 10%;
+  width: 80%;
+  height: 8px;
 }

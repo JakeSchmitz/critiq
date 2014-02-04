@@ -1,18 +1,53 @@
 <div class="hero-unit home-banner">
-	<div class="container">
-		<div class="hero-text">
-			<h1>Curated Feedback,</h1>
-			<h1>From Users Who Care</h1>
-		</div>
-	  <div>    
-	   	<% if !signed_in? %>
-		    <div><%= button_to 'Sign Up', new_user_path, :method => "get", :class => "btn btn-primary", style: 'margin-top: 10px;'%><%= button_to 'Sign In', signin_path, :method => "get", :class => "btn btn-info"%>
-		    </div>
-	    <% end %>
-	  </div>  
+	<div class="hero-text hero-header">
+		<h1>Curated Feedback,</h1>
+		<h1>From Users Who Care</h1>
 	</div>
+	<div class="hero-description">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	</div>
+	<a href="/products/new">
+		<div class="btn-outline">
+			<div class="btn-clear">
+				<h4>START A CAMPAIGN</h4>
+			</div>
+		</div>
+	</a>
+  <div>    
+   	<% if !signed_in? %>
+	    <div><%= button_to 'Sign Up', new_user_path, :method => "get", :class => "btn btn-primary", style: 'margin-top: 10px;'%><%= button_to 'Sign In', signin_path, :method => "get", :class => "btn btn-info"%>
+	    </div>
+    <% end %>
+  </div>  
 </div>
 </br>
+<div class="container">
+	<div class="background-splatter"></div>
+	<div class="blurb-row offset1">
+		<div class="blurb-left span3">
+			<%= image_tag '/images/round-icons/art-utensils.svg', :class => 'blurb-icon' %>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+		<div class="blurb-center span3">
+			<%= image_tag '/images/round-icons/chat.svg', :class => 'blurb-icon' %>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+		<div class="blurb-right span3">
+			<%= image_tag '/images/round-icons/brush.svg', :class => 'blurb-icon' %>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+	</div>	
+	<div class="featured-campaigns">
+		<h1>Featured Campaigns</h1>
+		<div class="pretty-divider"></div>
+		<% @top_products.each do |product| %>
+			<%= render :partial => '/products/product_thumb', locals: { product: product } %>
+      <%= render :partial => '/products/product_modal', locals: { product: product } %>
+		<% end %>
+	</div>	
+</div>
+
+<!-- This is old!
 <div class="container">
 	<div class="row" style="width: 100%;">
 		<h1 style="text-align: center;">Meet The Team</h1>
@@ -28,3 +63,4 @@
 		</li>
 	</ul>
 </div>
+-->

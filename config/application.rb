@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env)
 
 module Critiq0
   class Application < Rails::Application
-    config.assets.paths << Rails.root.join("system", "image_assets", "images")
+    config.assets.paths << Rails.root.join("system", "image_assets", "images", "assets/SlidePushMenus")
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

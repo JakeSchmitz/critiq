@@ -79,3 +79,43 @@
 	width: auto;
 	overflow: hidden;
 }
+
+.user-cover {
+	position: absolute;
+	background-image: url('/images/Profile-backgroundfull.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 30% 40%;
+	width: 100%;
+	z-index: -1;
+	height: 500px;
+	margin-top: 0px;
+	padding-right: 20%;
+	border-bottom:2px solid #aaaaaa;
+}
+
+.user-face {
+	text-align: center;
+	margin-top: 50px;
+	color: #ffffff;
+}
+
+.user-rating {
+	margin-top: 140px;
+	padding-bottom: 3px;
+	border-bottom: 2px solid #cccccc;
+	color: #fff;
+	width: 200px;
+}
+.user-followers {
+	margin-top: 140px;
+	width: 200px;
+	color: #fff;
+	border-bottom: 2px solid #cccccc;
+}
+
+.user-face-pic {
+	border: solid 5px #cccccc;
+	height: 200px;
+	padding: 0px;
+}

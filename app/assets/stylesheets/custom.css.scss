@@ -12,7 +12,7 @@ body {
   overflow-x: hidden;
 }
 
-.background-splatter {
+.background-splatter1 {
   position: absolute;
   background-image: url('/images/svg/splatters.svg');
   background-size: cover;
@@ -21,6 +21,8 @@ body {
   z-index: -1;
   opacity: .05;
 }
+
+
 
 section {
   overflow: auto;
@@ -52,7 +54,7 @@ p {
   font-size: 1.1em;
   line-height: 1.5em;
   text-align: center;
-  font-family:"Lato Normal 400", sans-serif; 
+  font-family: arial, sans-serif;
 }
 
 /* header */

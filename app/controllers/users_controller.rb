@@ -196,7 +196,7 @@ class UsersController < ApplicationController
                                       :data => @product_ratings[product.id],
                                       :axis_with_label => 'x, y',
                                       :axis_labels => [dates],
-                                      :max_value => @product_ratings[product.id].last + 10,
+                                      :max_value => @product_ratings[product.id].last.to_i + 10,
                                       :min_value => 0,
                                       :legend => ['Daily Likes'],
                                       )

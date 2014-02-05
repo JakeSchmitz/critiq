@@ -12,6 +12,7 @@
 	</div>
 	<div class="thumb-functions">
 		<span class="badge pull-left" style="margin-left: 10px; background: rgba(130, 130, 130, 1);"><%= product.rating %></span>
+		<% if !product.active %><p style="padding-left: 5px;">Expired</p><% end %>
 		<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path ImageAsset.find(product.user.propic_id).attachment.url(:thumb) %>'); padding: 0px; margin-top: -5px;"></div></a>
 	</div>
 </div>

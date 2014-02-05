@@ -40,12 +40,30 @@
 
   </head>
   <body>
-    <%= render 'layouts/header' %>
+    <%= render '/layouts/header' %>
     <%= bootstrap_flash %>
     <%= yield %>
     </br>
     <footer>
-      <p style="color: #111;">&copy; Critiq Inc 2013</p>
+      <div class="upper-footer">
+        <p>&copy; Critiq Inc 2013</p>
+      </div>
+      <div class="lower-footer">
+        <ul class="bottom-links">
+          <li>
+            <a href="#">FAQ</a>
+          </li>
+          <li>
+            <%= link_to 'Contacts', contact_path %>
+          </li>
+          <li>
+            <a href="#">About Us</a>
+          </li>
+          <li>
+            <a href="#">Help</a>
+          </li>
+        </ul>
+      </div>
     </footer>
   </body>
 </html>

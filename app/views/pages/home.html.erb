@@ -6,23 +6,17 @@
 	<div class="hero-description">
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
-	<a href="/products/new">
-		<div class="btn-outline">
-			<div class="btn-clear">
-				<h4>START A CAMPAIGN</h4>
-			</div>
-		</div>
-	</a>
-  <div>    
-   	<% if !signed_in? %>
-	    <div><%= button_to 'Sign Up', new_user_path, :method => "get", :class => "btn btn-primary", style: 'margin-top: 10px;'%><%= button_to 'Sign In', signin_path, :method => "get", :class => "btn btn-info"%>
-	    </div>
-    <% end %>
-  </div>  
+	<div class="home-buttons">
+		<%= button_to 'START A CAMPAIGN', new_product_path, :method => "get", :class => "btn-clear"%>
+	 	<% if !signed_in? %>
+	    <%= button_to 'SIGN UP', new_user_path, :method => "get", :class => "btn-clear" %>
+	    <%= button_to 'SIGN IN', signin_path, :method => "get", :class => "btn-clear"%>
+	  <% end %>
+  </div>
 </div>
 </br>
 <div class="container">
-	<div class="background-splatter"></div>
+	<div class="background-splatter1"></div>
 	<div class="blurb-row offset1">
 		<div class="blurb-left span3">
 			<%= image_tag '/images/round-icons/art-utensils.svg', :class => 'blurb-icon' %>
@@ -37,7 +31,7 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 		</div>
 	</div>	
-	<div class="featured-campaigns">
+	<div class="row featured-campaigns">
 		<h1>Featured Campaigns</h1>
 		<div class="pretty-divider"></div>
 		<% @top_products.each do |product| %>
@@ -45,6 +39,15 @@
       <%= render :partial => '/products/product_modal', locals: { product: product } %>
 		<% end %>
 	</div>	
+	<div class="background-splatter2"></div>
+	<div class="row featured-makers">
+		<h1>Featured Makers</h1>
+		<div class="pretty-divider"></div>
+		<% @top_users.each do |u| %>
+			<%= render :partial => '/users/user_thumb', locals: { user: u } %>
+			<%= render :partial => 'users/user_modal', locals: { user: u } %>
+		<% end %>
+	</div>
 </div>
 
 <!-- This is old!

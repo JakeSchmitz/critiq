@@ -2,21 +2,41 @@
 <div style="width: 100%; overflow: hidden;">
 <div class="user-cover"></div></div>
 <div class="container">
-  <div class="row span10">
-    <div class="span2 offset2 user-rating">
-      <h3><%= @user.name %>'s rating: <%= @user.swagger %></h3>
+  <div class="row user-profile-top">
+    <div class="user-middle">
+      <div class="span2 user-rating">
+        <h4><%= @user.name.split[0] %>'s rating: 100<%= @user.swagger %></h4>
+      </div>
+      <div class="span3 user-face">
+        <% if has_propic? %>
+          <%= image_tag @propic.attachment.url(:large), :style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
+        <% elsif has_image? %>
+          <%= image_tag @user.pictures.last.attachment.url(:large),:style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
+        <% else %>
+          <%= image_tag "/images/missing-user-avatar.png", :style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
+        <% end %> 
+        <h1><%= @user.name %></h1>
+        <div class="user-buttons">
+          <% if signed_in? and @user.id != current_user.id %>
+            <%= button_to 'MESSAGE', '#', :method => "get", :class => "btn-clear inline-button"%>
+            <%= button_to 'FOLLOW', '#', :method => "get", :class => "btn-clear inline-button"%>
+          <% elsif signed_in? and @user.id == current_user.id %>
+            <%= button_to 'EDIT', edit_user_path(@user), :method => "get", :class => "btn-clear inline-button"%>
+          <% end %>
+        </div>
+      </div>
+    <div class="span2 user-followers"><h4>Followers: 10<%= @user.lovers %></h4></div>
     </div>
-    <div class="span3 user-face">
-      <% if has_propic? %>
-        <%= image_tag @propic.attachment.url(:large), :style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
-      <% elsif has_image? %>
-        <%= image_tag @user.pictures.last.attachment.url(:large),:style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
-      <% else %>
-        <%= image_tag "/images/missing-user-avatar.png", :style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
-      <% end %> 
-      <h1><%= @user.name %></h1>
-    </div>
-    <div class="span2 user-followers"><h3>Followers: <%= @user.lovers %></h3></div>
+  </div>
+</div>
+<div class="container" style="padding-top: 5%;">
+  <div class="current-campaigns row">
+    <h1>Current Campaigns</h1>
+    <div class="pretty-divider"></div>
+    <% @user.products.where(:active => true).limit(10) do |product| %>
+      <% render :partial => '/products/product_thumb', locals: { product: product} %>
+      <% render :partial => '/products/product_modal', locals: { product: product} %>
+    <% end %>
   </div>
   <div class="row" style="margin-top: 50px;">
     <div class="span6">

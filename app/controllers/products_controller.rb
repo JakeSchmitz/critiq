@@ -46,7 +46,6 @@ class ProductsController < ApplicationController
   def edit
     set_product
     @product.pictures.build
-    @product.features.build
   end
 
   # POST /products

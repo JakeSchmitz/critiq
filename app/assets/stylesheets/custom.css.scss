@@ -309,6 +309,12 @@ div.file_upload_wrapper:hover {
   background: rgba(254, 254, 254, 0.0);
   color: #fff;
   border: 2px solid #fff;
+  border-radius: 3px;
+  margin-bottom: 3px;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 3px;
   > h4 {
     color: #fff;
   }
@@ -343,4 +349,10 @@ div.file_upload_wrapper:hover {
 
 .inline-button {
   display: inline-block;
+}
+
+/* social media buttons */
+.sm-button {
+  padding-left: 5px;
+  padding-right: 5px;
 }

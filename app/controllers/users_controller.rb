@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @pictures = @user.pictures
+    @top_products = @user.products.where(active: true).order('rating DESC')
+    @old_products = @user.products.where(active: false).order('rating DESC')
     if current_user.id == @user.id
       @pictures.build
     end
@@ -22,7 +24,6 @@ class UsersController < ApplicationController
     else
       @propic = @user.pictures.last
     end
-    @top_products = @user.products.order("rating desc")
   end
 
   # GET /users/new

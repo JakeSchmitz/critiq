@@ -117,7 +117,7 @@
 }
 
 .user-rating {
-	margin-top: 140px;
+	margin-top: 120px;
 	position: relative;
 	padding-bottom: 3px;
 	opacity: .8;
@@ -125,15 +125,13 @@
 	> h4 {
 		color: #fff;
 	}
-	margin-right:-70px;
+	margin-right:-7.5%;
 	z-index: 10;
-	width: 18%;
 }
 .user-followers {
-	margin-top: 140px;
-	margin-left:-40px;
+	margin-top: 120px;
+	margin-left:-4%;
 	position: relative;
-	width: 17%;
 	opacity:.8;
 	z-index: 10;
 	color: #fff;
@@ -153,4 +151,23 @@
 	float: center;
 	display: inline-block;
 	margin: 0 auto;
+}
+
+.current-creations {
+	width: 90%;
+	margin: 0 auto;
+	height: auto;
+}
+
+.user-buttons {
+	position: absolute;
+	display: block;
+	height: 40px;
+	margin-top: 25%;
+	margin-left: 17%;
+	padding: 5px;
+}
+
+.other-user-buttons {
+	margin-left: 10%;
 }

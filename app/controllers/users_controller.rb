@@ -143,8 +143,11 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
+    def recent_activities 
+
+    end
+
     def prepare_dash_charts
-      seconds_per_day = (60 * 60 * 24)
       @products = @user.products
       # hash from product_id -> array of daily likes of product
       @product_likes = Hash.new
@@ -152,7 +155,16 @@ class UsersController < ApplicationController
       @product_ratings = Hash.new
       # hashes from product_id -> gchart 
       @daily_likes = Hash.new
+      # Hash from product_id -> feature_group_id -> gchar (pie chart)
+      @comparison_breakdowns = Hash.new
+      @comparison_counts = Hash.new
       @cummulative_ratings = Hash.new
+      likes_data
+      features_data
+    end
+
+    def likes_data 
+      seconds_per_day = (60 * 60 * 24)
       @products.each do |product|
         total_likes = 0
         cumm_rating = 0
@@ -166,6 +178,9 @@ class UsersController < ApplicationController
         puts dates.to_s
         product.likes.order('created_at ASC').each do |like|
           day_liked = (like.created_at.to_i - product.created_at.to_i) / seconds_per_day
+          if @product_likes[product.id][day_liked].nil?
+            @product_likes[product.id][day_liked] = 0
+          end
           @product_likes[product.id][day_liked] += 1
           @product_ratings[product.id][day_liked..existance_length] =   @product_ratings[product.id][day_liked..existance_length].map { |r| r + 10 }
           puts @product_ratings[product.id].to_s
@@ -181,7 +196,7 @@ class UsersController < ApplicationController
         puts @product_ratings[product.id].to_s
         @daily_likes[product.id] = Gchart.line(
                                       :type => 'line',
-                                      :size => '250x200',
+                                      :size => '300x240',
                                       :title => 'Daily Likes',
                                       :data => @product_likes[product.id],
                                       :axis_with_label => 'x, y',
@@ -192,7 +207,7 @@ class UsersController < ApplicationController
                                       )
         @cummulative_ratings[product.id] = Gchart.line(
                                       :type => 'line',
-                                      :size => '250x200',
+                                      :size => '300x240',
                                       :title => 'Daily Rating',
                                       :data => @product_ratings[product.id],
                                       :axis_with_label => 'x, y',
@@ -201,6 +216,33 @@ class UsersController < ApplicationController
                                       :min_value => 0,
                                       :legend => ['Daily Likes'],
                                       )
+      end
+    end
+
+    def features_data
+      seconds_per_day = (60 * 60 * 24)
+      @products.each do |product|
+        # abstraction here is necessary to avoid mixing feature_groups of products within User Dashboard
+        # build hashes from feature_group to the arrays of data
+        @comparison_counts[product.id] = Hash.new
+        # build hashes from feature_group to the graphics for each product
+        @comparison_breakdowns[product.id] = Hash.new
+        product.feature_groups.where(singles: false).each do |fg|
+          labels = Array.new
+          # This FG gets its own hash from feature_id -> vote count
+          @comparison_counts[product.id][fg.id] = Array.new
+          total_likes = 0
+          fg.features.each do |f|
+            labels += [f.name]
+            @comparison_counts[product.id][fg.id] += [f.upvotes.size]
+            total_likes += f.upvotes.size
+          end
+          if total_likes != 0
+            @comparison_breakdowns[product.id][fg.id] = Gchart.pie(
+                                        :data => @comparison_counts[product.id][fg.id], 
+                                        :labels => labels)
+          end
+        end
       end
     end
 end

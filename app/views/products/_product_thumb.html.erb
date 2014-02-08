@@ -7,19 +7,18 @@
 	<div class="product-thumb-content">
 		<h4><%= link_to product.name, product %></h4>
 		<div class="product-thumb-description">
-			<p style="line-height: 1.2;"><%= truncate product.description, length: 70 %></p> 
+			<p style="line-height: 1.2;"><%= truncate product.description, length: 60 %></p> 
 		</div>
 	</div>
 	<div class="thumb-functions">
 		<span class="badge pull-left" style="margin-left: 10px; background: rgba(130, 130, 130, 1);"><%= product.rating %></span>
 		<% if !product.active %><p style="padding-left: 5px;">Expired</p><% end %>
-		<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path ImageAsset.find(product.user.propic_id).attachment.url(:thumb) %>'); padding: 0px; margin-top: -5px;"></div></a>
+		<% if signed_in? and product.active and !product.likes.exists?(:user_id => current_user.id) %>
+			<%= link_to 'Show Love',
+								product_love_path(product.id), class: "btn-clear" %>
+		<% elsif signed_in? %>
+			<p style="float: left; padding-left: 10px;">Supported!</p>
+		<% end %>
+		<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path ImageAsset.find(product.user.propic_id).attachment.url(:thumb) %>'); padding: 0px; background-size: cover; margin-top: -5px;"></div></a>
 	</div>
 </div>
-
-		<!--	<% if signed_in? and !product.likes.exists?(:user_id => current_user.id) %>
-				<%= link_to 'Show Love',
-								product_love_path(product.id), class: "btn btn-success" %>
-			<% else %>
-				<p>Rating: <%= product.rating.to_s %></p>
-			<% end %> -->

@@ -7,10 +7,10 @@
         <h4><%= @user.name.split[0] %>'s rating: 1<%= @user.swagger %></h4>
       </div>
       <div class="span3 user-face">
-        <% if has_propic? %>
-          <%= image_tag @propic.attachment.url(:large), :style => 'width: 200px;', :class => 'img-circle user-face-pic thumb-ratio ' %>
+        <% if has_propic? %> 
+          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @propic.attachment.url(:large) %>');"></div>
         <% elsif has_image? %>
-          <%= image_tag @user.pictures.last.attachment.url(:large),:style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
+          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.pictures.last.attachment.url(:large) %>');"></div>
         <% else %>
           <%= image_tag "/images/missing-user-avatar.png", :style => 'width: 200px;', :class => 'img-circle user-face-pic' %>
         <% end %> 

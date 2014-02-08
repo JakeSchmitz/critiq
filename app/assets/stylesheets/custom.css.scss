@@ -3,13 +3,13 @@
 /* universal */
 
 html {
-  overflow-y: scroll;
+  min-height: 100%;
 }
 
 body {
   margin-top: 40px;
   padding-top: 20px;
-  height: 100%;
+  min-height: 100%;
 }
 
 .background-splatter1 {
@@ -24,10 +24,11 @@ body {
 
 .background-splatter2 {
   position: absolute;
+  top: 0;
+  bottom: 0;
   background-image: url('/images/svg/splatters-07.svg');
   background-size: cover;
-  height: 80%;
-  width: 90%;
+  width: auto;
   z-index: -1;
   opacity: .05;
 }
@@ -90,15 +91,13 @@ p {
 
 footer {
   margin-top: 25px;
-  position: relative;
-  bottom: 0px;
   width: 100%;
   .upper-footer {
     width: 100%;
     padding: 10px;
     height: 40px;
     color: #fff;
-    background-color: #92729b;
+    background-color: #6d2cfa;
   }
   .lower-footer {
     padding: 8px;
@@ -148,18 +147,6 @@ input {
   background-color:transparent;
 }
 
-#error_explanation {
-  color: #f00;
-  ul {
-    list-style: none;
-    margin: 0 0 18px 0;
-  }
-}
-
-.field_with_errors {
-  @extend .error;
-}
-
 .btn-primary {
   text-shadow: 0 -1px 0 rgba(.25, 0, 0, 0);
 }
@@ -195,7 +182,7 @@ div.file_upload_wrapper:hover {
 
 .navbar {
   .navbar-inner {
-    background-color: #92729b;
+    background-color: #6d2cfa;
     
     background-image: none;
     box-shadow: 0px 1px 4px 1px #657;
@@ -234,7 +221,6 @@ div.file_upload_wrapper:hover {
 
 .thumbnail {
   color: #fff;
-  text-align: center;
 }
 
 .alert {
@@ -275,17 +261,6 @@ div.file_upload_wrapper:hover {
     background-size: cover;  
 }
 
-.thumb-functions {
-  height: 30px;
-  padding-top: 5px;
-  background: rgba(15, 15, 15, 0.9);
-  opacity: .8;
-  > p > a > h4 {
-    opacity: 1;
-  }
-  margin-top: 0px;
-}
-
 .tiny-thumb-ratio {
   width: 30px;
   height: 30px;
@@ -320,6 +295,11 @@ div.file_upload_wrapper:hover {
   }
 }
 
+.black-outline {
+  color: #000;
+  border-color: #000;
+}
+
 .blurb-row {
   text-align: center;
   .blurb-icon {
@@ -337,8 +317,8 @@ div.file_upload_wrapper:hover {
   opacity: .6;
   margin-top: 20px;
   margin-bottom: 30px;
-  margin-left: 10%;
-  width: 80%;
+  margin-left: 5%;
+  width: 90%;
   height: 8px;
 }
 
@@ -355,4 +335,21 @@ div.file_upload_wrapper:hover {
 .sm-button {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+
+.thumb-functions {
+  height: 30px;
+  padding-top: 5px;
+  background: rgba(15, 15, 15, 0.9);
+  opacity: .8;
+  > p > a > h4 {
+    opacity: 1;
+  }
+  margin-top: 0px;
+  .btn-clear {
+    padding: 2px;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
 }

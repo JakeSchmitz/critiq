@@ -4,7 +4,7 @@
 	<ul class="thumbnails">
 		<% comp_feature.features.each do |cf| %>
 			<li class="thumnail">
-				<div class="comp-feature" style="width: 120px; height: 200px; overflow: hidden;">
+				<div class="comp-feature">
 					<%= render :partial => 'feature_thumb', locals: { feature: cf, vote: comp_feature.can_user_vote(current_user) } %>
 				</div>
 			</li>

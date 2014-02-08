@@ -1,12 +1,12 @@
-<div class="container" style="padding-top: 40px;">
+<div class="container" style="padding-top: 40px%; margin-bottom: 7%;<% if @user.products.empty? %>margin-bottom: 9%;<% end %>">
 	<div class="row row-header">
 		<h2><%= @user.name.camelize %>'s dashboard</h2>
 	</div>
-	<div class="pull-left span2">
+	<div class="pull-left">
 		<%= render :partial => 'user_thumb' , locals: { user: @user } %>
 	</div>
 	<% if signed_in? and current_user.id == @user.id %>
-		<div class="span9" style="padding-left: 5%;">
+		<div class="span9" style="margin-bottom: 6%;">
 	    <ul class="nav nav-tabs" id="creation-tabs">
 	    	<% @products.each do |product| %>
 	    		<li><a href="#creation<%= product.id %>" data-toggle="tab"><%= product.name.camelize %></a></li>
@@ -18,10 +18,19 @@
 	    			<div class="pull-left span2" style="margin-left: -40px;">
 	    				<%= render :partial => '/products/product_thumb', locals: {product: product} %>
 	    			</div>
-	    			<div class="pull-right span6">
+	    			<div class="pull-right">
 	    				<%= image_tag(@daily_likes[product.id]) %>
 	    				<%= image_tag(@cummulative_ratings[product.id]) %>
 	    			</div>
+	    			<% if !@comparison_breakdowns[product.id].nil? %>
+		    			<div class="feature-graphs">
+		    				<% product.feature_groups.each do |fg| %>
+		    					<% if !@comparison_breakdowns[product.id][fg.id].nil? %>
+		    						<%= image_tag(@comparison_breakdowns[product.id][fg.id]) %>
+		    					<% end %>
+		    				<% end %>
+		    			</div>
+	    			<% end %>
 	    		</div>
 	    	<% end %>
 	    </div>

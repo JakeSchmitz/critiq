@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 40px%; margin-bottom: 7%;<% if @user.products.empty? %>margin-bottom: 9%;<% end %>">
+<div class="container" style="padding-top: 40px%; margin-bottom: 3%;<% if @user.products.empty? %>margin-bottom: 9%;<% end %>">
 	<div class="row row-header">
 		<h2><%= @user.name.camelize %>'s dashboard</h2>
 	</div>
@@ -6,7 +6,7 @@
 		<%= render :partial => 'user_thumb' , locals: { user: @user } %>
 	</div>
 	<% if signed_in? and current_user.id == @user.id %>
-		<div class="span9" style="margin-bottom: 6%;">
+		<div class="span9" style="min-height: 100%;">
 	    <ul class="nav nav-tabs" id="creation-tabs">
 	    	<% @products.each do |product| %>
 	    		<li><a href="#creation<%= product.id %>" data-toggle="tab"><%= product.name.camelize %></a></li>

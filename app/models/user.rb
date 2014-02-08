@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :products
   has_many :comments
   has_many :likes
+  has_many :activities
   has_one :profile_picture, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
   validates :name, :presence => true
   validates :email, :presence => true

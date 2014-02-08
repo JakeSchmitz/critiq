@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
     @comment.product_id = params[:product_id]
     @product = Product.find(params[:product_id])
     @user = User.find(current_user.id)
+    Activity.create(timestamp: @comment.created_at, user_id: @user.id, type: :comment, resource_type: :comment, resource_id: @comment.id)
   end
 
   # GET /comments/1/edit

@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
       @product = Product.new
       @product.pictures.build
       @product.user_id = current_user.id
+      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
     else
       redirect_to signup_path, :notice => 'Please sign up before creating anything!'
     end
@@ -104,6 +105,7 @@ class ProductsController < ApplicationController
         respond_to do |format|
           if  @product.likes.create(:user_id => current_user.id)
             update_rating
+            Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :product, resource_id: @product.id)
             format.html { redirect_to @product, notice: 'Product was successfully updated.' }
             format.json { head :no_content }
           else

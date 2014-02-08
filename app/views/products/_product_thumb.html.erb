@@ -19,6 +19,8 @@
 		<% elsif signed_in? %>
 			<p style="float: left; padding-left: 10px;">Supported!</p>
 		<% end %>
-		<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path ImageAsset.find(product.user.propic_id).attachment.url(:thumb) %>'); padding: 0px; background-size: cover; margin-top: -5px;"></div></a>
+		<% if !product.user.propic_id.nil? %>
+			<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path ImageAsset.find(product.user.propic_id).attachment.url(:thumb) %>'); padding: 0px; background-size: cover; margin-top: -5px;"></div></a>
+		<% end %>
 	</div>
 </div>

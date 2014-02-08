@@ -1,5 +1,7 @@
 Critiq0::Application.routes.draw do
 
+  resources :activities
+
   resources :products do
     resources :pictures
     resources :likes

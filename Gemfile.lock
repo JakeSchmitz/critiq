@@ -36,6 +36,8 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.1.0.0)
     builder (3.1.4)
+    classy_enum (3.3.2)
+      rails (>= 3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -162,6 +164,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (= 2.1)
+  classy_enum
   cocaine
   coffee-rails (~> 4.0.0)
   font-awesome-rails

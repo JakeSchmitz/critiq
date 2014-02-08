@@ -173,3 +173,19 @@
 .other-user-buttons {
 	margin-left: 11%;
 }
+
+.recent-activity {
+	.activity {
+		position: relative;
+		display: inline-block;
+		float: center;
+		.activity-icon {
+			padding: 0px;
+			margin: 0 auto;
+			height: 100px;
+		}
+		> h4 {
+			width: 160px;
+		}
+	}
+}

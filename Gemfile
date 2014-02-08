@@ -13,6 +13,7 @@ gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem "turbolinks"
 gem "googlecharts", :require => "gchart"
 gem "font-awesome-rails"
+gem "classy_enum"
 
 group :production do
   gem "pg"

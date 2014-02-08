@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @pictures = @user.pictures
     @top_products = @user.products.where(active: true).order('rating DESC')
     @old_products = @user.products.where(active: false).order('rating DESC')
+    @recent_activity = Activity.where(user_id: @user.id).order('timestamp DESC').limit(6)
     if current_user.id == @user.id
       @pictures.build
     end
@@ -199,8 +200,7 @@ class UsersController < ApplicationController
                                       :size => '300x240',
                                       :title => 'Daily Likes',
                                       :data => @product_likes[product.id],
-                                      :axis_with_label => 'x, y',
-                                      :axis_labels => [dates],
+                                      :axis_with_labels => 'y',
                                       :max_value => @product_likes[product.id].max,
                                       :min_value => 0,
                                       :legend => ['Daily Likes'],
@@ -210,8 +210,7 @@ class UsersController < ApplicationController
                                       :size => '300x240',
                                       :title => 'Daily Rating',
                                       :data => @product_ratings[product.id],
-                                      :axis_with_label => 'x, y',
-                                      :axis_labels => [dates],
+                                      :axis_with_labels => 'y',
                                       :max_value => @product_ratings[product.id].last.to_i + 10,
                                       :min_value => 0,
                                       :legend => ['Daily Likes'],
@@ -233,14 +232,17 @@ class UsersController < ApplicationController
           @comparison_counts[product.id][fg.id] = Array.new
           total_likes = 0
           fg.features.each do |f|
-            labels += [f.name]
             @comparison_counts[product.id][fg.id] += [f.upvotes.size]
             total_likes += f.upvotes.size
+          end
+          fg.features.each_with_index do |f, i|
+            labels += [f.name + " (" + (100 * @comparison_counts[product.id][fg.id][i]/ total_likes).to_s + "%)"] 
           end
           if total_likes != 0
             @comparison_breakdowns[product.id][fg.id] = Gchart.pie(
                                         :data => @comparison_counts[product.id][fg.id], 
-                                        :labels => labels)
+                                        :labels => labels,
+                                        :size => '400x200')
           end
         end
       end

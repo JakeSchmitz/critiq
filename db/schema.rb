@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208000859) do
+ActiveRecord::Schema.define(version: 20140208034822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "activity_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "timestamp"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "title"
@@ -97,6 +107,7 @@ ActiveRecord::Schema.define(version: 20140208000859) do
     t.datetime "avatar_updated_at"
     t.integer  "product_id"
     t.integer  "propic_id"
+    t.text     "bio"
   end
 
 end

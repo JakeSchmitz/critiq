@@ -1,0 +1,20 @@
+<div class="row recent-activity">
+  <h1><%= @user.name %>'s Recent Activity</h1>
+  <ul class="activity thumbnails">
+    <% @recent_activity.each do |activity| %>
+      <li class="activity">
+        <% if activity.activity_type == 'comment' %>
+          <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/chat.svg'); width: 100px;"></div>
+          <h4><%= @user.name + " Critiqed a " + activity.resource_type.to_s %></h4> 
+        <% elsif activity.activity_type == 'like' %>
+          <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/love.svg'); width: 100px;"></div>
+          <h4><%= @user.name + " showed support for a " + activity.resource_type.to_s %></h4> 
+        <% elsif activity.activity_type == 'create' %>
+          <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/brush.svg'); width: 100px;"></div>
+          <h4><%= @user.name + " created a " + activity.resource_type.to_s %></h4> 
+        <% end %>
+        <p><%= activity.timestamp.strftime('%F') %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -24,7 +24,6 @@ class CommentsController < ApplicationController
     @comment.product_id = params[:product_id]
     @product = Product.find(params[:product_id])
     @user = User.find(current_user.id)
-    Activity.create(timestamp: @comment.created_at, user_id: @user.id, type: :comment, resource_type: :comment, resource_id: @comment.id)
   end
 
   # GET /comments/1/edit
@@ -45,6 +44,7 @@ class CommentsController < ApplicationController
       @product.comments.create(comment_params)
       respond_to do |format|
         if @comment.save
+          Activity.create(timestamp: @comment.created_at, user_id: @user.id, activity_type: :comment, resource_type: :product, resource_id: @product.id)
           format.html { redirect_to product_path(@product) + '#product-comments', notice: 'Comment was successfully created.' }
           format.json { render action: 'show', status: :created, location: @comment }
           format.js { render :js => 'function () {

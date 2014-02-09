@@ -39,6 +39,7 @@ class FeaturesController < ApplicationController
     @feature.feature_group_id = @feature_group.id
     respond_to do |format|
       if @feature.save
+        Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
         format.html { redirect_to product_path(@product), notice: 'Feature was successfully created.' }
         format.json { render action: 'show', status: :created, location: @feature }
       else

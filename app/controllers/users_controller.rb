@@ -235,8 +235,10 @@ class UsersController < ApplicationController
             @comparison_counts[product.id][fg.id] += [f.upvotes.size]
             total_likes += f.upvotes.size
           end
-          fg.features.each_with_index do |f, i|
-            labels += [f.name + " (" + (100 * @comparison_counts[product.id][fg.id][i]/ total_likes).to_s + "%)"] 
+          if total_likes != 0
+            fg.features.each_with_index do |f, i|
+              labels += [f.name + " (" + (100 * @comparison_counts[product.id][fg.id][i]/ total_likes).to_s + "%)"] 
+            end
           end
           if total_likes != 0
             @comparison_breakdowns[product.id][fg.id] = Gchart.pie(

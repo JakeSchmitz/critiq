@@ -203,7 +203,7 @@ class UsersController < ApplicationController
                                       :axis_with_labels => 'y',
                                       :max_value => @product_likes[product.id].max,
                                       :min_value => 0,
-                                      :legend => ['Daily Likes'],
+                                      :legend => ['total: ' + total_likes.to_s ],
                                       )
         @cummulative_ratings[product.id] = Gchart.line(
                                       :type => 'line',
@@ -213,7 +213,7 @@ class UsersController < ApplicationController
                                       :axis_with_labels => 'y',
                                       :max_value => @product_ratings[product.id].last.to_i + 10,
                                       :min_value => 0,
-                                      :legend => ['Daily Likes'],
+                                      :legend => ['rating: ' + product.rating.to_s],
                                       )
       end
     end

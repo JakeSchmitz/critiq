@@ -8,9 +8,9 @@
 			<p style="line-height: 1.2;"><%= truncate feature.description, length: 60 %></p> 
 		</div>
 		<% if vote %>
-			<div>
+			<div style="text-align: center;">
 				<%= link_to 'Votes: ' + feature.upvotes.length.to_s ,
-								product_feature_group_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id), class: "btn-clear black-outline", :style => 'width: 100%;' %>
+								product_feature_group_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id), class: "btn-clear black-outline" %>
 			</div>
 		<% end %>	
 	</div>

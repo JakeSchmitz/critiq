@@ -14,6 +14,7 @@ gem "turbolinks"
 gem "googlecharts", :require => "gchart"
 gem "font-awesome-rails"
 gem "classy_enum"
+gem "aws-sdk"
 
 group :production do
   gem "pg"

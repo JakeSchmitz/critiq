@@ -15,17 +15,15 @@ gem "googlecharts", :require => "gchart"
 gem "font-awesome-rails"
 gem "classy_enum"
 gem "aws-sdk"
+gem "rails_12factor"
+gem "thin"
 
 group :production do
-  gem "pg"
-  gem "rails_12factor"
-  gem "thin"
+
 end
 
 group :development do
-  gem "pg"
-  gem "rails_12factor"
-  gem "thin"
+
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -49,9 +47,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

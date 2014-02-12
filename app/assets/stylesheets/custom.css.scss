@@ -1,4 +1,3 @@
-
 /* universal */
 
 html {
@@ -150,13 +149,13 @@ input {
   text-shadow: 0 -1px 0 rgba(.25, 0, 0, 0);
 }
 
-#nav_login_email, #nav_login_password, #nav_login_button {
+#nav_login_email, #nav_login_password, #nav_login_button, #nav_signup_button {
   width: 75px;
-  padding-right: 20px;
+  padding: 5px 10px 10px 5px;
   display: inline-block;
 }
 
-#nav_login_button {
+#nav_login_button, #nav_signup_button {
   .btn {
     margin-top: -10px;
   }

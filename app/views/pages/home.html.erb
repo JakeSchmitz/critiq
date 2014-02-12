@@ -34,10 +34,12 @@
 	<div class="featured-campaigns">
 		<h1>Featured Campaigns</h1>
 		<div class="pretty-divider"></div>
-		<% @top_products.each do |product| %>
-			<%= render :partial => '/products/product_thumb', locals: { product: product } %>
-      <%= render :partial => '/products/product_modal', locals: { product: product } %>
-		<% end %>
+		<div class="row" style="margin: 0 auto;">
+			<% @top_products.each do |product| %>
+				<%= render :partial => '/products/product_thumb', locals: { product: product } %>
+	      <%= render :partial => '/products/product_modal', locals: { product: product } %>
+			<% end %>
+		</div>
 	</div>	
 	<div class="background-splatter2"></div>
 	<div class="featured-makers">

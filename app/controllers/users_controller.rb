@@ -63,6 +63,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(user_params)
+        change_profile_picture(params[:attachable_id])
         #ImageAsset.new(:attachment => @user[:p, :user_id => @user.id)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
@@ -83,8 +84,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def change_profile_picture
-    if !params[:image_id].nil?
+  def change_profile_picture(image_id=nil)
+    if !image_id.nil?
       @user = User.find(params[:user_id])
       @img = ImageAsset.find(params[:image_id])
       if @img.user_id == current_user.id
@@ -92,7 +93,6 @@ class UsersController < ApplicationController
         @user.save!
       end
     end
-    redirect_to @user
   end
 
   def upload_picture
@@ -123,8 +123,8 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :username, :id, :age, :email, 
-          :link, :password, :password_confirmation, :pictures, :profile_picture, :image_id, :product_id, :user_id,
-          pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes])
+          :link, :password, :password_confirmation, :profile_picture, :image_id, :product_id, :user_id,
+          pictures_attributes: [:attachment_attributes, :attachment, :attachable_id ,:id])
     end 
 
     def has_propic?

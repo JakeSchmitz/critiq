@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     @product ||= Product.find(params[:id])
     @comment = Comment.new
     @likers = Array.new
-    @top_pics = @product.pictures.all.first(5)
+    @top_pics = ImageAsset.where(:product_id => @product.id).where.not(:attachment_file_size => nil).order('created_at DESC').limit(5)
     @product.likes.each do |like|
       @likers << User.find(like.user_id)
     end

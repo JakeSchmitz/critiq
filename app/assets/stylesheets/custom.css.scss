@@ -31,8 +31,6 @@ body {
   opacity: .05;
 }
 
-
-
 section {
   overflow: auto;
 }
@@ -263,6 +261,18 @@ div.file_upload_wrapper:hover {
     background-size: cover;  
 }
 
+.wide-ratio{
+    position:relative;
+    height: 0;
+    width: 100%;
+    padding-bottom: 100% ; /* % of width, defines aspect ratio*/
+    
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;  
+}
+
+
 .tiny-thumb-ratio {
   width: 30px;
   height: 30px;
@@ -303,9 +313,15 @@ div.file_upload_wrapper:hover {
 }
 
 .blurb-row {
+  display: inline-block;
   text-align: center;
+  padding-bottom: 20px;
   .blurb-icon {
     width: 200px;
+    border: 10px solid #999;
+    border-radius: 100px;
+    margin: 0px;
+    margin-bottom: 20px;
   }
 }
 
@@ -317,11 +333,11 @@ div.file_upload_wrapper:hover {
   background-image: url('/images/svg/Underlines.svg');
   background-size: cover;
   opacity: .6;
+  margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 30px;
-  margin-left: 5%;
-  width: 90%;
-  height: 8px;
+  width: 30%;
+  height: 5px;
 }
 
 .home-buttons {

@@ -63,7 +63,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(user_params)
-        change_profile_picture(params[:attachable_id])
+        @user.propic_id = @user.pictures.last.id
+        @user.save
         #ImageAsset.new(:attachment => @user[:p, :user_id => @user.id)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
@@ -122,7 +123,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :username, :id, :age, :email, 
+      params.require(:user).permit(:name, :username, :id, :age, :email, :bio,
           :link, :password, :password_confirmation, :profile_picture, :image_id, :product_id, :user_id,
           pictures_attributes: [:attachment_attributes, :attachment, :attachable_id ,:id])
     end 

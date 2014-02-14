@@ -1,25 +1,28 @@
 <%- model_class = Product -%>
+<div class="black-wrapper"><div class="product-header" style="background-image: url('<%= @product.pictures.first.attachment.url(:large) %>');"></div></div>
 <div class="container">
-  <div class="row well well-lg">
-    <div class="span3" style="padding-top: 20px;">
-      <% if !@product.pictures.empty? %>
-        <%= image_tag @product.product_pic.attachment.url(:medium) %>
-      <% else %>
-        <%= image_tag "/images/missing-image.jpg" %>
-      <% end %> 
-      </br>
-      <h2 style="float: center;"><%=t '.title', :default => @product.name %></h2>
-      <p style="float: center; margin-top: -25px">Rating: <%= @product.rating %></p>
+  <div class="row">
+    <div class="span7">
+      <h1 class="product-name"><%= @product.name %></h1>
+      <p class="product-description"><%= @product.description %></p>
+      <div class="product-pictures">
+        <% if !@product.pictures.empty? %>
+          <div class="main-pic pull-left">
+            <%= image_tag @product.product_pic.attachment.url(:large), class: 'product-pic' %>
+          </div>
+          <div class="other-pics">
+            <% @top_pics.each do |pic| %>
+              <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>')"></div>
+            <% end %>
+          </div>
+        <% else %>
+          <%= image_tag "/images/missing-image.jpg" %>
+        <% end %> 
+      </div>
     </div>
-    <div class="span8" style="margin-top: 50px;">
-      <dl class="dl-horizontal" style="color: #333">
-        <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-        <dd><%= @product.name %> </dd>
-        <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-        <dd><%= @product.description %></dd>
-        <dt><strong>Creator: </strong></dt>
-        <dd><%= @product.user.name %></dd>
-      </dl>
+    <div class="span4">
+      <h2>Featured Rewards</h2>
+      <p>TBA</p>
       <% if signed_in? and current_user.id == @product.user.id %>
         <div class="owner-buttons offset1" style="margin-left: 100px;">
           <%= render :partial => 'product_owner_buttons' %>
@@ -27,8 +30,7 @@
       <% end %>
     </div>
   </div>
-  </br>
-  <div class="row span12">
+  <div class="row span12 product-middle">
     <ul class="nav nav-tabs" id="product-tabs">
       <li><a href="#product-features" data-toggle="tab">Features</a></li>
       <li><a href="#product-comments" data-toggle="tab">Comments</a></li>

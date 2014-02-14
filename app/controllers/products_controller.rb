@@ -14,18 +14,15 @@ class ProductsController < ApplicationController
   def show
     set_product
     @product ||= Product.find( :id => params[:product_id])
-    @product.pictures.build
+    @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
     @feature_groups = FeatureGroup.where(:product => @product)
     @comparison_features = @feature_groups.where.not(name: 'singletons', description: 'lorem')
     @single_features = @feature_groups.where(:name => 'singletons', :description => 'lorem').first
-    if @single_features.nil?
-      @single_features = FeatureGroup.create(:product_id => @product.id, :name => 'singletons', :description => 'lorem')
-      @single_features.save
-    end
     @comments = Comment.where(:product_id => @product.id).order('rating DESC')
     @product ||= Product.find(params[:id])
     @comment = Comment.new
     @likers = Array.new
+    @top_pics = @product.pictures.all.first(5)
     @product.likes.each do |like|
       @likers << User.find(like.user_id)
     end
@@ -57,6 +54,10 @@ class ProductsController < ApplicationController
       @product.rating = 0
       @product.feature_groups.build(:name => 'singletons', :description => 'lorem')
       @product.user_id = current_user.id 
+      if @single_features.nil?
+        @single_features = FeatureGroup.create(:product_id => @product.id, :name => 'singletons', :description => 'lorem')
+        @single_features.save
+      end
       respond_to do |format|
         if @product.save
           format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -76,7 +77,7 @@ class ProductsController < ApplicationController
   def update
     set_product
     respond_to do |format|
-      @product_pic = @product.pictures.last
+      @product.product_pic = product_pic = @product.pictures.last
       if @product.update_attributes(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }

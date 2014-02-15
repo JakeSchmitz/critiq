@@ -7,11 +7,11 @@
 	<div class="product-thumb-content">
 		<h4><%= link_to product.name, product %></h4>
 		<div class="product-thumb-description">
-			<p style="line-height: 1.2;"><%= truncate product.description, length: 60 %></p> 
+			<p style="line-height: 1.1;" class="product-text"><%= truncate product.description, length: 140 %></p> 
 		</div>
 	</div>
 	<div class="thumb-functions" style="padding-top: 3px;">
-		<span class="badge pull-left" style="margin-left: 10px; margin-top: 2px; background: rgba(130, 130, 130, 1);"><%= product.rating %></span>
+		<span class="badge pull-left roboto-font" style="margin-left: 10px; margin-top: 2px; background: rgba(130, 130, 130, 1);"><%= product.rating %></span>
 		<% if !product.active %><p style="padding-left: 5px;">Expired</p><% end %>
 		<% if signed_in? and product.active and !product.likes.exists?(:user_id => current_user.id) %>
 			<%= link_to 'Show Love',

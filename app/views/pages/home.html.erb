@@ -34,7 +34,7 @@
 	<div class="featured-campaigns">
 		<h1>Featured Campaigns</h1>
 		<div class="pretty-divider"></div>
-		<div class="row" style="margin: 0 auto;">
+		<div class="row" style="margin: 0 auto; padding-left: 30px;">
 			<% @top_products.each do |product| %>
 				<%= render :partial => '/products/product_thumb', locals: { product: product } %>
 	      <%= render :partial => '/products/product_modal', locals: { product: product } %>
@@ -42,7 +42,7 @@
 		</div>
 	</div>	
 	<div class="background-splatter2"></div>
-	<div class="featured-makers">
+	<div class="featured-makers" style="padding-left: 30px;">
 		<h1>Featured Makers</h1>
 		<div class="pretty-divider"></div>
 		<% @top_users.each do |u| %>

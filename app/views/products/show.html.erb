@@ -2,21 +2,21 @@
 <div class="black-wrapper"><div class="product-header" style="background-image: url('<%= @product.pictures.first.attachment.url(:large) %>');"></div></div>
 <div>
   <div class="row">
-    <div class="span9">
+    <div class="span9" style="padding-right: 60px;">
       <h1 class="product-name"><%= @product.name %></h1>
-      <div class="product-pictures">
-        <% if !@product.pictures.empty? %>
-          <div class="main-pic pull-left">
-            <%= image_tag @product.product_pic.attachment.url(:large) %>
-          </div>
-          <div class="other-pics pull-left">
-            <% @top_pics.each do |pic| %>
-              <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>')"></div>
-            <% end %>
-          </div>
-        <% else %>
-          <%= image_tag "/images/missing-image.jpg" %>
-        <% end %> 
+      <div style="display: inline">
+        <div class="product-pictures">
+          <% if !@product.pictures.empty? %>
+            <div class="main-pic span6" style="background-image: url('<%= @product.product_pic.attachment.url(:large) %>');"></div>
+            <div class="other-pics span2 pull-left">
+              <% @top_pics.each do |pic| %>
+                <div class="alt-pic span2 thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>')"></div>
+              <% end %>
+            </div>
+          <% else %>
+            <%= image_tag "/images/missing-image.jpg" %>
+          <% end %> 
+        </div>
       </div>
     </div>
     <div class="well product-right">

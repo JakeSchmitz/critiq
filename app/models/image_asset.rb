@@ -4,6 +4,7 @@ class ImageAsset < ActiveRecord::Base
   	:styles => {:large => "x600>", :medium => "x300>", :thumb => "x100>" }, 
   	:default_url => "/images/missing-image-:style.jpg"										,
     :storage        => :s3                                                ,
+    :s3_endpoint => 's3-us-west-2.amazonaws.com',
 	  :s3_credentials => {:s3_endpoint 		=> 's3-us-west-2.amazonaws.com' ,
 	  										:bucket            => ENV['AWS_BUCKET']				,
 	                      :access_key_id     => ENV['AWS_ACCESS_KEY_ID'    ],

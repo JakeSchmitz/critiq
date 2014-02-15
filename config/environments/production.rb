@@ -4,6 +4,7 @@ Critiq0::Application.configure do
   # config/environments/production.rb
   config.paperclip_defaults = {
     :storage => :s3,
+    :s3_endpoint => 's3-us-west-2.amazonaws.com',
     :s3_credentials => {
       :bucket => ENV['AWS_BUCKET'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],

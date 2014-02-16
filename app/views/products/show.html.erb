@@ -39,18 +39,13 @@
       <p class="product-description"><%= @product.description %></p>
       <h2>Featured Rewards</h2>
       <p>TBA</p>
-      <% if signed_in? and current_user.id == @product.user.id %>
-        <div class="owner-buttons offset1" style="margin-left: 100px;">
-          <%= render :partial => 'product_owner_buttons' %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
 <ul class="nav nav-tabs product-nav" id="product-tabs">
-  <li style="margin-left: 5%;"><a href="#product-features" data-toggle="tab">Features</a></li>
-  <li><a href="#product-comments" data-toggle="tab">Comments</a></li>
-  <li><a href="#product-likers" data-toggle="tab">Likers</a></li>
+  <li style="margin-left: 5%;"><a href="#product-features" data-toggle="tab"><i class="fa fa-cogs"></i> Features</a></li>
+  <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> Comments</a></li>
+  <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-star"></i> Likers</a></li>
 </ul>
 <div class="container">
   <div class="row span12 product-middle">

@@ -118,13 +118,15 @@
 }
 
 .black-wrapper {
-	background: rgba(0,0,0, .2);
+	width: 100%;
+	background: rgba(0,0,0, .5);
+	height: 500px;
+	position: absolute;
+	z-index: -1;
 }
 
 .product-header {
 	position: absolute;
-	background-color: #000;
-	opacity: 0.5;
 	background-position: 30% 40%;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -135,11 +137,10 @@
 
 .product-middle {
 	position: relative;
-	margin-top: 100px;
+	margin-top: 0px;
 }
 
 .product-name {
-	width: 100%;
 	text-align: left;
 	border-bottom: 2px solid #fff;	
 	color: #fff;
@@ -203,10 +204,37 @@
 
 .product-right {
 	height: 500px;
-	background: rgba(0, 0, 0, 0.5);
-	color: #ddd;
+	color: #fff;
 	text-align: center;
 	> h2 {
 		color: #fff;
 	}
 }
+
+.product-nav {
+	border: none;
+	background-color: #313131;
+	width: 100%;
+	margin-top: -22px;
+	height: 43px;
+	.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+		background-color: #794f85;
+		border: none;
+	}
+	> a {
+		color: #fff;
+	}
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	background-color: #794f85;
+	color: #fff;
+	border: none;
+}
+	
+.nav-tabs > li > a, .nav-tabs > li  > a:hover, .nav-tabs > li > a:focus {
+	background-color: #313131;
+	color: #fff;
+	border: none;
+}
+	

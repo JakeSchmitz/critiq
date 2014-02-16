@@ -1,8 +1,8 @@
 <%- model_class = Product -%>
-<div class="black-wrapper"><div class="product-header" style="background-image: url('<%= @product.pictures.first.attachment.url(:large) %>');"></div></div>
+<div class="product-header" style="background-image: url('<%= @product.pictures.first.attachment.url(:large) %>');"><div class="black-wrapper"></div></div>
 <div>
-  <div class="row">
-    <div class="span9" style="padding-right: 60px;">
+  <div class="row" style="width: 100%;">
+    <div class="span9" style="padding-left: 50px; padding-right: 50px;">
       <h1 class="product-name"><%= @product.name %></h1>
       <div class="product-creator">
         <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic.attachment.url(:medium) %>');"></div>
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="well product-right">
+    <div class="product-right">
       <h2>Description</h2>
       <p class="product-description"><%= @product.description %></p>
       <h2>Featured Rewards</h2>
@@ -47,18 +47,18 @@
     </div>
   </div>
 </div>
+<ul class="nav nav-tabs product-nav" id="product-tabs">
+  <li style="margin-left: 5%;"><a href="#product-features" data-toggle="tab">Features</a></li>
+  <li><a href="#product-comments" data-toggle="tab">Comments</a></li>
+  <li><a href="#product-likers" data-toggle="tab">Likers</a></li>
+</ul>
 <div class="container">
   <div class="row span12 product-middle">
-    <ul class="nav nav-tabs" id="product-tabs">
-      <li><a href="#product-features" data-toggle="tab">Features</a></li>
-      <li><a href="#product-comments" data-toggle="tab">Comments</a></li>
-      <li><a href="#product-likers" data-toggle="tab">Likers</a></li>
-    </ul>
     <div class="tab-content">
-      <div class="tab-pane row span12" id="product-features">
+      <div class="tab-pane row span11" id="product-features">
         <%= render :partial => 'product_features' %>
       </div>
-      <div class="tab-pane row span12" id="product-comments">
+      <div class="tab-pane row span11" id="product-comments">
         <%= render :partial => '/comments/form' %>
         <% if !@product.comments.empty? %> 
           <div style="padding-top: 20px; padding-left: 30px;">

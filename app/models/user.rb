@@ -42,6 +42,16 @@ class User < ActiveRecord::Base
     return luvrs
   end
 
+  def profile_pic
+    if !self.propic_id.nil?
+      return ImageAsset.find(self.propic_id)
+    elsif !self.pictures.last.nil?
+      return self.pictures.first
+    else
+      return ImageAsset.find(nil)
+    end
+  end
+
   private
 
     def create_remember_token

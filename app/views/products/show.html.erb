@@ -4,6 +4,21 @@
   <div class="row">
     <div class="span9" style="padding-right: 60px;">
       <h1 class="product-name"><%= @product.name %></h1>
+      <div class="product-creator">
+        <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic.attachment.url(:medium) %>');"></div>
+        <div class="creator-data">
+          <h4>Created By <%= @product.user.name %></h4>
+        </div>
+        <div class="product-buttons">
+          <% if !@product.likes.exists?(:user_id => current_user.id) %>
+            <%= button_to 'Support', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button"%>
+          <% end %>
+          <% if signed_in? and current_user.id == @product.user.id %>
+            <%= button_to 'Edit', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button"%>
+            <%= button_to 'Delete', product_path(@btn), :method => 'delete', :class => "btn-clear inline-button"%>
+          <% end %>
+        </div>
+      </div>
       <div style="display: inline">
         <div class="product-pictures">
           <% if !@product.pictures.empty? %>
@@ -40,10 +55,10 @@
       <li><a href="#product-likers" data-toggle="tab">Likers</a></li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane row span10" id="product-features">
+      <div class="tab-pane row span12" id="product-features">
         <%= render :partial => 'product_features' %>
       </div>
-      <div class="tab-pane row span10" id="product-comments">
+      <div class="tab-pane row span12" id="product-comments">
         <%= render :partial => '/comments/form' %>
         <% if !@product.comments.empty? %> 
           <div style="padding-top: 20px; padding-left: 30px;">

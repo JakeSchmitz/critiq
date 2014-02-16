@@ -150,6 +150,36 @@
 	font-size: large;
 }
 
+.product-creator {
+	width: 600px;
+	display: inline-block;
+	.creator-face {
+		width: 50px;
+		margin-top: -5px;
+		display: inline-block;
+		height: 50px;
+		float: left;
+		background-position: center center;
+    background-size: cover;  
+    border: 2px solid #aaa;
+	}
+	.creator-data {
+		border-bottom: 1px solid #fff;
+		float: left;
+		padding: 0 30px 8px 80px;
+		margin-left: -50px;
+		padding-right: 250px;
+		>h4 {
+			color: #fff;
+		}
+	}
+	.product-buttons {
+		padding-top: 10px;
+		display: inline-block;
+		margin-left: -200px;
+	}
+}
+
 .product-pictures {
 	.main-pic {
 		width: 600px;

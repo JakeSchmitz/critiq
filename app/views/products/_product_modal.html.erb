@@ -7,7 +7,7 @@
           <div class="modal-pic" style="align: top; float: right; width: 60%; padding: 5px;">
             <%= image_tag product.product_pic.attachment.url(:large), style: 'padding: 5px;' %>
           </div>
-          <h4><%= product.name %></h4>
+          <h4><%= link_to product.name, product %></h4>
           <p style="text-align: center;"><%= product.description %></p>
         </div>
       </div>

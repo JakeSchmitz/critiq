@@ -44,8 +44,8 @@
 </div>
 <ul class="nav nav-tabs product-nav" id="product-tabs">
   <li style="margin-left: 5%;"><a href="#product-features" data-toggle="tab"><i class="fa fa-cogs"></i> Features</a></li>
-  <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> Comments</a></li>
-  <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-star"></i> Likers</a></li>
+  <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> (<%= @product.comments.length.to_s %>) Crtiiqs</a></li>
+  <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-star"></i> (<%= @product.likes.length.to_s %>) Likers</a></li>
 </ul>
 <div class="container">
   <div class="row span12 product-middle">

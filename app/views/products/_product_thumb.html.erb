@@ -19,7 +19,7 @@
 		<% elsif signed_in? %>
 			<p style="float: left; padding-left: 10px; padding-top: 2px;">Supported!</p>
 		<% end %>
-		<% if !product.user.propic_id.nil? %>
+		<% if !product.user.profile_pic.nil? %>
 			<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path product.user.profile_pic.attachment.url(:thumb) %>'); margin-top: -3px; background-size: cover;"></div></a>
 		<% end %>
 	</div>

@@ -152,8 +152,9 @@
 }
 
 .product-creator {
-	width: 600px;
+	width: 100%;
 	display: inline-block;
+	padding-bottom: 10px;
 	.creator-face {
 		width: 50px;
 		margin-top: -5px;
@@ -168,8 +169,9 @@
 		border-bottom: 1px solid #fff;
 		float: left;
 		padding: 0 30px 8px 80px;
+		text-align: left;
 		margin-left: -50px;
-		padding-right: 250px;
+		width: 600px;
 		>h4 {
 			color: #fff;
 		}
@@ -187,6 +189,7 @@
 		height: 350px;
 		background-size: cover;
 		border: 1px solid #aaa;
+		margin: 0px;
 	}
 	.other-pics {
 		width: 120px;
@@ -216,7 +219,8 @@
 	background-color: #313131;
 	width: 100%;
 	margin-top: -22px;
-	height: 43px;
+	height: 42px;
+	padding-left: 7%;
 	.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 		background-color: #794f85;
 		border: none;

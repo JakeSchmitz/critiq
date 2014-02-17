@@ -11,13 +11,12 @@
 						<span class="icon-minus"></span>
 					<% end %>
 				</div>
-				<div class="user-info pull-left" style="margin-left: 5px; margin-top: 10px">
-					<%= image_tag comment.user.profile_picture.attachment.url(:thumb), style: 'height: 100px; max-width: 100px;' %>
+				<div class="user-info pull-left" style="margin-left: 5px; margin-top: 10px;">
+					<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic.attachment.url(:thumb) %>'); width: 100px; height: 100px;"></div>
 					<div class="comment-user" style="margin-left: 10%"><%= link_to comment.user.name, user_path(comment.user) %>
 					</div>
 				</div>
 				<div class="media-body" style="margin-top: 5px; float: center">
-					<h4 class="media-heading"><%= comment.title %></h4>
 					<p><%= comment.body %></p>
 				</div>
 			</li>

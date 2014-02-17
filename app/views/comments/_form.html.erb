@@ -3,7 +3,6 @@
     <% if @comment.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
         <ul>
         <% @product.comments.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -12,8 +11,7 @@
       </div>
     <% end %>
     <div class="comment-form">
-      <%= f.text_area :title, :placeholder => "Title your post" %>
-      <%= f.text_area :body, :placeholder => "Body of your post", :maxlength => 1000 %>
+      <%= f.text_area :body, :placeholder => "Enter a Critiq Here", :maxlength => 1000, style: 'width: 500px; height: 100px; margin-left: 100px; margin-top: -105px; border-radius: 0px;' %>
     </div>
     <div class="actions">
       <%= f.submit nil, :class => 'btn btn-primary pull-right' %>

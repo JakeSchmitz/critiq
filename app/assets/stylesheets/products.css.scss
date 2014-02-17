@@ -120,7 +120,7 @@
 .black-wrapper {
 	width: 100%;
 	background: rgba(0,0,0, .5);
-	height: 500px;
+	height: 600px;
 	position: absolute;
 	z-index: -1;
 }
@@ -132,7 +132,7 @@
 	background-size: cover;
 	width: 100%;
 	z-index: -1;
-	height: 500px;
+	height: 600px;
 }
 
 .product-middle {
@@ -218,7 +218,7 @@
 	border: none;
 	background-color: #313131;
 	width: 100%;
-	margin-top: -22px;
+	margin-top: 40px;
 	height: 42px;
 	padding-left: 7%;
 	.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -241,4 +241,15 @@
 	color: #fff;
 	border: none;
 }
-	
+.new-comment {
+	margin-left: 10%;	
+	.comment-box {
+		> form {
+			width: 100%;
+		}
+	}	
+	width: 600px;
+}
+.current-user-face {
+	padding: 0px;
+}

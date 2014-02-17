@@ -26,8 +26,8 @@
           <% if !@product.pictures.empty? %>
             <div class="main-pic span6" style="background-image: url('<%= @product.product_pic.attachment.url(:large) %>');"></div>
             <div class="other-pics span2 pull-left">
-              <% @top_pics.each do |pic| %>
-                <div class="alt-pic span2 thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>')"></div>
+              <% @top_pics.first(3).each do |pic| %>
+                <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
               <% end %>
             </div>
           <% else %>

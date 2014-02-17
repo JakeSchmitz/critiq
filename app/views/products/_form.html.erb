@@ -18,7 +18,7 @@
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'text_field' %>
+      <%= f.text_area :description, maxlength: 1000, :class => 'text_field', style: 'height: 200px;' %>
     </div>
   </div>
 

@@ -5,12 +5,12 @@
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
-  <%= f.fields_for :pictures do |picture| %>
+  <%= f.fields_for @product.pictures.build, :html => { :multipart => true } do |picture| %>
     <% if picture.object.new_record? %>
       <div class="control-group">
         <%= picture.label "Image", :class => 'control-label' %>
         <div class="controls btn file_upload_wrapper"  style="float: left; display: inline">
-          <%= picture.file_field :attachment  %>
+          <%= file_field_tag :attachment, multiple: true,  name: 'upload[uploaded_file]'  %>
         </div>
       </div>  
     <% end %>
@@ -28,3 +28,7 @@
                 products_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<% # jquery upload template # %>
+<script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
+

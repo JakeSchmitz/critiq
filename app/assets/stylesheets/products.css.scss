@@ -10,7 +10,7 @@
 }
 
 .product-thumb {
-	height: 300px;
+	height: 330px;
 	width: 200px;
 	background-color: #fff;
 	padding:10px;
@@ -55,10 +55,10 @@
 	  position: relative;
 	  padding: 7px;
 	  padding-top: 0px;
-		margin-top: -150px;
+		margin-top: -170px;
 		background: rgba(230, 235, 245, 1);
 		background-color: #e8eaee;
-		height: 120px;
+		height: 130px;
 	  overflow: hidden;
 	  .product-text {
 		  color: #454545;
@@ -77,8 +77,8 @@
 	  position: relative;
 	  padding: 5px;
 	  padding-top: 0px;
-	  margin-top: -35px;
-	  height: 35px;
+	  margin-top: -45px;
+	  height: 45px;
 	  overflow: hidden;
 	  >h4 > a {
 	  	color: #343434;
@@ -91,7 +91,7 @@
 
 .thumbnail:hover {
 	.product-thumb-content {
-	  margin-top: -72px;
+	  margin-top: -82px;
 	  height: 42px;
 		.product-thumb-description {
 			text-align: center;
@@ -231,7 +231,7 @@
 	width: 100%;
 	margin-top: 40px;
 	height: 42px;
-	padding-left: 10%;
+	padding-left: 25%;
 	.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 		background-color: #794f85;
 		border: none;

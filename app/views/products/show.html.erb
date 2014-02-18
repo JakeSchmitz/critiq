@@ -7,8 +7,8 @@
 <div class="product-header" style="background: rgba(0, 0, 0, .5);"><div class="black-wrapper"></div></div>
 <% end %>
 <div>
-  <div class="row">
-    <div class="span9" style="padding-left: 5%; width: 70%;">
+  <div class="container">
+    <div class="span9" style="width: 70%;">
       <div class="product-left">
         <h1 class="product-name"><%= @product.name %></h1>
         <div class="product-creator">
@@ -52,7 +52,7 @@
     </div>
   </div>
 </div>
-<ul class="nav nav-tabs product-nav" id="product-tabs">
+<ul class="nav nav-tabs product-nav product-nav-content" id="product-tabs">
   <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> Features</a></li>
   <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> (<%= @product.comments.length.to_s %>) Crtiiqs</a></li>
   <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> (<%= @product.likes.length.to_s %>) Followers</a></li>

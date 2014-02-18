@@ -5,7 +5,7 @@
 .product-banner {
     background: url(/images/product-banner.jpg) no-repeat top center fixed;
     -webkit-background-size: cover;
-    height: 400px;
+    height: 60%;
     background-size: cover;
 }
 
@@ -190,15 +190,15 @@
 
 .product-pictures {
 	.main-pic {
-		width: 69%;
+		width: 68%;
 		height: 350px;
 		background-size: cover;
 		border: 1px solid #4b4b4b;
 		margin: 0px;
 	}
 	.other-pics {
-		width: 106px;
-		margin-left: 10px;
+		width: 90px;
+		margin-left: 5px;
 		float: left;
 		.alt-pic {
 			margin-bottom: 5px;
@@ -210,14 +210,12 @@
 }
 
 .product-right {
-	margin-top: 70px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	margin-top: 10%;
 	border-left: 1px solid #dadada;
 	margin-left: -90px;
 	width: 30%;
 	float: left;
-	padding-left: 30px;
+	padding: 20px 0 20px 20px;
 	color: #fff;
 	text-align: center;
 	> h2 {

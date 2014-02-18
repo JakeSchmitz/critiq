@@ -1,0 +1,20 @@
+<div class="follower-thumb">
+	<a href="/users/<%= user.id %>"><div class="follower-pic" style="background-image: url('<%= user.profile_pic.attachment.url(:thumb) %>');"></div></a>
+	<div class="follower-info">
+		<div class="info-top">
+			<p><%= user.name %></p>
+		</div>
+		<div class="info-bottom">
+			<p><i class="fa fa-users fa-lg "></i> <%= user.lovers.to_s %> followers</p>
+		</div>
+	</div>
+	<div class="rating-box">
+		<div class="upper-rating">
+			<h5>Karma</h5>
+			<h6><%= user.swagger.to_s %></h6>
+		</div>
+		<div class="lower-rating">
+			<p><%= user.products.length.to_s %> Creations</p>
+		</div>
+	</div>
+</div>

@@ -2,7 +2,7 @@
 	<div class="row" style="margin: 20px;">
 	  <ul class="thumbnails">
 	    <% @likers.each do |liker| %>
-	      <%= render :partial => '/users/user_thumb' , locals: { user: liker } %>
+	      <%= render :partial => '/users/follower_thumb' , locals: { user: liker } %>
 	    <% end %>
 	  </ul>
 	</div>  

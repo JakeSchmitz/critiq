@@ -2,7 +2,7 @@
 	<a href="/users/<%= user.id %>"><div class="follower-pic" style="background-image: url('<%= user.profile_pic.attachment.url(:thumb) %>');"></div></a>
 	<div class="follower-info">
 		<div class="info-top">
-			<p><%= user.name %></p>
+			<a href="/users/<%= user.id %>"><p style="font-weight: bold"><%= user.name %></p></a>
 		</div>
 		<div class="info-bottom">
 			<p><i class="fa fa-users fa-lg "></i> <%= user.lovers.to_s %> followers</p>

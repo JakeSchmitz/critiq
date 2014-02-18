@@ -1,5 +1,5 @@
 <% if !@likers.empty? %>
-	<div class="row" style="margin: 20px;">
+	<div class="row product-likers">
 	  <ul class="thumbnails">
 	    <% @likers.each do |liker| %>
 	      <%= render :partial => '/users/follower_thumb' , locals: { user: liker } %>

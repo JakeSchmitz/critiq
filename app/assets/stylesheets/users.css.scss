@@ -192,6 +192,7 @@
 .follower-thumb {
 	margin-bottom: 20px;
 	margin-right: 10px;
+	margin-left: 5%;
 	display: inline-block;
 	.follower-pic {
 		float: left;
@@ -201,9 +202,9 @@
 	}
 	.follower-info {
 		z-index: 5;
-		margin-left: 10px;
+		margin-left: 5px;
 		float: left;
-		width: 200px;
+		width: 260px;
 		height: 100px;
 		border: 1px solid #4b4b4b;
 		background-color: #fff;

@@ -19,6 +19,7 @@ Critiq0::Application.routes.draw do
     end
     #get "feature_groups/new_comparative_feature" => 'feature_groups#new-comparitive-feature-modal'
     get 'love' => :love
+    get 'active_switch' => :active_switch
   end
 
   resources :users do

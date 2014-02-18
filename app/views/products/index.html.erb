@@ -1,14 +1,8 @@
 <%- model_class = Product -%>
-<div class="hero-unit product-banner">
-  <div class="span2">
-    <div class="page-header">
-      <h2><strong>Campaigns</strong></h2>
-    </div>
-    <h4><%= link_to 'Create One', new_product_path, :class => 'btn btn-info' %></h4>
-  </div>
-</div>
-<div class="container" style="margin-bottom: 50px;">
-  <ul class="row thumbnails">
+<div class="container" style="margin-bottom: 50px; margin-top: 80px;">
+  <h1>Browse Campaigns</h1>
+  <div class="pretty-divider"></div>
+  <ul class="row thumbnails" style="margin-top: 50px;">
     <% @top_products.each do |p| %>
       <%= render :partial => 'product_thumb', locals: { product: p } %>
       <%= render :partial => 'product_modal', :locals => { product: p } %>

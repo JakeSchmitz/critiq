@@ -138,6 +138,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def active_switch
+    @product = Product.find(params[:product_id])
+    if signed_in? and @product.user.id == current_user.id
+      @product.active = @product.active ? false : true
+      @product.save
+    end
+    redirect_to @product
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

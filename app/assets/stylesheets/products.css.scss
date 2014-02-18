@@ -51,6 +51,11 @@
 }
 
 .thumbnail {
+	.active-button {
+		position: absolute;
+		margin-top: -320px;
+		margin-left: 170px;
+	}
 	.product-thumb-content {
 	  position: relative;
 	  padding: 7px;
@@ -282,3 +287,10 @@
 .product-image-upload {
 	margin-top: 20px;
 }
+
+.product-likers {
+	margin-top: 50px;
+	margin-left: 5%;
+	width: 90%;
+}
+

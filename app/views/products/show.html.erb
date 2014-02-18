@@ -6,9 +6,9 @@
 <% else %>
 <div class="product-header" style="background: rgba(0, 0, 0, .5);"><div class="black-wrapper"></div></div>
 <% end %>
-<div>
-  <div class="container">
-    <div class="span9" style="width: 70%;">
+<div class="container">
+  <div class="row">
+    <div class="span" style="width: 70%;">
       <div class="product-left">
         <h1 class="product-name"><%= @product.name %></h1>
         <div class="product-creator">
@@ -32,7 +32,7 @@
           <div class="product-pictures">
             <% if !@product.pictures.empty? %>
               <div class="main-pic span6" style="background-image: url('<%= @product.product_pic.attachment.url(:large) %>');"></div>
-              <div class="other-pics span2 pull-left">
+              <div class="other-pics span pull-left">
                 <% @top_pics.first(5).each do |pic| %>
                   <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
                 <% end %>
@@ -47,8 +47,6 @@
     <div class="product-right">
       <h2>Description</h2>
       <p class="product-description"><%= @product.description %></p>
-      <h2>Featured Rewards</h2>
-      <p>TBA</p>
     </div>
   </div>
 </div>

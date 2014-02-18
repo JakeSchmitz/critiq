@@ -21,6 +21,18 @@ class Product < ActiveRecord::Base
     return false
   end
 
+  def profile_pic
+    if !self.product_pic.nil? and !self.product_pic.attachment.nil?
+      return self.product_pic
+    elsif !self.pictures.last.nil? and !self.pictures.last.attachment.nil?
+      return self.pictures.last 
+    elsif !self.pictures.first.nil? and !self.pictures.first.attachment.nil?
+      return self.pictures.first
+    else
+      return nil  
+    end
+  end
+
   private
 
     def get_likes(id, type)

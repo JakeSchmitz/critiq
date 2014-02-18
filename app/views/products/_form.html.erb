@@ -1,16 +1,16 @@
-<%= nested_form_for @product, :html => { :class => 'form-horizontal span8', :multipart => true } do |f| %>
+<%= nested_form_for @product, :html => { :class => 'form-horizontal', :multipart => true, style: 'margin-left: -100px;' } do |f| %>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, :class => 'text_field', style: 'min-width: 450px;' %>
     </div>
   </div>
-  <%= f.fields_for @product.pictures.build, :html => { :multipart => true } do |picture| %>
+  <%= f.fields_for :pictures do |picture| %>
     <% if picture.object.new_record? %>
       <div class="control-group">
         <%= picture.label "Image", :class => 'control-label' %>
         <div class="controls btn file_upload_wrapper"  style="float: left; display: inline">
-          <%= file_field_tag :attachment, multiple: true,  name: 'upload[uploaded_file]'  %>
+          <%= picture.file_field :attachment  %>
         </div>
       </div>  
     <% end %>
@@ -18,17 +18,12 @@
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :description, maxlength: 1000, :class => 'text_field', style: 'height: 200px;' %>
+      <%= f.text_area :description, maxlength: 1000, :class => 'text_field', style: 'height: 200px; min-width: 450px;' %>
     </div>
   </div>
-
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 products_path, :class => 'btn' %>
   </div>
 <% end %>
-
-<% # jquery upload template # %>
-<script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
-

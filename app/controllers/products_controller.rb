@@ -98,6 +98,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def upload_picture
+    @product = Product.find(params[:product_id]) || Product.find(params[:id])
+    if @product.user.id == current_user.id
+      puts "Uploading image " + params[:upload].to_s
+      @product.pictures.build(params[:upload])
+      @product.save
+    end
+    redirect_to @product
+  end
+
   def love
     @product = Product.find(params[:product_id])
     update_rating

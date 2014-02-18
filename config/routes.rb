@@ -5,6 +5,7 @@ Critiq0::Application.routes.draw do
   resources :products do
     resources :pictures
     resources :likes
+    post 'pictures/new' => :upload_picture, as: 'pic_upload'
     resources :comments do
       get 'upvote' => :upvote
       get 'downvote' => :downvote

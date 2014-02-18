@@ -5,7 +5,11 @@
       <div class="modal-body">
         <div class="modal-product-attributes" style="float: left; padding: 5px;">
           <div class="modal-pic" style="align: top; float: right; width: 60%; padding: 5px;">
-            <%= image_tag product.product_pic.attachment.url(:large), style: 'padding: 5px;' %>
+            <% if product.profile_pic.nil? %>
+              <%= image_tag '/images/missing-user-avatar.png' %>
+            <% else %>
+              <%= image_tag product.profile_pic.attachment.url(:large), style: 'padding: 5px;' %>
+            <% end %>
           </div>
           <h4><%= link_to product.name, product %></h4>
           <p style="text-align: center;"><%= product.description %></p>

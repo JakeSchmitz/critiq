@@ -1,0 +1,20 @@
+<%= form_for(@product.pictures.build, url: product_pic_upload_path(user_id: @product.user.id ,product_id: @product.id), html: { multipart: true }) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this upload from being saved:</h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.file_field :attachment, multiple: true, name: 'upload[attachment]' %>
+    <%= f.submit 'Upload Images', class: 'btn btn-clear', style: 'background-color: #794f89;' %>
+  </div>
+<% end %>
+
+<% # jquery upload template # %>
+<script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>

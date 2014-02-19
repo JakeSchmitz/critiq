@@ -25,12 +25,7 @@
 					<% if bounty.comments.empty? %>
 						<h3>Be the first to respond!</h3>
 					<% else %>
-						<% bounty.top_responses.first(3).each do |response| %>
-							<div class="response">
-								<a href="/users/<%= response.user_id %>"><h4><%= User.find(response.user_id).name %></h4></a>
-								<p><%= response.body %></p>
-							</div>
-						<% end %>
+						<%= render :partial => 'product_comments', locals: { comments: bounty.comments.order('rating DESC ').first(5)} %>
 					<% end %>
 				</div>
 			</div>

@@ -78,7 +78,7 @@
         </div>
         <% if !@product.comments.empty? %> 
           <div style="padding-top: 20px; padding-left: 100px;">
-            <%= render :partial => 'product_comments' %>
+            <%= render :partial => 'product_comments', locals: { comments: @product.comments} %>
           </div>
         <% else %>
           <h2>This Has No Comments!</h2>

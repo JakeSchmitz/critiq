@@ -1,0 +1,20 @@
+<div class="comment-box">
+  <%= nested_form_for [@product, bounty, bounty.comments.new] do |f| %>
+    <% if bounty.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(bounty.errors.count, "error") %> prohibited this comment from being saved:</h2>
+        <ul>
+        <% bounty.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="comment-form">
+      <%= f.text_area :body, :placeholder => "Enter a Bounty Response Here", :maxlength => 1000, style: 'width: 600px; height: 100px; margin-left: 100px; margin-top: -108px; border-radius: 0px;' %>
+    </div>
+    <div class="actions">
+      <%= f.submit nil, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

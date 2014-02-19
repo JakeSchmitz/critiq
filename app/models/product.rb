@@ -4,7 +4,8 @@ class Product < ActiveRecord::Base
   validates :description, presence: true
   has_many :likes, :as => :likeable
 	has_many :feature_groups
-  has_many :comments, :as => :commentable
+  has_many :bounties
+  has_many :comments, :as => :commentable, dependent: :destroy
 	has_one :product_pic, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
   accepts_nested_attributes_for :product_pic, :allow_destroy => true
 	has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true

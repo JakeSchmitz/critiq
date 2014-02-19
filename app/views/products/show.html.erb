@@ -52,8 +52,9 @@
 </div>
 <ul class="nav nav-tabs product-nav product-nav-content" id="product-tabs">
   <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> Features</a></li>
-  <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> (<%= @product.comments.length.to_s %>) Crtiiqs</a></li>
-  <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> (<%= @product.likes.length.to_s %>) Followers</a></li>
+  <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> Crtiiqs (<%= @product.comments.length - 1%>)</a></li>
+  <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> Followers (<%= @product.likes.length.to_s %>)</a></li>
+  <li><a href="#product-bounties" data-toggle="tab"><i class="fa fa-star"></i> Bounties (<%= @product.bounties.length.to_s %>)</a></li>
   <% if signed_in? and current_user.id == @product.user.id %>
     <li><a href="#product_edit" data-toggle="tab"><i class="fa fa-cogs"></i> Edit</a></li>
   <% end %>
@@ -73,7 +74,7 @@
               <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
             <% end %>
           </div>
-          <%= render :partial => '/comments/form' %>
+          <%= render :partial => '/comments/product_form' %>
         </div>
         <% if !@product.comments.empty? %> 
           <div style="padding-top: 20px; padding-left: 100px;">
@@ -85,6 +86,10 @@
       </div>
       <div class="tab-pane row span12" id="product-likers">
         <%= render :partial => 'product_likers' %>
+      </div>
+      <div class="tab-pane row span12" id="product-bounties">
+        <h2>Bounties!</h2>
+        <%= render :partial => 'product_bounties' %>
       </div>
       <div class="tab-pane row span12" id="product_edit">
         <h1>Edit Campaign</h1>

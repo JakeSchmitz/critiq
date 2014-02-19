@@ -18,12 +18,12 @@ class ProductsController < ApplicationController
     @feature_groups = FeatureGroup.where(:product => @product)
     @comparison_features = @feature_groups.where.not(name: 'singletons', description: 'lorem')
     @single_features = @feature_groups.where(:name => 'singletons', :description => 'lorem').first
-    @comments = Comment.where(:product_id => @product.id).order('rating DESC')
+    @comments = @product.comments
     @product ||= Product.find(params[:id])
-    @comment = Comment.new
+    @comment = @product.comments.new
     @likers = Array.new
     @top_pics = ImageAsset.where(:product_id => @product.id).where.not(:attachment_file_size => nil).order('created_at DESC').limit(5)
-    @product.likes.each do |like|
+    @product.likes.first(100).each do |like|
       @likers << User.find(like.user_id)
     end
   end
@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new
       @product.pictures.build
+      @product.bounties.build(:question => "What can we do better?")
       @product.user_id = current_user.id
       Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
     else
@@ -151,6 +152,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id]) || Product.find(params[:product_id])
+      @creator = @product.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -181,5 +183,5 @@ class ProductsController < ApplicationController
       end
       true
     end
-
 end
+

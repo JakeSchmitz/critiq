@@ -1,0 +1,26 @@
+// Place all the styles related to the Bounties controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.new-bounty-question {
+	width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.product-bounties {
+	width: 90%;
+	float: left;
+	margin: 0 auto;
+	display: block;
+	.single-bounty {
+		.bounty-question {
+			border: 1px solid #d0d0d0;
+			width: 80%;
+			margin: 20px;
+			background-color: #fff;
+			padding: 10px 10px 10px 30px;
+		}
+	}
+}

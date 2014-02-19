@@ -10,6 +10,12 @@ Critiq0::Application.routes.draw do
       get 'upvote' => :upvote
       get 'downvote' => :downvote
     end
+    resources :bounties do
+      resources :comments do
+        get 'upvote' => :upvote
+        get 'downvote' => :downvote
+      end
+    end
     resources :feature_groups do 
       resources :features do
         resources :pictures

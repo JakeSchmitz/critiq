@@ -1,0 +1,28 @@
+<div class="container">
+	<h2>Bounty for <%= @product.name %></h2>
+	<div class="product-bounties">
+		<div class="single-bounty">
+			<div class="bounty-question">
+				<h3><%= @bounty.question %></h3>
+				<p><%= @bounty.comments.length.to_s %> responses so far</p>
+			</div>
+			<div class="new-comment">
+	      <div class="current-user">
+	        <% if signed_in? %>
+	          <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic.attachment.url(:thumb) %>');"></div>
+	        <% else %>
+	          <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
+	        <% end %>
+	      </div>
+	      <%= render :partial => '/comments/bounty_form', locals: { bounty: @bounty } %>
+	    </div>
+			<div class="bounty-responses" style="margin-left: 10%;">
+				<% if @bounty.comments.empty? %>
+					<h3>Be the first to respond!</h3>
+				<% else %>
+					<%= render :partial => '/products/product_comments', locals: { comments: @bounty.comments.order('rating DESC ') } %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

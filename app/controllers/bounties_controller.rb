@@ -19,6 +19,12 @@ class BountiesController < ApplicationController
 		redirect_to @product
 	end
 
+	def show 
+		@product = Product.find(params[:product_id])
+		@bounty = Bounty.find(params[:bounty_id])
+		@responses = @bounty.comments.order('rating DESC')
+	end
+
 	private 
 
 		def bounty_params

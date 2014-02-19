@@ -19,12 +19,24 @@
 			border: 1px solid #d0d0d0;
 			width: 80%;
 			margin: 20px;
+			margin-left: 10%;
 			background-color: #fff;
 			padding: 10px 10px 10px 30px;
+			> p {
+				text-align: center;
+			}
 		}
 		.bounty-responses {
 			width: 80%;
 			margin: 0 auto;
+			padding-bottom: 30px;
+			.show-bounty-button {
+				margin-bottom: 30px;
+				margin-top: -30px;
+				float: right;
+				background-color: #794f85;
+				color: #fdfdfd;
+			}
 		}
 	}
 }

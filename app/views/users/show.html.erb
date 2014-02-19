@@ -27,7 +27,7 @@
 </div>
 <div class="container" style="padding-top: 5%;">
   <%= render partial: 'recent_activity' %>
-  <div class="current-campaigns">
+  <div class="current-campaigns row">
     <h1>Current Campaigns</h1>
     <div class="pretty-divider"></div>
     <div style="margin-left: auto; ">
@@ -38,7 +38,7 @@
     </div>
   </div>
   <% if !@old_products.empty? %>
-    <div class="past-campaigns">
+    <div class="past-campaigns row">
       <h1>Past Campaigns</h1>
       <div class="pretty-divider"></div>
       <div style="margin-left: auto; ">

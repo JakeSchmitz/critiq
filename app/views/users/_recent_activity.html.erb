@@ -3,21 +3,21 @@
     <h1><%= @user.name %>'s Recent Activity</h1>
     <ul class="activity thumbnails">
       <% @recent_activity.each do |activity| %>
-        <li class="activity">
-          <p><%= activity.timestamp.strftime('%F') %></p>
+        <li class="activity" style="padding: 10px;">
+          <p style="text-align: center;"><%= activity.timestamp.strftime('%F') %></p>
           <% if activity.activity_type == 'comment' %>
             <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/chat.svg'); width: 100px;"></div>
-            <h4><%= @user.name + " Critiqed a " + activity.resource_type.to_s %></h4> 
+            <h6><%= "Critiqed a " + activity.resource_type.to_s %></h6> 
           <% elsif activity.activity_type == 'like' %>
             <% if activity.resource_type == 'feature' %>
               <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/love.svg'); width: 100px;"></div>
             <% elsif activity.resource_type == 'product' %>
               <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/select.svg'); width: 100px;"></div>
             <% end %>
-            <h4><%= @user.name + " showed support for a " + activity.resource_type.to_s %></h4> 
+            <h6><%= "Supported a " + activity.resource_type.to_s %></h6> 
           <% elsif activity.activity_type == 'create' %>
             <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/brush.svg'); width: 100px;"></div>
-            <h4><%= @user.name + " created a " + activity.resource_type.to_s %></h4> 
+            <h6><%= "Created a " + activity.resource_type.to_s %></h6> 
           <% end %>
         </li>
       <% end %>

@@ -9,7 +9,7 @@
 	<div class="home-buttons">
 		<%= button_to 'START A CAMPAIGN', new_product_path, :method => "get", :class => "btn-clear"%>
 	 	<% if !signed_in? %>
-	    <%= button_to 'SIGN UP', new_user_path, :method => "get", :class => "btn-clear" %>
+	    <%= button_to 'SIGN UP', signin_path, :method => "get", :class => "btn-clear" %>
 	    <%= button_to 'SIGN IN', signin_path, :method => "get", :class => "btn-clear"%>
 	  <% end %>
   </div>

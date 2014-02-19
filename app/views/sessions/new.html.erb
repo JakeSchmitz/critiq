@@ -1,21 +1,24 @@
-<div class="container" style="padding-top:50px; height: 85%;">
+<div class="signup-page">
+	<div class="container">
+		<div class="row span12">
+			<div class="span4 pull-left sign-in" style="margin-left: 5%;">
+				<h2>Sign In!</h2>
+				<%= form_for(:session, url: signin_path) do |f| %>
+					<%= f.label :email %>
+					<%= f.text_field :email %>
 
-	<h1 class="span4" style="margin-top: 30px;">Sign In</h1>
+					<%= f.label :password %>
+					<%= f.password_field :password %>
 
-	<div class="row">
-		<div class="span6 offset1">
-			<%= form_for(:session, url: signin_path) do |f| %>
-				<%= f.label :email %>
-				<%= f.text_field :email %>
-
-				<%= f.label :password %>
-				<%= f.password_field :password %>
-
-				<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-			<% end %>
-		</div>
-		<div class="span4" style="margin-top: -50px; margin-left: 50px;">
-			<p>Not a member yet? <%= link_to "Sign Up For Critiq!", signup_path %></p>
+					<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+				<% end %>
+			</div>
+			<div class="span6 pull-left sign-up" style="padding-left: 10px; border-left: 1px solid #d0d0d0;">
+				<% @user = User.new %>
+				<% @user.pictures.build %>
+				<h2>Sign Up!</h2>
+				<%= render partial: '/users/form' %>
+			</div>
 		</div>
 	</div>
 </div>

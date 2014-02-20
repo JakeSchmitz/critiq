@@ -1,12 +1,12 @@
 <div class="single-features">
 	<% if !@single_features.nil?  %>
-		<div class="row">
+		<div >
 			<h2>Standalone Features</h2>
-		  <ul class="thumbnails" style="margin-left: 0px;">
+		  <ul class="thumbnails">
 		    <% @single_features.features.each do |feature| %>
-		    	<div class="span2">
+		    	<li>
 		      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
-		      </div>
+	      	</li>
 		    <% end %>
 		  </ul>
 		</div>  

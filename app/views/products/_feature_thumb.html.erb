@@ -10,8 +10,10 @@
 		<% if vote %>
 			<div style="text-align: center;">
 				<%= link_to 'Votes: ' + feature.upvotes.length.to_s ,
-								product_feature_group_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id), class: "btn-clear black-outline" %>
+								product_feature_group_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id), class: "btn-clear", style: 'color: #828282; border-color: #535353;' %>
 			</div>
+		<% else %>
+			<p style="text-align: center; color: #828282;"><%= feature.upvotes.size  %> Votes</p>
 		<% end %>	
 	</div>
 </div>

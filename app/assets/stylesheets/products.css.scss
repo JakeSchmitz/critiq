@@ -34,7 +34,7 @@
 }
 
 #product-features {
-	margin: 20px;
+	margin-top: 20px;
 }
 
 .product-modal { 
@@ -46,11 +46,26 @@
 	float: center;
 }
 
+.single-features {
+	text-align: center;
+}
+
 .comparison-feature-callout {
-	padding-left: 7%;
+	text-align: center;
+	width: auto;
+	margin: 0 auto;
+}
+
+.comp-feature {
+	display: inline-block;
+}
+
+.thumbnails {
+	display: inline-block;
 }
 
 .thumbnail {
+	display: inline-block;
 	.active-button {
 		position: absolute;
 		margin-top: -320px;

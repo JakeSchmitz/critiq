@@ -34,6 +34,15 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def rand_pic
+    if !self.pictures.empty?
+      options = ImageAsset.where(:product_id => self.id).where.not(:attachment_file_name => nil).order('created_at DESC')
+      return options[rand(options.size)]
+    else
+      return nil
+    end
+  end
+
   private
 
     def get_likes(id, type)

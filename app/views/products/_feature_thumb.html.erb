@@ -17,11 +17,16 @@
 			<a href=<%= product_feature_group_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id) %>>
 		<% end %>
 		<div class="functions-left">
-			<% if !feature.upvotes.where(:user_id => current_user.id).empty? %>
-				<h5><i class="fa fa-check fa-lg" style="color: #fff;"></i> Vote</h5>
-			<% else %>
-				<h5 style="color: #fff;"><i class="fa fa-check fa-lg" style="color: #626262;"></i> Vote</h5>
-			<% end %>
+			<div class="check">
+				<% if signed_in? and !feature.upvotes.where(:user_id => current_user.id).empty? %>
+					<i class="fa fa-check fa-lg" style="color: #fff;"></i> 
+				<% else %>
+					<i class="fa fa-check fa-lg" style="color: #828282;"></i>
+				<% end %>
+			</div>
+			<div class="vote"> 
+				<h5> Vote</h5>
+			</div>
 		</div>
 		<% if signed_in? %>
 			</a>

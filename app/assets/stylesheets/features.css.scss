@@ -67,16 +67,22 @@
 		background-color: #313131;
 		.functions-left {
 			text-align: left;
-			padding-left: 0px;
-			padding-bottom: 5px;
 			float: left;
 			height: 100%;
 			width: 40%;
 			background-color: #794f85;
 			display: inline-block;
-			> h5 {
-				color: #fff;
-				line-height: 1.0;
+			.check {
+				height: 100%;
+				padding: 8px 8px 0px 8px;
+				float: left;
+				border-right: 1px solid #313131;
+			}
+			.vote {
+				> h5 {
+					color: #fff;
+					line-height: 1.0;
+				}
 			}
 		}
 		.functions-right {

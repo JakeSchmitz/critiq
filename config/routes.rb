@@ -22,6 +22,8 @@ Critiq0::Application.routes.draw do
         get 'upvote'  => :upvote
         get 'downvote'  => :downvote
       end
+      get 'upvote'  => :upvote
+      get 'downvote'  => :downvote
     end
     #get "feature_groups/new_comparative_feature" => 'feature_groups#new-comparitive-feature-modal'
     get 'love' => :love

@@ -13,20 +13,18 @@
 		</div>
 	</div>
 	<div class="feature-thumb-functions">
-		<div class="functions-left">
+		<a href=<%= product_feature_group_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id) %>><div class="functions-left">
 		<% if vote %>
-			<div>
-				<%= link_to 'Votes: ' + feature.upvotes.length.to_s ,
-								product_feature_group_feature_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id), class: "btn-clear", style: 'color: #616161; border-color: #535353;' %>
-			</div>
+
 		<% elsif signed_in? %>
 			<% if feature.upvotes.includes(:user_id => current_user.id) %>
-				<i class="fa fa-check-square-o fa-lg" style="color: #fff;"></i> 
+				<h5><i class="fa fa-check fa-lg" style="color: #fff;"></i> Vote</h5>
 			<% else %>
 				<i class="fa fa-square-o"></i>
 			<% end %>
 		<% end %>	
 		</div>
+		</a>
 		<div class="functions-right">
 			<p style="text-align: center; color: #fff;"><%= feature.upvotes.size  %> Votes</p>
 		</div>

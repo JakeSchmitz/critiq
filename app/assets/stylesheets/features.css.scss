@@ -67,17 +67,21 @@
 		background-color: #313131;
 		.functions-left {
 			text-align: left;
-			padding: 5px;
+			padding-left: 5px;
+			padding-bottom: 5px;
 			float: left;
 			height: 100%;
 			width: 40%;
 			background-color: #794f85;
-			border-right: 1px solid #d4d4d4;
 			display: inline-block;
+			> h5 {
+				color: #fff;
+				line-height: 1.0;
+			}
 		}
 		.functions-right {
-			padding: 5px;
-			height: 100%;
+			padding: 10px 5px 0px 10px;
+			height: 100%; 
 			display: inline-block;
 			float: left;
 		}

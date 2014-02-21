@@ -64,6 +64,26 @@ class FeatureGroupsController < ApplicationController
     end
   end
 
+  def upvote 
+    @feature_group = FeatureGroup.find(params[:feature_group_id])
+    @feature = Feature.find(params[:feature_id])
+    if @feature_group.features.includes(@feature) and !current_user.nil?
+      if !@feature_group.singles?
+        @feature_group.features.each do |f|
+          if !f.upvotes.nil? then f.upvotes.where(:user_id => current_user).delete_all end
+          if !f.downvotes.nil? then f.downvotes.where(:user_id => current_user).delete_all end
+        end
+      else
+        unless @feature.upvotes.nil? then @feature.upvotes.where(:user_id => current_user).delete_all end
+        unless @feature.downvotes.nil? then @feature.downvotes.where(:user_id => current_user).delete_all end
+      end
+      @feature.upvotes.build(:user_id => current_user.id)
+      @feature.save
+      @feature_group.save
+    end
+    redirect_to @feature_group.product
+  end
+
   helper_method :can_user_vote
   private
     # Use callbacks to share common setup or constraints between actions.

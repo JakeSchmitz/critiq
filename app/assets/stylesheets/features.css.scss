@@ -1,3 +1,85 @@
 // Place all the styles related to the Features controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.single-features {
+	text-align: center;
+}
+
+.comparison-feature-callout {
+	text-align: center;
+	width: auto;
+	margin: 0 auto;
+	.comparison-header {
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid #d4d4d4;
+	}
+}
+
+.comp-feature {
+	display: inline-block;
+}
+
+.thumbnail {
+	.feature-thumb-content {
+	  background: rgba(245, 245, 245, 0.8);
+	  background-color: #e8eaee;
+	  position: relative;
+	  padding: 5px;
+	  padding-top: 0px;
+	  margin-top: -45px;
+	  height: 45px;
+	  overflow: hidden;
+	  >h4 > a {
+	  	color: #343434;
+	  }
+	  .feature-thumb-descripion {
+	  	display: none;
+	  }
+	}
+}
+
+.thumbnail:hover {
+	.feature-thumb-content {
+		margin-top: -130px;
+		background: rgba(250, 250, 250, 1);
+		background-color: #e8eaee;
+		height: 130px;
+		.product-thumb-description {
+			text-align: center;
+			display: block;
+			color: #444444;
+		}
+	}
+}
+
+.feature-thumb {
+	color: #616161;
+	height: 250px;
+	width: 245px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #fff;
+	.feature-thumb-functions {
+		width: 100%;
+		height: 40px;
+		background-color: #313131;
+		.functions-left {
+			text-align: left;
+			padding: 5px;
+			float: left;
+			height: 100%;
+			width: 40%;
+			background-color: #794f85;
+			border-right: 1px solid #d4d4d4;
+			display: inline-block;
+		}
+		.functions-right {
+			padding: 5px;
+			height: 100%;
+			display: inline-block;
+			float: left;
+		}
+	}
+}

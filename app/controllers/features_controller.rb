@@ -25,6 +25,8 @@ class FeaturesController < ApplicationController
 
   # GET /features/1/edit
   def edit
+    @product = Product.find(params[:product_id])
+    @feature_group = FeatureGroup.find(params[:feature_group_id])
     @feature = Feature.find(params[:id])
     @feature.pictures.build
   end
@@ -49,14 +51,14 @@ class FeaturesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /features/1
+  # PATCH/PUT /product/:product_id/features/1
   # PATCH/PUT /features/1.json
   def update
     set_feature
     @feature.pictures.build
     respond_to do |format|
       if @feature.update_attributes(feature_params)
-        format.html { redirect_to @feature, notice: 'Feature was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -82,7 +84,7 @@ class FeaturesController < ApplicationController
       @feature = Feature.find(params[:feature_id])
       if !@feature.upvotes.nil? and !@feature.upvotes.exists?(:user_id => current_user.id)
         @feature.upvotes.build(:user_id => current_user.id)
-        @product.rating = @product.rating + 1
+        @product.rating += 1
         respond_to do |format|
           if @feature.save and @product.save
             Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :feature, resource_id: @feature.id)
@@ -112,8 +114,9 @@ class FeaturesController < ApplicationController
       @feature = Feature.find(params[:feature_id])
       @product = Product.find(params[:product_id])
       @feature.downvotes.build(:user_id => current_user.id)
+      @product -= 1
       respond_to do |format|
-        if @feature.save!
+        if @feature.save and @product.save
           format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
           format.json { head :no_content }
         else
@@ -133,6 +136,8 @@ class FeaturesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_feature
       @feature = Feature.find(params[:id])
+      @product = Product.find(params[:product_id])
+      @feature_group = FeatureGroup.find(params[:feature_group_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

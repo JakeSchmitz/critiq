@@ -1,7 +1,9 @@
 <!-- requires local param comp_feature -->
 <div class="comparison-feature-callout">
-	<h3 style="text-align: center; margin-top: 0px; padding: 0px;"><%= comp_feature.name %></h3>
-	<p><%= comp_feature.description %></p>
+	<div class="comparison-header">
+		<h3 style="text-align: center;"><%= comp_feature.name %></h3>
+		<p><%= comp_feature.description %></p>
+	</div>
 	<ul class="thumbnails">
 		<% comp_feature.features.each do |cf| %>
 			<li class="thumnail">
@@ -11,7 +13,7 @@
 			</li>
 		<% end %> 	
 	</ul>
-	<% if signed_in? and current_user.id == @product.user_id and comp_feature.features.length < 6 %>
+	<% if signed_in? and current_user.id == @product.user_id %>
 		<%= link_to 'Add Version', new_product_feature_group_feature_path(product_id: @product.id, feature_group_id: comp_feature.id), class: 'btn btn-success', style: 'text-align: center;' %>
 	<% end %>
 </div>

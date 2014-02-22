@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @top_products = @user.products.where(active: true).order('rating DESC')
     @old_products = @user.products.where(active: false).order('rating DESC')
     @recent_activity = Activity.where(user_id: @user.id).order('timestamp DESC').limit(7)
-    if current_user.id == @user.id
+    if signed_in? and current_user.id == @user.id
       @pictures.build
     end
     if !@user.propic_id.nil?

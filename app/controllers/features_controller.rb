@@ -80,6 +80,7 @@ class FeaturesController < ApplicationController
 
   def upvote
     @product = Product.find(params[:product_id])
+    @tab = 'product-features'
     if signed_in? 
       @feature = Feature.find(params[:feature_id])
       if !@feature.upvotes.nil? and !@feature.upvotes.exists?(:user_id => current_user.id)
@@ -88,7 +89,7 @@ class FeaturesController < ApplicationController
         respond_to do |format|
           if @feature.save and @product.save
             Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :feature, resource_id: @feature.id)
-            format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
+            format.html { redirect_to product_path(@product, anchor: 'product-features'), notice: 'Feature was successfully updated.' }
             format.json { head :no_content }
           else
             format.html { render action: 'upvote' }

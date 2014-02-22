@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     set_product
+    @tab = 'product-comments'
     @product ||= Product.find( :id => params[:product_id])
     @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
     @feature_groups = FeatureGroup.where(:product => @product)
@@ -112,6 +113,7 @@ class ProductsController < ApplicationController
   def love
     @product = Product.find(params[:product_id])
     update_rating
+    @tab = 'product-comments'
     if signed_in?
       if !@product.likes.exists?(:user_id => current_user.id)
         respond_to do |format|

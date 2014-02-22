@@ -66,6 +66,7 @@ class FeatureGroupsController < ApplicationController
 
   def upvote 
     @feature_group = FeatureGroup.find(params[:feature_group_id])
+    @tab = 'product-features'
     @feature = Feature.find(params[:feature_id])
     if @feature_group.features.includes(@feature) and !current_user.nil?
       if !@feature_group.singles?

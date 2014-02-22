@@ -1,0 +1,37 @@
+<div class="single-feature-thumb-functions">
+	
+	<div class="functions-left">
+		<% if signed_in? %>
+			<a href=<%= product_feature_group_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id) %>>
+		<% end %>
+		<div class="thumb-up">
+			<% if signed_in? and !feature.upvotes.where(:user_id => current_user.id).empty? %>
+				<i class="fa fa-thumbs-up fa-2x" style="color: #fff;"></i> 
+			<% else %>
+				<i class="fa fa-thumbs-o-up fa-2x" style="color: #828282;"></i>
+			<% end %>
+		</div>
+		<% if signed_in? %>
+			</a>
+		<% end %>
+	</div>
+
+	<div class="functions-middle">
+		<h4><%= (feature.upvotes.size.to_i / (feature.upvotes.size.to_i + feature.downvotes.size.to_i)).to_f * 100 %> %</h4>
+	</div>
+	<div class="functions-right">
+		<% if signed_in? %>
+			<a href=<%= product_feature_group_downvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id) %>>
+		<% end %>
+		<div class="thumb-down">
+			<% if signed_in? and !feature.upvotes.where(:user_id => current_user.id).empty? %>
+				<i class="fa fa-thumbs-down fa-2x" style="color: #fff;"></i> 
+			<% else %>
+				<i class="fa fa-thumbs-o-down fa-2x" style="color: #828282;"></i>
+			<% end %>
+		</div>
+		<% if signed_in? %>
+			</a>
+		<% end %>
+	</div>
+</div>

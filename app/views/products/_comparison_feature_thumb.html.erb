@@ -3,6 +3,9 @@
 	<div class="comparison-header">
 		<h3 style="text-align: center;"><%= comp_feature.name %></h3>
 		<p><%= comp_feature.description %></p>
+			<% if signed_in? and current_user.id == @product.user_id %>
+			<%= link_to 'Add Version', new_product_feature_group_feature_path(product_id: @product.id, feature_group_id: comp_feature.id), class: 'btn btn-success', style: 'text-align: center;' %>
+		<% end %>
 	</div>
 	<ul class="thumbnails">
 		<% comp_feature.features.each do |cf| %>
@@ -13,7 +16,4 @@
 			</li>
 		<% end %> 	
 	</ul>
-	<% if signed_in? and current_user.id == @product.user_id %>
-		<%= link_to 'Add Version', new_product_feature_group_feature_path(product_id: @product.id, feature_group_id: comp_feature.id), class: 'btn btn-success', style: 'text-align: center;' %>
-	<% end %>
 </div>

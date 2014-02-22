@@ -1,6 +1,6 @@
 <div class="comp-feature-thumb-functions">
 	<% if signed_in? %>
-		<a href=<%= product_feature_group_upvote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id) %>>
+		<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %>>
 	<% end %>
 	<div class="functions-left">
 		<div class="check">

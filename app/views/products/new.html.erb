@@ -1,7 +1,9 @@
 <%- model_class = Product -%>
-<div class="container">
+<div class="signup-page container">
 	<div class="page-header" style="padding-top:50px;">
-	  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+	  <h1>New Campaign</h1>
 	</div>
-	<%= render :partial => 'form' %>
+	<div class="span9 offset2" style="padding-left:80px;">
+		<%= render :partial => 'form' %>
+	</div>
 </div>

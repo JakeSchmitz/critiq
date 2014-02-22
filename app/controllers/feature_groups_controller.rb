@@ -64,7 +64,7 @@ class FeatureGroupsController < ApplicationController
     end
   end
 
-  def upvote 
+  def vote
     @feature_group = FeatureGroup.find(params[:feature_group_id])
     @tab = 'product-features'
     @feature = Feature.find(params[:feature_id])
@@ -78,7 +78,7 @@ class FeatureGroupsController < ApplicationController
         unless @feature.upvotes.nil? then @feature.upvotes.where(:user_id => current_user).delete_all end
         unless @feature.downvotes.nil? then @feature.downvotes.where(:user_id => current_user).delete_all end
       end
-      @feature.upvotes.build(:user_id => current_user.id)
+      if params[:up] then @feature.upvotes.build(:user_id => current_user.id) else @feature.downvotes.build(:user_id => current_user.id) end
       @feature.save
       @feature_group.save
     end

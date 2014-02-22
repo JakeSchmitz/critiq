@@ -83,7 +83,7 @@ class FeaturesController < ApplicationController
     @tab = 'product-features'
     if signed_in? 
       @feature = Feature.find(params[:feature_id])
-      if !@feature.upvotes.nil? and !@feature.upvotes.exists?(:user_id => current_user.id)
+      if !@feature.upvotes.exists?(:user_id => current_user.id)
         @feature.upvotes.build(:user_id => current_user.id)
         @product.rating += 1
         respond_to do |format|

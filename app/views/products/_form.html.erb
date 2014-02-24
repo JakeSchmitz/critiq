@@ -1,26 +1,16 @@
-<%= nested_form_for @product, :html => { :class => 'form-horizontal', :multipart => true, style: 'margin-left: -100px;' } do |f| %>
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field', style: 'min-width: 450px;' %>
-    </div>
-  </div>
+<%= nested_form_for @product, :html => { :class => 'form-horizontal', :multipart => true, style: 'text-align: center;' } do |f| %>
+  <h4>Project Name</h4>
+  <%= f.text_field :name, :class => 'text_field', style: 'min-width: 250px; margin-bottom: 10px;' %>
   <%= f.fields_for :pictures do |picture| %>
     <% if picture.object.new_record? %>
-      <div class="control-group">
-        <%= picture.label "Image", :class => 'control-label' %>
-        <div class="controls btn file_upload_wrapper"  style="float: left; ">
-          <%= picture.file_field :attachment  %>
-        </div>
+      <h4>Select a picture</h4>
+      <div class="file_upload_wrapper"  style="float: left; padding: 5px; margin-left: 40px; margin-bottom: 20px; background-color: #fff;">
+        <%= picture.file_field :attachment  %>
       </div>  
     <% end %>
   <% end %>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :description, maxlength: 1000, :class => 'text_field', style: 'height: 200px; min-width: 450px;' %>
-    </div>
-  </div>
+  <h4>Description</h4>
+  <%= f.text_area :description, maxlength: 1000, :class => 'text_field', style: 'height: 200px; min-width: 250px;' %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

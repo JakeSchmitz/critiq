@@ -71,14 +71,12 @@ class FeatureGroupsController < ApplicationController
     if @feature_group.features.includes(@feature) and !current_user.nil?
       if !@feature_group.singles?
         @feature_group.features.each do |f|
-          if !f.upvotes.nil? then f.upvotes.where(:user_id => current_user).delete_all end
-          if !f.downvotes.nil? then f.downvotes.where(:user_id => current_user).delete_all end
+          if !f.likes.nil? then f.likes.where(:user_id => current_user.id).delete_all end
         end
       else
-        unless @feature.upvotes.nil? then @feature.upvotes.where(:user_id => current_user).delete_all end
-        unless @feature.downvotes.nil? then @feature.downvotes.where(:user_id => current_user).delete_all end
+        unless @feature.likes.nil? then @feature.likes.where(:user_id => current_user.id).delete_all end
       end
-      if params[:up] then @feature.upvotes.build(:user_id => current_user.id) else @feature.downvotes.build(:user_id => current_user.id) end
+      @feature.likes.build(:user_id => current_user.id, :up => params[:up])
       @feature.save
       @feature_group.save
     end

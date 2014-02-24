@@ -5,7 +5,7 @@
 			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %>>
 		<% end %>
 		<div class="thumb-up">
-			<% if signed_in? and !feature.upvotes.where(:user_id => current_user.id).empty? %>
+			<% if signed_in? and !feature.likes.where(:user_id => current_user.id).empty? %>
 				<i class="fa fa-thumbs-up fa-2x" style="color: #fff;"></i> 
 			<% else %>
 				<i class="fa fa-thumbs-o-up fa-2x" style="color: #828282;"></i>
@@ -16,7 +16,7 @@
 		<% end %>
 	</div>
 	<div class="functions-middle">
-		<h4><%= (feature.upvotes.size.to_f * 100) / (feature.upvotes.size.to_f + feature.downvotes.size.to_f) %> %</h4>
+		<h4><%= (feature.likes.where(:up => true).size.to_f * 100) / (feature.likes.size.to_f) %> %</h4>
 	</div>
 	<div class="functions-right">
 		<% if signed_in? %>

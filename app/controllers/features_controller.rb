@@ -12,7 +12,6 @@ class FeaturesController < ApplicationController
   def show
     set_feature
     @product = Product.find(params[:product_id])
-    @feature.pictures.build
   end
 
   # GET /product/pid/features/new
@@ -83,8 +82,8 @@ class FeaturesController < ApplicationController
     @tab = 'product-features'
     if signed_in? 
       @feature = Feature.find(params[:feature_id])
-      if !@feature.upvotes.exists?(:user_id => current_user.id)
-        @feature.upvotes.build(:user_id => current_user.id)
+      if !@feature.likes.exists?(:user_id => current_user.id)
+        @feature.likes.build(:user_id => current_user.id, :up => true)
         @product.rating += 1
         respond_to do |format|
           if @feature.save and @product.save
@@ -114,14 +113,14 @@ class FeaturesController < ApplicationController
     if signed_in?
       @feature = Feature.find(params[:feature_id])
       @product = Product.find(params[:product_id])
-      @feature.downvotes.build(:user_id => current_user.id)
+      @feature.likes.build(:user_id => current_user.id, :up => false)
       @product -= 1
       respond_to do |format|
         if @feature.save and @product.save
           format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
           format.json { head :no_content }
         else
-          format.html { render action: 'upvote' }
+          format.html { render action: 'downvote' }
           format.json { render json: @feature.errors, status: :unprocessable_entity }
         end
       end
@@ -143,6 +142,6 @@ class FeaturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
-      params.require(:feature).permit(:id, :product_id, :feature_id, :name, :description, :upvotes, :downvotes, :pictures, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes] )
+      params.require(:feature).permit(:id, :product_id, :feature_id, :name, :description, :pictures, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes] )
     end
 end

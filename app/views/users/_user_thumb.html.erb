@@ -11,7 +11,7 @@
 	<div class="user-thumb-content">
 		<h4><%= link_to user.name, user %></h4>
 		<div class="user-mini-products">
-			<% if user.products.size == 0 %>
+			<% if user.products.empty? %>
 				<h5 style="padding: 5px;"><%= user.name %> Hasn't Created Anything Yet</h5>
 			<% else %>
 				<% user.products.order('created_at DESC').first(4).each do |product| %>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<div class="thumb-functions">
-		<p style="padding: 5px;"><%= user.products.nil? ? 0 : user.products.size.to_s %> Creation<%= user.products.size != 1 ? 's' : '' %></p>
+		<p style="padding: 10px 5px 0px 15px;"><%= user.products.nil? ? 0 : user.products.size.to_s %> Creation<%= user.products.size != 1 ? 's' : '' %></p>
 	</div>
 </div>
 

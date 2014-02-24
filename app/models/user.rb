@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   def swagger 
     swag = 0
     self.products.each do |p|
-      swag += p.rating
+      swag += (p.rating.nil? ? 0 : p.rating)
     end
     return swag
   end
@@ -48,8 +48,6 @@ class User < ActiveRecord::Base
       return ImageAsset.find(self.propic_id)
     elsif !self.pictures.last.nil?
       return self.pictures.first
-    else
-      return ImageAsset.find(nil)
     end
   end
 

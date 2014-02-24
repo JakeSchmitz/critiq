@@ -7,7 +7,7 @@
           <p style="text-align: center;"><%= activity.timestamp.strftime('%F') %></p>
           <% if activity.activity_type == 'comment' %>
             <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/chat.svg'); width: 100px;"></div>
-            <h6><%= "Critiqed a " + activity.resource_type.to_s %></h6> 
+            <h6>Critiqed a <%= activity.resource_type.to_s %></h6> 
           <% elsif activity.activity_type == 'like' %>
             <% if activity.resource_type == 'feature' %>
               <div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/love.svg'); width: 100px;"></div>

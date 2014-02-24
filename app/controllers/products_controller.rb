@@ -13,13 +13,14 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     set_product
+    update_rating
     @tab = 'product-comments'
     @product ||= Product.find( :id => params[:product_id])
     @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
     @feature_groups = FeatureGroup.where(:product => @product)
-    @comparison_features = @feature_groups.where.not(name: 'singletons', description: 'lorem')
-    @single_features = @feature_groups.where(:name => 'singletons', :description => 'lorem').first
-    @comments = @product.comments
+    @comparison_features = @feature_groups.where(singles: false)
+    @single_features = @feature_groups.where(singles: true).first
+    @comments = @product.comments.order('rating DESC')
     @product ||= Product.find(params[:id])
     @comment = @product.comments.new
     @likers = Array.new
@@ -54,12 +55,8 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new(product_params)
       @product.rating = 0
-      @product.feature_groups.build(:name => 'singletons', :description => 'lorem')
+      @single_features = @product.feature_groups.build(:name => 'singletons', :description => 'lorem', :singles => true)
       @product.user_id = current_user.id 
-      if @single_features.nil?
-        @single_features = FeatureGroup.create(:product_id => @product.id, :name => 'singletons', :description => 'lorem')
-        @single_features.save
-      end
       respond_to do |format|
         if @product.save
           format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -79,6 +76,7 @@ class ProductsController < ApplicationController
   def update
     set_product
     respond_to do |format|
+      update_rating
       @product.product_pic = product_pic = @product.pictures.last
       if @product.update_attributes(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -119,6 +117,7 @@ class ProductsController < ApplicationController
         respond_to do |format|
           if  @product.likes.create(:user_id => current_user.id)
             update_rating
+            @product.save
             Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :product, resource_id: @product.id)
             format.html { redirect_to @product, notice: 'Product was successfully updated.' }
             format.json { head :no_content }
@@ -165,10 +164,17 @@ class ProductsController < ApplicationController
 
     # product rating = (10 * product_likes) + sum(feature_likes for each feature)
     def update_rating
-      @product.rating = @product.likes.length * 10
-      @product.feature_groups.where.not(name: 'singletons', description: 'lorem').each do |fg|
+      @product.rating = @product.likes.size * 10
+      @product.feature_groups.where(singles: false).each do |fg|
         fg.features.each do |f|
-          @product.rating = @product.rating + f.upvotes.length
+          up_rating = f.likes.where(up: true).size
+          down_rating = f.likes.where(up: false).size
+          @product.rating += up_rating - down_rating
+        end
+      end
+      @product.feature_groups.where(singles: true).each do |singles|
+        singles.features.each do |f|
+          @product.rating += f.likes.where(up: true).size - f.likes.where(up: false).size
         end
       end
       # here we should somehow incorporate comments on the product into the rating

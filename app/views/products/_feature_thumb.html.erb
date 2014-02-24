@@ -4,7 +4,6 @@
 	<% end %>
 	<% if signed_in? and !vote %>
 		<!-- signed in user has already voted, so add overlay -->
-
 	<% end %>
 	<div class="feature-thumb-content" <% if !vote %>style="padding-bottom: 10px;"<% end %>>
 		<h4><%= link_to feature.name, product_feature_group_feature_path(:id => feature.id, :product_id => @product.id, :feature_group_id => feature.feature_group_id) %></h4>

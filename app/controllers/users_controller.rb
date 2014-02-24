@@ -43,7 +43,9 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @user.propic_id = @user.pictures.last.id
+    unless @user.pictures.first.nil?
+      @user.propic_id = @user.pictures.last.id
+    end
     respond_to do |format|
       if @user.save
         #@user.pictures.build
@@ -63,7 +65,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(user_params)
-        @user.propic_id = @user.pictures.last.id
+        unless @user.pictures.first.nil?
+          @user.propic_id = @user.pictures.last.id
+        end
         @user.save
         #ImageAsset.new(:attachment => @user[:p, :user_id => @user.id)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -195,6 +199,7 @@ class UsersController < ApplicationController
             @product_ratings[product.id][day_liked..existance_length] = @product_ratings[product.id][day_liked..existance_length].map { |r| r += 1 }
           end
         end
+        @product_ratings[product.id][existance_length] = product.rating
         puts @product_ratings[product.id].to_s
         @daily_likes[product.id] = Gchart.line(
                                       :type => 'line',
@@ -233,8 +238,9 @@ class UsersController < ApplicationController
           @comparison_counts[product.id][fg.id] = Array.new
           total_likes = 0
           fg.features.each do |f|
-            @comparison_counts[product.id][fg.id] += [f.upvotes.size]
-            total_likes += f.upvotes.size
+            up_rating = f.likes.where(up: true).size - f.likes.where(up: false).size
+            @comparison_counts[product.id][fg.id] += up_rating
+            total_likes += up_rating
           end
           if total_likes != 0
             fg.features.each_with_index do |f, i|

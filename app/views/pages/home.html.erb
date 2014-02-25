@@ -37,7 +37,6 @@
 		<div class="row" style="margin: 0 auto; padding-left: 30px;">
 			<% @top_products.each do |product| %>
 				<%= render :partial => '/products/product_thumb', locals: { product: product } %>
-	      <%= render :partial => '/products/product_modal', locals: { product: product } %>
 			<% end %>
 		</div>
 	</div>	
@@ -47,7 +46,6 @@
 		<div class="pretty-divider"></div>
 		<% @top_users.each do |u| %>
 			<%= render :partial => '/users/user_thumb', locals: { user: u } %>
-			<%= render :partial => 'users/user_modal', locals: { user: u } %>
 		<% end %>
 	</div>
 </div>

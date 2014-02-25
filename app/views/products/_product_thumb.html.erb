@@ -1,6 +1,6 @@
 <div class="thumbnail span2 product-thumb" style="text-align: center;">
 	<% if !product.profile_pic.nil? %>
-		<a href="#product-modal<%= product.id.to_s %>" data-toggle="modal">
+		<a href="/products/<%= product.id %>" data-toggle="modal">
 			<div class="thumb-ratio" style="background-image: url(<%= asset_path product.profile_pic.attachment.url(:large) %>);"></div>
 		</a>
 	<% else %>

@@ -4,7 +4,7 @@
   <div class="row user-profile-top">
     <div class="user-middle">
       <div class="span2 user-rating">
-        <h4><%= @user.name.split[0] %>'s rating: 1<%= @user.swagger %></h4>
+        <h4><%= @user.name.split[0] %>'s rating: <%= @user.swagger %></h4>
       </div>
       <div class="span3 user-face">
         <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic.attachment.url(:medium) %>');"></div>
@@ -21,7 +21,7 @@
           <a href="#" class="btn-clear sm-button"><i class="fa fa-facebook fa-fw"></i></a>
           </br>
       </div>
-    <div class="span2 user-followers"><h4>Followers: 1<%= @user.lovers %></h4></div>
+    <div class="span2 user-followers"><h4>Followers: <%= @user.lovers %></h4></div>
     </div>
   </div>
 </div>

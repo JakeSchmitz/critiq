@@ -76,7 +76,7 @@ class FeatureGroupsController < ApplicationController
       else
         unless @feature.likes.nil? then @feature.likes.where(:user_id => current_user.id).delete_all end
       end
-      @feature.likes.build(:user_id => current_user.id, :up => params[:up])
+      @feature.likes.build(:user_id => current_user.id, :up => YAML.load(params[:up]))
       @feature.save
       @feature_group.save
     end

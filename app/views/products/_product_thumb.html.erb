@@ -32,7 +32,7 @@
 	</div>
 	<div class="thumb-functions" style="padding-left: 12px;">
 		<h5 style="display: inline; float: left; padding-right: 10px; color: #fff; margin-top: 10px"><i class="fa fa-comment fa-lg"></i> <%= product.comments.size %></h5>
-		<h5 style="display: inline; float: left; color: #fff; margin-top: 10px;"><i class="fa fa-heart fa-lg" style="margin-top: 2px;"></i> <%= product.lovers.size %></h5>
+		<h5 style="display: inline; float: left; color: #fff; margin-top: 10px;"><i class="fa fa-heart fa-lg" style="margin-top: 2px;"></i> <%= product.followers.size %></h5>
 		<!--<% if signed_in? and product.active and !product.likes.exists?(:user_id => current_user.id) %>
 			<%= link_to 'Show Love',
 								product_love_path(product.id), class: "btn-clear", style: 'padding: 5px; margin-top: 10px;' %>

@@ -22,8 +22,8 @@ class Product < ActiveRecord::Base
     return false
   end
 
-  def lovers 
-    #lovers is an array of users
+  #Return a unique array of users that have liked elements of this product
+  def followers 
     lovers = []
     self.likes.each do |l|
       lovers << l.user

@@ -29,8 +29,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
-    @user.pictures.build
+    redirect_to signin_path
   end
 
   # GET /users/1/edit
@@ -238,8 +237,8 @@ class UsersController < ApplicationController
           @comparison_counts[product.id][fg.id] = Array.new
           total_likes = 0
           fg.features.each do |f|
-            up_rating = f.likes.where(up: true).size - f.likes.where(up: false).size
-            @comparison_counts[product.id][fg.id] += up_rating
+            up_rating = f.likes.size - (2 * f.likes.where(up: false).size)
+            @comparison_counts[product.id][fg.id] << up_rating.to_i
             total_likes += up_rating
           end
           if total_likes != 0

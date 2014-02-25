@@ -1,6 +1,6 @@
 <ul class="media-list">
 	<% comments.each do |comment| %>
-		<% if !comment.user.nil? %>
+		<% unless comment.user.nil? %>
 			<li class="row product-comment">
 				<div class="comment-vote-buttons pull-left" style="margin-top: 20px; margin-left: 10px; padding-right: 20px;">
 					<%= link_to product_comment_upvote_path(:product_id => @product.id, :comment_id => comment.id) do %>
@@ -12,7 +12,7 @@
 					<% end %>
 				</div>
 				<div class="user-info pull-left">
-					<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic.attachment.url(:thumb) %>'); width: 100px; height: 100px;"></div>
+					<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic.attachment.url(:medium) %>'); width: 100px; height: 100px;"></div>
 				</div>
 				<div class="comment-body pull-left">
 					<p><%= link_to comment.user.name, user_path(comment.user) %> - <%= comment.created_at %></p>

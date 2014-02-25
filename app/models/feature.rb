@@ -6,6 +6,14 @@ class Feature < ActiveRecord::Base
   attr_accessible :name, :description, :pictures, :pictures_attributes
   after_update :save_pictures
 
+  def percent_like
+    if self.likes.empty?
+      return 0
+    else
+      return self.likes.where(up: true).size.to_f / self.likes.size.to_f
+    end
+  end
+
   private
 
     def save_pictures

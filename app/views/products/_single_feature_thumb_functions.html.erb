@@ -1,5 +1,4 @@
 <div class="single-feature-thumb-functions">
-	
 	<div class="functions-left">
 		<% if signed_in? %>
 			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %>>
@@ -16,7 +15,7 @@
 		<% end %>
 	</div>
 	<div class="functions-middle">
-		<h4><%= (feature.likes.where(:up => true).size.to_f * 100) / (feature.likes.size.to_f) %> %</h4>
+		<h4><%= feature.percent_like * 100 %>%</h4>
 	</div>
 	<div class="functions-right">
 		<% if signed_in? %>

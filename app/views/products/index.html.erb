@@ -1,8 +1,8 @@
 <%- model_class = Product -%>
-<div class="container" style="margin-bottom: 50px; margin-top: 80px;">
+<div class="container product-index" style="margin-bottom: 20px; margin-top: 80px; min-height: 90%;">
   <h1>Browse Campaigns</h1>
   <div class="pretty-divider"></div>
-  <ul class="row thumbnails" style="margin-top: 50px;">
+  <ul class="thumbnails" style="margin-top: 20px;">
     <% @top_products.each do |p| %>
       <%= render :partial => 'product_thumb', locals: { product: p } %>
       <%= render :partial => 'product_modal', :locals => { product: p } %>

@@ -37,13 +37,21 @@
 
 .featured-campaigns {
 	display: block;
+	text-align: center;
 	width: 100%;
 	margin-bottom: 30px;
+	.row {
+		display: inline-block;
+	}
 }
 
 .featured-makers {
 	display: block;
+	text-align: center;
 	width: 100%;
 	margin-bottom: 30px;
+	.row {
+		display: inline-block;
+	}
 }
 

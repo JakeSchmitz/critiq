@@ -34,36 +34,20 @@
 	<div class="featured-campaigns">
 		<h1>Featured Drives</h1>
 		<div class="pretty-divider"></div>
-		<div class="row" style="margin: 0 auto; padding-left: 30px;">
+		<div class="row">
 			<% @top_products.each do |product| %>
 				<%= render :partial => '/products/product_thumb', locals: { product: product } %>
 			<% end %>
 		</div>
 	</div>	
 	<div class="background-splatter2"></div>
-	<div class="featured-makers" style="padding-left: 30px;">
+	<div class="featured-makers">
 		<h1>Featured Makers</h1>
 		<div class="pretty-divider"></div>
-		<% @top_users.each do |u| %>
-			<%= render :partial => '/users/user_thumb', locals: { user: u } %>
-		<% end %>
+		<div class="row">
+			<% @top_users.each do |u| %>
+				<%= render :partial => '/users/user_thumb', locals: { user: u } %>
+			<% end %>
+		</div>
 	</div>
 </div>
-
-<!-- This is old!
-<div class="container">
-	<div class="row" style="width: 100%;">
-		<h1 style="text-align: center;">Meet The Team</h1>
-	</div>
-	<ul class="thumbnails" style="margin-left: 50px;">
-		<li class="span5 thumbnail">
-			<%= image_tag '/images/kens-face.png' %>
-			<h3>Kenneth Hsia</h3>
-		</li>
-		<li class="span5 thumbnail">
-			<%= image_tag '/images/jakes-face.png', :class => 'img-circle' %>
-			<h3>Jacob Schmitz</h3>
-		</li>
-	</ul>
-</div>
--->

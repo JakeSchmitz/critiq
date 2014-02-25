@@ -7,7 +7,11 @@
         <h4><%= @user.name.split[0] %>'s rating: <%= @user.swagger %></h4>
       </div>
       <div class="span3 user-face">
-        <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic.attachment.url(:medium) %>');"></div>
+        <% if @user.profile_pic %>
+          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic.attachment.url(:medium) %>');"></div>
+        <% else %>
+          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('/images/missing-user-avatar.png');"></div>
+        <% end %>
         <h1><%= @user.name %></h1>
       </div>
       <div class="user-buttons <% if signed_in? and @user.id != current_user.id %>other-user-buttons<% end %>">

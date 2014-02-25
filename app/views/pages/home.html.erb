@@ -7,7 +7,7 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	</div>
 	<div class="home-buttons">
-		<%= button_to 'START A CAMPAIGN', new_product_path, :method => "get", :class => "btn-clear"%>
+		<%= button_to 'START A DRIVE', new_product_path, :method => "get", :class => "btn-clear"%>
 	 	<% if !signed_in? %>
 	    <%= button_to 'SIGN UP', signin_path, :method => "get", :class => "btn-clear" %>
 	    <%= button_to 'SIGN IN', signin_path, :method => "get", :class => "btn-clear"%>

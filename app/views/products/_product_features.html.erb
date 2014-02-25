@@ -1,5 +1,5 @@
 <div class="single-features">
-	<% if !@single_features.nil?  %>
+	<% if !@single_features.nil? and !@single_features.features.empty? %>
 		<div >
 			<h2>Singletons</h2>
 		  <ul class="thumbnails">
@@ -10,14 +10,14 @@
 		    <% end %>
 		  </ul>
 		</div>  
-		<% if signed_in? and current_user.id == @product.user_id %>
-			<%= link_to 'New Standalone Feature', new_product_feature_group_feature_path(:product_id => @product.id, :feature_group_id => @single_features.id), :class => 'btn btn-info' %>
-		<% end %>
 	<% else %>
 	  <h2>There are no individual features set up for <%= @product.name %>. </h2>
 	<% end %>
+	<% if signed_in? and current_user.id == @product.user_id %>
+		<%= link_to 'New Singleton', new_product_feature_group_feature_path(:product_id => @product.id, :feature_group_id => @single_features.id), :class => 'btn btn-info' %>
+	<% end %>
 </div>
-<div class="comparison-features">
+<div class="comparison-features" style="text-align: center;">
 	<h2>Comparisons</h2>
 	<% if !@comparison_features.nil? %>
 	  <ul style="margin-left: 0px;">
@@ -28,7 +28,7 @@
 	    <% end %>
 	  </ul>
 		<% if signed_in? and current_user.id == @product.user_id %>
-			<%= link_to 'New Comparative Feature', new_product_feature_group_path(:product_id => @product.id), :class => 'btn btn-info' %>
+			<%= link_to 'New Comparative Feature', new_product_feature_group_path(:product_id => @product.id), :class => 'btn btn-info', style: 'margin-top: 30px;' %>
 		<% end %>
 	<% else %>
 		<h2>No Comparative Features Have Been Set Up For <%= @product.name %>. </h2>

@@ -4,7 +4,7 @@
   <div class="row user-profile-top">
     <div class="user-middle">
       <div class="span2 user-rating">
-        <h4><%= @user.name.split[0] %>'s rating: <%= @user.swagger %></h4>
+        <h4>Rating: <%= @user.swagger %></h4>
       </div>
       <div class="span3 user-face">
         <% if @user.profile_pic %>
@@ -37,7 +37,6 @@
     <div style="margin-left: auto; ">
       <% @top_products.each do |product| %>
         <%= render :partial => '/products/product_thumb', locals: { product: product} %>
-        <%= render :partial => '/products/product_modal', locals: { product: product} %>
       <% end %>
     </div>
   </div>
@@ -48,7 +47,6 @@
       <div style="margin-left: auto; ">
         <% @old_products.each do |product| %>
           <%= render :partial => '/products/product_thumb', locals: { product: product} %>
-          <%= render :partial => '/products/product_modal', locals: { product: product} %>
         <% end %>
       </div>
     </div>

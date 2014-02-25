@@ -17,7 +17,6 @@
             <h5 style="text-align: left;">Created By <%= @product.user.name %></h5>
           </div>
           <div class="product-buttons">
-            <%= button_to 'Buy When Complete', @product, :method => "get", :class => "btn-clear inline-button" %>
             <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) %>
               <%= button_to 'Support', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button" %>
             <% elsif !signed_in? %>
@@ -46,6 +45,7 @@
       </div>
     </div>
     <div class="product-right">
+      <%= button_to 'Buy When Complete', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px;' %>
       <h2>Description</h2>
       <p class="product-description"><%= @product.description %></p>
     </div>

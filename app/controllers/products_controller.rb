@@ -21,7 +21,6 @@ class ProductsController < ApplicationController
     @comparison_features = @feature_groups.where(singles: false)
     @single_features = @feature_groups.where(singles: true).first
     @comments = @product.comments.order('rating DESC')
-    @product ||= Product.find(params[:id])
     @comment = @product.comments.new
     @likers = Array.new
     @top_pics = ImageAsset.where(:product_id => @product.id).where.not(:attachment_file_size => nil).order('created_at DESC').limit(5)
@@ -35,7 +34,6 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new
       @product.pictures.build
-      @product.bounties.build(:question => "What can we do better?")
       @product.user_id = current_user.id
       Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
     else
@@ -56,6 +54,7 @@ class ProductsController < ApplicationController
       @product = Product.new(product_params)
       @product.rating = 0
       @single_features = @product.feature_groups.build(:name => 'singletons', :description => 'lorem', :singles => true, :product_id => @product.id)
+      @product.bounties.build(:question => "What can we do better?")
       @product.user_id = current_user.id 
       respond_to do |format|
         if @product.save

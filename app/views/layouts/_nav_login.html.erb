@@ -3,4 +3,4 @@
 	<div id="nav_login_password" style="padding-top:10px; width: 120px;"><%= f.password_field :password, placeholder: 'password' %></div>
 	<div id="nav_login_button"><%= f.submit "Login", class: "btn btn-small btn-primary", style: 'padding: 6px;' %></div>
 <% end %>
-<div id="nav_signup_button"><%= link_to "Sign Up", new_user_path, class: "btn btn-small btn-primary", style: 'padding: 6px;' %></div>
+<div id="nav_signup_button"><%= link_to "Sign Up", signin_path, class: "btn btn-small btn-primary", style: 'padding: 6px;' %></div>

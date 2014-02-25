@@ -303,14 +303,15 @@ div.file_upload_wrapper:hover {
 .btn-clear {
   background: rgba(254, 254, 254, 0.0);
   color: #fff;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   border-radius: 0px;
   margin-bottom: 3px;
-  padding: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: 3px;
+  padding: 5px 10px 2px 15px;
+  text-align: center;
+  letter-spacing: 5px;
+  font-family: proxima-nova-n9, proxima-nova, sans-serif;
   > h4 {
+    font-family: proxima-nova-n9, proxima-nova, sans-serif;
     color: #fff;
   }
 }
@@ -366,7 +367,7 @@ div.file_upload_wrapper:hover {
 
 .thumb-functions {
   height: 40px;
-  background: rgba(15, 15, 15, 0.9);
+  background: rgba(124, 124, 124, 0.8);
   opacity: .8;
   > p > a > h4 {
     opacity: 1;

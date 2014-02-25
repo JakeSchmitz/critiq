@@ -35,7 +35,6 @@ class ProductsController < ApplicationController
       @product = Product.new
       @product.pictures.build
       @product.user_id = current_user.id
-      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
     else
       redirect_to signup_path, :notice => 'Please sign up before creating anything!'
     end
@@ -56,6 +55,7 @@ class ProductsController < ApplicationController
       @single_features = @product.feature_groups.build(:name => 'singletons', :description => 'lorem', :singles => true, :product_id => @product.id)
       @product.bounties.build(:question => "What can we do better?")
       @product.user_id = current_user.id 
+      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
       respond_to do |format|
         if @product.save
           format.html { redirect_to @product, notice: 'Product was successfully created.' }

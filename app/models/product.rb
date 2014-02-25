@@ -22,6 +22,22 @@ class Product < ActiveRecord::Base
     return false
   end
 
+  def lovers 
+    #lovers is an array of users
+    lovers = []
+    self.likes.each do |l|
+      lovers << l.user
+    end
+    self.feature_groups.each do |fg|
+      fg.features.each do |f|
+        f.likes.each do |l| 
+          lovers << l.user
+        end
+      end
+    end
+    return lovers.uniq
+  end
+
   def profile_pic
     if !self.product_pic.nil? and !self.product_pic.attachment.nil?
       return self.product_pic

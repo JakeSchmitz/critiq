@@ -17,24 +17,32 @@
 			</a>
 		</div>
 	<% end %>
+	<div class="view-button">
+		<a href="/products/<%= product.id %>">
+			<div class="btn-clear">
+				<h4>VIEW</h4>
+			</div>
+		</a>
+	</div>
 	<div class="product-thumb-content">
 		<h4><%= link_to product.name, product %></h4>
 		<div class="product-thumb-description">
 			<p style="line-height: 1.1;" class="product-text"><%= truncate product.description, length: 140 %></p> 
 		</div>
 	</div>
-	<div class="thumb-functions" style="padding-top: 5px;">
-		<span class="badge pull-left roboto-font" style="margin-left: 10px; margin-top: 5px; background: rgba(130, 130, 130, 1);"><%= product.rating.to_s %></span>
-		<% if signed_in? and product.active and !product.likes.exists?(:user_id => current_user.id) %>
+	<div class="thumb-functions" style="padding-left: 12px;">
+		<h5 style="display: inline; float: left; padding-right: 10px; color: #fff; margin-top: 10px"><i class="fa fa-comment fa-lg"></i> <%= product.comments.size %></h5>
+		<h5 style="display: inline; float: left; color: #fff; margin-top: 10px;"><i class="fa fa-heart fa-lg" style="margin-top: 2px;"></i> <%= product.lovers.size %></h5>
+		<!--<% if signed_in? and product.active and !product.likes.exists?(:user_id => current_user.id) %>
 			<%= link_to 'Show Love',
 								product_love_path(product.id), class: "btn-clear", style: 'padding: 5px; margin-top: 10px;' %>
 		<% elsif signed_in? and product.active %>
 			<p style="float: left; padding-left: 10px; padding-top: 5px;">Supported!</p>
 		<% elsif !product.active %>
 			<p style="float: left; padding-left: 10px; padding-top: 5px;">Expired</p>
-		<% end %>
+		<% end %> -->
 		<% if !product.user.profile_pic.nil? %>
-			<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path product.user.profile_pic.attachment.url(:thumb) %>'); margin-top: -5px; background-size: cover;"></div></a>
+			<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path product.user.profile_pic.attachment.url(:thumb) %>'); background-size: cover;"></div></a>
 		<% end %>
 	</div>
 </div>

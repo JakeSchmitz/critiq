@@ -86,9 +86,11 @@ class CommentsController < ApplicationController
     @product = Product.find(params[:product_id])
     if signed_in? 
       @comment = Comment.find(params[:comment_id])
-      if !@comment.upvotes.nil? and !@comment.upvotes.exists?(:user_id => current_user.id) and !@comment.downvotes.exists?(:user_id => current_user.id)
-        @comment.upvotes.build(:user_id => current_user.id)
-        @comment.rating = @comment.rating + 1
+      if !@comment.upvotes.nil? 
+        ups = @comment.upvotes.where(:user_id => current_user.id).delete_all.to_i
+        downs = @comment.downvotes.where(:user_id => current_user.id).delete_all.to_i
+        @comment.upvotes.build(:user_id => current_user.id, :up => true, :product => @product.id)
+        @comment.rating = @comment.upvotes.size - @comment.downvotes.size
         @comment.save
         respond_to do |format|
           format.html { redirect_to @product, notice: 'Comment was successfully updated.' }
@@ -112,9 +114,11 @@ class CommentsController < ApplicationController
     @product = Product.find(params[:product_id])
     if signed_in? 
       @comment = Comment.find(params[:comment_id])
-      if !@comment.downvotes.nil? and !@comment.downvotes.exists?(:user_id => current_user.id) and !@comment.upvotes.exists?(:user_id => current_user.id)
-        @comment.downvotes.build(:user_id => current_user.id)
-        @comment.rating = @comment.rating - 1
+      if !@comment.downvotes.nil?
+        ups = @comment.upvotes.where(:user_id => current_user.id).delete_all.to_i
+        downs = @comment.downvotes.where(:user_id => current_user.id).delete_all.to_i
+        @comment.downvotes.build(:user_id => current_user.id, :up => false, :product => @product.id)
+        @comment.rating =  @comment.upvotes.size - @comment.downvotes.size
         @comment.save
         respond_to do |format|
           format.html { redirect_to @product, notice: 'Comment was successfully updated.' }

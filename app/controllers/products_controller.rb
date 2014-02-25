@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @tab = 'product-comments'
     @product ||= Product.find( :id => params[:product_id])
     @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
-    @feature_groups = FeatureGroup.where(:product => @product)
+    @feature_groups = @product.feature_groups
     @comparison_features = @feature_groups.where(singles: false)
     @single_features = @feature_groups.where(singles: true).first
     @comments = @product.comments.order('rating DESC')
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new(product_params)
       @product.rating = 0
-      @single_features = @product.feature_groups.build(:name => 'singletons', :description => 'lorem', :singles => true)
+      @single_features = @product.feature_groups.build(:name => 'singletons', :description => 'lorem', :singles => true, :product_id => @product.id)
       @product.user_id = current_user.id 
       respond_to do |format|
         if @product.save

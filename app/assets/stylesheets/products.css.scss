@@ -223,13 +223,13 @@
 	width: 100%;
 	margin: 0px;
 	margin-top: 40px;
-	height: 42px;
+	height: 43px;
+	padding-left: 20%;
 	.row {
 		display: inline-block;
 		text-align: center;
 		> li {
 			display: inline-block;
-			margin-right: -2px;
 		}
 		.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 			background-color: #794f85;
@@ -255,7 +255,7 @@
 }
 
 .new-comment {
-	margin-left: 10%;	
+	margin-left: 15%;	
 	.comment-box {
 		> form {
 			width: 100%;
@@ -269,9 +269,9 @@
 }
 
 .comment-body {
-	width: 600px;
+	max-width: 600px;
 	text-align: left;
-	margin-left: 30px;
+	margin-left: 15px;
 	margin-top: 0px;
 	padding: 10px;
 	background: rgba(250, 250, 250, 1);

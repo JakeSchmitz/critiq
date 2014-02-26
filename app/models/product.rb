@@ -38,6 +38,7 @@ class Product < ActiveRecord::Base
     return lovers.uniq
   end
 
+
   def profile_pic
     if !self.product_pic.nil? and !self.product_pic.attachment.nil?
       return self.product_pic

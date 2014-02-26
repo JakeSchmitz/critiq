@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
     @comments = @product.comments.order('rating DESC')
     @comment = @product.comments.new
     @likers = Array.new
-    @top_pics = ImageAsset.where(:product_id => @product.id).where.not(:attachment_file_size => nil).order('created_at DESC').limit(5)
+    @top_pics = @product.pictures.where.not(:attachment_file_size => nil).order('created_at DESC').limit(5)
     @product.likes.first(100).each do |like|
       @likers << User.find(like.user_id)
     end

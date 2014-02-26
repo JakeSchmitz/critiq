@@ -87,9 +87,9 @@ class CommentsController < ApplicationController
     if signed_in? 
       @comment = Comment.find(params[:comment_id])
       if !@comment.upvotes.nil? 
+        @comment.upvotes.build(:user_id => current_user.id, :up => true, :product => @product.id)
         ups = @comment.upvotes.where(:user_id => current_user.id).delete_all.to_i
         downs = @comment.downvotes.where(:user_id => current_user.id).delete_all.to_i
-        @comment.upvotes.build(:user_id => current_user.id, :up => true, :product => @product.id)
         @comment.rating = @comment.upvotes.size - @comment.downvotes.size
         @comment.save
         respond_to do |format|

@@ -95,7 +95,7 @@
       </div>
       <div class="tab-pane row span12" id="product-rewards">
         <h2>Earn rewards for your critiqs!</h2>
-        <%= render :partial => 'product_bounties' %>
+        <%= render :partial => 'product_rewards', locals: { product: @product} %>
       </div>
       <div class="tab-pane row span12" id="product_edit">
         <h1>Edit Campaign</h1>

@@ -38,6 +38,9 @@ class Product < ActiveRecord::Base
     return lovers.uniq
   end
 
+  def top_users
+    return self.followers.sort { |x, y| x.swagger <=> y.swagger }
+  end
 
   def profile_pic
     if !self.product_pic.nil? and !self.product_pic.attachment.nil?

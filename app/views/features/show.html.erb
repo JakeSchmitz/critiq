@@ -23,7 +23,7 @@
 							product_feature_group_vote_path(:product_id => @product.id, :feature_id => @feature.id, :feature_group_id => @feature.feature_group, :up => true), class: "btn btn-success" %>
 		<% if signed_in? and current_user.id == @feature.feature_group.product.user.id %>
 		<%= link_to 'Edit', edit_product_feature_group_feature_path(:id => @feature.id), class: "btn btn-warning" %>
-		<%= link_to 'Back', product_path, class: "btn btn-info" %>
+		<%= link_to 'Back', product_path(@feature.feature_group.product), class: "btn btn-info" %>
 		<% end %>
 	</div>
 </div>

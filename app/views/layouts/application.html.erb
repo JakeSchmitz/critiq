@@ -47,7 +47,7 @@
   </head>
   <body>
     <%= render '/layouts/header' %>
-    <div class="header-flash" style="z-index: 5; <% if !flash.empty? %>margin-bottom: -100px; <% end %>">
+    <div class="header-flash">
       <%= bootstrap_flash %>
     </div>
     <%= yield %>

@@ -12,7 +12,11 @@
       <div class="product-left">
         <h1 class="product-name"><%= @product.name %></h1>
         <div class="product-creator">
-          <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic.attachment.url(:medium) %>');"></div>
+          <% if @product.user.pictures.empty? %>
+            <div class="img-circle creator-face" style="background-image: url('/images/missing-user-avatar.png');"></div>
+          <% else %>
+            <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic.attachment.url(:medium) %>');"></div>
+          <% end %>
           <div class="creator-data">
             <h5 style="text-align: left;">Created By <%= @product.user.name %></h5>
           </div>

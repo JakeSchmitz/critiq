@@ -70,14 +70,13 @@ class Product < ActiveRecord::Base
     end
 
     def save_everything
-    	self.product_pic = self.pictures.last
-      self.product_pic.save
       self.pictures.each do |asset| 
       	asset.product_id = self.id
         asset.save!
       end 
       self.feature_groups.each do |f|
       	f.product = self
+        f.product_id = self.id
       	f.save!
       end
     end 

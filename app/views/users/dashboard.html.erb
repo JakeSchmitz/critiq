@@ -1,6 +1,7 @@
-<div class="container" style="padding-top: 30px; min-height: 90%; text-align: center;">
-	<div class="row row-header">
+<div class="container" style="padding: 30px; min-height: 90%; text-align: center;">
+	<div class="row row-header" style="margin-bottom: 30px;">
 		<h2><%= @user.name.camelize %>'s dashboard</h2>
+		<%= link_to 'View Profile', user_path(@user), class: 'btn btn-info' %>
 	</div>
 	<% if signed_in? and current_user.id == @user.id %>
 		<div class="span" style="min-height: 100%; width: 90%">

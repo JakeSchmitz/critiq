@@ -18,7 +18,7 @@
             <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic.attachment.url(:medium) %>');"></div>
           <% end %>
           <div class="creator-data">
-            <h5 style="text-align: left;">Created By <%= @product.user.name %></h5>
+            <h5 style="text-align: left;">Created By <%= link_to @product.user.name, @product.user, style: 'color: #cacaca' %></h5>
           </div>
           <div class="product-buttons">
             <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) %>
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="product-right">
-      <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px;' %>
+      <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; margin-top: -20px;' %>
       <h2>Description</h2>
       <p class="product-description"><%= @product.description %></p>
     </div>

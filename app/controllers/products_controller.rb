@@ -16,7 +16,9 @@ class ProductsController < ApplicationController
     update_rating
     @tab = 'product-comments'
     @product ||= Product.find( :id => params[:product_id])
-    @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
+    if !@product.user.pictures.empty?
+      @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
+    end
     @feature_groups = @product.feature_groups
     @comparison_features = @feature_groups.where(singles: false)
     @single_features = @feature_groups.where(singles: true).first

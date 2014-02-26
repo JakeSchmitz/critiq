@@ -83,6 +83,7 @@ class Product < ActiveRecord::Base
         f.product_id = self.id
       	f.save!
       end
+
     end 
 
     def has_pictures?

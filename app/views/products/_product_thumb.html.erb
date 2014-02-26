@@ -1,10 +1,10 @@
 <div class="thumbnail span2 product-thumb" style="text-align: center;">
-	<% if !product.profile_pic.nil? %>
+	<% if !product.pictures.empty? %>
 		<a href="/products/<%= product.id %>" data-toggle="modal">
-			<div class="thumb-ratio" style="background-image: url(<%= asset_path product.profile_pic.attachment.url(:large) %>);"></div>
+			<div class="thumb-ratio" style="background-image: url('<%= product.profile_pic.attachment.url(:large) %>');"></div>
 		</a>
 	<% else %>
-		<div class="thumb-ratio" style="background-image: url('/images/missing-user-avatar.png');"></div>
+		<div class="thumb-ratio" style="background-image: url('/images/missing-product.jpg');"></div>
 	<% end %>
 	<% if signed_in? and product.user.id == current_user.id%>
 		<div class="active-button">

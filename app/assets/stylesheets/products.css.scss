@@ -218,17 +218,27 @@
 
 .product-nav {
 	border: none;
+	text-align: center;
 	background-color: #313131;
 	width: 100%;
+	margin: 0px;
 	margin-top: 40px;
 	height: 42px;
-	padding-left: 25%;
-	.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-		background-color: #794f85;
-		border: none;
-	}
-	> a {
-		color: #fff;
+	.row {
+		display: inline-block;
+		text-align: center;
+		> li {
+			display: inline-block;
+			margin-right: -2px;
+		}
+		.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+			background-color: #794f85;
+			border: none;
+		}
+		> a {
+			display: inline-block;
+			color: #fff;
+		}
 	}
 }
 

@@ -51,14 +51,17 @@
     </div>
   </div>
 </div>
-<ul class="nav nav-tabs product-nav product-nav-content" id="product-tabs">
-  <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> Features</a></li>
-  <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> Crtiiqs (<%= @product.comments.length - 1%>)</a></li>
-  <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> Followers (<%= @product.likes.length.to_s %>)</a></li>
-  <li><a href="#product-bounties" data-toggle="tab"><i class="fa fa-star"></i> Bounties (<%= @product.bounties.length.to_s %>)</a></li>
-  <% if signed_in? and current_user.id == @product.user.id %>
-    <li><a href="#product_edit" data-toggle="tab"><i class="fa fa-cogs"></i> Edit</a></li>
-  <% end %>
+<ul class="product-nav product-nav-content" id="product-tabs">
+  <div class="row nav nav-tabs" style="text-align: center;">
+    <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> Features</a></li>
+    <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> Crtiiqs (<%= @product.comments.length - 1%>)</a></li>
+    <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> Followers (<%= @product.likes.length.to_s %>)</a></li>
+    <li><a href="#product-bounties" data-toggle="tab"><i class="fa fa-bullseye"></i> Bounties (<%= @product.bounties.length.to_s %>)</a></li>
+    <li><a href="#product-rewards" data-toggle="tab"><i class="fa fa-star"></i> Rewards</a></li>
+    <% if signed_in? and current_user.id == @product.user.id %>
+      <li><a href="#product_edit" data-toggle="tab"><i class="fa fa-cogs"></i> Edit</a></li>
+    <% end %>
+  </div>
 </ul>
 <div class="container">
   <div class="row span12 product-middle">
@@ -90,6 +93,10 @@
       </div>
       <div class="tab-pane row span12" id="product-bounties">
         <h2>Bounties!</h2>
+        <%= render :partial => 'product_bounties' %>
+      </div>
+      <div class="tab-pane row span12" id="product-rewards">
+        <h2>Earn rewards for your critiqs!</h2>
         <%= render :partial => 'product_bounties' %>
       </div>
       <div class="tab-pane row span12" id="product_edit">

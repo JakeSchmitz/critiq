@@ -1,12 +1,9 @@
-<div class="container" style="padding-top: 30px; min-height: 85%;">
+<div class="container" style="padding-top: 30px; min-height: 90%; text-align: center;">
 	<div class="row row-header">
 		<h2><%= @user.name.camelize %>'s dashboard</h2>
 	</div>
-	<div class="pull-left">
-		<%= render :partial => 'user_thumb' , locals: { user: @user } %>
-	</div>
 	<% if signed_in? and current_user.id == @user.id %>
-		<div class="span9" style="min-height: 100%;">
+		<div class="span" style="min-height: 100%; width: 90%">
 	    <ul class="nav nav-tabs" id="creation-tabs">
 	    	<% @products.each do |product| %>
 	    		<li><a href="#creation<%= product.id %>" data-toggle="tab"><%= product.name.camelize %></a></li>
@@ -18,19 +15,21 @@
 	    			<div class="pull-left span2" style="margin-left: -40px;">
 	    				<%= render :partial => '/products/product_thumb', locals: {product: product} %>
 	    			</div>
-	    			<div class="pull-right">
-	    				<%= image_tag(@daily_likes[product.id]) %>
+	    			<div class="pull-left" style="padding: 80px; padding-top: 0px;">
+	    				<%= image_tag(@daily_likes[product.id], style: 'margin-right: 30px;' )%>
 	    				<%= image_tag(@cummulative_ratings[product.id]) %>
 	    			</div>
-	    			<% if !@comparison_breakdowns[product.id].nil? %>
-		    			<div class="feature-graphs">
-		    				<% product.feature_groups.each do |fg| %>
-		    					<% if !@comparison_breakdowns[product.id][fg.id].nil? %>
-		    						<%= image_tag(@comparison_breakdowns[product.id][fg.id]) %>
-		    					<% end %>
-		    				<% end %>
-		    			</div>
-	    			<% end %>
+	    			<div class="row" style="margin: 20px;">
+		    			<% if !@comparison_breakdowns[product.id].nil? %>
+			    			<div class="feature-graphs">
+			    				<% product.feature_groups.each do |fg| %>
+			    					<% if !@comparison_breakdowns[product.id][fg.id].nil? %>
+			    						<%= image_tag(@comparison_breakdowns[product.id][fg.id]) %>
+			    					<% end %>
+			    				<% end %>
+			    			</div>
+		    			<% end %>
+	    			</div>
 	    		</div>
 	    	<% end %>
 	    </div>

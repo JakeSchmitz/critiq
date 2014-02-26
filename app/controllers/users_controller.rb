@@ -178,9 +178,6 @@ class UsersController < ApplicationController
         # array contains number of likes from date
         @product_likes[product.id] = Array.new(existance_length, 0)
         @product_ratings[product.id] = Array.new(existance_length, 0)
-        dates = Array.new(existance_length)
-        dates.each_with_index.map { |x,i| (existance_length - i).to_s }
-        puts dates.to_s
         product.likes.order('created_at ASC').each do |like|
           day_liked = (like.created_at.to_i - product.created_at.to_i) / seconds_per_day
           if @product_likes[product.id][day_liked].nil?
@@ -195,11 +192,10 @@ class UsersController < ApplicationController
           fg.features.each do |flike|
             day_liked = (flike.created_at.to_i - product.created_at.to_i) / seconds_per_day
             cumm_rating += 1
-            @product_ratings[product.id][day_liked..existance_length] = @product_ratings[product.id][day_liked..existance_length].map { |r| r += 1 }
+            @product_ratings[product.id][day_liked..existance_length] = @product_ratings[product.id][day_liked..existance_length].map { |r| r + 1 }
           end
         end
         @product_ratings[product.id][existance_length] = product.rating
-        puts @product_ratings[product.id].to_s
         @daily_likes[product.id] = Gchart.line(
                                       :type => 'line',
                                       :size => '300x240',
@@ -221,6 +217,7 @@ class UsersController < ApplicationController
                                       :legend => ['rating: ' + product.rating.to_s],
                                       )
       end
+      puts @product_likes.to_s
     end
 
     def features_data

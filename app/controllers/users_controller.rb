@@ -169,22 +169,23 @@ class UsersController < ApplicationController
     end
 
     def likes_data 
-      seconds_per_day = (60 * 60 * 24)
+      seconds_per_day = (60 * 60 * 24).to_i
       @products.each do |product|
         total_likes = 0
         cumm_rating = 0
         # how many days has this product existed
         existance_length = (Time.now.to_i - product.created_at.to_i) / seconds_per_day
         # array contains number of likes from date
-        @product_likes[product.id] = Array.new(existance_length, 0)
-        @product_ratings[product.id] = Array.new(existance_length, 0)
+        @product_likes[product.id] = Array.new(existance_length+1, 0)
+        @product_ratings[product.id] = Array.new(existance_length+1, 0)
         product.likes.order('created_at ASC').each do |like|
-          day_liked = (like.created_at.to_i - product.created_at.to_i) / seconds_per_day
+          day_liked = ((like.created_at.to_i - product.created_at.to_i) / seconds_per_day) + 1
           if @product_likes[product.id][day_liked].nil?
             @product_likes[product.id][day_liked] = 0
           end
+          puts product.name + " was liked on day: " + day_liked.to_s
           @product_likes[product.id][day_liked] += 1
-          @product_ratings[product.id][day_liked..existance_length] =   @product_ratings[product.id][day_liked..existance_length].map { |r| r + 10 }
+          @product_ratings[product.id][day_liked..existance_length] =   @product_ratings[product.id][day_liked..existance_length].map { |r| r.to_i + 10 }
           puts @product_ratings[product.id].to_s
           total_likes += 1
         end
@@ -192,7 +193,7 @@ class UsersController < ApplicationController
           fg.features.each do |flike|
             day_liked = (flike.created_at.to_i - product.created_at.to_i) / seconds_per_day
             cumm_rating += 1
-            @product_ratings[product.id][day_liked..existance_length] = @product_ratings[product.id][day_liked..existance_length].map { |r| r + 1 }
+            @product_ratings[product.id][day_liked..existance_length] = @product_ratings[product.id][day_liked..existance_length].map { |r| r.to_i + 1 }
           end
         end
         @product_ratings[product.id][existance_length] = product.rating
@@ -202,7 +203,8 @@ class UsersController < ApplicationController
                                       :title => 'Daily Likes',
                                       :data => @product_likes[product.id],
                                       :axis_with_labels => 'y',
-                                      :max_value => @product_likes[product.id].max,
+                                      :axis_range => [[0, existance_length + 1]],
+                                      :max_value => @product_likes[product.id].max.to_i + 2,
                                       :min_value => 0,
                                       :legend => ['total: ' + total_likes.to_s ],
                                       )
@@ -212,7 +214,7 @@ class UsersController < ApplicationController
                                       :title => 'Daily Rating',
                                       :data => @product_ratings[product.id],
                                       :axis_with_labels => 'y',
-                                      :max_value => @product_ratings[product.id].last.to_i + 10,
+                                      :max_value => product.rating + 10,
                                       :min_value => 0,
                                       :legend => ['rating: ' + product.rating.to_s],
                                       )

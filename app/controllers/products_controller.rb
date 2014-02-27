@@ -119,7 +119,6 @@ class ProductsController < ApplicationController
         respond_to do |format|
           if  @product.likes.create(:user_id => current_user.id)
             update_rating
-            @product.save
             Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :product, resource_id: @product.id)
             format.html { redirect_to @product, notice: 'Product was successfully updated.' }
             format.json { head :no_content }

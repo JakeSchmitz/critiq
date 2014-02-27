@@ -1,5 +1,5 @@
 <%- model_class = User -%>
-<div class="user-cover" style="min-height: 60%;"></div>
+<div class="user-cover"></div>
 <div class="container">
   <div class="row user-profile-top">
     <div class="user-middle">
@@ -12,7 +12,7 @@
         <% else %>
           <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('/images/missing-user-avatar.png');"></div>
         <% end %>
-        <h1><%= @user.name %></h1>
+        <h2 style="max-width: 600px;"><%= @user.name %></h2>
       </div>
       <div class="user-buttons <% if signed_in? and @user.id != current_user.id %>other-user-buttons<% end %>">
         <% if signed_in? and @user.id != current_user.id %>
@@ -23,28 +23,27 @@
         <% end %>
           <a href="#" class="btn-clear sm-button" style="margin-bottom: 5px;"><i class="fa fa-twitter fa-fw"></i></a>
           <a href="#" class="btn-clear sm-button"><i class="fa fa-facebook fa-fw"></i></a>
-          </br>
+          <br></br>
       </div>
-    <div class="span2 user-followers"><h4>Followers: <%= @user.lovers %></h4></div>
+      <div class="span2 user-followers"><h4>Followers: <%= @user.lovers %></h4></div>
     </div>
   </div>
 </div>
-<div class="container" style="padding-top: 5%; min-height: 40%;">
-  <%= render partial: 'recent_activity' %>
-  <div class="current-campaigns row">
+<div class="container" style="padding-top: 3%; min-height: 40%;">
+  <div class="current-campaigns">
     <h1>Current Campaigns</h1>
     <div class="pretty-divider"></div>
-    <div style="margin-left: auto; ">
+    <div class="row" style="text-align: center; display: inline-block;">
       <% @top_products.each do |product| %>
         <%= render :partial => '/products/product_thumb', locals: { product: product} %>
       <% end %>
     </div>
   </div>
   <% if !@old_products.empty? %>
-    <div class="past-campaigns row">
+    <div class="past-campaigns">
       <h1>Past Campaigns</h1>
       <div class="pretty-divider"></div>
-      <div style="margin-left: auto; ">
+      <div class="row" style="display: inline-block; ">
         <% @old_products.each do |product| %>
           <%= render :partial => '/products/product_thumb', locals: { product: product} %>
         <% end %>

@@ -86,10 +86,10 @@
 	background-image: url('/images/Profile-backgroundfull.svg');
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: 50% 60%;
+	background-position: 40% 70%;
 	width: 100%;
 	z-index: -1;
-	height: 400px;
+	height: 420px;
 	border-bottom:2px solid #aaaaaa;
 }
 
@@ -105,6 +105,7 @@
 
 .user-profile-top {
 	margin-left: auto;
+	height: 420px;
 	margin-right: auto;
 	> h1, h2, h3, h4 {
 		color: #fff;
@@ -113,7 +114,15 @@
 		margin-left: 23%;
 		width: auto;
 		height: auto;
+		text-align: center;
 	}
+}
+
+.current-campaigns {
+	text-align: center;
+}
+.past-campaigns {
+	text-align: center;
 }
 
 .user-rating {

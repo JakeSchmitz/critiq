@@ -185,15 +185,15 @@ class UsersController < ApplicationController
           end
           puts product.name + " was liked on day: " + day_liked.to_s
           @product_likes[product.id][day_liked] += 1
-          @product_ratings[product.id][day_liked..existance_length] =   @product_ratings[product.id][day_liked..existance_length].map { |r| r.to_i + 10 }
+          @product_ratings[product.id][day_liked..existance_length + 1] =   @product_ratings[product.id][day_liked..existance_length + 1].map { |r| r.to_i + 10 }
           puts @product_ratings[product.id].to_s
           total_likes += 1
         end
         product.feature_groups.each do |fg|
           fg.features.each do |flike|
-            day_liked = (flike.created_at.to_i - product.created_at.to_i) / seconds_per_day
+            day_liked = ((flike.created_at.to_i - product.created_at.to_i) / seconds_per_day) + 1
             cumm_rating += 1
-            @product_ratings[product.id][day_liked..existance_length] = @product_ratings[product.id][day_liked..existance_length].map { |r| r.to_i + 1 }
+            @product_ratings[product.id][day_liked..existance_length + 1] = @product_ratings[product.id][day_liked..existance_length + 1].map { |r| r.to_i + 1 }
           end
         end
         @product_ratings[product.id][existance_length] = product.rating

@@ -13,7 +13,7 @@
 				</div>
 				<div class="new-comment">
 	        <div class="current-user">
-	          <% if signed_in? %>
+	          <% if signed_in? and !current_user.pictures.empty? %>
 	            <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic.attachment.url(:thumb) %>');"></div>
 	          <% else %>
 	            <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>

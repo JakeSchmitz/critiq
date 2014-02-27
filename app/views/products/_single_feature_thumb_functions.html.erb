@@ -15,7 +15,7 @@
 		<% end %>
 	</div>
 	<div class="functions-middle">
-		<h4><%= feature.percent_like * 100 %>%</h4>
+		<h4><%= (feature.percent_like * 100.0).round(2) %>%</h4>
 	</div>
 	<div class="functions-right">
 		<% if signed_in? %>

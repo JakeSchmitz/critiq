@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def has_pics?
+    return !self.pictures.empty?
+  end
+
   private
 
     def create_remember_token

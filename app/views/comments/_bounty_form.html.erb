@@ -14,7 +14,7 @@
       <%= f.text_area :body, :placeholder => "Enter a Bounty Response Here", :maxlength => 1000, style: 'width: 600px; height: 100px; margin-left: 100px; margin-top: -108px; border-radius: 0px;' %>
     </div>
     <div class="actions">
-      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= f.submit nil, class: 'btn btn-primary', :name => "tab[#{tab}]" %>
     </div>
   <% end %>
 </div>

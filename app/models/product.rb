@@ -70,13 +70,14 @@ class Product < ActiveRecord::Base
     end
 
     def save_everything
+      self.pictures = ImageAsset.where(:product_id => self.id, :attachable_type => "Product")
+      self.pictures.each do |asset| 
+      	asset.product_id = self.id
+        asset.user_id = self.user.id
+        asset.save!
+      end 
       if !self.pictures.empty?
-      	self.product_pic = self.pictures.last
-        self.product_pic.save
-        self.pictures.each do |asset| 
-        	asset.product_id = self.id
-          asset.save!
-        end 
+        self.product_pic = self.pictures.last
       end
       self.feature_groups.each do |f|
       	f.product = self

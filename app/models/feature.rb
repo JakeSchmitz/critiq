@@ -19,6 +19,7 @@ class Feature < ActiveRecord::Base
     def save_pictures
       self.pictures.each do |asset| 
         asset.feature_id = self.id
+        asset.user_id = self.feature_group.product.user.id
         asset.product_id = self.feature_group.product.id
         asset.save!
       end 

@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
   def show
     set_product
     update_rating
-    @tab = 'product-comments'
+    puts "and the tab is...... " + params[:tab].to_s
+    @tab = params[:tab] || 'product-features'
     @product ||= Product.find( :id => params[:product_id])
     if !@product.user.pictures.empty?
       @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
@@ -159,7 +160,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :rating, :image, :description, :id, :pictures, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes], product_pic_attributes: [:attachment_attributes, :attachment, :id, :product_pic_attributes],
+      params.require(:product).permit(:name, :rating, :image, :description, :tab, :id, :pictures, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes], product_pic_attributes: [:attachment_attributes, :attachment, :id, :product_pic_attributes],
                                       lovers: [:product_id, :user_id])
     end
 

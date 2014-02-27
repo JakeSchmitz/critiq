@@ -35,9 +35,9 @@
         <div style="display: inline">
           <div class="product-pictures">
             <% if !@product.pictures.empty? %>
-              <div class="main-pic span6" style="background-image: url('<%= @product.product_pic.attachment.url(:large) %>');"></div>
+              <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
               <div class="other-pics span pull-left">
-                <% @top_pics.first(5).each do |pic| %>
+                <% @product.pictures.last(5).each do |pic| %>
                   <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
                 <% end %>
               </div>
@@ -56,7 +56,7 @@
   </div>
 </div>
 <ul class="nav nav-tabs product-nav product-nav-content row" id="product-tabs">
-  <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> Features</a></li>
+  <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> Vote</a></li>
   <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> Critiqs (<%= @product.comments.length - 1%>)</a></li>
   <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> Followers (<%= @product.likes.length.to_s %>)</a></li>
   <li><a href="#product-bounties" data-toggle="tab"><i class="fa fa-bullseye"></i> Bounties (<%= @product.bounties.length.to_s %>)</a></li>
@@ -80,7 +80,7 @@
               <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
             <% end %>
           </div>
-          <%= render :partial => '/comments/product_form' %>
+          <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments'} %>
         </div>
         <% if !@product.comments.empty? %> 
           <div style="padding-top: 20px; padding-left: 100px;">
@@ -124,6 +124,6 @@
 
 <script>
   $(function () {
-    $('#product-tabs a[href="#<%= @tab %>').tab('show')
+    $('#product-tabs a[href="#<%= @tab || "product-features"%>').tab('show')
   })
 </script>

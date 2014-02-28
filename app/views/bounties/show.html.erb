@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="min-height: 90%;">
 	<h2>Bounty for <%= @product.name %></h2>
 	<div class="product-bounties">
 		<div class="single-bounty">
@@ -14,7 +14,7 @@
 	          <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
 	        <% end %>
 	      </div>
-	      <%= render :partial => '/comments/bounty_form', locals: { bounty: @bounty } %>
+	      <%= render :partial => '/comments/bounty_form', locals: { bounty: @bounty, tab: 'product-bounties' } %>
 	    </div>
 			<div class="bounty-responses" style="margin-left: 10%;">
 				<% if @bounty.comments.empty? %>

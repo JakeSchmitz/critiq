@@ -5,7 +5,7 @@
 .home-banner {
   background: url(/images/Home-banner.jpg) no-repeat top center fixed;
   -webkit-background-size: cover;
-  height: 70%;
+  height: auto;
   width: 100%;
   color: #eeeeee;
   z-index: -1;
@@ -39,7 +39,6 @@
 	margin-bottom: 30px;
 	.row {
 		display: inline-block;
-		margin-left: 40px;
 	}
 }
 

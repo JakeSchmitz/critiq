@@ -32,11 +32,13 @@
 	<div class="featured-campaigns">
 		<h1>Featured Drives</h1>
 		<div class="pretty-divider"></div>
-		<div class="row">
-			<% @top_products.each do |product| %>
-				<%= render :partial => '/products/product_thumb', locals: { product: product } %>
-			<% end %>
-		</div>
+		<% @top_products.each_slice(4).each do |four_products| %>
+			<div class="row">
+				<% four_products.each do |product| %>
+					<%= render :partial => '/products/product_thumb', locals: { product: product } %>
+				<% end %>
+			</div>
+		<% end %>
 	</div>	
 	<div class="featured-makers">
 		<h1>Featured Makers</h1>

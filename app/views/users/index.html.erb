@@ -12,11 +12,13 @@
 -->
 <div class="container" style="min-height: 90%; margin-top: 5%; text-align: center;">
   <h1>Critiqers and Creators</h1>
-  <div class="row" style="text-align: center; display: inline-block;">
-    <ul class="thumbnails" style="padding-top: 20px; display: inline-block;">
-      <% @users.each do |user| %>
-        <%= render :partial => 'user_thumb' , locals: { user: user } %>
-      <% end %>
-    </ul>
-  </div>  
+  <% @users.each_slice(4).each do |four_users| %>
+    <div class="row" style="text-align: center; display: inline-block;">
+      <ul class="thumbnails" style="padding-top: 20px; display: inline-block;">
+        <% four_users.each do |user| %>
+          <%= render :partial => 'user_thumb' , locals: { user: user } %>
+        <% end %>
+      </ul>
+    </div>  
+  <% end %>
 </div>

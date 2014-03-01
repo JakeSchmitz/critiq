@@ -5,15 +5,14 @@
 .home-banner {
   background: url(/images/Home-banner.jpg) no-repeat top center fixed;
   -webkit-background-size: cover;
-  height: 400px;
+  height: 70%;
   width: 100%;
   color: #eeeeee;
-  font-weight: thinner;
   z-index: -1;
   text-align: center;
   border-radius: 0px;
   .hero-header {
-	  margin-top: -20px;
+	  margin-top: 5%;
 	  font-family: "Times New Roman", Times, serif;
 	  text-align: center;
 	  padding-bottom: 10px;
@@ -23,10 +22,9 @@
 	  margin-right: auto;
 	}
 	.hero-description {
-		padding: 20px;
+		padding-top: 20px;
 		width: 80%;
-		margin-left: auto;
-	  margin-right: auto;
+		margin: 0 auto;
 	}
 }
 

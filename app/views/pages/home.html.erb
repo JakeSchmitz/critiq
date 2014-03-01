@@ -1,7 +1,6 @@
 <div class="hero-unit home-banner">
 	<div class="hero-text hero-header">
-		<h1>Feedback on Anything</h1>
-		<h1>Curated by Everyone</h1>
+		<h1>Feedback on Anything, Curated by Everyone</h1>
 	</div>
 	<div class="hero-description">
 		<p>Launch a feedback drive for a project and crowdsource opinions from a spread of customers, enthusiasts, and experts.</p>
@@ -9,8 +8,7 @@
 	<div class="home-buttons">
 		<%= button_to 'START A DRIVE', new_product_path, :method => "get", :class => "btn-clear"%>
 	 	<% if !signed_in? %>
-	    <%= button_to 'SIGN UP', signin_path, :method => "get", :class => "btn-clear" %>
-	    <%= button_to 'SIGN IN', signin_path, :method => "get", :class => "btn-clear"%>
+	    <%= button_to 'SIGN UP OR SIGN IN', signin_path, :method => "get", :class => "btn-clear" %>
 	  <% end %>
   </div>
 </div>

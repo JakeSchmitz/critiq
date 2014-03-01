@@ -8,7 +8,7 @@
 <% end %>
 <div class="container">
   <div class="row">
-    <div class="span" style="width: 70%;">
+    <div class="span" style="width: 69%;">
       <div class="product-left">
         <h1 class="product-name"><%= @product.name %></h1>
         <div class="product-creator">
@@ -32,19 +32,17 @@
             <% end %>
           </div>
         </div>
-        <div style="display: inline">
-          <div class="product-pictures">
-            <% if !@product.pictures.empty? %>
-              <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
-              <div class="other-pics span pull-left">
-                <% @product.pictures.last(5).each do |pic| %>
-                  <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
-                <% end %>
-              </div>
-            <% else %>
-              <%= image_tag "/images/missing-image.jpg" %>
-            <% end %> 
-          </div>
+        <div class="product-pictures">
+          <% if !@product.pictures.empty? %>
+            <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
+            <div class="other-pics span pull-left">
+              <% @product.pictures.last(5).each do |pic| %>
+                <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
+              <% end %>
+            </div>
+          <% else %>
+            <%= image_tag "/images/missing-image.jpg" %>
+          <% end %> 
         </div>
       </div>
     </div>

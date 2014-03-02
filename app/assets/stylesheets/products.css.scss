@@ -15,8 +15,8 @@
 }
 
 .product-thumb {
-	height: 330px;
-	width: 200px;
+	height: 370px;
+	width: 250px;
 	background-color: #fff;
 	padding:10px;
 	margin-bottom: 10px;
@@ -56,16 +56,16 @@
 }
 
 .product-thumbnail {
-	height: 330px;
-	width: 200px;
+	height: 370px;
+	width: 250px;
 }
 
 .thumbnail {
 	display: inline-block;
 	.active-button {
 		position: absolute;
-		margin-top: -320px;
-		margin-left: 170px;
+		margin-top: -360px;
+		margin-left: 220px;
 	}
 	.view-button {
 		display: none;
@@ -106,8 +106,8 @@
 		display: inline-block;
 		text-align: center;
 		position: absolute;
-		margin-left: -45px;
-		margin-top: -200px;
+		margin-left: -40px;
+		margin-top: -250px;
 		border-width: 1px;
 	}
 }

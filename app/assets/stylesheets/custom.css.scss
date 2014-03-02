@@ -67,11 +67,23 @@ h4 {
   font-weight: 400;
 }
 
+
 p {
   font-size: 14px;
   line-height: 1.4em;
   font-family: proxima-nova-n9, proxima-nova, sans-serif;
   font-style: normal;
+}
+
+/* Fonts for Mobile */
+@media only screen and (max-device-width: 480px) {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.0;
+    font-weight: 300;
+  }
+  p {
+    line-height: 1.2em;
+  }
 }
 
 /* header */
@@ -111,9 +123,10 @@ footer {
     padding-bottom: 0px;
     width: 100%;
     min-height: 40px;
+    text-align: center;
     > ul {
-      margin-left: 40%;
-      float: center;
+      display: inline-block;
+      text-align: center;
     }
     background-color: #3d3d3d;
   }
@@ -124,16 +137,8 @@ footer a {
   color: #fff;
 }
 
-footer small {
-  float: left;
-}
-
-footer ul {
-  float: right;
-  list-style: none;
-}
-
 footer ul li {
+  list-style: none;
   float: left;
   margin-left: 10px;
 }
@@ -382,3 +387,4 @@ div.file_upload_wrapper:hover {
     margin-bottom: 5px;
   }
 }
+

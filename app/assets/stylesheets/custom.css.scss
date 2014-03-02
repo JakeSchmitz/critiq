@@ -6,6 +6,7 @@ html {
 
 body {
   margin-top: 40px;
+  padding: 0px;
   padding-top: 20px;
   height: 100%;
   background-color: #f4f4f4;
@@ -75,17 +76,6 @@ p {
   font-style: normal;
 }
 
-/* Fonts for Mobile */
-@media only screen and (max-device-width: 480px) {
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1.0;
-    font-weight: 300;
-  }
-  p {
-    line-height: 1.2em;
-  }
-}
-
 /* header */
 
 #logo {
@@ -114,7 +104,7 @@ footer {
   .upper-footer {
     width: 100%;
     padding: 10px;
-    height: 40px;
+    height: auto;
     color: #fff;
     background-color: #6d2cfa;
   }
@@ -122,7 +112,7 @@ footer {
     padding: 8px;
     padding-bottom: 0px;
     width: 100%;
-    min-height: 40px;
+    height: auto;
     text-align: center;
     > ul {
       display: inline-block;
@@ -388,3 +378,21 @@ div.file_upload_wrapper:hover {
   }
 }
 
+/* Mobile-ish */
+@media only screen and (max-device-width: 480px) {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.0;
+    font-weight: 300;
+  }
+  p {
+    line-height: 1.2em;
+  }
+  footer {
+    width: 100%;
+  }
+  .home-banner {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+  }
+}

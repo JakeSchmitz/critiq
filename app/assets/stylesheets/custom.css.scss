@@ -396,3 +396,36 @@ div.file_upload_wrapper:hover {
     width: 100%;
   }
 }
+.navbar .container {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* navbar on small screen ish */
+@media only screen and (max-device-width: 979px) {
+  .navbar .container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .navbar {
+    background-color: #828282;
+    .brand {
+      margin-left: 5%;
+    }
+    .btn-navbar {
+      margin-right: 5%;
+    }
+    .navbar-inner {
+      background-color: #6d2cfa;
+      
+      background-image: none;
+      box-shadow: 0px 1px 4px 1px #657;
+      border: none;
+    }
+    .nav {
+      > li {
+        color: #fff;
+      }
+    }
+  }
+}

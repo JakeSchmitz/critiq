@@ -3,7 +3,7 @@ Critiq0::Application.routes.draw do
   resources :activities
 
   resources :products do
-    resources :pictures
+    resources :pictures, controller: 'image_assets'
     resources :likes
     post 'pictures/new' => :upload_picture, as: 'pic_upload'
     resources :comments do
@@ -18,7 +18,7 @@ Critiq0::Application.routes.draw do
     end
     resources :feature_groups do 
       resources :features do
-        resources :pictures
+        resources :pictures, controller: 'image_assets'
         get 'upvote'  => :upvote
         get 'downvote'  => :downvote
       end
@@ -30,7 +30,7 @@ Critiq0::Application.routes.draw do
   end
 
   resources :users do
-    resources :pictures 
+    resources :pictures, controller: 'image_assets'
     post 'pictures/new' => :upload_picture, as: 'pic_upload'
     get 'propic/:image_id/' => :change_profile_picture, as: 'profile_pic'
     get 'dashboard' => :dashboard

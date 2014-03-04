@@ -36,7 +36,7 @@
           <% if !@product.pictures.empty? %>
             <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
             <div class="other-pics span pull-left">
-              <% @product.pictures.last(5).each do |pic| %>
+              <% @top_pics.first(5).each do |pic| %>
                 <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
               <% end %>
             </div>
@@ -107,15 +107,15 @@
         <div class="edit-pictures span5 pull-left">
           <h3>Campaign Pictures</h3>
           <div class="row">
-            <% @top_pics.each do |pic| %>
+            <% @product.pictures.where.not(:attachment_file_name => nil).each do |pic| %>
               <div class="product-pic-thumb thumb-ratio" style="width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>'); display: inline-block;"></div>
             <% end %>
           </div>
-          <div class="product-image-upload">
-            <%= render :partial => 'multi_upload' %>
-          </div>
         </div>
-      </div>
+         <div class="jquery-product-image-upload span10">
+          <%= render :partial => 'jquery_image_uploader' %>
+        </div>
+      </div>  
     </div>
   </div>
 </div>

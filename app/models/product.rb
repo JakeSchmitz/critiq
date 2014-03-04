@@ -13,7 +13,6 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :feature_groups, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
   attr_accessible :name, :description, :rating, :likes, :pictures, :active, :pictures_attributes, :product_pic, :product_pic_attricbutes, :feature_groups, likes: [:product_id, :user_id]
-  after_update :save_everything
 
   def liked?(id, type)
     if get_likes(id, type).length > 0

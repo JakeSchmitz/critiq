@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     @likers = Array.new
     @top_pics = @product.pictures.where.not(:attachment_file_size => nil).order('created_at DESC').limit(5)
     @product.likes.first(100).each do |like|
-      @likers << User.find(like.user_id)
+      @likers << like.user
     end
   end
 
@@ -102,12 +102,23 @@ class ProductsController < ApplicationController
 
   def upload_picture
     @product = Product.find(params[:product_id]) || Product.find(params[:id])
-    if @product.user.id == current_user.id
-      puts "Uploading image " + params[:upload].to_s
-      @product.pictures.build(params[:upload])
-      @product.save
+    respond_to do |format|
+      @image_asset = ImageAsset.new(params[:upload])
+      if @product.user.id == current_user.id
+        puts "Uploading image " + @image_asset.to_s
+        @product.pictures.build(params[:upload])
+        if @product.save
+          format.html {
+            render :json => [@image_asset.to_jq_upload],
+            :content_type => 'text/html',
+            :layout => false
+          }
+          format.json { render json: {files: [@image_asset.to_jq_upload]}, status: :created, location: @image_asset}
+        else
+          format.json { render json: @image_asset.errors, status: :unprocessable_entity }
+        end
+      end
     end
-    redirect_to @product
   end
 
   def love

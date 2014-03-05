@@ -53,7 +53,7 @@ class ImageAssetsController < ApplicationController
 	end
 
   def destroy
-    @asset = @attachable.assets.find(params[:id])
+    @asset = @attachable.pictures.find(params[:id])
     @asset.destroy
     redirect_to @attachable
   end

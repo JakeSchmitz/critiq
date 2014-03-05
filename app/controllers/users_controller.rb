@@ -166,6 +166,7 @@ class UsersController < ApplicationController
       @cummulative_ratings = Hash.new
       likes_data
       features_data
+      puts @comparison_counts.to_s
     end
 
     def likes_data 
@@ -230,6 +231,7 @@ class UsersController < ApplicationController
         @comparison_counts[product.id] = Hash.new
         # build hashes from feature_group to the graphics for each product
         @comparison_breakdowns[product.id] = Hash.new
+        # Generate data for comparative features
         product.feature_groups.where(singles: false).each do |fg|
           labels = Array.new
           # This FG gets its own hash from feature_id -> vote count
@@ -250,6 +252,32 @@ class UsersController < ApplicationController
                                         :data => @comparison_counts[product.id][fg.id], 
                                         :labels => labels,
                                         :size => '400x200')
+          end
+        end #End comparative features
+        product.feature_groups.where(singles: true).each do |singles|
+          # singleton votes in  from [p_id][fg_id][single_f_id] -> count array with only 2 indices (upvotes/ downvotes)
+          @comparison_counts[product.id][singles.id] = Hash.new
+          @comparison_counts[product.id][singles.id][:up] = Array.new(singles.features.size, 0)
+          @comparison_counts[product.id][singles.id][:down] = Array.new(singles.features.size, 0)
+          @comparison_counts[product.id][singles.id][:names] = Array.new(singles.features.size, '')
+          singles.features.each_with_index do |f, i|  
+            @comparison_counts[product.id][singles.id][:up][i] = f.likes.where(:up => true).size
+            @comparison_counts[product.id][singles.id][:down][i] = f.likes.where(:up => false).size 
+            @comparison_counts[product.id][singles.id][:names][i] = f.name
+          end
+          if !singles.features.empty?
+            @comparison_breakdowns[product.id][singles.id] = Gchart.bar(
+                                        data: [@comparison_counts[product.id][singles.id][:up], @comparison_counts[product.id][singles.id][:down]],
+                                        legend: @comparison_counts[product.id][singles.id][:names],
+                                        stacked: true,
+                                        :bar_colors => 'ff0000,0000ff',
+                                        horizontal: true,
+                                        title: 'Single Features',
+                                        size: '500x250'
+                                        )
+            puts 'Here is a comparison Breakdown\n\n' + @comparison_counts.to_s
+            puts 'blah\n'
+            puts 'blah\n'
           end
         end
       end

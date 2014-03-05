@@ -109,11 +109,14 @@
           <div class="row">
             <% @product.pictures.where.not(:attachment_file_name => nil).each do |pic| %>
               <div class="product-pic-thumb thumb-ratio" style="width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>'); display: inline-block;"></div>
+              <div class="pic-btns">
+                <%= link_to glyph(:trash), product_picture_path(@product.id, pic.id), :method => :delete, data: { :confirm => "You sure?"} , style: 'color:#ff0000' %>
+              </div>
             <% end %>
           </div>
         </div>
-         <div class="jquery-product-image-upload span10">
-          <%= render :partial => 'jquery_image_uploader' %>
+        <div class="jquery-product-image-upload span10">
+            <%= render :partial => 'jquery_image_uploader' %>
         </div>
       </div>  
     </div>

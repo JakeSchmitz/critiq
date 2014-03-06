@@ -16,16 +16,16 @@
 	    			<div class="pull-left span2" style="margin-left: -40px;">
 	    				<%= render :partial => '/products/product_thumb', locals: {product: product} %>
 	    			</div>
-	    			<div class="pull-left" style="padding: 80px; margin-left: 30px;;">
-	    				<%= image_tag(@daily_likes[product.id], style: 'margin-right: 30px;' )%>
+	    			<div class="pull-left span8" style="padding: 80px; margin-left: 30px;">
+	    				<%= image_tag(@daily_likes[product.id] )%>
 	    				<%= image_tag(@cummulative_ratings[product.id]) %>
 	    			</div>
-	    			<div class="row" style="margin: 20px;">
+	    			<div class="row" style="width: 100%;">
 		    			<% if !@comparison_breakdowns[product.id].nil? %>
 			    			<div class="feature-graphs">
 			    				<% product.feature_groups.each do |fg| %>
 			    					<% if !@comparison_breakdowns[product.id][fg.id].nil? %>
-			    						<div class="feature-chart" style="display: inline-block; margin: 20px">
+			    						<div class="feature-chart" style="display: inline-block; margin-bottom: 20px; padding-right: 10px;">
 				    						<%= image_tag(@comparison_breakdowns[product.id][fg.id]) %>
 			    						</div>
 			    					<% end %>

@@ -50,4 +50,7 @@
       </div>
     </div>
   <% end %>
+  <% if signed_in? and @user.id == current_user.id %>
+    <%= render partial: 'user_image_upload_form' %>
+  <% end %>
 </div>

@@ -101,11 +101,24 @@ class UsersController < ApplicationController
 
   def upload_picture
     @user = User.find(params[:user_id])
-    if @user.id == current_user.id
-      @user.pictures.build(params[:image_asset])
-      @user.save
+    respond_to do |format|
+      @image_asset = ImageAsset.new(params[:upload])
+      if @user.id == current_user.id
+        @user.pictures.build(params[:upload])
+        @user.propic_id = @image_asset.id
+        Activity.create(timestamp: Time.now, user_id: @user.id, activity_type: :create, resource_type: :image_asset, resource_id: @image_asset.id)
+        if @user.save
+          format.html {
+            render :json => [@image_asset.to_jq_upload],
+            :content_type => 'text/html',
+            :layout => false
+          }
+          format.json { render json: {files: [@image_asset.to_jq_upload]}, status: :created, location: @image_asset}
+        else
+          format.json { render json: @image_asset.errors, status: :unprocessable_entity }
+        end
+      end
     end
-    redirect_to @user
   end
 
   def dashboard 

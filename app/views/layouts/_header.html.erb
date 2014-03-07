@@ -1,32 +1,30 @@
 <nav class="navbar navbar-fixed-top" role="navigation">
-  <div class="navbar-inner" style="height:50px;">
-    <div class="container">
-      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand toggle-menu menu-left" href="/home"><%= image_tag '/images/critiq-outline.png', style: 'width: 150px; margin-top: -3px;' %></a>
-      <div class="container nav-collapse">
-        <ul class="nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="/products">Drives</a></li>
-              <li><a href="/users">Users</a></li>
-            </ul>
-          </li>
-          <li><%= link_to 'Launch Drive', new_product_path %>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-        <div style="display:inline-block;" class="pull-right">
-          <% if !signed_in? %>
-            <%= render '/layouts/nav_login' %>
-          <% else %>
-            <%= render '/layouts/nav_signedin' %>
-          <% end %>
+  <div class="navbar-inner">
+    <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <a class="brand toggle-menu menu-left" href="/home"><%= image_tag '/images/critiq-outline.png', style: 'width: 150px; margin-top: -3px;' %></a>
+    <div class="nav-collapse">
+      <ul class="nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/products">Drives</a></li>
+            <li><a href="/users">Users</a></li>
+          </ul>
+        </li>
+        <li><%= link_to 'Launch Drive', new_product_path %>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <% if !signed_in? %>
+          <%= render '/layouts/nav_login' %>
+        <% else %>
+          <%= render '/layouts/nav_signedin' %>
+        <% end %>
       </div>
-      </div><!--/.nav-collapse -->
     </div>
   </div>
 </nav>

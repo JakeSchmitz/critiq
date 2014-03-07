@@ -94,8 +94,8 @@
 
 .thumbnail:hover {
 	.product-thumb-content {
-	  margin-top: -82px;
-	  height: 42px;
+	  margin-top: -102px;
+	  height: 62px;
 		.product-thumb-description {
 			text-align: center;
 			display: block;
@@ -181,11 +181,13 @@
 
 .product-pictures {
 	.main-pic {
-		width: 68%;
+		max-width: 90%;
+		min-width: 350px;
 		height: 350px;
 		background-size: cover;
 		border: 1px solid #4b4b4b;
 		margin: 0px;
+		margin-left: 5px;
 	}
 	.other-pics {
 		width: 90px;
@@ -201,13 +203,9 @@
 }
 
 .product-right {
-	margin-top: 10%;
-	border-left: 1px solid #dadada;
-	margin-left: -10%;
-	width: 30%;
-	min-height: 400px;
 	float: left;
-	padding: 20px 0 20px 20px;
+	max-width: 390px;
+	margin-left: 25px;
 	color: #fff;
 	text-align: center;
 	> h2 {
@@ -306,4 +304,19 @@
 	margin-left: -20px; 
 	margin-top: 5px;
 	position: absolute;
+}
+
+@media only screen and (max-device-width: 980px) {
+	.product-right {
+		margin-top: 0px;
+	}
+	.other-pics {
+		margin-top: 5px;
+	}
+}
+
+@media only screen and (min-device-width: 1200px) {
+	.product-right{
+	  margin-top: 8%;
+	}
 }

@@ -264,7 +264,7 @@ class UsersController < ApplicationController
             @comparison_breakdowns[product.id][fg.id] = Gchart.pie(
                                         :data => @comparison_counts[product.id][fg.id], 
                                         :labels => labels,
-                                        :size => '400x200')
+                                        :size => '475x260')
           end
         end #End comparative features
         product.feature_groups.where(singles: true).each do |singles|
@@ -281,12 +281,15 @@ class UsersController < ApplicationController
           if !singles.features.empty?
             @comparison_breakdowns[product.id][singles.id] = Gchart.bar(
                                         data: [@comparison_counts[product.id][singles.id][:up], @comparison_counts[product.id][singles.id][:down]],
-                                        legend: @comparison_counts[product.id][singles.id][:names],
+                                        :axis_with_labels => 'x,y',
+                                        legend: ['Up', 'Down'],
+                                        axis_labels: @comparison_counts[product.id][singles.id][:names],
                                         stacked: true,
                                         :bar_colors => 'ff0000,0000ff',
                                         horizontal: true,
+                                        :bar_width_and_spacing => [30,20],
                                         title: 'Single Features',
-                                        size: '500x250'
+                                        size: '475x260'
                                         )
             puts 'Here is a comparison Breakdown\n\n' + @comparison_counts.to_s
             puts 'blah\n'

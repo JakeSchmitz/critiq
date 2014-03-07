@@ -9,7 +9,7 @@
 <div class="black-wrapper">
 <div class="container">
   <div class="row">
-    <div class="span" style="width: 69%;">
+    <div class="span" style="width: auto;">
       <div class="product-left">
         <h1 class="product-name"><%= @product.name %></h1>
         <div class="product-creator">
@@ -36,7 +36,7 @@
         <div class="product-pictures">
           <% if !@product.pictures.empty? %>
             <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
-            <div class="other-pics span pull-left">
+            <div class="other-pics pull-left">
               <% @top_pics.first(5).each do |pic| %>
                 <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
               <% end %>
@@ -48,9 +48,11 @@
       </div>
     </div>
     <div class="product-right">
-      <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; margin-top: -20px;' %>
-      <h2>Description</h2>
-      <p class="product-description"><%= @product.description %></p>
+      <div class="well" style="border-radius: 5px; color: #313131; padding: 10px;">
+        <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %>
+        <h2>Description</h2>
+        <p class="product-description"><%= @product.description %></p>
+      </div>
     </div>
   </div>
 </div>

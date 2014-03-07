@@ -20,12 +20,12 @@
 	    				<%= image_tag(@daily_likes[product.id] )%>
 	    				<%= image_tag(@cummulative_ratings[product.id]) %>
 	    			</div>
-	    			<div class="row" style="width: 100%;">
+	    			<div class="row" style="width: 100%; text-align: center;">
 		    			<% if !@comparison_breakdowns[product.id].nil? %>
 			    			<div class="feature-graphs">
 			    				<% product.feature_groups.each do |fg| %>
 			    					<% if !@comparison_breakdowns[product.id][fg.id].nil? %>
-			    						<div class="feature-chart" style="display: inline-block; margin-bottom: 20px; padding-right: 10px;">
+			    						<div class="feature-chart" style="display: inline-block; margin-bottom: 20px; text-align: center;">
 				    						<%= image_tag(@comparison_breakdowns[product.id][fg.id]) %>
 			    						</div>
 			    					<% end %>

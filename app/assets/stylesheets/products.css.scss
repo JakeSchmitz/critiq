@@ -181,9 +181,10 @@
 }
 
 .product-pictures {
+	text-align: center;
 	.main-pic {
-		max-width: 90%;
-		min-width: 350px;
+		max-width: 95%;
+		min-width: 50%;
 		height: 350px;
 		background-size: cover;
 		border: 1px solid #4b4b4b;
@@ -196,7 +197,6 @@
 		float: left;
 		.alt-pic {
 			margin-bottom: 5px;
-			margin-left: 10px;
 			display: block;
 			height: 66px;
 		}

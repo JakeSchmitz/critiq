@@ -38,7 +38,7 @@
             <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
             <div class="other-pics pull-left">
               <% @top_pics.first(5).each do |pic| %>
-                <div class="alt-pic thumb-ratio"><div style="background-image: url('<%= pic.attachment.url(:thumb) %>'); width: 90px; height: 66px;"></div></div>
+                <div class="thumb-ratio alt-pic "><div style="background-image: url('<%= pic.attachment.url(:thumb) %>'); width: 90px; height: 66px;"></div></div>
               <% end %>
             </div>
           <% else %>

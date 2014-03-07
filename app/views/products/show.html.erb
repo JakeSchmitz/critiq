@@ -23,7 +23,7 @@
           </div>
           <div class="product-buttons">
             <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) %>
-              <%= button_to 'FOLLOW', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button" %>
+              <%= button_to 'FOLLOW', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
             <% elsif !signed_in? %>
               <h4 style="margin-top: 0px; text-align: center; color: #fff;">Sign in or Sign Up to Vote and Comment</h4>
             <% end %>
@@ -57,7 +57,7 @@
   </div>
 </div>
 </div></div>
-<div class="pnav" style="text-align: center; width: 100%;">
+<div class="pnav" style="text-align: center; width: 100%; margin: none;">
   <ul class="nav nav-tabs product-nav product-nav-content row" id="product-tabs">
     <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> Vote</a></li>
     <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> Critiqs (<%= @product.comments.length - 1%>)</a></li>

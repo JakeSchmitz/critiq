@@ -2,6 +2,8 @@
 
 html {
   height: 100%;
+  width: auto !important;
+  overflow-x: hidden !important;
 }
 
 body {
@@ -10,6 +12,8 @@ body {
   padding-top: 20px;
   height: 100%;
   background-color: #f4f4f4;
+  width: auto !important;
+  overflow-x: hidden !important;
 }
 
 .background-splatter1 {

@@ -125,6 +125,8 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
 	z-index: -1;
 	height:auto;
 }
@@ -164,10 +166,9 @@
 	}
 	.creator-data {
 		float: left;
-		padding: 0 30px 8px 60px;
 		text-align: left;
-		margin-left: -50px;
-		width: 400px;
+		margin-left: 0px;
+		width: auto;
 		>h5 {
 			color: #fff;
 		}
@@ -175,7 +176,7 @@
 	.product-buttons {
 		padding-top: 10px;
 		display: inline-block;
-		margin-left: -100px;
+		margin-left: 10px;
 	}
 }
 
@@ -204,8 +205,9 @@
 
 .product-right {
 	float: left;
-	max-width: 390px;
-	margin-left: 25px;
+	min-width: 320px;
+	max-width: 30%;
+	margin-left: 20px;
 	color: #fff;
 	text-align: center;
 	> h2 {

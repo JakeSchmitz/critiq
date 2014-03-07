@@ -12,7 +12,7 @@
     <div class="span" style="width: auto;">
       <div class="product-left">
         <h1 class="product-name"><%= @product.name %></h1>
-        <div class="product-creator">
+        <div class="product-creator" style="display: inline-block;">
           <% if @product.user.pictures.empty? %>
             <div class="img-circle creator-face" style="background-image: url('/images/missing-user-avatar.png');"></div>
           <% else %>
@@ -28,8 +28,8 @@
               <h4 style="margin-top: 0px; text-align: center; color: #fff;">Sign in or Sign Up to Vote and Comment</h4>
             <% end %>
             <% if signed_in? and current_user.id == @product.user.id %>
-              <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button"%>
-              <%= button_to 'DELETE', product_path(@btn), :method => 'delete', :class => "btn-clear inline-button"%>
+              <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
+              <%= button_to 'DELETE', product_path(@btn), :method => 'delete', :class => "btn-clear inline-button", style: 'float: left;' %>
             <% end %>
           </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
             <div class="other-pics pull-left">
               <% @top_pics.first(5).each do |pic| %>
-                <div class="alt-pic thumb-ratio" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
+                <div class="alt-pic thumb-ratio"><div style="background-image: url('<%= pic.attachment.url(:thumb) %>'); width: 90px; height: 66px;"></div></div>
               <% end %>
             </div>
           <% else %>

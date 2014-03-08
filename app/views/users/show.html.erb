@@ -1,19 +1,21 @@
 <%- model_class = User -%>
-<div class="user-cover"></div>
+<div class="user-cover">
 <div class="container">
   <div class="row user-profile-top">
-    <div class="user-middle">
-      <div class="span2 user-rating">
-        <h4>Rating: <%= @user.swagger %></h4>
-      </div>
-      <div class="span3 user-face">
+    <div class="user-middle">     
+      <div class="span user-face">
         <% if @user.profile_pic %>
           <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic.attachment.url(:medium) %>');"></div>
         <% else %>
           <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('/images/missing-user-avatar.png');"></div>
         <% end %>
-        <h2 style="max-width: 600px;"><%= @user.name %></h2>
       </div>
+    </div>
+    <div class="user-data">
+      <h5><i class="fa fa-heart fa-lg" style="margin-top: 2px;"></i> <%= @user.swagger %> &nbsp;&nbsp;&nbsp;<i class="fa fa-users fa-lg"></i> <%= @user.lovers %></h5>
+    </div>
+    <div class="row">
+      <h2 style="width: 100%;"><%= @user.name %></h2>
       <div class="user-buttons <% if signed_in? and @user.id != current_user.id %>other-user-buttons<% end %>">
         <% if signed_in? and @user.id != current_user.id %>
           <%= button_to 'MESSAGE', '#', :method => "get", :class => "btn-clear inline-button"%>
@@ -25,11 +27,11 @@
           <a href="#" class="btn-clear sm-button"><i class="fa fa-facebook fa-fw"></i></a>
           <br></br>
       </div>
-      <div class="span2 user-followers"><h4>Followers: <%= @user.lovers %></h4></div>
     </div>
   </div>
 </div>
-<div class="container" style="padding-top: 3%; min-height: 40%;">
+</div>
+<div class="container">
   <div class="current-campaigns">
     <h1>Current Campaigns</h1>
     <div class="pretty-divider"></div>

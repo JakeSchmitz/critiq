@@ -12,7 +12,7 @@
 .user-banner {
     background: url(/images/community.jpg) no-repeat top center fixed;
     -webkit-background-size: cover;
-    height: 400px;
+    height: auto;
     background-size: cover;
 }
 
@@ -82,38 +82,37 @@
 }
 
 .user-cover {
-	position: absolute;
 	background-image: url('/images/Profile-backgroundfull.svg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 40% 70%;
 	width: 100%;
+	text-align: center;
 	z-index: -1;
-	height: 420px;
 	border-bottom:2px solid #aaaaaa;
 }
 
 .user-face {
 	text-align: center;
-	margin-top: 50px;
 	position: relative;
 	z-index: 5;
+	margin-left: 0px;
 	> h1, h2, h3, h4 {
 		color: #fff;
 	}
 }
 
 .user-profile-top {
-	margin-left: auto;
-	height: 420px;
-	margin-right: auto;
+	height: auto;
+	text-align: center;
 	> h1, h2, h3, h4 {
 		color: #fff;
 	}
 	.user-middle {
-		margin-left: 23%;
+		padding-top: 40px;
 		width: auto;
 		height: auto;
+		display: inline-block;
 		text-align: center;
 	}
 }
@@ -125,27 +124,33 @@
 	text-align: center;
 }
 
+.user-data {
+	> h5 {
+		color: #fff;
+	}	
+}
+
 .user-rating {
-	margin-top: 120px;
-	position: relative;
+	margin-top: 100px;
 	padding-bottom: 3px;
 	opacity: .8;
 	border-bottom: 1px solid #ededed;
-	> h4 {
+	> h5 {
 		color: #fff;
 	}
-	margin-right:-7.5%;
+	float: left;
+	display: inline-block;
 	z-index: 10;
 }
+
 .user-followers {
-	margin-top: 120px;
-	margin-left:-4%;
-	position: relative;
+	display: inline-block;
+	float: left;
 	opacity:.8;
 	z-index: 10;
 	color: #fff;
 	border-bottom: 1px solid #ededed;
-	> h4 {
+	> h5 {
 		color: #fff;
 	}
 }
@@ -154,14 +159,13 @@
 	border: solid 5px #cccccc;
 	height: 200px;
 	width: 200px;
-	margin-left: 13%;
+	text-align:center;
 	padding: 0px;
 }
 
 .user-buttons {
-	float: center;
+	text-align: center;
 	display: inline-block;
-	margin: 0 auto;
 }
 
 .current-creations {
@@ -171,11 +175,9 @@
 }
 
 .user-buttons {
-	position: absolute;
-	display: block;
+	display: inline-block;
 	height: 40px;
-	margin-top: 330px;
-	margin-left: 210px;
+	text-align: center;
 	padding: 5px;
 }
 

@@ -8,8 +8,7 @@
 <% end %>
 <div class="black-wrapper">
 <div class="container">
-  <div class="row">
-    <div class="span" style="width: auto;">
+    <div class="span">
       <div class="product-left">
         <h1 class="product-name"><%= @product.name %></h1>
         <div class="product-creator" style="display: inline-block;">
@@ -36,9 +35,9 @@
         <div class="product-pictures">
           <% if !@product.pictures.empty? %>
             <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
-            <div class="other-pics pull-left">
+            <div class="other-pics">
               <% @top_pics.first(5).each do |pic| %>
-                <div class="thumb-ratio alt-pic "><div style="background-image: url('<%= pic.attachment.url(:thumb) %>'); width: 90px; height: 66px;"></div></div>
+                <div class="thumb-ratio alt-pic" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
               <% end %>
             </div>
           <% else %>
@@ -54,7 +53,6 @@
         <p class="product-description"><%= @product.description %></p>
       </div>
     </div>
-  </div>
 </div>
 </div></div>
 <div class="pnav" style="text-align: center; width: 100%; margin: none;">

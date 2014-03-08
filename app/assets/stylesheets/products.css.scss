@@ -192,10 +192,13 @@
 		margin-left: 5px;
 	}
 	.other-pics {
-		width: 90px;
+		display: inline-block;
+		width: auto;
+		max-height: 360px;
 		margin-left: 5px;
 		float: left;
 		.alt-pic {
+			width: 90px;
 			margin-bottom: 5px;
 			display: block;
 			height: 66px;
@@ -205,8 +208,7 @@
 
 .product-right {
 	float: left;
-	max-width: 350px;
-	margin-left: 10px;
+	margin-left: 2%;
 	color: #fff;
 	text-align: center;
 	> h2 {
@@ -307,17 +309,23 @@
 	position: absolute;
 }
 
-@media only screen and (max-device-width: 980px) {
+@media all and (max-device-width: 980px) {
 	.product-right {
-		margin-top: 0px;
+		margin-top: 10px;
+		width: 70%;
 	}
 	.other-pics {
-		margin-top: 5px;
+		display: none;
+		.alt-pic {
+			display: none;
+		}
 	}
 }
 
-@media only screen and (min-device-width: 1200px) {
+@media all and (min-device-width: 1200px) {
 	.product-right{
 	  margin-top: 8%;
+	  min-width: 360px;
+	  max-width: 70%;
 	}
 }

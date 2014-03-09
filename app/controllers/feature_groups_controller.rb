@@ -93,6 +93,6 @@ class FeatureGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_group_params
-      params.require(:feature_group).permit(:name, :description, :product_id, :up)
+      params.require(:feature_group).permit(:name, :description, :product_id, :up, :image_asset, features: [pictures: [:attachment, :image_asset, :attachment_attributes]] )
     end
 end

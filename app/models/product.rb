@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, :allow_destroy => true
   accepts_nested_attributes_for :feature_groups, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
-  attr_accessible :name, :description, :rating, :likes, :pictures, :active, :pictures_attributes, :product_pic, :product_pic_attricbutes, :feature_groups, likes: [:product_id, :user_id]
+  attr_accessible :name, :description, :rating, :likes, :pictures, :active, :pictures_attributes, :product_pic, :product_pic_attricbutes, feature_groups: [features: [:pictures]], likes: [:product_id, :user_id]
 
   def liked?(id, type)
     if get_likes(id, type).length > 0
@@ -60,6 +60,10 @@ class Product < ActiveRecord::Base
     else
       return nil
     end
+  end
+
+  def single_features
+    return self.feature_groups.where(singles: true).first
   end
 
   private

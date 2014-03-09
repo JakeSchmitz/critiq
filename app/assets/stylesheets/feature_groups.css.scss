@@ -1,3 +1,41 @@
 // Place all the styles related to the FeatureGroups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-indicators {
+	display:inline-block;
+	height: 30px;
+	text-align: center;
+	.category {
+		padding-top: 10px;
+		min-width:100px;
+		border: 1px solid #f4f4f4;
+		background-color: #794f85;
+		display: inline-block;
+		border-right: none;
+		color: #fff;
+	}
+	.set-up {
+		min-width: 100px;
+		padding-top: 10px;
+		border: 1px solid #f4f4f4;
+		border-left: none;
+		display: inline-block;
+		background-color: #282828;
+		color: #828282;
+	}
+}
+
+.feature-modal {
+	background-color: #f4f4f4;
+	opacity: 1;
+	text-align: center;
+	max-width: 700px;
+	overflow-y: hidden;
+	border-radius: 1px;
+}
+
+.form-well {
+	background-color: #c0c0c0;
+	border-radius: 1px;
+}

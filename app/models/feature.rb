@@ -3,7 +3,8 @@ class Feature < ActiveRecord::Base
 	belongs_to :feature_group, :foreign_key => "feature_group_id"
   has_many :likes, class_name: "Like", foreign_key: "likeable_id", :as => :likeable, dependent: :destroy
   accepts_nested_attributes_for :pictures, :allow_destroy => true
-  attr_accessible :name, :description, :pictures, :pictures_attributes
+
+  attr_accessible :name, :description, :pictures, :pictures_attributes, :image_asset
   after_update :save_pictures
 
   def percent_like

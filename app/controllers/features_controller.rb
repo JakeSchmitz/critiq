@@ -38,6 +38,10 @@ class FeaturesController < ApplicationController
     @feature = Feature.new(feature_params)
     @feature.product_id = @product.id
     @feature.feature_group_id = @feature_group.id
+    puts 'This is the feature param we received\n' + params[:feature].to_s
+    unless params[:feature][:attachment].nil? then
+      @feature.pictures.build(attachment: params[:feature][:attachment], user_id: current_user.id, :product_id => @product.id)
+    end
     respond_to do |format|
       if @feature.save
         Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
@@ -142,6 +146,10 @@ class FeaturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
-      params.require(:feature).permit(:id, :product_id, :feature_id, :name, :description, :pictures, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes] )
+      params.require(:feature).permit(:id, :product_id, :feature_id, :name, 
+                                      :attachment, :description, :pictures, 
+                                      image_asset: [:attachment, :attachment_attributes],  
+                                      pictures: [:attachment, :attachment_attributes], 
+                                      pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes])
     end
 end

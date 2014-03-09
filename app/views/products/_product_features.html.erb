@@ -1,4 +1,12 @@
 <div class="single-features">
+	<% if signed_in? and current_user.id == @product.user_id %>
+		<%= link_to 'New Singleton', new_product_feature_group_feature_path(:product_id => @product.id, :feature_group_id => @single_features.id), :class => 'btn btn-info' %>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
+		  Launch Feature Wizard
+		</button>
+		<%= render partial: '/feature_groups/new_feature_modal' %>
+		<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: @product.single_features, feature: @product.single_features.features.new } %>
+	<% end %>
 	<% if !@single_features.nil? and !@single_features.features.empty? %>
 		<div >
 			<h2>Singletons</h2>
@@ -10,11 +18,6 @@
 		    <% end %>
 		  </ul>
 		</div>  
-	<% else %>
-	  <h2>There are no individual features set up for <%= @product.name %>. </h2>
-	<% end %>
-	<% if signed_in? and current_user.id == @product.user_id %>
-		<%= link_to 'New Singleton', new_product_feature_group_feature_path(:product_id => @product.id, :feature_group_id => @single_features.id), :class => 'btn btn-info' %>
 	<% end %>
 </div>
 <div class="comparison-features" style="text-align: center;">
@@ -34,3 +37,4 @@
 		<h2>No Comparative Features Have Been Set Up For <%= @product.name %>. </h2>
 	<% end %> 
 </div>
+

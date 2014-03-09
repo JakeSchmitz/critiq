@@ -1,0 +1,30 @@
+<div class="modal fade feature-modal" id="newFeatureModal" tabindex="-1" role="dialog" aria-labelledby="newFeatureModalLabel" aria-hidden="true">
+	<button type="button" class="close" data-dismiss="modal" area-hidden="true" style="padding-right: 10px;">x</button>
+	<div class="modal-body" style="max-height: 90%; display: block;">
+		<div class="row">
+			<div class="form-indicators" style="margin-right: -3px;">
+				<div class="category">
+					<p>CATEGORY</p>
+				</div>
+				<div class="set-up" style="margin-left: -3px;">
+					<p>SET UP</p>
+				</div>
+			</div>
+		</div>
+		<h2>Choose a Poll Type:</h2>
+		<div class="row" style="margin-top: 20px; text-align: center; display: inline-block;">
+			<div class="span2 well" style="background-color: #d4d4d4;">
+				<h4>Comparison</h4>
+				<button style="padding: 0px; border: none;">
+					<%= image_tag '/images/comparison.png' %>
+				</button>
+			</div>
+			<div class="span2 well" style="background-color: #d4d4d4;">
+				<h4>Standalone</h4>
+				<button data-toggle="modal" data-target="#newSingleFeatureModal" onclick="$('#newFeatureModal').modal('hide');" style="padding: 0px; border: none;">
+					<%= image_tag '/images/standalone.png' %>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

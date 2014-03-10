@@ -134,6 +134,7 @@
 .product-middle {
 	position: relative;
 	margin-top: 0px;
+	text-align: center;
 }
 
 .product-name {
@@ -210,6 +211,7 @@
 	float: left;
 	margin-left: 2%;
 	color: #fff;
+	margin-top: 8%;
 	text-align: center;
 	> h2 {
 		color: #fff;
@@ -260,18 +262,22 @@
 }
 
 .new-comment {
-	margin-left: 15%;	
+	text-align: center;
+	display: inline-block;
 	.comment-box {
-		> form {
-			width: 100%;
-		}
-	}	
-	width: 700px;
+		min-width: 350px;
+		min-height: 100px;
+		width: auto;
+		display: inline-block;
+	}
+	.current-user-face {
+		padding: 0px;
+		text-align: center;
+	}
+	width: 90%;	
 }
 
-.current-user-face {
-	padding: 0px;
-}
+
 
 .comment-body {
 	max-width: 600px;
@@ -309,22 +315,24 @@
 	position: absolute;
 }
 
-@media all and (max-device-width: 980px) {
+@media (max-width: 768px) {
 	.product-right {
+		text-align: center;
+		display: inline-block;
 		margin-top: 10px;
-		width: 70%;
+		width: 90%;
+		margin-left: 5%;
 	}
 	.other-pics {
-		display: none;
+		display: none !important;
 		.alt-pic {
 			display: none;
 		}
 	}
 }
 
-@media all and (min-device-width: 1200px) {
+@media (min-width: 1200px) {
 	.product-right{
-	  margin-top: 8%;
 	  min-width: 360px;
 	  max-width: 70%;
 	}

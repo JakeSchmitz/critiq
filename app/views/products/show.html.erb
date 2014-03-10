@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="product-right">
-      <div class="well" style="border-radius: 5px; color: #313131; padding: 10px;">
+      <div class="well span4" style="border-radius: 5px; color: #313131; padding: 10px; min-width: 330px;">
         <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %>
         <h2>Description</h2>
         <p class="product-description"><%= @product.description %></p>
@@ -68,21 +68,21 @@
   </ul>
 </div>
 <div class="container">
-  <div class="row span12 product-middle">
+  <div class="row product-middle">
     <div class="tab-content">
-      <div class="tab-pane row span12" id="product-features">
+      <div class="tab-pane" id="product-features">
         <%= render :partial => 'product_features' %>
       </div>
-      <div class="tab-pane row span11" id="product-comments">
-        <div class="new-comment">
-          <div class="current-user">
+      <div class="tab-pane" id="product-comments" style="text-align: center;">
+        <div class="new-comment" style="display: inline-block; text-align: center;">
+          <div class="current-user" style="display: inline-block;">
             <% if signed_in? and !current_user.pictures.empty? %>
               <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic.attachment.url(:medium) %>');"></div>
             <% else %>
               <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
             <% end %>
           </div>
-          <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments'} %>
+          <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments'}, style: 'display: inline-block;' %>
         </div>
         <% if !@product.comments.empty? %> 
           <div style="padding-top: 20px; padding-left: 100px;">
@@ -92,20 +92,20 @@
           <h2>This Has No Comments!</h2>
         <% end %>
       </div>
-      <div class="tab-pane row span12" id="product-likers">
+      <div class="tab-pane" id="product-likers">
         <%= render :partial => 'product_likers' %>
       </div>
-      <div class="tab-pane row span12" id="product-bounties">
+      <div class="tab-pane" id="product-bounties">
         <h2>Bounties!</h2>
         <%= render :partial => 'product_bounties' %>
       </div>
-      <div class="tab-pane row span12" id="product-rewards">
+      <div class="tab-pane" id="product-rewards">
         <h2>Earn rewards for your critiqs!</h2>
         <%= render :partial => 'product_rewards', locals: { product: @product} %>
       </div>
-      <div class="tab-pane row span12" id="product_edit">
+      <div class="tab-pane" id="product_edit">
         <h1>Edit Campaign</h1>
-        <div class="edit-info pull-left span6">
+        <div class="edit-info pull-left span">
           <%= render :partial => 'form' %>
         </div>
         <div class="edit-pictures span5 pull-left">

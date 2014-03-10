@@ -103,26 +103,28 @@
         <h2>Earn rewards for your critiqs!</h2>
         <%= render :partial => 'product_rewards', locals: { product: @product} %>
       </div>
-      <div class="tab-pane" id="product_edit">
-        <h1>Edit Campaign</h1>
-        <div class="edit-info pull-left span">
-          <%= render :partial => 'form' %>
-        </div>
-        <div class="edit-pictures span5 pull-left">
-          <h3>Campaign Pictures</h3>
-          <div class="row">
-            <% @product.pictures.where.not(:attachment_file_name => nil).each do |pic| %>
-              <div class="product-pic-thumb thumb-ratio" style="width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>'); display: inline-block;"></div>
-              <div class="pic-btns">
-                <%= link_to glyph(:trash), product_picture_path(@product.id, pic.id), :method => :delete, data: { :confirm => "You sure?"} , style: 'color:#ff0000' %>
-              </div>
-            <% end %>
+      <% if signed_in? and current_user.id == @product.id %>
+        <div class="tab-pane" id="product_edit">
+          <h1>Edit Campaign</h1>
+          <div class="edit-info pull-left span">
+            <%= render :partial => 'form' %>
           </div>
-        </div>
-        <div class="jquery-product-image-upload span10">
-            <%= render :partial => 'jquery_image_uploader' %>
-        </div>
-      </div>  
+          <div class="edit-pictures span5 pull-left">
+            <h3>Campaign Pictures</h3>
+            <div class="row">
+              <% @product.pictures.where.not(:attachment_file_name => nil).each do |pic| %>
+                <div class="product-pic-thumb thumb-ratio" style="width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>'); display: inline-block;"></div>
+                <div class="pic-btns">
+                  <%= link_to glyph(:trash), product_picture_path(@product.id, pic.id), :method => :delete, data: { :confirm => "You sure?"} , style: 'color:#ff0000' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="jquery-product-image-upload span10">
+              <%= render :partial => 'jquery_image_uploader' %>
+          </div>
+        </div>  
+      <% end %>
     </div>
   </div>
 </div>

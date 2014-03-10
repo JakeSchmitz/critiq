@@ -51,10 +51,6 @@
 	float: center;
 }
 
-.thumbnails {
-	display: inline-block;
-}
-
 .product-thumbnail {
 	height: 370px;
 	width: 250px;
@@ -314,6 +310,7 @@
 		height: 200px;
 	}
 	.thumbnail {
+		margin-left: 10px;
 		.product-thumb-content {
 			height: 85px;
 			margin-top: -125px;
@@ -323,6 +320,9 @@
 			margin-top: -190px;
 			margin-left: 110px;
 		}
+	}
+	.container {
+		width: 99%;
 	}
 }
 

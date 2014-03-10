@@ -26,8 +26,8 @@
 
 .thumbnail {
 	padding: 0px;
-	margin-bottom: 20px;
-	margin-left: 20px;
+	margin-bottom: 3%;
+	margin-left: 1%;
 	> a > img {
 		max-height: 100%;
     max-width: 100%;
@@ -255,3 +255,38 @@
 		}
 	}
 }
+
+
+@media (max-width: 768px) {
+	.user-thumb {
+		width: 150px;
+		height: 200px;
+	}
+	.thumbnail {
+		margin-left: 10px;
+		.user-thumb-content {
+			height: 85px;
+			margin-top: -125px;
+		}
+	}
+}
+
+@media (min-width: 980px) {
+	.user-thumb{
+		width: 230px;
+		min-width: 23%;
+	}
+	.thumbnail:hover {
+		.user-thumb-content {
+		  margin-top: -102px;
+		  height: 62px;
+			.user-thumb-description {
+				text-align: center;
+				display: block;
+				color: #444444;
+			}
+		}
+	}
+}
+
+

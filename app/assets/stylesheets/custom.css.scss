@@ -193,11 +193,11 @@ div.file_upload_wrapper:hover {
 .navbar {
   .navbar-inner {
     background-color: #6d2cfa;
-    padding-left: 5%;
-    padding-right: 5%;
     background-image: none;
     box-shadow: 0px 1px 4px 1px #657;
     border: none;
+    padding-right: 3%;
+    padding-left: 3%;
     height: 50px;
     .nav-collapse {
       .nav-right {
@@ -240,9 +240,6 @@ div.file_upload_wrapper:hover {
   color: #fff;
 }
 
-.thumbnails {
-  display: -webkit-inline-box;
-}
 
 .alert {
   margin: 50px;
@@ -422,10 +419,6 @@ div.file_upload_wrapper:hover {
 
 /* navbar on small screen ish */
 @media (max-width: 980px) {
-  .navbar .container {
-    padding-left: 3%;
-    padding-right: 3%;
-  }
   .navbar {
     background-color: #828282;
     .brand {
@@ -440,11 +433,22 @@ div.file_upload_wrapper:hover {
       box-shadow: 0px 1px 4px 1px #657;
       border: none;
       height: 50px;
+      padding-left: 3%;
+      padding-right: 3%;
     }
     .nav {
       > li {
         color: #fff;
       }
+    }
+  }
+}
+
+@media (min-width: 980px){
+  .navbar {
+    .navbar-inner {
+      padding-left: 3%; 
+      padding-right: 3%;
     }
   }
 }

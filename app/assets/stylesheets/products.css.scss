@@ -4,7 +4,7 @@
 
 .product-banner {
   background: url(/images/product-banner.jpg) no-repeat top center fixed;
-  -webkit-background-size: cover;
+  background-size: cover;
   height: 60%;
   background-size: cover;
 }
@@ -327,6 +327,9 @@
 }
 
 @media (min-width: 980px) {
+	.other-pics {
+		display: inline-block;
+	}
 	.product-right{
 	  min-width: 360px;
 	  max-width: 70%;

@@ -399,10 +399,11 @@ div.file_upload_wrapper:hover {
 }
 
 /* Mobile-ish */
-@media only screen and (max-device-width: 480px) {
+@media (max-width: 480px) {
   h1, h2, h3, h4, h5, h6 {
-    line-height: 1.0;
-    font-weight: 300;
+    line-height: 1.2;
+    font-size: 50%;
+    font-weight: 400;
   }
   p {
     line-height: 1.2em;

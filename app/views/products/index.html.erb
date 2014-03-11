@@ -2,12 +2,12 @@
 <div class="container product-index" style="margin-bottom: 20px; margin-top: 80px; min-height: 90%;">
   <h1>Browse Campaigns</h1>
   <div class="pretty-divider"></div>
-  <% @top_products.each_slice(4).each do |four_products| %>
-	  <div class="row thumbnails" style="margin-top: 20px;">
-	    <% four_products.each do |p| %>
-	      <%= render :partial => 'product_thumb', locals: { product: p } %>
-	      <%= render :partial => 'product_modal', :locals => { product: p } %>
-	    <% end %>
-	  </div>
-  <% end %>
+
+  <div class="row thumbnails" style="margin-top: 20px;">
+    <% @top_products.each do |p| %>
+      <%= render :partial => 'product_thumb', locals: { product: p } %>
+      <%= render :partial => 'product_modal', :locals => { product: p } %>
+    <% end %>
+  </div>
+
 </div>

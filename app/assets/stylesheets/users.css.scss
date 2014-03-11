@@ -259,22 +259,23 @@
 
 @media (max-width: 768px) {
 	.user-thumb {
-		width: 150px;
-		height: 200px;
+		width: 200px;
+		height: 300px;
 	}
 	.thumbnail {
-		margin-left: 10px;
 		.user-thumb-content {
-			height: 85px;
-			margin-top: -125px;
+			height: 40px;
+			margin-top: -80px;
 		}
 	}
 }
 
 @media (min-width: 980px) {
 	.user-thumb{
-		width: 230px;
-		min-width: 23%;
+		width: 23%;
+		min-width: 230px;
+		height: 40%;
+		min-height: 370px;
 	}
 	.thumbnail:hover {
 		.user-thumb-content {

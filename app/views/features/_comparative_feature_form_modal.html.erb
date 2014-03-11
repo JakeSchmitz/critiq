@@ -1,0 +1,61 @@
+<div class="modal fade comp-feature-modal" id="newCompFeatureModal" tabindex="-1" role="dialog" aria-labelledby="newSingleFeatureModalLabel" aria-hidden="true">
+	<button type="button" class="close" data-dismiss="modal" area-hidden="true" style="padding-right: 10px">x</button>
+	<div class="modal-body" style="max-height: 90%;">
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="form-indicators" style="margin-right: -3px;">
+				<!-- note reverse class names to switch colors -->
+				<button data-toggle="modal" data-target="#newFeatureModal" onclick="$('#newCompFeatureModal').modal('hide');" style="padding: 0px; border: none;"> 
+					<div class="set-up" style="width: 120px;">
+						<p>CATEGORY <i class="fa fa-check"></i></p>
+					</div>
+				</button>
+				<div class="category" style="margin-left: -3px;">
+					<p>SET UP</p>
+				</div>
+			</div>
+		</div>
+		<div>
+			<%= nested_form_for [product, feature_group, feature], :html => { :class => 'form-horizontal', :multipart => true, :style => 'width: 100%;  margin-right: -30px;' } do |f| %>
+			  <% if feature.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(feature.errors.count, "error") %> prohibited this feature from being saved:</h2>
+			      <ul>
+			      <% feature.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+			  <div style="display: inline-block; width: 90%; text-align: center;">
+		      <div class="well form-well">
+		      	<div class="field">
+			        <%= f.label :name %><br>
+			        <%= f.text_field :name %>
+		        </div>
+		      </div>
+		      <div class="well form-well">
+		      	<div class="field">
+		        <%= f.label :description %><br>
+		        <%= f.text_area :description %>
+		        </div>
+		      </div>
+			    <div>
+			      <%= f.fields_for feature.pictures.new(:product_id => product.id, user_id: current_user.id) do |picture| %>
+			        <% if !picture.object.nil? and picture.object.new_record? %>
+			          <div class="control-group well form-well">
+			            <%= picture.label "Image (optional)" %>
+			            <div class="controls btn file_upload_wrapper" style="margin-left: -30px;">
+			              <%= picture.file_field :attachment, name: 'feature[attachment]' %>
+			            </div>
+			          </div>  
+			        <% end %>
+			      <% end %>
+			    </div>
+			  </div>
+			  <div class="actions" style="margin-top: 20px; height: 60px; padding-top: 15px; background-color: #794f85; width: 100%;">
+			    <%= f.submit 'SAVE AND CONTINUE', :class => 'btn btn-primary btn-clear'%>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+</div>

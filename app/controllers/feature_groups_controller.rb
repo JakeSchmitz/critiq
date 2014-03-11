@@ -30,7 +30,7 @@ class FeatureGroupsController < ApplicationController
     @feature_group.product_id = @product.id
     respond_to do |format|
       if @feature_group.save
-        format.html { redirect_to @product, notice: 'Feature group was successfully created.' }
+        format.html { redirect_to product_path(@product, tab: 'product-features'), notice: 'Feature group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @feature_group }
       else
         format.html { render action: 'new' }

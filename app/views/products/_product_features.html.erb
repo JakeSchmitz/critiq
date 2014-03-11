@@ -8,9 +8,9 @@
 		<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: @product.single_features, feature: @product.single_features.features.new } %>
 	<% end %>
 	<% if !@single_features.nil? and !@single_features.features.empty? %>
-		<div >
+		<div class="row" style="text-align: center;">
 			<h2>Singletons</h2>
-		  <ul class="thumbnails">
+		  <ul class="thumbnails" style="display: inline-block;">
 		    <% @single_features.features.each do |feature| %>
 		    	<li>
 		      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
@@ -23,13 +23,13 @@
 <div class="comparison-features" style="text-align: center;">
 	<h2>Comparisons</h2>
 	<% if !@comparison_features.nil? %>
-	  <ul style="margin-left: 0px;">
+	  <div class="row">
 	    <% @comparison_features.each do |comp_feature| %>
 	    	<div style="padding-top: 10px">
 	      	<%= render :partial => 'comparison_feature_thumb' , locals: { comp_feature: comp_feature } %>
 	      </div>
 	    <% end %>
-	  </ul>
+	  </div>
 		<% if signed_in? and current_user.id == @product.user_id %>
 			<%= link_to 'New Comparative Feature', new_product_feature_group_path(:product_id => @product.id), :class => 'btn btn-info', style: 'margin-top: 30px;' %>
 		<% end %>

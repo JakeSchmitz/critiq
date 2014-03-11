@@ -70,12 +70,14 @@
 <div class="container">
   <div class="row product-middle">
     <div class="tab-content">
+      <!-- Vote Tab -->
       <div class="tab-pane" id="product-features">
         <%= render :partial => 'product_features' %>
       </div>
+      <!-- Comment Tab -->
       <div class="tab-pane" id="product-comments" style="text-align: center;">
-        <div class="new-comment" style="display: inline-block; text-align: center;">
-          <div class="current-user" style="display: inline-block;">
+        <div class="new-comment">
+          <div class="current-user">
             <% if signed_in? and !current_user.pictures.empty? %>
               <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic.attachment.url(:medium) %>');"></div>
             <% else %>
@@ -85,24 +87,28 @@
           <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments'}, style: 'display: inline-block;' %>
         </div>
         <% if !@product.comments.empty? %> 
-          <div style="padding-top: 20px; padding-left: 100px;">
+          <div style="padding-top: 20px;">
             <%= render :partial => 'product_comments', locals: { comments: @comments} %>
           </div>
         <% else %>
           <h2>This Has No Comments!</h2>
         <% end %>
       </div>
+      <!-- Likers Tab -->
       <div class="tab-pane" id="product-likers">
         <%= render :partial => 'product_likers' %>
       </div>
+      <!-- Bounties Tab -->
       <div class="tab-pane" id="product-bounties">
         <h2>Bounties!</h2>
         <%= render :partial => 'product_bounties' %>
       </div>
+      <!-- Rewards Tab -->
       <div class="tab-pane" id="product-rewards">
         <h2>Earn rewards for your critiqs!</h2>
         <%= render :partial => 'product_rewards', locals: { product: @product} %>
       </div>
+      <!-- Edit Tab (when signed in) -->
       <% if signed_in? and current_user.id == @product.id %>
         <div class="tab-pane" id="product_edit">
           <h1>Edit Campaign</h1>

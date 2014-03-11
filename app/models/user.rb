@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
-  has_many :products
-  has_many :comments
-  has_many :likes
-  has_many :activities
+  has_many :products, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
+  has_many :activities, :dependent => :destroy
   
   validates :name, :presence => true
   validates_confirmation_of :password

@@ -2,9 +2,9 @@ class Product < ActiveRecord::Base
 	belongs_to :user, :foreign_key => "user_id"
   validates :name, presence: true
   validates :description, presence: true
-  has_many :likes, :as => :likeable
-	has_many :feature_groups
-  has_many :bounties
+  has_many :likes, :as => :likeable, :dependent => :destroy
+	has_many :feature_groups, :dependent => :destroy
+  has_many :bounties, :dependent => :destroy
   has_many :comments, :as => :commentable, dependent: :destroy
 	has_one :product_pic, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
   accepts_nested_attributes_for :product_pic, :allow_destroy => true

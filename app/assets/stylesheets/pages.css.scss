@@ -32,9 +32,8 @@
 }
 
 .featured-campaigns {
-	display: block;
 	text-align: center;
-	width: 100%;
+	width: auto;
 	margin-bottom: 30px;
 	.row {
 		display: inline-block;
@@ -44,7 +43,7 @@
 .featured-makers {
 	display: block;
 	text-align: center;
-	width: 100%;
+	width: auto;
 	margin-bottom: 30px;
 	.row {
 		display: inline-block;

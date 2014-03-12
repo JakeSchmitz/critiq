@@ -39,17 +39,13 @@
 			<% end %>
 		</div>
 	</div>	
-	<div class="featured-makers">
+	<div class="featured-makers" style="text-align: center;">
 		<h1>Featured Makers</h1>
 		<div class="pretty-divider"></div>
-		<div class="row" style="text-align: center;">
-			<ul class="thumbnails" style="display: inline-block;">
-				<% @top_users.each do |u| %>
-					<li> 
-						<%= render :partial => '/users/user_thumb', locals: { user: u } %>
-					</li>
-				<% end %>
-			</ul>
+		<div class="row">
+			<% @top_users.each do |u| %>
+				<%= render :partial => '/users/user_thumb', locals: { user: u } %>
+			<% end %>
 		</div>
 	</div>
 </div>

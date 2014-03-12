@@ -30,20 +30,20 @@
 		      <div class="well form-well">
 		      	<div class="field">
 			        <%= f.label :name %><br>
-			        <%= f.text_field :name %>
+			        <%= f.text_field :name,  style: 'margin-left: 80px;' %>
 		        </div>
 		      </div>
 		      <div class="well form-well">
 		      	<div class="field">
 		        <%= f.label :description %><br>
-		        <%= f.text_area :description %>
+		        <%= f.text_area :description, style: 'margin-left: 80px;' %>
 		        </div>
 		      </div>
 			    <div>
 			      <%= f.fields_for feature.pictures.new(:product_id => product.id, user_id: current_user.id) do |picture| %>
 			        <% if !picture.object.nil? and picture.object.new_record? %>
-			          <div class="control-group well form-well">
-			            <%= picture.label "Image (optional)" %>
+			          <div class="control-group well form-well" style="margin-bottom: 40px;">
+			            <%= picture.label "Image (optional)", style: 'float: left; margin-top: 10px;' %>
 			            <div class="controls btn file_upload_wrapper" style="margin-left: -30px;">
 			              <%= picture.file_field :attachment, name: 'feature[attachment]' %>
 			            </div>

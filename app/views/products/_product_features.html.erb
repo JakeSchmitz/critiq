@@ -4,7 +4,7 @@
 		<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
 		  CREATE FEATURE
 		</button>
-		<%= render partial: '/feature_groups/new_feature_modal' %>
+		<%= render partial: '/feature_groups/new_feature_modal', locals: { feature_group: @product.single_features } %>
 		<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: @product.single_features, feature: @product.single_features.features.new } %>
 	<% end %>
 	<% if !@single_features.nil? and !@single_features.features.empty? %>

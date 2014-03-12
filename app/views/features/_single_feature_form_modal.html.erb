@@ -1,10 +1,10 @@
-<div class="modal fade feature-modal" id="#newFeatureModalGroup<%= feature_group.id %>" tabindex="-1" role="dialog" aria-labelledby="newSingleFeatureModalLabel" aria-hidden="true">
+<div class="modal fade feature-modal" id="newFeatureModalGroup<%= feature_group.id %>" tabindex="-1" role="dialog" aria-labelledby="newFeatureModalGroup<%= feature_group.id %>Label" aria-hidden="true">
 	<button type="button" class="close" data-dismiss="modal" area-hidden="true" style="padding-right: 10px">x</button>
 	<div class="modal-body" style="max-height: 90%;">
 		<div class="row" style="margin-bottom: 20px;">
 			<div class="form-indicators" style="margin-right: -3px;">
 				<!-- note reverse class names to switch colors -->
-				<button data-toggle="modal" data-target="#newFeatureModal" onclick="$('#newSingleFeatureModal').modal('hide');" style="padding: 0px; border: none;"> 
+				<button data-toggle="modal" data-target="#newFeatureModal" onclick="$('#newFeatureModalGroup<%= feature_group.id %>').modal('hide');" style="padding: 0px; border: none;"> 
 					<div class="set-up" style="width: 120px;">
 						<p>CATEGORY <i class="fa fa-check"></i></p>
 					</div>
@@ -28,24 +28,28 @@
 			  <% end %>
 			  <div style="display: inline-block; width: 90%; text-align: center;">
 		      <div class="well form-well">
-		      	<div class="field">
-			        <%= f.label :name %><br>
-			        <%= f.text_field :name %>
-		        </div>
+		      	<div class="control-group">
+					    <%= f.label :name, :class => 'control-label' %>
+					    <div class="controls">
+					      <%= f.text_field :name, :class => 'text_field' %>
+					    </div>
+					  </div>
 		      </div>
 		      <div class="well form-well">
-		      	<div class="field">
-		        <%= f.label :description %><br>
-		        <%= f.text_area :description %>
-		        </div>
+		      	<div class="control-group">
+					    <%= f.label :description, :class => 'control-label' %>
+					    <div class="controls">
+					      <%= f.text_area :description, :class => 'text_area' %>
+					    </div>
+					  </div>
 		      </div>
 			    <div>
 			      <%= f.fields_for feature.pictures.new(:product_id => product.id, user_id: current_user.id) do |picture| %>
 			        <% if !picture.object.nil? and picture.object.new_record? %>
 			          <div class="control-group well form-well">
-			            <%= picture.label "Image (optional)" %>
+			            <%= picture.label "Image (optional)", :class => 'control-label' %>
 			            <div class="controls btn file_upload_wrapper" style="margin-left: -30px;">
-			              <%= picture.file_field :attachment, name: 'feature[attachment]' %>
+			              <%= picture.file_field :attachment, name: 'feature[attachment]', class: 'file_field' %>
 			            </div>
 			          </div>  
 			        <% end %>

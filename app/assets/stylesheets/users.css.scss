@@ -272,13 +272,13 @@
 
 @media (min-width: 980px) {
 	.user-thumb{
-		width: 230px;
-		min-width: 23%;
+		width: 23%;
+		min-width: 250px;
 	}
 	.thumbnail:hover {
 		.user-thumb-content {
-		  margin-top: -102px;
-		  height: 62px;
+		  margin-top: -152px;
+		  height: 112px;
 			.user-thumb-description {
 				text-align: center;
 				display: block;

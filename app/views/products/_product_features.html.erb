@@ -1,4 +1,4 @@
-<div class="single-features">
+<div class="container">
 	<% if signed_in? and current_user.id == @product.user_id %>
 		<%= link_to 'New Singleton', new_product_feature_group_feature_path(:product_id => @product.id, :feature_group_id => @single_features.id), :class => 'btn btn-info' %>
 		<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
@@ -6,7 +6,10 @@
 		</button>
 		<%= render partial: '/feature_groups/new_feature_modal', locals: { feature_group: @product.single_features } %>
 		<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: @product.single_features, feature: @product.single_features.features.new } %>
+		<%= render partial: '/features/comparative_feature_form_modal', locals: { product: @product, feature_group: @product.feature_groups.new } %>
 	<% end %>
+</div>
+<div class="single-features">
 	<% if !@single_features.nil? and !@single_features.features.empty? %>
 		<div class="row" style="text-align: center;">
 			<h2>Singletons</h2>

@@ -24,7 +24,7 @@
 	text-align: center;
 }
 
-.thumbnail {
+.user-thumb {
 	padding: 0px;
 	> a > img {
 		max-height: 100%;
@@ -50,7 +50,7 @@
 	}
 }
 
-.thumbnail:hover {
+.user-thumb:hover {
 	.user-thumb-content {
 		margin-top: -160px;
 		background: rgba(250, 250, 250, 1);
@@ -269,10 +269,6 @@
 }
 
 @media (min-width: 980px) {
-	.user-thumb{
-		width: 23%;
-		min-width: 250px;
-	}
 	.thumbnail:hover {
 		.user-thumb-content {
 		  margin-top: -152px;

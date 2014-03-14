@@ -1,6 +1,6 @@
 class FeaturesController < ApplicationController
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
-  respond_to :json, :html, :js
+  respond_to :html, :xml, :json
   # GET /product/pid/features
   # GET /features.json
   def index
@@ -45,7 +45,6 @@ class FeaturesController < ApplicationController
 
     if @feature.save
       Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
-      respond_with(@feature, :layout => !request.xhr?)
     else
       respond_with { render json: @feature.errors, status: :unprocessable_entity }
     end

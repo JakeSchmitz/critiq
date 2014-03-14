@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div>
-			<%= nested_form_for [product, feature_group, feature], :html => { :class => 'form-horizontal', :remote => true,  :style => 'width: 100%;  margin-right: -30px;', :id => 'feature_create_form' } do |f| %>
+			<%= nested_form_for [product, feature_group, feature], :html => { :'data-type' => 'json', :class => 'form-horizontal', :remote => true,  :style => 'width: 100%;  margin-right: -30px;', :id => 'feature_create_form' } do |f| %>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			  <% if feature.errors.any? %>
 			    <div id="error_explanation">
@@ -71,7 +71,7 @@
 		$.ajax({
 			url: $(this).attr('action'),
 			data: valsToSubmit,
-			dataType: "JSON",
+			dataType: 'JSON',
 			type: 'POST'
 		}).success(function(json){
 			var $singleFeatureButton = $(this).find('input[name="commit"]');

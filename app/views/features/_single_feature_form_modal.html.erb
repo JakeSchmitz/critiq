@@ -45,7 +45,7 @@
 					  </div>
 		      </div>
 			    <div>
-			      <%= f.fields_for feature.pictures.new(:product_id => product.id, user_id: current_user.id) do |picture| %>
+			      <%= f.fields_for feature.pictures.new(:product_id => product.id, user_id: current_user.id), html: { remote: true} do |picture| %>
 			        <% if !picture.object.nil? and picture.object.new_record? %>
 			          <div class="control-group well form-well">
 			            <%= picture.label "Image (optional)", :class => 'control-label' %>
@@ -83,12 +83,11 @@
 	});
 
 	$(document).ready(function(){
-		alert('hello world');
 		$('#feature_create_form')
 			.bind("ajax:beforeSend", function(evt, xhr, settings){
 				// This is the submit button
 				var $singleFeatureButton = $(this).find('input[name="commit"]');
-				
+				alert('Hi snitches');
 				// save its text
 				$singleFeatureButton.data('origText', $(this).text());
 				// replace text with SUBMITTING...
@@ -96,7 +95,7 @@
 
 			}).bind("ajax:complete", function(evt, xhr, status) {
 				var $singleFeatureButton = $(this).find('input[name="commit"]');
-
+				alert('Hi everyone');
 				// Change text to complete
 				$singleFeatureButton.text('SUBMITTED');
 			});

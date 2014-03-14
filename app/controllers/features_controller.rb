@@ -45,6 +45,7 @@ class FeaturesController < ApplicationController
 
     if @feature.save
       Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
+      render :json => @feature.to_json
     else
       respond_with { render json: @feature.errors, status: :unprocessable_entity }
     end

@@ -1,4 +1,4 @@
-<div class="thumbnail span2 product-thumb" style="text-align: center;">
+<div class="thumbnail product-thumb" style="text-align: center;">
 	<% if !product.pictures.empty? %>
 		<a href="/products/<%= product.id %>" data-toggle="modal">
 			<div class="thumb-ratio" style="background-image: url('<%= product.profile_pic.attachment.url(:large) %>');"></div>

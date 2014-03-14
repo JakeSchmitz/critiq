@@ -76,11 +76,15 @@ h4 {
 }
 
 
-p, > a {
+p {
   font-size: 14px;
   line-height: 1.4em;
   font-family: proxima-nova-n9, proxima-nova, sans-serif;
   font-style: normal;
+}
+
+>a {
+  font-family: proxima-nova-n9, proxima-nova, sans-serif;
 }
 
 /* header */

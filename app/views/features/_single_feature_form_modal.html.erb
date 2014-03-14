@@ -15,7 +15,8 @@
 			</div>
 		</div>
 		<div>
-			<%= nested_form_for [product, feature_group, feature], :html => { :class => 'form-horizontal', :multipart => true, :style => 'width: 100%;  margin-right: -30px;' } do |f| %>
+			<%= nested_form_for [product, feature_group, feature], :html => { :class => 'form-horizontal', :remote => true,  :style => 'width: 100%;  margin-right: -30px;', :id => 'feature_create_form' } do |f| %>
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			  <% if feature.errors.any? %>
 			    <div id="error_explanation">
 			      <h2><%= pluralize(feature.errors.count, "error") %> prohibited this feature from being saved:</h2>
@@ -63,3 +64,41 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$('#feature_create_form').submit(function(){
+		var valsToSubmit = $(this).serialize();
+		$.ajax({
+			url: $(this).attr('action'),
+			data: valsToSubmit,
+			dataType: "JSON",
+			type: 'POST'
+		}).success(function(json){
+			var $singleFeatureButton = $(this).find('input[name="commit"]');
+
+				// Change text to complete
+				$singleFeatureButton.text('SUBMITTED');
+		});
+		return false;
+	});
+
+	$(document).ready(function(){
+		alert('hello world');
+		$('#feature_create_form')
+			.bind("ajax:beforeSend", function(evt, xhr, settings){
+				// This is the submit button
+				var $singleFeatureButton = $(this).find('input[name="commit"]');
+				
+				// save its text
+				$singleFeatureButton.data('origText', $(this).text());
+				// replace text with SUBMITTING...
+				$singleFeatureButton.text('SUBMITTING...');
+
+			}).bind("ajax:complete", function(evt, xhr, status) {
+				var $singleFeatureButton = $(this).find('input[name="commit"]');
+
+				// Change text to complete
+				$singleFeatureButton.text('SUBMITTED');
+			});
+	});
+</script>

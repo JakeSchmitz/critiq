@@ -1,6 +1,6 @@
 class FeaturesController < ApplicationController
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
-
+  respond_to :json, :html, :js
   # GET /product/pid/features
   # GET /features.json
   def index
@@ -42,16 +42,14 @@ class FeaturesController < ApplicationController
     unless params[:feature][:attachment].nil? then
       @feature.pictures.build(attachment: params[:feature][:attachment], user_id: current_user.id, :product_id => @product.id)
     end
-    respond_to do |format|
-      if @feature.save
-        Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
-        format.html { redirect_to product_path(@product), notice: 'Feature was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @feature }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @feature.errors, status: :unprocessable_entity }
-      end
+
+    if @feature.save
+      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
+      respond_with(@feature, :layout => !request.xhr?)
+    else
+      respond_with { render json: @feature.errors, status: :unprocessable_entity }
     end
+
   end
 
   # PATCH/PUT /product/:product_id/features/1

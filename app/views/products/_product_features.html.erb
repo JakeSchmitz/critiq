@@ -11,15 +11,11 @@
 </div>
 <div class="single-features">
 	<% if !@single_features.nil? and !@single_features.features.empty? %>
-		<div class="row" style="text-align: center;">
-			<h2>Singletons</h2>
-		  <ul class="thumbnails" style="display: inline-block;">
-		    <% @single_features.features.each do |feature| %>
-		    	<li>
-		      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
-	      	</li>
-		    <% end %>
-		  </ul>
+		<h2>Singletons</h2>
+		<div class="row" style="text-align: center; display: inline-block;">
+	    <% @single_features.features.each do |feature| %>
+      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
+	    <% end %>
 		</div>  
 	<% end %>
 </div>

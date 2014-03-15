@@ -1,17 +1,17 @@
 class Product < ActiveRecord::Base
-	belongs_to :user, :foreign_key => "user_id"
+	belongs_to :user, foreign_key: "user_id"
   validates :name, presence: true
   validates :description, presence: true
-  has_many :likes, :as => :likeable, :dependent => :destroy
-	has_many :feature_groups, :dependent => :destroy
-  has_many :bounties, :dependent => :destroy
-  has_many :comments, :as => :commentable, dependent: :destroy
-	has_one :product_pic, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
-  accepts_nested_attributes_for :product_pic, :allow_destroy => true
-	has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", :as => :attachable, :autosave => true
-  accepts_nested_attributes_for :pictures, :allow_destroy => true
-  accepts_nested_attributes_for :feature_groups, :allow_destroy => true
-  accepts_nested_attributes_for :comments, :allow_destroy => true
+  has_many :likes, as: :likeable, dependent: :destroy
+	has_many :feature_groups, dependent: :destroy
+  has_many :bounties, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+	has_one :product_pic, class_name: "ImageAsset", foreign_key: "attachable_id", as: :attachable, autosave: true
+  accepts_nested_attributes_for :product_pic, allow_destroy: true
+	has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", as: :attachable, autosave: true
+  accepts_nested_attributes_for :pictures, allow_destroy: true
+  accepts_nested_attributes_for :feature_groups, allow_destroy: true
+  accepts_nested_attributes_for :comments, allow_destroy: true
   attr_accessible :name, :description, :rating, :likes, :pictures, :active, :pictures_attributes, :product_pic, :product_pic_attricbutes, feature_groups: [features: [:pictures]], likes: [:product_id, :user_id]
 
   def liked?(id, type)
@@ -64,8 +64,7 @@ class Product < ActiveRecord::Base
 
   def rand_pic
     if !self.pictures.empty?
-      options = ImageAsset.where(:product_id => self.id).where.not(:attachment_file_name => nil).order('created_at DESC')
-      return options[rand(options.size)]
+      return self.pictures.to_a[rand(self.pictures.size)]
     else
       return nil
     end

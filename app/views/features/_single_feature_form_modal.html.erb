@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div>
-			<%= nested_form_for [product, feature_group, feature], :html => { :'data-type' => 'json', :class => 'form-horizontal', :remote => true,  :style => 'width: 100%;  margin-right: -30px;', :id => 'feature_create_form' } do |f| %>
+			<%= nested_form_for [product, feature_group, feature], :html => { :'data-type' => 'json', :class => 'form-horizontal', :remote => true,  :style => 'width: 100%;  margin-right: -30px;', :id => 'feature_create_form' + feature_group.id.to_s } do |f| %>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			  <% if feature.errors.any? %>
 			    <div id="error_explanation">
@@ -58,7 +58,7 @@
 			    </div>
 			  </div>
 			  <div class="actions" style="margin-top: 20px; height: 60px; padding-top: 15px; background-color: #794f85; width: 100%;">
-			    <%= f.submit 'SAVE AND CONTINUE', :class => 'btn btn-primary btn-clear'%>
+			    <%= f.submit 'SAVE AND CONTINUE', :class => 'btn btn-primary btn-clear', id: 'sumbitFeature' + feature_group.id.to_s %>
 			  </div>
 			<% end %>
 		</div>
@@ -66,37 +66,21 @@
 </div>
 
 <script>
-	$('#feature_create_form').submit(function(){
-		var valsToSubmit = $(this).serialize();
-		$.ajax({
-			url: $(this).attr('action'),
-			data: valsToSubmit,
-			dataType: 'JSON',
-			type: 'POST'
-		}).success(function(json){
-			var $singleFeatureButton = $(this).find('input[name="commit"]');
-
-				// Change text to complete
-				$singleFeatureButton.text('SUBMITTED');
-		});
-		return false;
-	});
-
 	$(document).ready(function(){
 		console.log('binding ajax actions to single feature modal for group <%= feature_group.id %>');
-		$('feature_create_form')
+		$('#feature_create_form<%= feature_group.id.to_s %>')
 			.bind("ajax:beforeSend", function(evt, xhr, settings){
 				// This is the submit button
-				var $singleFeatureButton = $(this).find('input[name="commit"]');
-				alert('Hi snitches');
+				var $singleFeatureButton = $('submitFeature<%= feature_group.id.to_s %>');
+				console.log('attempting to create single feature');
 				// save its text
 				$singleFeatureButton.data('origText', $(this).text());
 				// replace text with SUBMITTING...
 				$singleFeatureButton.text('SUBMITTING...');
 
 			}).bind("ajax:complete", function(evt, xhr, status) {
-				var $singleFeatureButton = $(this).find('input[name="commit"]');
-				alert('Hi everyone');
+				var $singleFeatureButton = $('submitFeature<%= feature_group.id.to_s %>');
+				console.log('successfully created single feature');
 				// Change text to complete
 				$singleFeatureButton.text('SUBMITTED');
 			});

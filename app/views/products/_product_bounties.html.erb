@@ -1,5 +1,5 @@
 <div class="product-bounties">
-	<% if signed_in? and current_user.id == @product.user.id %>
+	<% if current_user?(@product.user) %>
 		<%= link_to 'Create Bounty', new_product_bounty_path(:product_id => @product.id), class: 'btn btn-primary' %> 
 	<% end %>
 	<% if @product.bounties.empty? %>

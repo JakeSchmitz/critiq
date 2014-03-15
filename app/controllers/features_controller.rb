@@ -40,12 +40,11 @@ class FeaturesController < ApplicationController
     @feature.feature_group_id = @feature_group.id
     puts 'This is the feature param we received\n' + params[:feature].to_s
     unless params[:feature][:attachment].nil? then
-      @feature.pictures.build(attachment: params[:feature][:attachment], user_id: current_user.id, :product_id => @product.id)
+      @feature.pictures.build(attachment: params[:feature][:attachment], user_id: current_user.id, product_id: @product.id)
     end
-
     if @feature.save
       Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
-      render :json => @feature.to_json
+      respond_with {render  json: @feature.to_json }
     else
       respond_with { render json: @feature.errors, status: :unprocessable_entity }
     end
@@ -84,8 +83,8 @@ class FeaturesController < ApplicationController
     @tab = 'product-features'
     if signed_in? 
       @feature = Feature.find(params[:feature_id])
-      if !@feature.likes.exists?(:user_id => current_user.id)
-        @feature.likes.build(:user_id => current_user.id, :up => true)
+      if !@feature.likes.exists?(user_id: current_user.id)
+        @feature.likes.build(user_id:  current_user.id, up: true)
         @product.rating += 1
         respond_to do |format|
           if @feature.save and @product.save
@@ -115,7 +114,7 @@ class FeaturesController < ApplicationController
     if signed_in?
       @feature = Feature.find(params[:feature_id])
       @product = Product.find(params[:product_id])
-      @feature.likes.build(:user_id => current_user.id, :up => false)
+      @feature.likes.build(user_id:  current_user.id, up: false)
       @product -= 1
       respond_to do |format|
         if @feature.save and @product.save

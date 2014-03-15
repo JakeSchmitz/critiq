@@ -77,11 +77,11 @@ class Product < ActiveRecord::Base
   private
 
     def get_likes(id, type)
-      return Likes.where(:user_id => self.id, :likeable_type => type, :likeable_id => id)
+      return Likes.where(user_id: self.id, likeable_type: type, likeable_id: id)
     end
 
     def save_everything
-      self.pictures = ImageAsset.where(:attachable_id => self.id, :attachable_type => "Product")
+      self.pictures = ImageAsset.where(attachable_id: self.id, attachable_type: "Product")
       self.pictures.each do |asset| 
       	asset.product_id = self.id
         asset.user_id = self.user.id

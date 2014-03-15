@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     update_rating
     puts "and the tab is...... " + params[:tab].to_s
     @tab = params[:tab] || 'product-features'
-    @product ||= Product.find( :id => params[:product_id])
+    @product ||= Product.find( id: params[:product_id])
     if !@product.user.pictures.empty?
       @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
     end
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     @comments = @product.comments.order('rating DESC')
     @comment = @product.comments.new
     @likers = Array.new
-    @top_pics = @product.pictures.where.not(:attachment_file_size => nil).order('created_at DESC').limit(5)
+    @top_pics = @product.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(5)
     @product.likes.first(100).each do |like|
       @likers << like.user
     end
@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
       @product.pictures.build
       @product.user_id = current_user.id
     else
-      redirect_to signup_path, :notice => 'Please sign up before creating anything!'
+      redirect_to signup_path, notice: 'Please sign up before creating anything!'
     end
   end
 
@@ -55,8 +55,8 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new(product_params)
       @product.rating = 0
-      @single_features = @product.feature_groups.build(:name => 'singletons', :description => 'lorem', :singles => true, :product_id => @product.id)
-      @product.bounties.build(:question => "What can we do better?")
+      @single_features = @product.feature_groups.build(name: 'singletons', description: 'lorem', singles: true, product_id: @product.id)
+      @product.bounties.build(question: "What can we do better?")
       @product.user_id = current_user.id 
       Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
       respond_to do |format|
@@ -109,9 +109,9 @@ class ProductsController < ApplicationController
         @product.pictures.build(params[:upload])
         if @product.save
           format.html {
-            render :json => [@image_asset.to_jq_upload],
-            :content_type => 'text/html',
-            :layout => false
+            render json: [@image_asset.to_jq_upload],
+            content_type: 'text/html',
+            layout: false
           }
           format.json { render json: {files: [@image_asset.to_jq_upload]}, status: :created, location: @image_asset}
         else
@@ -126,9 +126,9 @@ class ProductsController < ApplicationController
     update_rating
     @tab = 'product-comments'
     if signed_in?
-      if !@product.likes.exists?(:user_id => current_user.id)
+      if !@product.likes.exists?(user_id: current_user.id)
         respond_to do |format|
-          if  @product.likes.create(:user_id => current_user.id)
+          if  @product.likes.create(user_id: current_user.id)
             update_rating
             Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :product, resource_id: @product.id)
             format.html { redirect_to @product, notice: 'Product was successfully updated.' }

@@ -15,6 +15,25 @@ class Feature < ActiveRecord::Base
     end
   end
 
+  def profile_pic
+    if !self.propic_id.nil?
+      return ImageAsset.find(self.propic_id)
+    elsif !self.pictures.empty?
+      return self.pictures.last
+    else
+      return nil  
+    end
+  end
+
+  def profile_pic_url(size=:large)
+    case self.profile_pic
+    when nil
+      '/images/missing-product.jpg'
+    else
+      self.profile_pic.attachment.url(size)
+    end
+  end
+
   private
 
     def save_pictures

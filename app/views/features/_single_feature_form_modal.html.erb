@@ -83,7 +83,8 @@
 	});
 
 	$(document).ready(function(){
-		$('#feature_create_form')
+		console.log('binding ajax actions to single feature modal for group <%= feature_group.id %>');
+		$('feature_create_form')
 			.bind("ajax:beforeSend", function(evt, xhr, settings){
 				// This is the submit button
 				var $singleFeatureButton = $(this).find('input[name="commit"]');

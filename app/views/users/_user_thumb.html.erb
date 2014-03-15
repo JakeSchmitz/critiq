@@ -1,12 +1,6 @@
 <div class="thumbnail span2 user-thumb">
 	<a href="/users/<%= user.id %>" data-toggle="modal">
-		<% if !user.propic_id.nil? %>
-			<div class="thumb-ratio" style="background-image: url('<%= asset_path ImageAsset.find(user.propic_id).attachment.url(:large) %>');"></div>
-		<% elsif !user.pictures.empty? %>
-	    <div class="thumb-ratio alternate-pic" style="background-image: url('<%= asset_path user.pictures.last.attachment.url(:large) %>');"></div>
-		<% else %>
-			<div class="thumb-ratio" style="background-image: url('/images/missing-user-avatar.png');"></div>
-		<% end %>
+		<div class="thumb-ratio" style="background-image: url('<%= user.profile_pic_url %>');"></div>
 	</a>
 	<div class="user-thumb-content">
 		<h4><%= link_to user.name, user %></h4>

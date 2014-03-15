@@ -5,11 +5,7 @@
       <div class="modal-body">
         <div class="modal-user-attributes" style="float: left; padding: 5px;">
           <div class="modal-pic" style="align: top; padding: 2px;">
-            <% if !user.propic_id.nil? %>
-              <%= image_tag ImageAsset.find(user.propic_id).attachment.url(:large), style: 'padding: 5px; height: 360px;' %>
-            <% else %>
-              <%= image_tag user.pictures.last.attachment.url(:large), style: 'padding: 5px; height: 360px;' %>
-            <% end %>
+            <%= image_tag user.profile_pic_url(:large), style: 'padding: 5px; height: 360px;' %>
           </div>
           <h4><%= user.name %></h4>
         </div>

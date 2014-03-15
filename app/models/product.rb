@@ -53,6 +53,15 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def profile_pic_url(size=:large)
+    case self.profile_pic
+    when nil
+      '/images/missing-product.jpg'
+    else
+      self.profile_pic.attachment.url(size)
+    end
+  end
+
   def rand_pic
     if !self.pictures.empty?
       options = ImageAsset.where(:product_id => self.id).where.not(:attachment_file_name => nil).order('created_at DESC')

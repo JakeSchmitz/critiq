@@ -4,11 +4,7 @@
   <div class="row user-profile-top">
     <div class="user-middle">     
       <div class="span user-face">
-        <% if @user.profile_pic %>
-          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic.attachment.url(:medium) %>');"></div>
-        <% else %>
-          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('/images/missing-user-avatar.png');"></div>
-        <% end %>
+        <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic_url(:large) %>');"></div>
       </div>
     </div>
     <div class="user-data">
@@ -52,7 +48,7 @@
       </div>
     </div>
   <% end %>
-  <% if signed_in? and @user.id == current_user.id %>
+  <% if current_user?(@user) %>
     <%= render partial: 'user_image_upload_form' %>
   <% end %>
 </div>

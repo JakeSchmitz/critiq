@@ -51,6 +51,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def profile_pic_url(size=:large)
+    case self.profile_pic
+    when nil
+      '/images/missing-user-avatar.png'
+    else
+      self.profile_pic.attachment.url(size)
+    end
+  end
+
   def has_pics?
     return !self.pictures.empty?
   end

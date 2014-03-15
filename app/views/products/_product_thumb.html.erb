@@ -1,12 +1,8 @@
 <div class="thumbnail product-thumb" style="text-align: center;">
-	<% if !product.pictures.empty? %>
-		<a href="/products/<%= product.id %>" data-toggle="modal">
-			<div class="thumb-ratio" style="background-image: url('<%= product.profile_pic.attachment.url(:large) %>');"></div>
-		</a>
-	<% else %>
-		<div class="thumb-ratio" style="background-image: url('/images/missing-product.jpg');"></div>
-	<% end %>
-	<% if signed_in? and product.user.id == current_user.id%>
+	<a href="/products/<%= product.id %>" data-toggle="modal">
+		<div class="thumb-ratio" style="background-image: url('<%= product.profile_pic_url %>');"></div>
+	</a>
+	<% if current_user?(product.user) %>
 		<div class="active-button">
 			<a href="/products/<%= product.id %>/active_switch">
 				<% if product.active %>
@@ -33,16 +29,6 @@
 	<div class="thumb-functions" style="padding-left: 12px;">
 		<h5 style="display: inline; float: left; padding-right: 10px; color: #fff; margin-top: 10px"><i class="fa fa-comment fa-lg"></i> <%= product.comments.size %></h5>
 		<h5 style="display: inline; float: left; color: #fff; margin-top: 10px;"><i class="fa fa-heart fa-lg" style="margin-top: 2px;"></i> <%= product.followers.size %></h5>
-		<!--<% if signed_in? and product.active and !product.likes.exists?(:user_id => current_user.id) %>
-			<%= link_to 'Show Love',
-								product_love_path(product.id), class: "btn-clear", style: 'padding: 5px; margin-top: 10px;' %>
-		<% elsif signed_in? and product.active %>
-			<p style="float: left; padding-left: 10px; padding-top: 5px;">Supported!</p>
-		<% elsif !product.active %>
-			<p style="float: left; padding-left: 10px; padding-top: 5px;">Expired</p>
-		<% end %> -->
-		<% if !product.user.profile_pic.nil? %>
-			<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path product.user.profile_pic.attachment.url(:thumb) %>'); background-size: cover;"></div></a>
-		<% end %>
+		<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path product.user.profile_pic_url(:thumb) %>'); background-size: cover;"></div></a>
 	</div>
 </div>

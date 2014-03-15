@@ -12,11 +12,7 @@
     <div class="product-left">
       <h1 class="product-name"><%= @product.name %></h1>
       <div class="product-creator" style="display: inline-block;">
-        <% if @product.user.pictures.empty? %>
-          <div class="img-circle creator-face" style="background-image: url('/images/missing-user-avatar.png');"></div>
-        <% else %>
-          <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic.attachment.url(:medium) %>');"></div>
-        <% end %>
+        <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url %>');"></div>
         <div class="creator-data">
           <h5 style="text-align: left;">Created By <%= link_to @product.user.name, @product.user, style: 'color: #cacaca' %></h5>
         </div>
@@ -33,16 +29,12 @@
         </div>
       </div>
       <div class="product-pictures">
-        <% if !@product.pictures.empty? %>
-          <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic.attachment.url(:large) %>');"></div>
-          <div class="other-pics">
-            <% @top_pics.first(5).each do |pic| %>
-              <div class="thumb-ratio alt-pic" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
-            <% end %>
-          </div>
-        <% else %>
-          <%= image_tag "/images/missing-image.jpg" %>
-        <% end %> 
+        <div class="main-pic span6" style="background-image: url('<%= @product.profile_pic_url %>');"></div>
+        <div class="other-pics">
+          <% @top_pics.first(5).each do |pic| %>
+            <div class="thumb-ratio alt-pic" style="background-image: url('<%= pic.attachment.url(:thumb) %>');"></div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -78,8 +70,8 @@
       <div class="tab-pane" id="product-comments" style="text-align: center;">
         <div class="new-comment">
           <div class="current-user">
-            <% if signed_in? and !current_user.pictures.empty? %>
-              <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic.attachment.url(:medium) %>');"></div>
+            <% if signed_in? %>
+              <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic_url %>');"></div>
             <% else %>
               <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
             <% end %>
@@ -109,7 +101,7 @@
         <%= render :partial => 'product_rewards', locals: { product: @product} %>
       </div>
       <!-- Edit Tab (when signed in) -->
-      <% if signed_in? and current_user.id == @product.id %>
+      <% if current_user?(@product.user)%>
         <div class="tab-pane" id="product_edit">
           <h1>Edit Campaign</h1>
           <div class="edit-info pull-left span">

@@ -1,10 +1,6 @@
 <div class="follower-thumb">
 	<a href="/users/<%= user.id %>">
-		<% if user.has_pics? %> 
-			<div class="follower-pic" style="background-image: url('<%= user.profile_pic.attachment.url(:thumb) %>');"></div>
-		<% else %>
-			<div class="follower-pic" style="background-image: url('/images/missing-user-avatar.png');"></div>
-		<% end %>
+		<div class="follower-pic" style="background-image: url('<%= user.profile_pic_url(:medium) %>');"></div>
 	</a>
 	<div class="follower-info">
 		<div class="info-top">

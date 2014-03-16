@@ -1,4 +1,4 @@
-<div class="product-bounties">
+<div class="product-bounties" style="max-width: 100%;">
 	<% if current_user?(@product.user) %>
 		<%= link_to 'Create Bounty', new_product_bounty_path(:product_id => @product.id), class: 'btn btn-primary' %> 
 	<% end %>
@@ -11,21 +11,21 @@
 					<h3><%= bounty.question %></h3>
 					<p><%= bounty.comments.length.to_s %> responses so far</p>
 				</div>
-				<div class="new-comment">
-	        <div class="current-user">
-	          <% if signed_in? and !current_user.pictures.empty? %>
-	            <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic.attachment.url(:thumb) %>');"></div>
-	          <% else %>
-	            <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
-	          <% end %>
-	        </div>
-	        <%= render :partial => '/comments/bounty_form', locals: { bounty: bounty, tab: 'product-bounties' } %>
-	      </div>
+				<div class="new-comment" style="margin-left: -50%; max-width: 50%;">
+          <div class="current-user">
+            <% if signed_in? %>
+              <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic_url %>');"></div>
+            <% else %>
+              <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
+            <% end %>
+          </div>
+          <%= render :partial => '/comments/bounty_form', locals: { tab: 'product-bounties', bounty: bounty, thread_id: 'bounty' + bounty.id.to_s}, style: 'display: inline-block;' %>
+        </div>
 				<div class="bounty-responses">
 					<% if bounty.comments.empty? %>
 						<h3>Be the first to respond!</h3>
 					<% else %>
-						<%= render :partial => 'product_comments', locals: { comments: bounty.comments.order('rating DESC ').first(3), product: @product} %>
+						<%= render :partial => 'product_comments', locals: { comments: bounty.comments.order('rating DESC ').first(3), product: @product, thread_id: 'bounty' + bounty.id.to_s} %>
 						<% if bounty.comments.size > 3 %>
 							<%= link_to 'More Responses >>>', product_bounty_path(:product_id => @product.id, :bounty_id => bounty.id), class: 'btn show-bounty-button pull-right' %>
 						<% end %>

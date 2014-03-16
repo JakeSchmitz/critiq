@@ -1,7 +1,7 @@
-<ul class="media-list" style="display: inline-block; text-align: center;" >
+<div id="thread_id<%= thread_id %>" style="display: inline-block; text-align: center;" >
 	<% comments.each do |comment| %>
 		<% unless comment.user.nil? %>
 			<%= render partial: '/comments/comment', locals: {comment: comment, product: product } %>
 		<% end %>
 	<% end %>
-</ul>
+</div>

@@ -17,7 +17,7 @@
 		<h4>Top Comments</h4>
 		<p>Earn heat for your highly rated critiqs, and check out the top comments now</p>
 		<div style="margin-left: 10%;">
-			<%= render partial: 'product_comments', locals: { comments: product.comments.order('rating DESC').first(3), product: product } %>
+			<%= render partial: 'product_comments', locals: { comments: product.comments.order('rating DESC').first(3), product: product, thread_id: 'rewards' + @product.id.to_s} %>
 		</div>
 	</div>
 </div>	

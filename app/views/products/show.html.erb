@@ -76,11 +76,11 @@
               <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
             <% end %>
           </div>
-          <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments'}, style: 'display: inline-block;' %>
+          <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments', thread_id: 'product' + @product.id.to_s}, style: 'display: inline-block;' %>
         </div>
         <% if !@product.comments.empty? %> 
           <div style="padding-top: 20px;">
-            <%= render :partial => 'product_comments', locals: { comments: @comments, product: @product} %>
+            <%= render :partial => 'product_comments', locals: { comments: @comments, product: @product, thread_id: 'product' + @product.id.to_s} %>
           </div>
         <% else %>
           <h2>This Has No Comments!</h2>

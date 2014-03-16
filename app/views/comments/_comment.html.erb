@@ -1,10 +1,10 @@
 <li class="row comment" style="width: 80%; display: inline-block;">
 	<div class="comment-vote-buttons pull-left" style="margin-top: 20px; padding-right: 20px;">
-		<%= link_to product_comment_upvote_path(:product_id => product.id, :comment_id => comment.id) do %>
+		<%= link_to comment_upvote_path(:product_id => product.id, :comment_id => comment.id) do %>
 			<i class="fa fa-play fa-rotate-270" style="color: #1ba573; padding-left: 2px;"></i>
 		<% end %>
 		<h5 style="margin: 0px;"><%= comment.rating %></h5>
-		<%= link_to product_comment_downvote_path(:product_id => product.id, :comment_id => comment.id) do %>
+		<%= link_to comment_downvote_path(:product_id => product.id, :comment_id => comment.id) do %>
 			<i class="fa fa-play fa-rotate-90"  style="color: #c14b1b;"></i>
 		<% end %>
 	</div>

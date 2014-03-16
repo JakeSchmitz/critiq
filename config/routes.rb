@@ -37,7 +37,10 @@ Critiq0::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :image_assets
-
+  resources :comments do
+    get 'upvote' => :upvote
+    get 'downvote' => :downvote
+  end
   root :to => "pages#home"
 
   match '/signup', to: 'users#new', via: 'get'

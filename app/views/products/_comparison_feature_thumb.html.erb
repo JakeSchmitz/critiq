@@ -10,7 +10,7 @@
 				<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: comp_feature, feature: Feature.new(:user_id => @product.user.id, :product_id => @product.id, :feature_group_id => comp_feature.id) } %>
 			<% end %>
 	</div>
-	<div class="row" id="feature-thumbnails<%= comp_feature.id %>" style="display: inline-block;" >
+	<div class="row" id="feature-thumbnails<%= comp_feature.id %>" style="display: inline-block; max-width: 98%;" >
 		<% comp_feature.features.each do |cf| %>
 			<div class="comp-feature">
 				<%= render :partial => 'feature_thumb', locals: { feature: cf, vote: comp_feature.can_user_vote(current_user) } %>

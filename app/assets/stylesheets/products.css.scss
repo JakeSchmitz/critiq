@@ -245,6 +245,7 @@
 	text-align: center;
 	display: inline-block;
 	margin-left: -25%;
+	margin-right: 25%;
 	.comment-box {
 		position: absolute;
 		min-width: 350px;
@@ -273,6 +274,11 @@
 	display: inline-block; 
 	margin-bottom: 20px;
 	margin-left: 10%;
+}
+
+.product-comments {
+	margin-left: 10%; 
+	margin-right: 10%;
 }
 
 .product-image-upload {

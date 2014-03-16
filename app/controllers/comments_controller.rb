@@ -35,10 +35,11 @@ class CommentsController < ApplicationController
       @comment.user_id = current_user.id
       @comment.user = current_user
       @user = current_user
+      product = Product.find(params[:product_id])
       respond_to do |format|
         if @comment.save
           Activity.create(timestamp: @comment.created_at, user_id: @user.id, activity_type: :comment, resource_type: @commentable.class.name, resource_id: @commentable.id)
-          format.html { render partial: '/comments/comment', locals: {comment: @comment, product: Product.find(@comment.commentable_id)}, notice: "Comment created.", :name => "tab[#{params[:tab]}]" }
+          format.html { render partial: '/comments/comment', locals: {comment: @comment, product: product || @comment.product }, notice: "Comment created.", :name => "tab[#{params[:tab]}]" }
           format.json { render action: 'show', status: :created, location: @comment }
           #format.js { render :js => 'function () {
           # $(\'#product-tabs a[href="#product-comments"]\').tab(\'show\')

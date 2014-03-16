@@ -24,7 +24,7 @@ production:
   pool: 5
   username: postgres
   password:
-critiq-env:
+critiq-aws:
   adapter: postgresql
   encoding: utf8
   database: <%= ENV['RDS_DB_NAME'] %>

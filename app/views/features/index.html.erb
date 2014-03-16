@@ -1,33 +1,31 @@
-<h1>Listing features</h1>
+<div class="container" style="text-align: center;">
+  <h1>Listing features</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @features.each do |feature| %>
-      <tr>
-        <td><%= feature.name %></td>
-        <td><%= feature.description %></td>
-        <td><%= feature.upvotes %></td>
-        <td><%= feature.downvotes %></td>
-        <td><%= link_to 'Show', product_feature_path(:id => feature.id) %></td>
-        <td><%= link_to 'Edit', edit_product_feature_path(:id => feature.id) %></td>
-        <td><%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <table>
+    <thead>
+      <tr style="text-align: center;">
+        <th>Name</th>
+        <th>Description</th>
+        <th>Upvotes</th>
+        <th>Downvotes</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Feature', new_feature_path %>
+    <tbody>
+      <% @features.each do |feature| %>
+        <tr>
+          <td><%= feature.name %></td>
+          <td><%= feature.description %></td>
+          <td><%= feature.upvotes %></td>
+          <td><%= feature.downvotes %></td>
+          <td><%= link_to 'Show', product_feature_group_feature_path(:id => feature.id) %></td>
+          <td><%= link_to 'Edit', edit_product_feature_group_feature_path(:id => feature.id) %></td>
+          <td><%= link_to 'Destroy', product_feature_group_feature_path(id: feature.id ), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

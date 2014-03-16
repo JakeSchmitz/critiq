@@ -45,20 +45,16 @@
 					  </div>
 		      </div>
 			    <div>
-			      <%= f.fields_for feature.pictures.new(:product_id => product.id, user_id: current_user.id), html: { remote: true} do |picture| %>
-			        <% if !picture.object.nil? and picture.object.new_record? %>
-			          <div class="control-group well form-well">
-			            <%= picture.label "Image (optional)", :class => 'control-label' %>
-			            <div class="controls btn file_upload_wrapper" style="margin-left: -30px;">
-			              <%= picture.file_field :attachment, name: 'feature[attachment]', class: 'file_field' %>
-			            </div>
-			          </div>  
-			        <% end %>
-			      <% end %>
+	          <div class="control-group well form-well">
+	            <%= f.label "Image (optional)", :class => 'control-label' %>
+	            <div class="controls btn file_upload_wrapper" style="margin-left: -30px;">
+	              <%= f.file_field :attachment, name: 'feature[attachment]', class: 'file_field' %>
+	            </div>
+	          </div>  
 			    </div>
 			  </div>
 			  <div class="actions" style="margin-top: 20px; height: 60px; padding-top: 15px; background-color: #794f85; width: 100%;">
-			    <%= f.submit 'SAVE AND CONTINUE', :class => 'btn btn-primary btn-clear', id: 'sumbitFeature' + feature_group.id.to_s %>
+			    <%= f.submit 'SAVE AND CONTINUE', class: 'btn btn-primary btn-clear', id: 'submitFeature' + feature_group.id.to_s %>
 			  </div>
 			<% end %>
 		</div>
@@ -67,22 +63,26 @@
 
 <script>
 	$(document).ready(function(){
+		// This is the submit button
+		var $singleFeatureButton = $('#submitFeature<%= feature_group.id.to_s %>');
+		$singleFeatureButton.attr('value', 'SUBMIT');
 		console.log('binding ajax actions to single feature modal for group <%= feature_group.id %>');
 		$('#feature_create_form<%= feature_group.id.to_s %>')
 			.bind("ajax:beforeSend", function(evt, xhr, settings){
-				// This is the submit button
-				var $singleFeatureButton = $('submitFeature<%= feature_group.id.to_s %>');
 				console.log('attempting to create single feature');
 				// save its text
 				$singleFeatureButton.data('origText', $(this).text());
 				// replace text with SUBMITTING...
-				$singleFeatureButton.text('SUBMITTING...');
+				$singleFeatureButton.attr('value', 'SUBMITTING...');
 
-			}).bind("ajax:complete", function(evt, xhr, status) {
-				var $singleFeatureButton = $('submitFeature<%= feature_group.id.to_s %>');
+			}).bind("ajax:complete", function(evt, data, status, xhr) {
 				console.log('successfully created single feature');
 				// Change text to complete
-				$singleFeatureButton.text('SUBMITTED');
+				$singleFeatureButton.attr('value', 'SUCCESS');
+				//this div is located in /products/_product_features
+				//renders a new thumbnail in the right section
+				$('#feature-thumbnails<%= feature_group.id.to_s %>').append(data.responseText);
+				$('#newFeatureModalGroup<%= feature_group.id %>').modal('hide');
 			});
 	});
 </script>

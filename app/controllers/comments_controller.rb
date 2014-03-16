@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
       respond_to do |format|
         if @comment.save
           Activity.create(timestamp: @comment.created_at, user_id: @user.id, activity_type: :comment, resource_type: @commentable.class.name, resource_id: @commentable.id)
-          format.html { redirect_to request.referer, notice: "Comment created.", :name => "tab[#{params[:tab]}]" }
+          format.html { render partial: , notice: "Comment created.", :name => "tab[#{params[:tab]}]" }
           format.json { render action: 'show', status: :created, location: @comment }
           #format.js { render :js => 'function () {
           # $(\'#product-tabs a[href="#product-comments"]\').tab(\'show\')

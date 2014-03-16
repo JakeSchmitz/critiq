@@ -1,6 +1,6 @@
 class FeaturesController < ApplicationController
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :xml, :json
+  respond_to :html, :xml, :json, :js
   # GET /product/pid/features
   # GET /features.json
   def index
@@ -39,16 +39,18 @@ class FeaturesController < ApplicationController
     @feature.product_id = @product.id
     @feature.feature_group_id = @feature_group.id
     puts 'This is the feature param we received\n' + params[:feature].to_s
-    unless params[:feature][:attachment].nil? then
+    if !params[:feature][:attachment].nil? 
       @feature.pictures.build(attachment: params[:feature][:attachment], user_id: current_user.id, product_id: @product.id)
-    end
-    if @feature.save
-      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
-      respond_with {render  json: @feature.to_json }
+      @feature.save
+      redirect_to @product
     else
-      respond_with { render json: @feature.errors, status: :unprocessable_entity }
+      if @feature.save
+        Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :feature, resource_id: @feature.id)
+        render partial: '/products/feature_thumb', locals: {feature: @feature, vote: true}
+      else
+        respond_with(@feature.errors, status: :unprocessable_entity )
+      end
     end
-
   end
 
   # PATCH/PUT /product/:product_id/features/1

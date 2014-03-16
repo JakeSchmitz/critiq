@@ -12,7 +12,7 @@
 <div class="single-features">
 	<% if !@single_features.nil? and !@single_features.features.empty? %>
 		<h2>Singletons</h2>
-		<div class="row" style="text-align: center; display: inline-block;">
+		<div class="row" id="feature-thumbnails<%= @single_features.id %>" style="text-align: center; display: inline-block;">
 	    <% @single_features.features.each do |feature| %>
       	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
 	    <% end %>
@@ -36,9 +36,3 @@
 		<h2>No Comparative Features Have Been Set Up For <%= @product.name %>. </h2>
 	<% end %> 
 </div>
-
-<script>
-	$('#').ready(function(){
-
-	});
-</script>

@@ -15,9 +15,9 @@
 	</div>
 	<div class="feature-thumb-functions">
 		<% if feature.feature_group.singles? %>
-			<%= render partial: 'single_feature_thumb_functions', locals: {feature: feature } %>
+			<%= render partial: '/products/single_feature_thumb_functions', locals: {feature: feature } %>
 		<% else %>
-			<%= render partial: 'comp_feature_thumb_functions', locals: {feature: feature } %>
+			<%= render partial: '/products/comp_feature_thumb_functions', locals: {feature: feature } %>
 		<% end %>
 	</div>
 </div>

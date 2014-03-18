@@ -18,14 +18,6 @@ gem "aws-sdk"
 gem "rails_12factor"
 gem "thin"
 
-group :production do
-
-end
-
-group :development do
-
-end
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -51,6 +43,22 @@ gem 'jquery-fileupload-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+
+group :production do
+
+end
+
+group :development, :test do
+	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+end
+
+group :test do 
+	gem 'faker'
+	gem 'capybara'
+	gem 'database_cleaner'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

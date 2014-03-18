@@ -392,6 +392,8 @@ div.file_upload_wrapper:hover {
   height: 40px;
   background: rgba(124, 124, 124, 0.8);
   opacity: .8;
+  display: inline-block;
+  width: 100%;
   > p > a > h4 {
     opacity: 1;
   }

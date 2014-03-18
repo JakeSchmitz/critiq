@@ -13,22 +13,14 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: myapp_test
+  database: critiq_test
   pool: 5
-  username: postgres
+  username: critiq
   password:
 production:
   adapter: postgresql
   encoding: unicode
   database: myapp_production
   pool: 5
-  username: postgres
+  username: critiq
   password:
-critiq-aws:
-  adapter: postgresql
-  encoding: utf8
-  database: <%= ENV['RDS_DB_NAME'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>

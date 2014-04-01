@@ -376,7 +376,7 @@
 @media (max-width: 480px) {
 	.new-comment {
 		text-align: left;
-		margin-left: -75%;
+		position: absolute;
 		.comment-box {
 			position: absolute;
 			width: 450px;

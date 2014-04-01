@@ -17,7 +17,7 @@
 .product-thumb {
 	height: 370px;
 	width: 250px;
-	background-color: #fff;
+	background-color: rgba(255, 255, 255, .999);
 	padding:10px;
 	margin-bottom: 10px;
 }
@@ -74,7 +74,7 @@
 	  padding: 7px;
 	  padding-top: 0px;
 		margin-top: -170px;
-		background: rgba(230, 235, 245, 1);
+		background: rgba(230, 235, 245, .999);
 		background-color: #e8eaee;
 		height: 130px;
 	  overflow: hidden;
@@ -348,14 +348,14 @@
 		height: 370px;
 		min-width: 23%;
 	}
-	.thumbnail:hover {
+	.product-thumb:hover {
 		.product-thumb-content {
 		  margin-top: -102px;
 		  height: 62px;
 			.product-thumb-description {
 				text-align: center;
 				display: block;
-				color: #444444;
+				color: rgba(68, 68, 68, .999);
 			}
 		}
 		.view-button {

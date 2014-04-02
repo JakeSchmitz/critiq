@@ -1,0 +1,30 @@
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors alert fade in aler-failure">
+    <% for message_error in @user.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :name %>
+    <%= f.text_field :name  %>
+  </div>
+  <div class="control-group">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="control-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => 'password_field' %>
+  </div>
+  <div class="control-group">
+    <%= f.label 'Re-Type ' %>
+    <%= f.password_field :password_confirmation, :class => 'password_field' %>
+  </div>
+ <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn}' %>
+  </div>
+<% end %>

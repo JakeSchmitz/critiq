@@ -6,19 +6,21 @@
             </p>
             <div class="signin_form clearfix">
                 <%= form_for(:session, url: signin_path) do |f| %>
-                    <%= f.label :email %>
-                    <%= f.text_field :email %>
-
-                    <%= f.label :password %>
-                    <%= f.password_field :password %>
-
+                    <div class="control-group">
+                        <%= f.label :email %>
+                        <%= f.text_field :email %>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :password %>
+                        <%= f.password_field :password %>
+                    </div>
                     <%= f.submit "Login", id: 'Login_button', class: "btn btn-large btn-primary" %>
+                    <div id="Login_forgot_password_container">
+                        <a id="Forgot_pasword_text_link" href="redirect to email activation page">
+                        <span id="Forgot_password_text">Forgot Password?</span><br>
+                        </a>
+                    </div>
                 <% end %>
-            </div>
-            <div id="Login_forgot_password_container" class="clearfix">
-                <a id="Forgot_pasword_text_link" href="redirect to email activation page">
-                <span id="Forgot_password_text">Forgot Password?</span><br>
-                </a>
             </div>
             <a href="facebook sign in, then user dashboard">
                 <input id="Facebook_sign_in_button" type="button" value="Facebook sign in">
@@ -28,15 +30,11 @@
             <p id="_Sign_up_title_text">
             Sign up<br>
             </p>
-            <div id="Sign_up_email_form" class="clearfix">
+            <% @user = User.new %>
+            <% @user.pictures.build %>
+            <div class="signin_form clearfix">
+                <%= render partial: '/users/short_form' %>
             </div>
-            <div id="Sign_up_pass_word_form" class="clearfix">
-            </div>
-            <div id="Sign_up_pass_word_confirmation_form" class="clearfix">
-            </div>
-            <a href="redirect to user dashboard">
-                <input id="Sign_up_button" type="button" value="Sign Up">
-            </a>
         </div>
     </div>
 </div>

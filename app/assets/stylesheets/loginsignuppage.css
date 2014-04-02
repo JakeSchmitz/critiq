@@ -1,7 +1,7 @@
 /* here is custom stuff for forms that I (jake) wrote */
 .signin_form {
-    width: 80%;
-    margin-left: 10%;
+    width: 90%;
+    margin-left: 15%;
     color: #fff;
 }
 
@@ -50,8 +50,9 @@
 
 #Background_image_box {
     float: left;
-    height: 769px;
+    min-height: 100%;
     margin-left: 0%;
+    padding-bottom: 5%;
     clear: none;
     width: 100%;
     background-image:url(/images/Home-banner.jpg);
@@ -106,7 +107,7 @@
     font-weight: normal;
     line-height: 1em;
     margin-left: auto;
-    margin-top: 73px;
+    margin-top: 33px;
     clear: none;
     min-height: 0px;
     color: rgb(255, 255, 255);
@@ -221,7 +222,7 @@
     font-weight: normal;
     line-height: 1em;
     margin-left: auto;
-    margin-top: 73px;
+    margin-top: 33px;
     clear: none;
     min-height: 0px;
     color: rgb(255, 255, 255);

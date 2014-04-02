@@ -12,7 +12,7 @@
     <div class="product-left">
       <h1 class="product-name"><%= @product.name %></h1>
       <div class="product-creator" style="display: inline-block;">
-        <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url %>');"></div>
+        <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>');"></div>
         <div class="creator-data">
           <h5 style="text-align: left;">Created By <%= link_to @product.user.name, @product.user, style: 'color: #cacaca' %></h5>
         </div>

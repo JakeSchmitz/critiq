@@ -44,18 +44,16 @@ class User < ActiveRecord::Base
   end
 
   def profile_pic
-    case self.propic_id
-    when !nil 
-      ImageAsset.find(self.propic_id)
-    when !self.pictures.empty?
-      self.pictures.first
-    else
+    if self.propic_id
+      ImageAset.find(self.propic_id)
+    elsif self.pictures.empty?
       nil
+    else
+      self.pictures.last
     end
   end
 
   def profile_pic_url(size=:large)
-    puts 'here is your propic ' + self.profile_pic.to_s
     case self.profile_pic
     when nil
       '/images/missing-user-avatar.png'

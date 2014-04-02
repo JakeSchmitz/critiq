@@ -9,11 +9,7 @@
 		<% end %>
 	</div>
 	<div class="user-info pull-left">
-		<% if !comment.user.pictures.empty? %>
-			<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic.attachment.url(:medium) %>'); width: 100px; height: 100px;"></div>
-		<% else %>
-			<div class="thumb-ratio" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px;"></div>
-		<% end %>
+			<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic_url(:medium) %>'); width: 100px; height: 100px;"></div>
 	</div>
 	<div class="comment-body pull-left">
 		<p><%= link_to comment.user.name, user_path(comment.user) %> - <%= comment.created_at %></p>

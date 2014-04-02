@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
     elsif self.pictures.empty?
       nil
     else
-      self.pictures.first
+      self.pictures.last
     end
   end
 

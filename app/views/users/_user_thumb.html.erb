@@ -12,7 +12,7 @@
 					<div class="buffer" style="margin-left: 15%;">
 						<a href="/products/<%= product.id %>">
 						<% if !product.profile_pic.nil? %>
-							<div class="thumb-ratio tiny-thumb-ratio" style="background-image: url('<%= asset_path product.profile_pic.attachment.url(:thumb) %>'); margin-right: 5px;"></div>
+							<div class="thumb-ratio tiny-thumb-ratio" style="background-image: url('<%= product.profile_pic_url(:thumb) %>'); margin-right: 5px;"></div>
 						<% else %>
 							<div class="thumb-ratio tiny-thumb-ratio" style="background-image: url('/images/missing-user-avatar.png'); margin-right: 5px;"></div>
 						<% end %>

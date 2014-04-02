@@ -29,6 +29,6 @@
 	<div class="thumb-functions" style="padding-left: 12px;">
 		<h5 style="display: inline; float: left; padding-right: 10px; color: #fff; margin-top: 10px"><i class="fa fa-comment fa-lg"></i> <%= product.comments.size %></h5>
 		<h5 style="display: inline; float: left; color: #fff; margin-top: 10px;"><i class="fa fa-heart fa-lg" style="margin-top: 2px;"></i> <%= product.followers.size %></h5>
-		<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= asset_path product.user.profile_pic_url(:thumb) %>'); background-size: cover;"></div></a>
+		<a href="/users/<%= product.user_id %>"><div class="tiny-thumb-ratio pull-right" style="background-image: url('<%= product.user.profile_pic_url(:thumb) %>'); background-size: cover;"></div></a>
 	</div>
 </div>

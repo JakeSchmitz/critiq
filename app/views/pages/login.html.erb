@@ -4,14 +4,18 @@
             <p id="_Log_in_title_text">
             Log in
             </p>
-            <div id="Login_Email_Form" class="clearfix">
-            </div>
-            <div id="Login_Password_form" class="clearfix">
+            <div class="signin_form clearfix">
+                <%= form_for(:session, url: signin_path) do |f| %>
+                    <%= f.label :email %>
+                    <%= f.text_field :email %>
+
+                    <%= f.label :password %>
+                    <%= f.password_field :password %>
+
+                    <%= f.submit "Login", id: 'Login_button', class: "btn btn-large btn-primary" %>
+                <% end %>
             </div>
             <div id="Login_forgot_password_container" class="clearfix">
-                <a href="redirect to user dashboard">
-                    <input id="Login_button" type="button" value="Login">
-                </a>
                 <a id="Forgot_pasword_text_link" href="redirect to email activation page">
                 <span id="Forgot_password_text">Forgot Password?</span><br>
                 </a>

@@ -1,3 +1,10 @@
+/* here is custom stuff for forms that I (jake) wrote */
+.signin_form {
+    width: 80%;
+    margin-left: 10%;
+    color: #fff;
+}
+
 /* This code is only meant for previewing your Reflow design. */
 .primaryContainer {
     height: auto;
@@ -173,12 +180,12 @@
 
 #Facebook_sign_in_button {
     float: none;
-    min-height: 31px;
-    font-size: 80%;
+    min-height: 36px;
+    font-size: 90%;
     margin-left: auto;
     margin-top: 25px;
     clear: none;
-    width: 49.997495%;
+    width: 50%;
     color: rgb(255, 255, 255);
     font-family: proxima-nova;
     border-style: none;
@@ -350,10 +357,7 @@
 }
 
 #Login_forgot_password_container {
-    float: none;
-    height: 90px;
     margin-left: auto;
-    margin-top: 9px;
     clear: none;
     width: 50%;
     margin-right: auto;

@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 
   def profile_pic
     if !self.propic_id.nil?
-      ImageAset.find(self.propic_id)
+      ImageAsset.find(self.propic_id)
     elsif self.pictures.empty?
       nil
     else

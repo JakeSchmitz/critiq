@@ -1,0 +1,974 @@
+/* This code is only meant for previewing your Reflow design. */
+.primaryContainer {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: 100%;
+}
+
+#Global_COntainer {
+    float: left;
+    height: 921px;
+    margin-left: 0%;
+    margin-top: 0px;
+    clear: none;
+    width: 100%;
+    position: relative;
+}
+
+#Top_navbar_box {
+    float: left;
+    height: 45px;
+    clear: none;
+    width: 100%;
+    background-color: rgb(109, 44, 250);
+    position: fixed;
+    box-shadow: rgba(66, 66, 66, 0.180392) 0px 1px 3px 0px;
+}
+
+#Logo {
+    float: left;
+    height: 34px;
+    margin-left: 6.131235%;
+    margin-top: 6px;
+    clear: none;
+    width: 168.65625px;
+    background-attachment: inherit;
+    background-size: auto 100%;
+    margin-right: 0%;
+    background-position: 0% 0%;
+    background-repeat: no-repeat no-repeat;
+}
+
+#Background_image_box {
+    float: left;
+    height: 769px;
+    margin-left: 0%;
+    clear: none;
+    width: 100%;
+    background-image:url(/images/Home-banner.jpg);
+    background-attachment: fixed;
+    background-size: 100%;
+    background-position: 50% 0%;
+    background-repeat: no-repeat no-repeat;
+}
+
+#Bottom_Sitemap_ Box {
+    float: left;
+    height: 107px;
+    clear: both;
+    width: 100%;
+    background-color: rgb(61, 61, 61);
+    position: absolute;
+    top: 814px;
+    left: 0px;
+}
+
+#Login_and_Signup_global_container {
+    float: none;
+    height: 481px;
+    margin-left: auto;
+    margin-top: 5%;
+    clear: none;
+    width: 634.1022625100001px;
+    margin-right: auto;
+}
+
+#Login_container {
+    float: left;
+    height: 481px;
+    margin-left: 0%;
+    margin-top: 0px;
+    clear: none;
+    width: 311.8719090875px;
+    background-color: rgb(61, 61, 61);
+    max-width: 600px;
+    background-image:url("img/splatters-01.svg");
+    background-attachment: scroll;
+    background-size: auto;
+    background-position: 0% 0%;
+    background-repeat: repeat repeat;
+}
+
+#_Log_in_title_text {
+    font-size: 35px;
+    width: 90%;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 73px;
+    clear: none;
+    min-height: 0px;
+    color: rgb(255, 255, 255);
+    min-width: 90.05px;
+    margin-right: auto;
+}
+
+#Login_Email_Form {
+    float: none;
+    min-height: 36px;
+    margin-left: auto;
+    margin-top: 44px;
+    clear: none;
+    width: 49.997495%;
+    margin-right: auto;
+    border: 2px solid rgb(255, 255, 255);
+    overflow: visible;
+}
+
+#Login_Password_form {
+    float: none;
+    min-height: 36px;
+    margin-left: auto;
+    margin-top: 22px;
+    clear: none;
+    width: 49.997495%;
+    margin-right: auto;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+#Login_button {
+    float: none;
+    min-height: 31px;
+    font-size: 100%;
+    margin-left: auto;
+    margin-top: 18px;
+    clear: none;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-family: proxima-nova;
+    background-color: rgb(109, 44, 250);
+    border-style: none;
+    box-shadow: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    font-weight: 300;
+    display: block;
+    margin-right: auto;
+    min-width: 0px;
+}
+
+#Forgot_pasword_text_link {
+    float: none;
+    font-size: 12px;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 12px;
+    clear: none;
+    min-height: 0px;
+    color: rgb(255, 255, 255);
+    margin-right: auto;
+    display: block;
+    min-width: 0px;
+}
+
+#Facebook_sign_in_button {
+    float: none;
+    min-height: 31px;
+    font-size: 80%;
+    margin-left: auto;
+    margin-top: 25px;
+    clear: none;
+    width: 49.997495%;
+    color: rgb(255, 255, 255);
+    font-family: proxima-nova;
+    border-style: none;
+    box-shadow: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    font-weight: 300;
+    display: block;
+    background-color: rgb(39, 55, 255);
+    margin-right: auto;
+}
+
+#Sign_up_container {
+    float: left;
+    height: 481px;
+    margin-left: 1.487191%;
+    margin-top: 0px;
+    clear: none;
+    width: 311.8719090875px;
+    max-width: 600px;
+    background-color: rgb(109, 44, 250);
+    margin-right: 0%;
+}
+
+#_Sign_up_title_text {
+    float: none;
+    font-size: 35px;
+    width: 90%;
+    height: auto;
+    text-align: center;
+    font-weight: normal;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 73px;
+    clear: none;
+    min-height: 0px;
+    color: rgb(255, 255, 255);
+    max-width: none;
+    min-width: 123.42623750000001px;
+    margin-right: auto;
+}
+
+#Sign_up_email_form {
+    float: none;
+    min-height: 36px;
+    margin-left: auto;
+    margin-top: 44px;
+    clear: none;
+    width: 50%;
+    margin-right: auto;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+#Sign_up_button {
+    float: none;
+    min-height: 35px;
+    font-size: 100%;
+    margin-left: auto;
+    margin-top: 25px;
+    clear: none;
+    width: 50%;
+    color: rgb(255, 255, 255);
+    font-family: proxima-nova;
+    border-style: none;
+    box-shadow: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    font-weight: 300;
+    display: block;
+    background-color: rgb(61, 61, 61);
+    margin-right: auto;
+}
+
+#Sign_up_pass_word_confirmation_form {
+    float: none;
+    height: 36px;
+    margin-left: auto;
+    margin-top: 25px;
+    clear: none;
+    width: 50%;
+    margin-right: auto;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+#Sitemap_text_container {
+    float: none;
+    height: 20px;
+    margin-left: auto;
+    margin-top: 45px;
+    clear: none;
+    width: 30.998651%;
+    margin-right: auto;
+}
+
+#_FAQ_text {
+    float: left;
+    font-size: 20px;
+    width: 11.625983%;
+    height: auto;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1em;
+    margin-left: 0%;
+    margin-top: 0px;
+    clear: none;
+    min-height: 0px;
+    color: rgb(255, 255, 255);
+    font-family: proxima-nova;
+    display: block;
+}
+
+#_Contact_text {
+    float: left;
+    font-size: 20px;
+    width: 16.552889%;
+    height: auto;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1em;
+    margin-left: 13.084402%;
+    margin-top: 0px;
+    clear: none;
+    min-height: 0px;
+    color: rgb(255, 255, 255);
+    font-family: proxima-nova;
+    margin-right: 0%;
+    display: block;
+}
+
+#_Help_text {
+    float: right;
+    font-size: 20px;
+    width: 10.888153%;
+    height: auto;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1em;
+    margin-left: 0px;
+    margin-top: 0px;
+    clear: none;
+    min-height: 20px;
+    color: rgb(255, 255, 255);
+    font-family: proxima-nova;
+    margin-right: 12.912012%;
+    display: block;
+}
+
+#_About_us_text {
+    float: right;
+    font-size: 20px;
+    width: 94.203125px;
+    height: auto;
+    text-align: left;
+    font-weight: 400;
+    line-height: 1em;
+    margin-left: 0px;
+    margin-top: 0px;
+    clear: none;
+    min-height: 20px;
+    color: rgb(255, 255, 255);
+    font-family: proxima-nova;
+    margin-right: 0.17583782%;
+    min-width: 94.21px;
+    display: block;
+}
+
+#Login_forgot_password_container {
+    float: none;
+    height: 90px;
+    margin-left: auto;
+    margin-top: 9px;
+    clear: none;
+    width: 50%;
+    margin-right: auto;
+}
+
+#Sign_up_pass_word_form {
+    float: none;
+    height: 36px;
+    margin-left: auto;
+    margin-top: 24px;
+    clear: none;
+    width: 50%;
+    border: 2px solid rgb(255, 255, 255);
+    margin-right: auto;
+}
+
+#Top_nav_Explore_text_link {
+    float: left;
+    font-size: 18px;
+    width: auto;
+    height: auto;
+    text-align: left;
+    font-weight: 500;
+    line-height: 1em;
+    margin-left: 2.573238%;
+    margin-top: 14px;
+    clear: none;
+    min-height: 0px;
+    font-family: proxima-nova;
+    color: rgb(255, 255, 255);
+    display: block;
+    overflow: hidden;
+}
+
+#Top_nav_Launch_text_link {
+    float: left;
+    font-size: 18px;
+    width: auto;
+    height: auto;
+    text-align: left;
+    font-weight: 500;
+    line-height: 1em;
+    margin-left: 3.259848%;
+    margin-top: 14px;
+    clear: none;
+    min-height: 0px;
+    font-family: proxima-nova;
+    color: rgb(255, 255, 255);
+    margin-right: 0%;
+    display: block;
+    overflow: hidden;
+}
+
+#Top_nav_Users_text_link {
+    float: left;
+    font-size: 18px;
+    width: auto;
+    height: auto;
+    text-align: left;
+    font-weight: 500;
+    line-height: 1em;
+    margin-left: 3.603771%;
+    margin-top: 14px;
+    clear: none;
+    min-height: 0px;
+    font-family: proxima-nova;
+    color: rgb(255, 255, 255);
+    margin-right: 0%;
+    display: block;
+    overflow: hidden;
+}
+
+#Top_nav_Log_in_or_Sign_up_text_link {
+    float: right;
+    font-size: 18px;
+    width: auto;
+    height: auto;
+    text-align: left;
+    font-weight: 500;
+    line-height: 1em;
+    margin-left: 0px;
+    margin-top: 13px;
+    clear: none;
+    min-height: 19px;
+    font-family: proxima-nova;
+    color: rgb(255, 255, 255);
+    margin-right: 2.346843%;
+    display: block;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 1228px) {
+    #Background_image_box {
+        background-image:url(/images/Home-banner.jpg);
+        background-attachment: fixed;
+        background-size: 1228px;
+        min-height: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+        clear: none;
+        width: 100%;
+        min-width: 0px;
+        background-position: 50% 0%;
+        background-repeat: no-repeat no-repeat;
+    }
+
+    #Sitemap_text_container {
+        margin-top: 45px;
+        margin-left: auto;
+        clear: none;
+        width: 55.049342%;
+        margin-right: auto;
+    }
+
+    #_Help_text {
+        margin-left: 0px;
+        margin-right: 30.091393%;
+        float: right;
+        margin-top: -20px;
+        clear: none;
+        width: 10.887078%;
+        text-align: center;
+    }
+
+    #_About_us_text {
+        margin-left: 0px;
+        margin-right: -0.05182079%;
+        float: right;
+        margin-top: -20px;
+        clear: both;
+        width: 94.203125px;
+        height: auto;
+        text-align: center;
+    }
+
+    #_FAQ_text {
+        width: 11.621991%;
+        text-align: center;
+    }
+
+    #_Contact_text {
+        width: 16.549677%;
+        margin-top: 0px;
+        margin-left: 16.599143%;
+        clear: none;
+        text-align: center;
+    }
+
+    #Logo {
+        margin-top: 6px;
+        margin-left: 7.496248%;
+        clear: none;
+        width: 168.65625px;
+        height: 34px;
+        margin-right: 0%;
+    }
+
+    #Top_navbar_box {
+        z-index: 1;
+    }
+
+    #Bottom_Sitemap_ Box {
+        top: 814px;
+        left: 0px;
+    }
+
+    #Login_and_Signup_global_container {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 634.09375px;
+    }
+
+    #Login_container {
+        width: 311.859375px;
+        height: 481px;
+    }
+
+    #_Log_in_title_text {
+        width: 100%;
+        height: auto;
+        margin-top: 73px;
+        margin-left: auto;
+        clear: none;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    #Login_Email_Form {
+        width: 49.17581%;
+        height: 36px;
+        margin-top: 44px;
+        clear: none;
+    }
+
+    #Login_Password_form {
+        width: 49.060574%;
+        height: 36px;
+        margin-top: 22px;
+        clear: none;
+    }
+
+    #Login_forgot_password_container {
+        width: 50%;
+        height: 90px;
+        margin-top: 9px;
+        clear: none;
+    }
+
+    #Login_button {
+        width: 100%;
+        height: 31px;
+    }
+
+    #Forgot_pasword_text_link {
+        width: 100%;
+    }
+
+    #Facebook_sign_in_button {
+        width: 49.1708%;
+        height: 31px;
+        margin-top: 20px;
+        clear: none;
+    }
+
+    #Sign_up_container {
+        width: 311.859375px;
+        height: 481px;
+    }
+
+    #_Sign_up_title_text {
+        width: 123.421875px;
+    }
+
+    #Sign_up_email_form {
+        width: 49.1708%;
+        height: 36px;
+    }
+
+    #Sign_up_pass_word_form {
+        width: 49.16579%;
+        height: 36px;
+    }
+
+    #Sign_up_pass_word_confirmation_form {
+        width: 49.060574%;
+        height: 36px;
+    }
+
+    #Sign_up_button {
+        width: 49.1708%;
+        height: 31px;
+    }
+
+    #Top_nav_Explore_text_link {
+        float: left;
+        font-size: 18px;
+        width: auto;
+        height: auto;
+        text-align: left;
+        font-weight: 500;
+        line-height: 1em;
+        margin-left: 4.197041%;
+        margin-top: 13px;
+        clear: none;
+        min-height: 0px;
+        font-family: proxima-nova;
+        color: rgb(255, 255, 255);
+    }
+
+    #Top_nav_Launch_text_link {
+        float: left;
+        font-size: 18px;
+        width: auto;
+        height: auto;
+        text-align: left;
+        font-weight: 500;
+        line-height: 1em;
+        margin-left: 2.695938%;
+        margin-top: 13px;
+        clear: none;
+        min-height: 0px;
+        font-family: proxima-nova;
+        color: rgb(255, 255, 255);
+        margin-right: 0%;
+    }
+
+    #Global_COntainer {
+        margin-top: 0px;
+        margin-left: 0%;
+        clear: none;
+    }
+
+    #Top_nav_Users_text_link {
+        float: left;
+        font-size: 18px;
+        width: auto;
+        height: auto;
+        text-align: left;
+        font-weight: 500;
+        line-height: 1em;
+        margin-left: 2.981614%;
+        margin-top: 13px;
+        clear: none;
+        min-height: 0px;
+        font-family: proxima-nova;
+        color: rgb(255, 255, 255);
+        margin-right: 0%;
+    }
+
+    #Top_nav_Log_in_or_Sign_up_text_link {
+        float: right;
+        font-size: 18px;
+        width: auto;
+        height: auto;
+        text-align: left;
+        font-weight: 500;
+        line-height: 1em;
+        margin-left: 0px;
+        margin-top: 13px;
+        clear: none;
+        min-height: 0px;
+        font-family: proxima-nova;
+        color: rgb(255, 255, 255);
+        margin-right: 3.480764%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    #Login_container {
+        height: 670px;
+        width: 595.125px;
+        margin-top: 0px;
+        margin-left: 3.487006%;
+        clear: none;
+        max-width: none;
+    }
+
+    #Sign_up_container {
+        width: 595.140625px;
+        height: 597px;
+        margin-top: 706px;
+        margin-left: auto;
+        clear: none;
+        margin-right: auto;
+        float: none;
+    }
+
+    #Login_and_Signup_global_container {
+        height: 1319px;
+        margin-left: auto;
+        margin-top: 46px;
+        clear: none;
+        width: 638.53125px;
+        margin-right: auto;
+    }
+
+    #_Log_in_title_text {
+        margin-top: 40px;
+        clear: none;
+        width: 198.015625px;
+        font-family: kreon;
+        font-weight: 400;
+        font-size: 44px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        min-height: 50px;
+    }
+
+    #Login_Email_Form {
+        margin-top: 29px;
+        clear: none;
+        width: 89.739551%;
+        height: 92px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #Login_Password_form {
+        width: 89.663411%;
+        height: 92px;
+        margin-top: 22px;
+        clear: none;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid rgb(255, 255, 255);
+    }
+
+    #Login_button {
+        width: 45.315943%;
+        height: 90px;
+        margin-top: 0px;
+        clear: none;
+        margin-left: 0%;
+        margin-right: 0px;
+        float: left;
+        font-size: 25px;
+    }
+
+    #Forgot_pasword_text_link {
+        width: 38.118739%;
+        margin-top: 15px;
+        clear: none;
+        height: auto;
+        margin-left: 0px;
+        margin-right: 0.27319996%;
+        float: right;
+        min-height: 33px;
+        text-align: center;
+        padding: 20px;
+        background-color: rgb(29, 29, 29);
+    }
+
+    #Facebook_sign_in_button {
+        width: 89.377232%;
+        height: 80px;
+        margin-top: 41px;
+        clear: none;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 29.6px;
+    }
+
+    #Sign_up_button {
+        margin-top: 21px;
+        clear: none;
+        width: 88.910184%;
+        height: 92px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 29.6px;
+    }
+
+    #_Sign_up_title_text {
+        width: 233.609375px;
+        margin-top: 32px;
+        clear: none;
+        font-size: 44px;
+        text-align: center;
+        font-weight: 400;
+        line-height: 1em;
+        color: rgb(255, 255, 255);
+        font-family: kreon;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 54px;
+    }
+
+    #Sign_up_email_form {
+        width: 89.246239%;
+        height: 92px;
+        margin-top: 32px;
+        clear: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #Sign_up_pass_word_confirmation_form {
+        width: 88.91806%;
+        height: 92px;
+        margin-top: 24px;
+        clear: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #Top_navbar_box {
+        position: static;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 81px;
+    }
+
+    #Logo {
+        width: 197.671875px;
+        height: 44px;
+        margin-top: 17px;
+        margin-left: auto;
+        clear: none;
+        float: none;
+        margin-right: auto;
+    }
+
+    #Background_image_box {
+        margin-top: 0px;
+        margin-left: 0%;
+        clear: both;
+        width: 640px;
+        height: 1382px;
+        background-image:url(/images/Home-banner.jpg);
+        background-attachment: fixed;
+        background-size: auto 100%;
+        background-position: 50% 0%;
+        background-repeat: no-repeat no-repeat;
+    }
+
+    #Bottom_Sitemap_ Box {
+        top: 1463px;
+        left: 0px;
+        width: 100%;
+        height: 107px;
+    }
+
+    #Global_COntainer {
+        height: 1570px;
+        margin-top: 0px;
+        margin-left: 0%;
+        clear: none;
+        width: 100%;
+    }
+
+    #Sitemap_text_container {
+        margin-top: 41px;
+        margin-left: auto;
+        clear: none;
+        width: 84.11377%;
+        height: 29px;
+        margin-right: auto;
+    }
+
+    #Login_forgot_password_container {
+        float: none;
+        height: 90px;
+        margin-left: auto;
+        margin-top: 27px;
+        clear: none;
+        width: 89.374606%;
+        margin-right: auto;
+    }
+
+    #Forgot_password_text {
+        float: none;
+        font-size: 20px;
+        line-height: 1em;
+        font-family: proxima-nova;
+        font-weight: 400;
+    }
+
+    #Sign_up_pass_word_form {
+        width: 88.983696%;
+        height: 92px;
+        margin-top: 24px;
+        clear: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #_Contact_text {
+        font-size: 29px;
+        margin-top: 0px;
+        margin-left: 9.372188%;
+        clear: none;
+        width: 21.565611%;
+        height: auto;
+        min-height: 0px;
+    }
+
+    #_FAQ_text {
+        font-size: 29px;
+        width: 11.618727%;
+        height: auto;
+        min-height: 0px;
+    }
+
+    #_Help_text {
+        font-size: 29px;
+        margin-right: 9.305431%;
+        margin-top: 0px;
+        clear: none;
+        width: 13.241227%;
+        height: auto;
+        min-height: 0px;
+    }
+
+    #_About_us_text {
+        font-size: 29px;
+        margin-right: 0.02031753%;
+        margin-top: 0px;
+        clear: none;
+        width: 133.890625px;
+        height: auto;
+        min-height: 0px;
+    }
+
+    #Top_nav_Log_in_or_Sign_up_text_link {
+        visibility: hidden;
+        margin-right: 3.483887%;
+        margin-top: 11px;
+        clear: none;
+    }
+
+    #Top_nav_Users_text_link {
+        visibility: hidden;
+        margin-top: 12px;
+        margin-left: 2.980957%;
+        clear: none;
+    }
+
+    #Top_nav_Launch_text_link {
+        visibility: hidden;
+        margin-top: 12px;
+        margin-left: 2.785645%;
+        clear: none;
+    }
+
+    #Top_nav_Explore_text_link {
+        visibility: hidden;
+        margin-top: 12px;
+        margin-left: 4.194336%;
+        clear: none;
+    }
+}
+

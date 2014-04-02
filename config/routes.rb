@@ -44,7 +44,7 @@ Critiq0::Application.routes.draw do
   root :to => "pages#home"
 
   match '/signup', to: 'users#new', via: 'get'
-  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signin', to: 'pages#login', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/home', to: 'pages#home', via: 'get'
   match '/contact', to: 'pages#contact', via: 'get'

@@ -1,13 +1,13 @@
 <div class="comp-feature-thumb-functions">
 	<div class="functions-left">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %>>
+			<a href=<%= product_feature_group_vote_path(product_id: @product.id, feature_id: feature.id, feature_group_id: feature.feature_group_id, up: true) %> id="upvoteFeature<%= feature.id %>" data-remote="true">
 		<% end %>
 		<div class="check">
 			<% if signed_in? and !feature.likes.where(:user_id => current_user.id).empty? %>
 				<i class="fa fa-check fa-lg" style="color: #fff;"></i> 
 			<% else %>
-				<i class="fa fa-check fa-lg" style="color: #828282;"></i>
+				<i class="fa fa-check fa-lg" style="color: #828282;" id="maybeCheckedFeature<%= feature.id %>"></i>
 			<% end %>
 		</div>
 		<div class="vote"> 
@@ -18,6 +18,24 @@
 		</a>
 	<% end %>
 	<div class="functions-right">
-		<p style="text-align: center; color: #fff;"><%= feature.likes.where(:up => true).size  %> Votes</p>
+		<p style="text-align: center; color: #fff;" id="featureVoteCount<%= feature.id %>"><%= feature.likes.where(:up => true).size  %> Votes</p>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		var $lastLiked = '<%= feature.likes.where(user_id: current_user, likeable_id: feature.id, likeable_type: feature.class.name).last %>';
+		console.log('binding ajax actions for upvoting feature with if <%= feature.id %>');
+		$('#upvoteFeature<%= feature.id.to_s %>')
+			.bind("ajax:beforeSend", function(evt, xhr, settings){
+				console.log('attempting to upvote feature <%= feature.id %>');
+			})
+			.bind("ajax:complete", function() {
+				$('#featureVoteCount<%= feature.id %>').replaceWith('<p style="color: #fff"><%= feature.likes.where(:up => true).size + 1 %> Votes</p>');
+				$('#maybeCheckedFeature<%= feature.id %>').css("color", "#fff");
+				if(!$.isEmptyObject($lastLiked)){
+					$('#featureVoteCount' + $lastLiked).replaceWith('<p style="color: #828282"><%= feature.likes.where(:up => true).size - 1 %> Votes</p>');
+				}
+			});
+		});
+</script>

@@ -1,7 +1,7 @@
 <div class="single-feature-thumb-functions">
 	<div class="functions-left">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %>>
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true">
 		<% end %>
 		<div class="thumb-up">
 			<% if signed_in? and !feature.likes.where(:user_id => current_user.id, :up => true).empty? %>
@@ -15,11 +15,11 @@
 		<% end %>
 	</div>
 	<div class="functions-middle">
-		<h4><%= (feature.percent_like * 100.0).round(2) %>%</h4>
+		<h4 id="feature<%= feature.id %>likeage"><%= (feature.percent_like * 100.0).round(2) %>%</h4>
 	</div>
 	<div class="functions-right">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => false) %>>
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => false) %> data-remote="true">
 		<% end %>
 		<div class="thumb-down">
 			<% if signed_in? and !feature.likes.where(:user_id => current_user.id, :up => false).empty? %>

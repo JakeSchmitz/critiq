@@ -80,7 +80,6 @@ class FeatureGroupsController < ApplicationController
       @feature.save
       @feature_group.save
     end
-    redirect_to @feature_group.product
   end
 
   helper_method :can_user_vote

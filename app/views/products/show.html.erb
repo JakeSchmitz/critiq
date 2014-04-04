@@ -32,7 +32,7 @@
         <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>');"></div>
         <div class="other-pics">
           <% @top_pics.first(5).each_with_index do |pic, i| %>
-            <a class="thumb-ratio alt-pic"  style="background-image: url('<%= pic.attachment.url(:large) %>');" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
+            <a class="thumb-ratio alt-pic"  style="background-image: url('<%= pic.attachment.url(:large) %>'); cursor: pointer;" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
             </a>
           <% end %>
         </div>

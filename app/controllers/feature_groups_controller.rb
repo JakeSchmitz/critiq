@@ -67,18 +67,29 @@ class FeatureGroupsController < ApplicationController
   def vote
     @feature_group = FeatureGroup.find(params[:feature_group_id])
     @tab = 'product-features'
+    previousLike = nil
+    @oldCount = 0
     @feature = Feature.find(params[:feature_id])
     if @feature_group.features.includes(@feature) and !current_user.nil?
       if !@feature_group.singles?
         @feature_group.features.each do |f|
-          if !f.likes.nil? then f.likes.where(:user_id => current_user.id).delete_all end
+          if !f.likes.where(user_id: current_user.id).empty?
+            @oldCount = f.likes.where(up: true).size
+            f.likes.where(user_id: current_user.id).delete_all
+            # Necessary so clientside js can uncheck previous vote and update vote count
+            previousLike = f
+          end
         end
       else
-        unless @feature.likes.nil? then @feature.likes.where(:user_id => current_user.id).delete_all end
+        @feature.likes.where(:user_id => current_user.id).delete_all
       end
-      @feature.likes.build(:user_id => current_user.id, :up => YAML.load(params[:up]))
+      puts 'creating like for feature ' + @feature.name + ' with id = ' + @feature.id.to_s
+      @feature.likes.create(:user_id => current_user.id, :up => YAML.load(params[:up]))
       @feature.save
       @feature_group.save
+    end
+    respond_to do |format|
+      format.json { render json: previousLike }
     end
   end
 

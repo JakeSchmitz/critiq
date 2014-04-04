@@ -68,13 +68,11 @@ class FeatureGroupsController < ApplicationController
     @feature_group = FeatureGroup.find(params[:feature_group_id])
     @tab = 'product-features'
     previousLike = nil
-    @oldCount = 0
     @feature = Feature.find(params[:feature_id])
     if @feature_group.features.includes(@feature) and !current_user.nil?
       if !@feature_group.singles?
         @feature_group.features.each do |f|
           if !f.likes.where(user_id: current_user.id).empty?
-            @oldCount = f.likes.where(up: true).size
             f.likes.where(user_id: current_user.id).delete_all
             # Necessary so clientside js can uncheck previous vote and update vote count
             previousLike = f
@@ -89,7 +87,7 @@ class FeatureGroupsController < ApplicationController
       @feature_group.save
     end
     respond_to do |format|
-      format.json { render json: previousLike }
+      format.json { render json: previousLike.to_json }
     end
   end
 

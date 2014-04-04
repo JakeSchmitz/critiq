@@ -20,7 +20,6 @@
 
 <script>
 	$(document).ready(function(){
-		console.log('binding ajax actions for upvoting feature with if <%= feature.id %>');
 		$('#upvoteFeature<%= feature.id.to_s %>')
 			.bind("ajax:beforeSend", function(evt, xhr, settings){
 				console.log('attempting to upvote feature <%= feature.id %>');
@@ -31,13 +30,12 @@
 				/* Change the checkmark to white */
 				$('#maybeCheckedFeature<%= feature.id %>').css("color", "#fff");
 				console.log('completed like of feature <%= feature.id %>');
-				var oldLike = jQuery.parseJSON(data.responseText); 
-				console.log('previously liked feature was ' + data.responseText);
+				var oldLike = jQuery.parseJSON(data.responseText);
 				/* if the user had already voted, grey out their previous selection and decrease that features vote count */
-				if(typeof oldLike != "undefined"){
-					console.log('previously liked feature with id = ' + oldLike.id);
+				if(typeof oldLike.id != "undefined"){
+					console.log('previously liked feature was = ' + oldLike);
 					$('#maybeCheckedFeature' + oldLike.id).css("color", "#828282");
-					var newVC = '<p id="featureVoteCount' + oldLike.id + '"><%= @oldCount.to_i %> Votes </p>';
+					var newVC = '<p id="featureVoteCount' + oldLike.id + '">' + oldLike.oldCount + ' Votes </p>';
 					$('#featureVoteCount' + oldLike.id).replaceWith(newVC);
 				}
 			});

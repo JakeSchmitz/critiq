@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
   
   validates :name, presence: true
   validates_confirmation_of :password
+  validates :password, length: { minimum: 6 }
   validates_presence_of :password, on: :create
   validates_presence_of :email
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates_uniqueness_of :email
   attr_accessible :id, :name, :email, :age, :password, :password_confirmation, :image_asset, :remember_token, :link, :user_id, :product_id,
                   :pictures, :attachment, :attachment_attributes, :pictures_attributes, :profile_picture, :profile_picture_attibutes

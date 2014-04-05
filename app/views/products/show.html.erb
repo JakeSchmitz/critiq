@@ -105,7 +105,7 @@
       <% if current_user?(@product.user)%>
         <div class="tab-pane" id="product_edit">
           <h1>Edit Campaign</h1>
-          <div class="edit-info pull-left span">
+          <div class="edit-info pull-left span5">
             <%= render :partial => 'form' %>
           </div>
           <div class="edit-pictures span5 pull-left">
@@ -118,6 +118,9 @@
                 </div>
               <% end %>
             </div>
+          </div>
+          <div class="jquery-product-image-upload span10">
+              <%= render :partial => 'jquery_image_uploader' %>
           </div>
         </div>  
       <% end %>

@@ -1,14 +1,9 @@
 <%= nested_form_for @product, :html => { :class => 'form-horizontal', :multipart => true, style: 'text-align: center;' } do |f| %>
   <h4>Project Name</h4>
   <%= f.text_field :name, :class => 'text_field', style: 'min-width: 250px; margin-bottom: 10px;' %>
-  <%= f.fields_for :pictures do |picture| %>
-    <% if picture.object.new_record? %>
-      <h4>Select a picture</h4>
-      <div class="file_upload_wrapper"  style="float: left; padding: 5px; margin-left: 40px; margin-bottom: 20px; background-color: #fff;">
-        <%= picture.file_field :attachment  %>
-      </div>  
-    <% end %>
-  <% end %>
+  <div class="jquery-product-image-upload">
+    <%= render :partial => 'jquery_image_uploader' %>
+  </div>
   <h4>Description</h4>
   <%= f.text_area :description, maxlength: 1000, :class => 'text_field', style: 'height: 200px; min-width: 250px;' %>
   <div class="form-actions">

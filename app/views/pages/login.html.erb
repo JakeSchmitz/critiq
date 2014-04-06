@@ -5,7 +5,7 @@
             Log in
             </p>
             <div class="signin_form clearfix">
-                <%= form_for(:session, url: signin_path) do |f| %>
+                <%= form_for(:session, url: signin_path, html: { class: 'signin'}) do |f| %>
                     <div class="control-group">
                         <%= f.label :email %>
                         <%= f.text_field :email %>
@@ -22,9 +22,11 @@
                     </div>
                 <% end %>
             </div>
-            <a href="facebook sign in, then user dashboard">
-                <input id="Facebook_sign_in_button" type="button" value="Facebook sign in">
-            </a>
+            <div class="fb_signup_button" style="text-align: center;">
+                <%= button_to '/auth/facebook', class: 'btn btn-primary' do %>
+                    <i class="fa fa-facebook-square fa-lg"></i>&nbsp;&nbsp;Log In
+                <% end %>
+            </div>
         </div>
         <div id="Sign_up_container" class="clearfix">
             <p id="_Sign_up_title_text">
@@ -38,3 +40,11 @@
         </div>
     </div>
 </div>
+<div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=692888684100799";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>

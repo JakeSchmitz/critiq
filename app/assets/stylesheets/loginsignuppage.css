@@ -1,8 +1,14 @@
 /* here is custom stuff for forms that I (jake) wrote */
 .signin_form {
-    width: 90%;
-    margin-left: 15%;
+    width: 100%;
+    float: center;
     color: #fff;
+}
+
+.signin {
+    text-align: center;
+    width: 95%;
+    padding-left: 5%;
 }
 
 /* This code is only meant for previewing your Reflow design. */

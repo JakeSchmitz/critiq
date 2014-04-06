@@ -6,6 +6,12 @@ module SessionsHelper
 		self.current_user = user
 	end
 
+	def fb_sign_in(user, fb_token)
+		cookies.permanent[:remember_token] = fb_token
+		user.update_attribute(:remember_token, User.encrypt(fb_token))
+		self.current_user = user
+	end
+
 	def signed_in?
 		!current_user.nil?
 	end
@@ -39,6 +45,10 @@ module SessionsHelper
 
   def store_location
     session[:return_to] = request.url if request.get?
+  end
+
+  def rand_pwd 
+  	rand(10000000000).to_hex 
   end
 
   def has_user_image?

@@ -4,7 +4,7 @@
 <% elsif !@top_pics.empty? %>
 <div class="product-header" style="background-image: url('<%= @top_pics.first.attachment.url(:large) %>');">
 <% else %>
-<div class="product-header" style="background: rgba(0, 0, 0, .5);">
+<div class="product-header" style="background: rgba(0, 0, 0, .5); ">
 <% end %>
 <div class="black-wrapper">
 <div class="container">
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="product-right">
-    <div class="product-buttons">
+    <div class="product-buttons" style="margin-left: 30px;">
       <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) %>
         <%= button_to 'FOLLOW', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
       <% elsif !signed_in? %>
@@ -41,7 +41,7 @@
       <% end %>
     </div>
     <div class="well span4" style="border-radius: 5px; color: #313131; padding: 10px; min-width: 330px;">
-      <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %>
+      <!-- Buy when complete button isn't ready yet! <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %> -->
       <h2>Description</h2>
       <p class="product-description"><%= @product.description %></p>
     </div>

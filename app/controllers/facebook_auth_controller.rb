@@ -7,9 +7,10 @@ class FacebookAuthController < ApplicationController
 			@user = User.create(name: profile["name"], email: profile["email"], password: rand_pwd)
 			@user.save
 		else
-			@user = User.where(name: profile["name"], email: profile["email"]).first
+			@user = User.find_by email: profile["email"]
+			current_user=@user
 		end
-		if !@user.nil?
+		if @user
 			fb_sign_in(@user, request.env['omniauth.auth']['credentials'].token)
 			redirect_to @user
 		else

@@ -98,7 +98,7 @@
     width: 311.8719090875px;
     background-color: rgb(61, 61, 61);
     max-width: 600px;
-    background-image:url("img/splatters-01.svg");
+    background-image:url("images/svg/splatters-07.svg");
     background-attachment: scroll;
     background-size: auto;
     background-position: 0% 0%;
@@ -217,6 +217,7 @@
     max-width: 600px;
     background-color: rgb(109, 44, 250);
     margin-right: 0%;
+    text-align: center;
 }
 
 #_Sign_up_title_text {

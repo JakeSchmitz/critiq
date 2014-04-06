@@ -23,4 +23,8 @@ class ImageAsset < ActiveRecord::Base
       "delete_type" => "DELETE" 
     }
   end
+
+  def image_asset_from_url(url)
+    self.attachment = open(url)
+  end
 end

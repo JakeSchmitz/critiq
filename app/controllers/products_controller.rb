@@ -61,8 +61,8 @@ class ProductsController < ApplicationController
       Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
       respond_to do |format|
         if @product.save
-          format.html { redirect_to @product, notice: 'Product was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @product }
+          format.html { redirect_to product_initial_uploads_path(@product), notice: 'Product was successfully created.' }
+          format.json { render action: 'initial_uploads', status: :created, location: @product }
         else
           format.html { render action: 'new' }
           format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -159,6 +159,10 @@ class ProductsController < ApplicationController
       @product.save
     end
     redirect_to @product
+  end
+
+  def initial_uploads
+    @product = Product.find(params[:product_id])
   end
 
   private

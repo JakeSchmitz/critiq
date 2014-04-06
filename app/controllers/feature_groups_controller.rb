@@ -89,7 +89,7 @@ class FeatureGroupsController < ApplicationController
       @feature_group.save
     end
     # Shitty workaround so that ajax liking works and response contains the old like count of 
-    # whatever the current user used to like
+    # whatever the current user used to likes
     formatted = previousLike.attributes 
     formatted['oldCount'] = oldCount
     respond_to do |format|

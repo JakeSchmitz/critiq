@@ -1,4 +1,4 @@
-<div class="span" style="width: 100%; float: center;">
+<div class="span" style="width: 100%; float: center; text-align: center;">
   <h2>Upload file</h2>
   <%= form_for(@product.pictures.new(:user_id => current_user.id, :product_id => @product.id), url: product_pic_upload_path(user_id: @product.user.id ,product_id: @product.id), :html => { :multipart => true, :id => "fileupload" }) do |f| %>
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->

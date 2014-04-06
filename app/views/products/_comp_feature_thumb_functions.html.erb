@@ -25,12 +25,16 @@
 				console.log('attempting to upvote feature <%= feature.id %>');
 			})
 			.bind("ajax:complete", function(evt, data, status, xhr) {
-				/* Increment the vote count in this feature thumbnail */
-				$('#featureVoteCount<%= feature.id %>').replaceWith('<p id="featureVoteCount<%= feature.id %>"><%= feature.likes.where(:up => true).size + 1 %> Votes</p>');
 				/* Change the checkmark to white */
 				$('#maybeCheckedFeature<%= feature.id %>').css("color", "#fff");
 				console.log('completed like of feature <%= feature.id %>');
 				var oldLike = jQuery.parseJSON(data.responseText);
+				if(oldLike.id.toString !== <%= feature.id.to_s %>){
+					/* Increment the vote count in this feature thumbnail */
+					$('#featureVoteCount<%= feature.id %>').replaceWith('<p id="featureVoteCount<%= feature.id %>"><%= feature.likes.where(:up => true).size + 1 %> Votes</p>');
+				} else {
+					$('#featureVoteCount<%= feature.id %>').replaceWith('<p id="featureVoteCount<%= feature.id %>"><%= feature.likes.where(:up => true).size %> Votes</p>');
+				}
 				/* if the user had already voted, grey out their previous selection and decrease that features vote count */
 				if(typeof oldLike.id != "undefined"){
 					console.log('previously liked feature was = ' + oldLike);

@@ -69,7 +69,12 @@ class Product < ActiveRecord::Base
   end
 
   def single_features
-    return self.feature_groups.where(singles: true).first || self.feature_groups.create(signles: true)
+    case self.feature_groups.where(singles: true).first
+    when nil
+      self.feature_groups.create(singles: true)
+    else
+      self.feature_groups.where(singles: true).first
+    end
   end
 
   private

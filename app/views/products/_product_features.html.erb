@@ -1,6 +1,5 @@
 <div class="container">
 	<% if signed_in? and current_user.id == @product.user_id %>
-		<%= link_to 'New Singleton', new_product_feature_group_feature_path(:product_id => @product.id, :feature_group_id => @single_features.id), :class => 'btn btn-info' %>
 		<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
 		  CREATE FEATURE
 		</button>
@@ -29,10 +28,5 @@
 	      </div>
 	    <% end %>
 	  </div>
-		<% if signed_in? and current_user.id == @product.user_id %>
-			<%= link_to 'New Comparative Feature', new_product_feature_group_path(:product_id => @product.id), :class => 'btn btn-info', style: 'margin-top: 30px;' %>
-		<% end %>
-	<% else %>
-		<h2>No Comparative Features Have Been Set Up For <%= @product.name %>. </h2>
 	<% end %> 
 </div>

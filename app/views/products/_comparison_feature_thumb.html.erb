@@ -5,7 +5,7 @@
 		<p><%= comp_feature.description %></p>
 			<% if current_user?(comp_feature.product.user) %>
 				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModalGroup<%= comp_feature.id %>">
-				  ADD VERSION
+				  ADD OPTION
 				</button>
 				<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: comp_feature, feature: Feature.new(:user_id => @product.user.id, :product_id => @product.id, :feature_group_id => comp_feature.id) } %>
 			<% end %>

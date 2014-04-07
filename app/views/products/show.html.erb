@@ -52,8 +52,8 @@
   <ul class="nav nav-tabs product-nav product-nav-content row" id="product-tabs">
     <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> Vote</a></li>
     <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> Critiqs (<%= @product.comments.length - 1%>)</a></li>
-    <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> Followers (<%= @product.likes.length.to_s %>)</a></li>
     <li><a href="#product-bounties" data-toggle="tab"><i class="fa fa-bullseye"></i> Bounties (<%= @product.bounties.length.to_s %>)</a></li>
+    <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> Followers (<%= @product.likes.length.to_s %>)</a></li>
     <li><a href="#product-rewards" data-toggle="tab"><i class="fa fa-star"></i> Rewards</a></li>
     <% if signed_in? and current_user.id == @product.user.id %>
       <li><a href="#product_edit" data-toggle="tab"><i class="fa fa-cogs"></i> Edit</a></li>

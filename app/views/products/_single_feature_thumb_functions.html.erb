@@ -1,14 +1,10 @@
 <div class="single-feature-thumb-functions">
 	<div class="functions-left">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true">
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true" id="upvoteFeature<%= feature.id %>">
 		<% end %>
 		<div class="thumb-up">
-			<% if signed_in? and !feature.likes.where(:user_id => current_user.id, :up => true).empty? %>
-				<i class="fa fa-thumbs-up fa-2x" style="color: #fff;"></i> 
-			<% else %>
-				<i class="fa fa-thumbs-up fa-2x" style="color: #828282;"></i>
-			<% end %>
+			<i class="fa fa-thumbs-up fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: true).empty? %>#fff<% else %>#828282<% end %>;" id="maybeUpvotedFeature<%= feature.id %>"></i> 
 		</div>
 		<% if signed_in? %>
 			</a>
@@ -19,17 +15,46 @@
 	</div>
 	<div class="functions-right">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => false) %> data-remote="true">
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => false) %> data-remote="true" id="downvoteFeature<%= feature.id %>">
 		<% end %>
 		<div class="thumb-down">
-			<% if signed_in? and !feature.likes.where(:user_id => current_user.id, :up => false).empty? %>
-				<i class="fa fa-thumbs-down fa-2x" style="color: #fff;"></i> 
-			<% else %>
-				<i class="fa fa-thumbs-down fa-2x" style="color: #828282;"></i>
-			<% end %>
+			<i class="fa fa-thumbs-down fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: false).empty? %>#fff<% else %>#828282<% end %>;" id="maybeDownvotedFeature<%= feature.id %>"></i> 
 		</div>
 		<% if signed_in? %>
 			</a>
 		<% end %>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		/* Bind to upvote button */
+		$('#upvoteFeature<%= feature.id.to_s %>')
+			.bind("ajax:beforeSend", function(evt, xhr, settings){
+				console.log('attempting to upvote feature <%= feature.id %>');
+			})
+			.bind("ajax:complete", function(evt, data, status, xhr) {
+				/* Change the checkmark to white */
+				$('#maybeUpvotedFeature<%= feature.id %>').css("color", "#fff");
+				$('#maybeDownvotedFeature<%= feature.id %>').css("color", "#828282");
+				console.log('completed like of feature <%= feature.id %>');
+				var oldLike = jQuery.parseJSON(data.responseText);
+				var newVC = '<h4 id="feature' + oldLike.id + 'likeage">' + oldLike.oldCount + '% </h4>';
+					$('#feature' + oldLike.id + 'likeage').replaceWith(newVC);
+			});
+			/* Bind to downvote button */
+			$('#downvoteFeature<%= feature.id.to_s %>')
+			.bind("ajax:beforeSend", function(evt, xhr, settings){
+				console.log('attempting to downvote feature <%= feature.id %>');
+			})
+			.bind("ajax:complete", function(evt, data, status, xhr) {
+				/* Change the checkmark to white */
+				$('#maybeDownvotedFeature<%= feature.id %>').css("color", "#fff");
+				$('#maybeUpvotedFeature<%= feature.id %>').css("color", "#828282");
+				console.log('completed downvote of feature <%= feature.id %>');
+				var oldLike = jQuery.parseJSON(data.responseText);
+				var newVC = '<h4 id="feature' + oldLike.id + 'likeage">' + oldLike.oldCount + '% </h4>';
+					$('#feature' + oldLike.id + 'likeage').replaceWith(newVC);
+			});
+		});
+</script>

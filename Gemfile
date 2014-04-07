@@ -48,6 +48,8 @@ gem 'omniauth-facebook'
 
 gem 'koala'
 
+gem "rmagick", :require => 'RMagick'
+
 group :production do
 
 end

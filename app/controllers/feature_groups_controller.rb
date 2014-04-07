@@ -90,6 +90,11 @@ class FeatureGroupsController < ApplicationController
     end
     # Shitty workaround so that ajax liking works and response contains the old like count of 
     # whatever the current user used to likes
+    if @feature_group.singles?
+      # In the singleton case, oldCount is actually the updated likeage percentage
+      oldCount = @feature.percent_likes
+      previousLike = @feature
+    end
     formatted = previousLike.attributes 
     formatted['oldCount'] = oldCount
     respond_to do |format|

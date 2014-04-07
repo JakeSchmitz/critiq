@@ -1,9 +1,10 @@
 class ImageAsset < ActiveRecord::Base
 	belongs_to :attachable
 	has_attached_file :attachment, 
-  	styles: {large: "x600>", medium: "x300>", thumb: "x100>" }, 
+  	styles: lambda { |a| {large: "x600>", medium: "x300>", thumb: "x100>", blurry: "x300#" }}, 
+    convert_options: { blurry: "-blur 0x6"}                       ,
   	default_url: "/images/missing-product.jpg"										,
-    storage: :s3                                                ,
+    storage: :s3                                                  ,
     s3_endpoint: 's3-us-west-2.amazonaws.com',
 	  s3_credentials: {s3_endpoint: 		    's3-us-west-2.amazonaws.com' ,
 	  										bucket:            ENV['AWS_BUCKET']				,

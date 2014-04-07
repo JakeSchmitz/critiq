@@ -365,20 +365,20 @@
 	}
 	.product-thumb:hover {
 		.product-thumb-content {
-		  margin-top: -152px;
-		  height: 112px;
+		  margin-top: -102px;
+		  height: 62px;
 			.product-thumb-description {
 				text-align: center;
-				display: block;
+				display: none;
 				color: rgba(68, 68, 68, .999);
 			}
 		}
 		.view-button {
 			display: block;
+			width: 106px;
 			position: absolute;
-			margin-left: 60px;
+			margin-left: 53px;
 			margin-top: -250px;
-			border-width: 1px;
 		}
 	}
 	.active-button {

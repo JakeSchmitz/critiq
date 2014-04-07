@@ -327,8 +327,7 @@ div.file_upload_wrapper:hover {
   color: #fff;
   border: 1px solid #fff;
   border-radius: 0px;
-  margin-bottom: 3px;
-  padding: 5px 10px 2px 15px;
+  padding: 1px 10px 0px 15px;
   text-align: center;
   letter-spacing: 5px;
   font-family: proxima-nova-n9, proxima-nova, sans-serif;
@@ -338,7 +337,16 @@ div.file_upload_wrapper:hover {
     color: #fff;
   }
 }
-
+.btn-clear:hover {
+  background: rgba(0, 0, 0, 0.8);
+  -moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
+}
 
 .outline {
   color: #000;

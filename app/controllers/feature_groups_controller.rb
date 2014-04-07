@@ -92,11 +92,12 @@ class FeatureGroupsController < ApplicationController
     # whatever the current user used to likes
     if @feature_group.singles?
       # In the singleton case, oldCount is actually the updated likeage percentage
-      oldCount = @feature.percent_likes
+      oldCount = (@feature.percent_like*100).round(3)
       previousLike = @feature
     end
     formatted = previousLike.attributes 
     formatted['oldCount'] = oldCount
+    formatted['newCount'] = @feature.likes.where(up: true).size.to_i
     respond_to do |format|
       format.json { render json: formatted.to_json }
     end

@@ -19,8 +19,8 @@
         <% elsif signed_in? and @user.id == current_user.id %>
           <%= button_to 'EDIT', edit_user_path(@user), :method => "get", :class => "btn-clear inline-button"%>
         <% end %>
-          <a href="#" class="btn-clear sm-button" style="margin-bottom: 5px;"><i class="fa fa-twitter fa-fw"></i></a>
-          <a href="#" class="btn-clear sm-button"><i class="fa fa-facebook fa-fw"></i></a>
+          <!--<a href="#" class="btn-clear sm-button" style="margin-bottom: 5px;"><i class="fa fa-twitter fa-fw"></i></a>
+          <a href="#" class="btn-clear sm-button"><i class="fa fa-facebook fa-fw"></i></a>-->
           <br></br>
       </div>
     </div>
@@ -47,8 +47,5 @@
         <% end %>
       </div>
     </div>
-  <% end %>
-  <% if current_user?(@user) %>
-    <%= render partial: 'user_image_upload_form' %>
   <% end %>
 </div>

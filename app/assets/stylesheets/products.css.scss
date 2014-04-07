@@ -163,8 +163,8 @@
 	text-align: center;
 	.main-pic {
 		max-width: 95%;
-		min-width: 40%;
-		height: 350px;
+		width: 480px;
+		height: 360px;
 		background-size: cover;
 		border: 1px solid #4b4b4b;
 		margin: 0px;
@@ -178,9 +178,9 @@
 		float: left;
 		.alt-pic {
 			width: 90px;
-			margin-bottom: 5px;
+			margin-bottom: 6px;
 			display: block;
-			height: 66px;
+			height: 67px;
 		}
 	}
 }
@@ -193,6 +193,13 @@
 	text-align: center;
 	> h2 {
 		color: #fff;
+	}
+	.description-box {
+		height: 360px;
+		border-radius: 5px; 
+		color: #313131; 
+		padding: 10px;
+		margin-top: 25px;
 	}
 }
 

@@ -40,7 +40,7 @@
         <%= button_to 'DELETE', product_path(@btn), :method => 'delete', :class => "btn-clear inline-button", style: 'float: left;' %>
       <% end %>
     </div>
-    <div class="well span4" style="border-radius: 5px; color: #313131; padding: 10px; min-width: 330px;">
+    <div class="well span4 description-box">
       <!-- Buy when complete button isn't ready yet! <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %> -->
       <h2>Description</h2>
       <p class="product-description"><%= @product.description %></p>

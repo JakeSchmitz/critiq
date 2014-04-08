@@ -29,11 +29,11 @@
     </div>
   </div>
   <div class="product-right">
-    <div class="product-buttons" style="margin-left: 30px;">
+    <div class="product-buttons" >
       <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) %>
         <%= button_to 'FOLLOW', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
       <% elsif !signed_in? %>
-        <h4 style="margin-top: 0px; text-align: center; color: #fff;">Sign in or Sign Up to Vote and Comment</h4>
+        <h4 style="margin-top: 0px; text-align: center; color: #fff;">Sign in to Vote and Comment</h4>
       <% end %>
       <% if signed_in? and current_user.id == @product.user.id %>
         <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>

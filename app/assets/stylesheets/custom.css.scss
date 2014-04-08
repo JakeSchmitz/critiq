@@ -6,7 +6,6 @@
 
 html {
   width: auto !important;
-  overflow-x: hidden !important;
 }
 
 body {
@@ -159,6 +158,10 @@ input {
   margin-left: auto;
   margin-right: auto;
   background-color:transparent;
+}
+
+.btn {
+  font-size: 18px;
 }
 
 .btn-primary {

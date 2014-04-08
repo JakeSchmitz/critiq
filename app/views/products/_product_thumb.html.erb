@@ -13,13 +13,7 @@
 			</a>
 		</div>
 	<% end %>
-	<div class="view-button">
-		<a href="/products/<%= product.id %>">
-			<div class="btn-clear">
-				<h4>VIEW</h4>
-			</div>
-		</a>
-	</div>
+	<%= link_to 'VIEW', '/products/' + product.id.to_s, class: 'btn view-button btn-clear' %>
 	<div class="product-thumb-content">
 		<h4><%= link_to product.name, product %></h4>
 		<div class="product-thumb-description">

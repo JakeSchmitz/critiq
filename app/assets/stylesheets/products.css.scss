@@ -42,6 +42,16 @@
 	margin-top: 20px;
 }
 
+.new-product-features {
+	text-align: center;
+	.new-product-features-box {
+		width: 75%;
+		margin: 0 auto;
+		padding: 2% 10% 2% 10%;
+		background-color: #848484;
+	}
+}
+
 .product-modal { 
 	left: 50%;
 	top: 15%;
@@ -70,6 +80,13 @@
 		display: none;
 	}
 	.product-thumb-content {
+		-moz-transition: all 0.2s ease-in;
+	  /* WebKit */
+	  -webkit-transition: all 0.2s ease-in;
+	  /* Opera */
+	  -o-transition: all 0.2s ease-in;
+	  /* Standard */
+	  transition: all 0.2s ease-in;
 	  position: relative;
 	  padding: 7px;
 	  padding-top: 0px;
@@ -102,7 +119,7 @@
 	height:auto;
   .black-wrapper {
 		width: 100%;
-		background-image: url(/images/Blur.png);
+		background: rgba(0,0,0,0.5);
 		height: auto;
 		z-index: 2;
 		padding-bottom: 30px;
@@ -200,6 +217,7 @@
 		border-radius: 5px; 
 		color: #313131; 
 		padding: 10px;
+		width: 320px;
 		margin-top: 25px;
 	}
 }
@@ -357,7 +375,7 @@
 		display: inline-block;
 	}
 	.product-right{
-	  min-width: 360px;
+	  min-width: 350px;
 	  max-width: 70%;
 	}
 	.product-thumb{
@@ -365,7 +383,15 @@
 		height: 370px;
 	}
 	.product-thumb:hover {
+
 		.product-thumb-content {
+			-moz-transition: all 0.2s ease-in;
+		  /* WebKit */
+		  -webkit-transition: all 0.2s ease-in;
+		  /* Opera */
+		  -o-transition: all 0.2s ease-in;
+		  /* Standard */
+		  transition: all 0.2s ease-in;
 		  margin-top: -102px;
 		  height: 62px;
 			.product-thumb-description {
@@ -379,7 +405,9 @@
 			width: 106px;
 			position: absolute;
 			margin-left: 53px;
-			margin-top: -250px;
+			margin-top: -230px;
+			padding-top: 8px !important;
+			padding-bottom: 6px !important;
 		}
 	}
 	.active-button {

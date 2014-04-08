@@ -50,6 +50,8 @@ gem 'koala'
 
 gem "rmagick", :require => 'RMagick'
 
+gem 'open_uri_redirections'
+
 group :production do
 
 end

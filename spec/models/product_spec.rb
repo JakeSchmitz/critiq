@@ -21,4 +21,21 @@ describe Product do
 	it "should be able to determine if it has not been likd" do
 		expect(@product.liked? 1, "Product").to be_false
 	end
+
+	context "users" do
+		it "can retrieve it's followers" do 
+			@product.stubs(:likes).returns [stub(user: "User1")]
+			@product.stubs(:feature_groups).returns [stub(features: [stub(likes: [stub(user: "User2")])])]
+			expect(@product.followers).to eq ["User1", "User2"]
+		end
+
+		it "can retrieve it's top users" do
+			user1 = stub swagger: 1
+			user2 = stub swagger: 10
+			user3 = stub swagger: 5
+
+			@product.stubs(:followers).returns([user1, user2, user3])
+			expect(@product.top_users).to eq [user1, user3, user2]
+		end
+	end
 end

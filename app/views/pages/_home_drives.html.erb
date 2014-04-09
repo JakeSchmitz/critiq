@@ -1,0 +1,8 @@
+<table class="featured-campaigns">
+	<tr>
+		<% @top_products.each do |product| %>
+			<td><%= render :partial => '/products/product_thumb', locals: { product: product } %></td>
+		<% end %>
+	</tr>
+</table>
+<%= will_paginate @top_products %>

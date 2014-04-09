@@ -52,6 +52,8 @@ gem "rmagick", :require => 'RMagick'
 
 gem 'open_uri_redirections'
 
+gem 'will_paginate'
+
 group :production do
 
 end

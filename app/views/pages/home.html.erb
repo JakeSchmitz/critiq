@@ -30,14 +30,10 @@
 			<h4>Improve, polish, and push to the marketplace</h4>
 		</div>
 	</div>	
-	<div class="featured-campaigns">
-		<h1>Featured Drives</h1>
-		<div class="pretty-divider"></div>
-		<div class="row">
-			<% @top_products.each do |product| %>
-				<%= render :partial => '/products/product_thumb', locals: { product: product } %>
-			<% end %>
-		</div>
+	<h1>Featured Drives</h1>
+	<div class="pretty-divider"></div>
+	<div id="home_drives">
+		<%= render partial: 'home_drives' %>
 	</div>	
 	<div class="featured-makers" style="text-align: center;">
 		<h1>Featured Makers</h1>
@@ -49,3 +45,12 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$(function(){
+		$("#home_drives .pagination a").on('click', function() {
+			$.getScript(this.href);
+			return false;
+		});
+	});
+</script>

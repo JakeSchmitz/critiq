@@ -12,5 +12,5 @@ describe Bounty do
 
 	it "should be able retrieve its top comments by rating" do
 		expect(@bounty.top_responses.first.rating).to eq @bounty.comments.map(&:rating).max
-  end	
+  	end	
 end

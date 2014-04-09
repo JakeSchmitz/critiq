@@ -80,7 +80,7 @@ class Product < ActiveRecord::Base
   private
 
     def get_likes(id, type)
-      return Likes.where(user_id: self.id, likeable_type: type, likeable_id: id)
+      return Like.where(user_id: self.id, likeable_type: type, likeable_id: id)
     end
 
     def save_everything

@@ -9,39 +9,59 @@ FactoryGirl.define do
 		association :commentable, factory: :bounty
 		sequence(:body) {|n| "text" * rand(100) + "#{n}"}
 		user_id {1}
-		product_id {1}
 		commentable_id {1}
 		commentable_type {"Bounty"}
 		sequence(:rating) {|n| n * -1 + 1000 }
 	end
 
+	factory :feature_comment, class: "Comment" do
+		association :commentable, factory: :feature
+		sequence(:body) {|n| "text" * rand(100) + "#{n}"}
+		user_id {1}
+		commentable_id {1}
+		commentable_type {"Feature"}
+		sequence(:rating) {|n| n * -1 + 1000 }
+	end
+
+	factory :product_comment, class: "Comment" do
+		association :commentable, factory: :product
+		sequence(:body) {|n| "text" * rand(100) + "#{n}"}
+		user_id {1}
+		product_id {1}
+		commentable_id {1}
+		commentable_type {"Product"}
+		sequence(:rating) {|n| n * -1 + 1000 }
+	end
+
+	factory :product do
+		name {"name"}
+		image {"image"}
+		description {"text" * 100}
+		user_id {1}
+	end
+
+	factory :feature do
+		name {"name"}
+		description {"text" * 100}
+		product_id {1}
+		feature_group_id {1}
+	end
+
+	factory :feature_group do
+		name {"name"}
+		description {"text" * 50}
+		product_id {1}
+	end
+
+	factory :like do
+		user_id {1}
+	end
+
+	factory :image_asset do
+		attachment_file_name {"name"}
+		user_id {1}
+	end
 
 
-#   #EXAMPLES
-#   # factory :appointment do
-#   #   sequence(:title) { |n| "appttitle#{n}" }
-#   #   sequence(:description) { |n| "apptdescription#{n}" }
-#   #   date        { Date.tomorrow }
-#   #   start_time  { Time.now }
-#   #   end_time    { Time.now + (60 * 60)}
-#   #   user
-#   # end
-#   # factory :user do
-#   #   sequence(:name) { |n| "Andy#{n}" }
-#   #   sequence(:email) { |n| "Andy#{n}@example.com" }
-#   #   password_hash BCrypt::Password.create "password"
-#   # end
-#   # factory :payment_profile do
-#   #   access_token "some_at"
-#   #   publishable_key "some_pk"
-#   #   user
-#   # end
-#   # factory :contact do
-#   #   sequence(:first_name) { |n| "Kevin#{n}" }
-#   #   sequence(:last_name) { |n| "Awesome#{n}" }
-#   #   sequence(:address) { |n| "#{n} Main Street, Berkeley, CA" }
-#   #   phone     { '111-111-1111' }
-#   #   sequence(:email) { |n| "Kevin#{n}@example.com" }
-#   #   user
-#   # end
+
 end

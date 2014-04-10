@@ -1,12 +1,12 @@
 <div class="single-feature-thumb-functions">
 	<div class="functions-left">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true" id="upvoteFeature<%= feature.id %>">
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => false) %> data-remote="true" id="downvoteFeature<%= feature.id %>">
 		<% else %>
 			<span class="sign-in-first-tooltip" data-toggle="tooltip" data-placement="bottom" title="Sign In First">
 		<% end %>
 		<div class="thumb-up">
-			<i class="fa fa-thumbs-up fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: true).empty? %>#fff<% else %>#828282<% end %>;" id="maybeUpvotedFeature<%= feature.id %>"></i> 
+			<i class="fa fa-thumbs-up fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: false).empty? %>#fff<% else %>#828282<% end %>;" id="maybeUpvotedFeature<%= feature.id %>"></i> 
 		</div>
 		<% if signed_in? %>
 			</a>
@@ -19,12 +19,12 @@
 	</div>
 	<div class="functions-right">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => false) %> data-remote="true" id="downvoteFeature<%= feature.id %>">
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true" id="upvoteFeature<%= feature.id %>">
 		<% else %>
 			<span class="sign-in-first-tooltip" data-toggle="tooltip" data-placement="bottom" title="Sign In First">
 		<% end %>
 		<div class="thumb-down">
-			<i class="fa fa-thumbs-down fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: false).empty? %>#fff<% else %>#828282<% end %>;" id="maybeDownvotedFeature<%= feature.id %>"></i> 
+			<i class="fa fa-thumbs-down fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: true).empty? %>#fff<% else %>#828282<% end %>;" id="maybeDownvotedFeature<%= feature.id %>"></i> 
 		</div>
 		<% if signed_in? %>
 			</a>

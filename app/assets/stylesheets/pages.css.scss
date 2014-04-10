@@ -35,6 +35,13 @@
 	text-align: center;
 	width: auto;
 	margin-bottom: 30px;
+	-moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
 	margin: 0 auto;
 	.row {
 		display: inline-block;

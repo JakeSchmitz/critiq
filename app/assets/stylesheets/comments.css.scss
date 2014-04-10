@@ -11,9 +11,9 @@
 	display: inline-block; 
 	float: left; 
 	width: 100%; 
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	.comment-body {
-		min-width: 80%;
+		max-width: 90%;
 		width: 700px;
 		min-height: 60px;
 		.commenter-info {
@@ -23,3 +23,30 @@
 		}
 	}
 }
+
+.new-comment {
+	min-height: 160px;
+	text-align: center;
+	display: inline-block;
+	margin-left: 100px;
+	.comment-box {
+		min-height: 100px;
+		width: auto;
+		display: inline-block;
+	}
+	.current-user-face {
+		padding: 0px;
+		position: absolute;
+		margin-left:-100px;
+	}
+}
+
+.comment-body {
+	text-align: left;
+	margin-left: 15px;
+	margin-top: 0px;
+	padding: 10px;
+	background: rgba(250, 250, 250, 1);
+	border: 1px solid #d4d4d4;
+}
+

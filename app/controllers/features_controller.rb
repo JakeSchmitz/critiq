@@ -85,8 +85,9 @@ class FeaturesController < ApplicationController
     @tab = 'product-features'
     if signed_in? 
       @feature = Feature.find(params[:feature_id])
+      @feature.likes.where(user_id: current_user.id).destroy_all
       if !@feature.likes.exists?(user_id: current_user.id)
-        @feature.likes.build(user_id:  current_user.id, up: true)
+        @feature.likes.create(user_id:  current_user.id, up: true)
         @product.rating += 1
         respond_to do |format|
           if @feature.save and @product.save
@@ -99,6 +100,7 @@ class FeaturesController < ApplicationController
           end
         end
       else
+        #This shouldn't ever happen
         respond_to do |format|
           format.html { redirect_to @product, notice: 'You can only give your support once for each feature.' }
           format.json { render json: @feature.errors, status: :unprocessable_entity }
@@ -115,9 +117,8 @@ class FeaturesController < ApplicationController
   def downvote
     if signed_in?
       @feature = Feature.find(params[:feature_id])
-      @product = Product.find(params[:product_id])
-      @feature.likes.build(user_id:  current_user.id, up: false)
-      @product -= 1
+      @feature.likes.where(user_id: current_user.id).delete_all
+      @feature.likes.create(user_id:  current_user.id, up: false)
       respond_to do |format|
         if @feature.save and @product.save
           format.html { redirect_to @product, notice: 'Feature was successfully updated.' }

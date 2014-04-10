@@ -132,3 +132,42 @@
 		}
 	}
 }
+
+.feature-modal {
+	width: 500px;
+	height: auto;
+	.modal-content {
+		padding: 20px;
+		padding-top: 0px;
+		margin: 0px;
+		height: 100%;
+		.feature-header{
+			margin-left: 30px;
+			#feature-name {
+				float: left;
+				font-size: 24px;
+			}
+			#feature-votes {
+				float: right;
+				font-size: 24px;
+				margin-right: 5px;
+				color: #6d2cfa;
+			}
+		}
+		.feature-pic {
+			 width: 400px; 
+			 margin: 0 auto; 
+			 height: 300px;
+			 margin-bottom: 30px;
+		}
+		.feature-modal-buttons {
+			display: inline-block;
+			width: 400px;
+			margin-left: -30px;
+			.ftr-modal-btn {
+				display: inline;
+				width: 100px;
+			}
+		}
+	}
+}

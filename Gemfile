@@ -9,6 +9,7 @@ gem 'protected_attributes'
 gem 'paperclip', '~> 3.0'
 gem 'simple_form'
 gem "cocaine"
+# install this gem via the command line
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem "jquery-turbolinks"
 gem "googlecharts", :require => "gchart"

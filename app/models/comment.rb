@@ -8,9 +8,9 @@ class Comment < ActiveRecord::Base
 	def product 
 		case self.product_id
 		when nil
-			case self.commentable_type
+			case self.commentable_type.downcase
 			when 'bounty'
-				self.commentable.bounty
+				self.commentable
 			when 'feature'
 				self.commentable.feature_group.product
 			when 'product'

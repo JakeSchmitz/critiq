@@ -5,7 +5,7 @@ describe Feature do
 	it {should belong_to :feature_group}
 	it {should have_many :likes}
 
-	before :each do 
+	before :all do 
 		@feature = create :feature
 	end
 

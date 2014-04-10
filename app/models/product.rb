@@ -66,7 +66,7 @@ class Product < ActiveRecord::Base
     else
       return nil
     end
-  end
+  end # use sample
 
   def single_features
     case self.feature_groups.where(singles: true).first

@@ -4,7 +4,7 @@ describe FeatureGroup do
 	it {should have_many :features}
 	it {should belong_to :product}
 
-	before :each do
+	before :all do
 		@feature_group = create :feature_group
 	end
 

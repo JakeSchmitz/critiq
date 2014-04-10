@@ -62,6 +62,14 @@ FactoryGirl.define do
 		user_id {1}
 	end
 
+	factory :user do 
+		name {"Test-Name"}
+		email {"test@example.com"}
+		bio {"random words" * 10}
+		password {"asdfasdf"}
+		password_confirmation {"asdfasdf"}
+	end
+
 
 
 end

@@ -11,5 +11,15 @@
 	display: inline-block; 
 	float: left; 
 	width: 100%; 
-	margin-bottom: 30px;
+	margin-bottom: 10px;
+	.comment-body {
+		min-width: 80%;
+		width: 700px;
+		min-height: 60px;
+		.commenter-info {
+			float: left;
+			height: 29px;
+			width: 100%;
+		}
+	}
 }

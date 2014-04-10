@@ -37,7 +37,7 @@
 <script>
 	$(document).ready(function(){
 		/* Bind to upvote button */
-		$('#upvoteFeature<%= feature.id.to_s %>')
+		$('#upvoteFeature<%= feature.id.to_s %>, #modalUpvoteFeature<%= feature.id.to_s %>')
 			.bind("ajax:beforeSend", function(evt, xhr, settings){
 				console.log('attempting to upvote feature <%= feature.id %>');
 			})
@@ -48,10 +48,11 @@
 				console.log('completed like of feature <%= feature.id %>');
 				var oldLike = jQuery.parseJSON(data.responseText);
 				var newVC = '<h4 id="feature' + oldLike.id + 'likeage">' + oldLike.oldCount + '% </h4>';
-					$('#feature' + oldLike.id + 'likeage').replaceWith(newVC);
+				$('#feature' + oldLike.id + 'likeage').replaceWith(newVC);
+				$('#feature-modal<%= feature.id %>').modal('hide');
 			});
 			/* Bind to downvote button */
-			$('#downvoteFeature<%= feature.id.to_s %>')
+			$('#downvoteFeature<%= feature.id.to_s %>, #modalDownvoteFeature<%= feature.id.to_s %>')
 			.bind("ajax:beforeSend", function(evt, xhr, settings){
 				console.log('attempting to downvote feature <%= feature.id %>');
 			})
@@ -62,7 +63,9 @@
 				console.log('completed downvote of feature <%= feature.id %>');
 				var oldLike = jQuery.parseJSON(data.responseText);
 				var newVC = '<h4 id="feature' + oldLike.id + 'likeage">' + oldLike.oldCount + '% </h4>';
-					$('#feature' + oldLike.id + 'likeage').replaceWith(newVC);
+				$('#feature' + oldLike.id + 'likeage').replaceWith(newVC);
+				/* if vote was from modal, close the modal */
+				$('#feature-modal<%= feature.id %>').modal('hide');
 			});
 		});
 </script>

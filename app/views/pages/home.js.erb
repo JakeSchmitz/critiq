@@ -1,0 +1,7 @@
+$('#home_drives').html('<%= escape_javascript(render("home_drives"))%>');
+$(function(){
+		$("#home_drives .pagination a").on('click', function() {
+			$.getScript(this.href);
+			return false;
+		});
+	});

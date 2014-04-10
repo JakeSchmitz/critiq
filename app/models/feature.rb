@@ -15,10 +15,12 @@ class Feature < ActiveRecord::Base
     end
   end
 
+  def is_single?
+    self.feature_group.singles?
+  end
+
   def profile_pic
-    if !self.propic_id.nil?
-      return ImageAsset.find(self.propic_id)
-    elsif !self.pictures.empty?
+    if !self.pictures.empty?
       return self.pictures.last
     else
       return nil  

@@ -1,7 +1,7 @@
-<div class="row comment">
-	<div class="comment-vote-buttons pull-left" style="margin-top: 20px; padding-right: 20px;">
+<div class="comment">
+	<div class="comment-vote-buttons pull-left">
 		<%= link_to comment_upvote_path(:product_id => product.id, :comment_id => comment.id) do %>
-			<i class="fa fa-play fa-rotate-270" style="color: #1ba573; padding-left: 2px;"></i>
+			<i class="fa fa-play fa-rotate-270" style="color: #1ba573;"></i>
 		<% end %>
 		<h5 style="margin: 0px;"><%= comment.rating %></h5>
 		<%= link_to comment_downvote_path(:product_id => product.id, :comment_id => comment.id) do %>
@@ -9,10 +9,14 @@
 		<% end %>
 	</div>
 	<div class="user-info pull-left">
-			<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic_url(:medium) %>'); width: 100px; height: 100px;"></div>
 	</div>
-	<div class="comment-body pull-left">
-		<p><%= link_to comment.user.name, user_path(comment.user) %> - <%= comment.created_at %></p>
-		<p style="float: left; padding-left: 10px;"><%= comment.body %></p>
+	<div class="comment-body pull-left" style="padding: 0px;">
+		<div class="commenter-info">
+			<div class="user-thumb-pic" style="width: 29px; height: 29px; display: inline-block;">
+				<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic_url(:medium) %>');"></div>
+			</div>
+			<p style="display: inline-block; vertical-align: top; margin-top: 5px;"><%= link_to comment.user.name, user_path(comment.user) %> - <%= comment.created_at %></p>
+		</div>
+		<p style="float: left; padding: 5px 10px 5px 10px;"><%= comment.body %></p>
 	</div>
 </div>

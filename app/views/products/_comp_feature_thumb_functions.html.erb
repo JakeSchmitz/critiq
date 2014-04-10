@@ -24,7 +24,7 @@
 
 <script>
 	$(document).ready(function(){
-		$('#upvoteFeature<%= feature.id.to_s %>')
+		$('#upvoteFeature<%= feature.id.to_s %>, #modalUpvoteFeature<%= feature.id.to_s %>')
 			.bind("ajax:beforeSend", function(evt, xhr, settings){
 				console.log('attempting to upvote feature <%= feature.id %>');
 			})
@@ -40,6 +40,8 @@
 					$('#maybeCheckedFeature' + oldLike.id).css("color", "#828282");
 					var newVC = '<p id="featureVoteCount' + oldLike.id + '">' + oldLike.oldCount + ' Votes </p>';
 					$('#featureVoteCount' + oldLike.id).replaceWith(newVC);
+					/* if vote was from modal, close the modal */
+					$('#feature-modal<%= feature.id %>').modal('hide');
 				}
 			});
 		});

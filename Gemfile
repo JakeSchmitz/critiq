@@ -9,6 +9,7 @@ gem 'protected_attributes'
 gem 'paperclip', '~> 3.0'
 gem 'simple_form'
 gem "cocaine"
+# install this gem via the command line
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem "jquery-turbolinks"
 gem "googlecharts", :require => "gchart"
@@ -51,6 +52,8 @@ gem 'koala'
 gem "rmagick", :require => 'RMagick'
 
 gem 'open_uri_redirections'
+
+gem 'will_paginate'
 
 group :production do
 

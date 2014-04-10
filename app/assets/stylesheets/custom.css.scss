@@ -263,24 +263,9 @@ div.file_upload_wrapper:hover {
   padding: 20px;
 }
 
-.pic-modal {
-  left: 50%;
-  top: 6%;
-  overflow: visible;
-  text-align: center;
-}
-
 .modal {
   width: auto;
-  overflow-y: initial;
   margin: 0 auto;
-  bottom: auto;
-  padding-top: 10px;
-}
-
-/* custom class to override .modal-open */
-.modal-no-scrollbar {
-    margin-right: 0 !important;
 }
 
 .thumb-ratio{

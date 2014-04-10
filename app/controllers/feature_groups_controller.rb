@@ -87,6 +87,7 @@ class FeatureGroupsController < ApplicationController
       @feature.likes.create(:user_id => current_user.id, :up => YAML.load(params[:up]))
       @feature.save
       @feature_group.save
+      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :feature, resource_id: @feature.id)
     end
     # Shitty workaround so that ajax liking works and response contains the old like count of 
     # whatever the current user used to likes

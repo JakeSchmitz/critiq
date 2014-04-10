@@ -1,9 +1,11 @@
 <div class="thumbnail feature-thumb" style="background-color: #fff;">
+	<a data-toggle="modal" data-target="#feature-modal<%= feature.id %>">
 	<% if !feature.pictures.empty? %>
 		<div class="thumb-ratio" style="background-image: url('<%= feature.pictures.last.attachment.url(:large) %>');"></div>
 	<% else %>
 		<div class="thumb-ratio" style="background-image: url('/images/missing-product.jpg');"></div>
 	<% end %>
+	</a>
 	<% if signed_in? and !vote %>
 		<!-- signed in user has already voted, so add overlay -->
 	<% end %>
@@ -21,3 +23,4 @@
 		<% end %>
 	</div>
 </div>
+<%= render partial: '/features/feature_modal', locals: { feature: feature} %>

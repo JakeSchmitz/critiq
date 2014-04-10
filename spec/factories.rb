@@ -2,7 +2,7 @@ FactoryGirl.define do
 	factory :bounty do
 		sequence(:question) { |n| "question #{n}"}
 		sequence(:response_count) {|n| n}
-		sequence(:product_id) {|n| n}
+		product_id {1}
 	end
 
 	factory :bounty_comment, class: "Comment" do

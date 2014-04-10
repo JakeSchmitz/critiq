@@ -21,9 +21,9 @@ class BountiesController < ApplicationController
 
 	def show 
 		@product = Product.find(params[:product_id])
-		@bounty = Bounty.find(params[:bounty_id])
+		@bounty = Bounty.find(params[:id])
 		@responses = @bounty.comments.order('rating DESC')
-	end
+	end # I changed bounty_id to id
 
 	private 
 
@@ -31,3 +31,5 @@ class BountiesController < ApplicationController
 			params.require(:bounty).permit(:question, :product_id, :product, :comment)
 		end
 end
+
+#move product assignment to a before filter

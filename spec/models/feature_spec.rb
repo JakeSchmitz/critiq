@@ -34,8 +34,8 @@ describe Feature do
 		end
 
 		it "returns its profile pic when it has one" do 
-			@feature.stubs(:propic_id).returns 1
-			expect(@feature.profile_pic).to eq ImageAsset.first
+			@feature.stubs(:pictures).returns ImageAsset.all
+			expect(@feature.profile_pic).to eq ImageAsset.last
 		end
 
 		it "returns the last picture when it has no propic_id" do

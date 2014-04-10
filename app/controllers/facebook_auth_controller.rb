@@ -14,9 +14,9 @@ class FacebookAuthController < ApplicationController
 			@user = User.find_by email: profile["email"]
 			current_user=@user
 		end
-		#propic = @user.pictures.create(prodcess_uri("http://graph.facebook.com/"+profile["id"]+"/picture?type=large").info.image)
-		#@user.propic_id = propic.id
-		#@user.save
+		propic = @user.pictures.create(prodcess_uri("http://graph.facebook.com/"+profile["id"]+"/picture?type=large").info.image)
+		@user.propic_id = propic.id
+		@user.save
 		if @user
 			fb_sign_in(@user, fbcode)
 			redirect_to @user

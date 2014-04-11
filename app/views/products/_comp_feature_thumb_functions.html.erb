@@ -35,7 +35,7 @@
 				var oldLike = jQuery.parseJSON(data.responseText);
 				$('#featureVoteCount<%= feature.id %>').replaceWith('<p id="featureVoteCount<%= feature.id %>">' + oldLike.newCount + ' Votes</p>');
 				/* if the user had already voted, grey out their previous selection and decrease that features vote count */
-				if(typeof oldLike.id != "undefined"){
+				if(typeof oldLike.id != "undefined" && oldLike.id != '<%= feature.id %>'){
 					console.log('previously liked feature was = ' + oldLike);
 					$('#maybeCheckedFeature' + oldLike.id).css("color", "#828282");
 					var newVC = '<p id="featureVoteCount' + oldLike.id + '">' + oldLike.oldCount + ' Votes </p>';

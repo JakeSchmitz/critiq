@@ -29,12 +29,9 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  #Swagger is a users Critiqr rating
   def swagger 
-    swag = 0
-    self.products.each do |p|
-      swag += (p.rating.nil? ? 0 : p.rating)
-    end
-    return swag
+    critiq_rating + like_rating
   end
 
   def lovers
@@ -80,5 +77,22 @@ class User < ActiveRecord::Base
         asset.save!
       end 
     end 
+
+    # Compute user's rating contributed by their critiq's
+    def critiq_rating
+      user_comments = Comment.where(user_id: self.id)
+      rating = 0
+      user_comments.each do |c|
+        rating += c.upvotes.size * 10
+        rating -= c.downvotes.size * 2
+      end
+      rating
+    end
+
+    def like_rating
+      feature_likes = Like.where(likeable_type: 'Feature')
+      rating = 0 || feature_likes.size
+      rating -= Like.where(likeable_type: 'Comment', up: false).size
+    end
 
 end

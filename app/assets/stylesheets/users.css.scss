@@ -26,6 +26,7 @@
 
 .user-thumb {
 	padding: 0px;
+	margin-left: 10px;
 	> a > img {
 		max-height: 100%;
     max-width: 100%;
@@ -252,6 +253,7 @@
 			> h5, > h6 {
 				text-align: left;
 				line-height: 1.0;
+				font-family: proxima-nova-n9, proxima-nova, sans-serif;
 				color: #828282;
 			}
 			color: #828282;
@@ -260,8 +262,7 @@
 			background-color: #eef1f4;
 			border: 1px solid #d0d0d0;
 			border-top: none;
-			padding-top: 5px;
-			padding-left: 10px;
+			padding-top: 10px;
 			color: #828282;
 			z-index: 12;
 		}

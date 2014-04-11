@@ -5,8 +5,8 @@
 		<% else %>
 			<span class="sign-in-first-tooltip" data-toggle="tooltip" data-placement="bottom" title="Sign In First">
 		<% end %>
-		<div class="thumb-up">
-			<i class="fa fa-thumbs-up fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: false).empty? %>#fff<% else %>#828282<% end %>;" id="maybeUpvotedFeature<%= feature.id %>"></i> 
+		<div class="thumb-down">
+			<i class="fa fa-angle-double-down fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: false).empty? %>#fff<% else %>#828282<% end %>;" id="maybeDownvotedFeature<%= feature.id %>"></i> 
 		</div>
 		<% if signed_in? %>
 			</a>
@@ -23,8 +23,8 @@
 		<% else %>
 			<span class="sign-in-first-tooltip" data-toggle="tooltip" data-placement="bottom" title="Sign In First">
 		<% end %>
-		<div class="thumb-down">
-			<i class="fa fa-thumbs-down fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: true).empty? %>#fff<% else %>#828282<% end %>;" id="maybeDownvotedFeature<%= feature.id %>"></i> 
+		<div class="thumb-up">
+			<i class="fa fa-angle-double-up fa-2x" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id, up: true).empty? %>#fff<% else %>#828282<% end %>;" id="maybeUpvotedFeature<%= feature.id %>"></i> 
 		</div>
 		<% if signed_in? %>
 			</a>

@@ -7,13 +7,11 @@ Critiq0::Application.routes.draw do
     resources :likes
     post 'pictures/new' => :upload_picture, as: 'pic_upload'
     resources :comments do
-      get 'upvote' => :upvote
-      get 'downvote' => :downvote
+      get 'vote' => :vote
     end
     resources :bounties do
       resources :comments do
-        get 'upvote' => :upvote
-        get 'downvote' => :downvote
+        get 'vote' => :vote
       end
     end
     resources :feature_groups do 
@@ -39,8 +37,7 @@ Critiq0::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :image_assets
   resources :comments do
-    get 'upvote' => :upvote
-    get 'downvote' => :downvote
+    get 'vote'  => :vote
   end
   root :to => "pages#home"
 

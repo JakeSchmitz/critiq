@@ -24,6 +24,13 @@
 .feature-thumb {
 	display: inline-block;
 	.feature-thumb-content {
+		-moz-transition: all 0.3s ease-in;
+	  /* WebKit */
+	  -webkit-transition: all 0.3s ease-in;
+	  /* Opera */
+	  -o-transition: all 0.3s ease-in;
+	  /* Standard */
+	  transition: all 0.3s ease-in;
 	  background: rgba(245, 245, 245, 0.8);
 	  background-color: #e8eaee;
 	  position: relative;
@@ -43,6 +50,13 @@
 
 .feature-thumb:hover {
 	.feature-thumb-content {
+		-moz-transition: all 0.3s ease-in;
+	  /* WebKit */
+	  -webkit-transition: all 0.3s ease-in;
+	  /* Opera */
+	  -o-transition: all 0.3s ease-in;
+	  /* Standard */
+	  transition: all 0.3s ease-in;
 		margin-top: -130px;
 		background: rgba(250, 250, 250, 1);
 		background-color: #e8eaee;
@@ -75,7 +89,7 @@
 				float: left;
 				height: 100%;
 				width: 40%;
-				background-color: #794f85;
+				background-color: #6d2cfa;
 				display: inline-block;
 				.check {
 					height: 100%;
@@ -105,7 +119,7 @@
 				text-align: center;
 				height: 40px;
 				display: inline-block;
-				background-color: #cb5050;
+				background-color: #2463a8;
 				width: 25%;
 
 				padding-top: 3px;
@@ -125,7 +139,8 @@
 				display: inline-block;
 				height: 40px;
 				width: 25%;
-				background-color: #2463a8; 
+				background-color: #cb5050;
+
 				padding-top: 3px;
 				float: left;
 			}
@@ -163,7 +178,7 @@
 		.feature-modal-buttons {
 			display: inline-block;
 			width: 400px;
-			margin-left: -30px;
+			margin-left: -25px;
 			.ftr-modal-btn {
 				display: inline;
 				width: 100px;

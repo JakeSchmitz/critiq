@@ -1,33 +1,46 @@
 <%- model_class = User -%>
 <div class="user-cover">
-<div class="container">
-  <div class="row user-profile-top">
-    <div class="user-middle">     
-      <div class="span user-face">
-        <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic_url %>');"></div>
+  <div class="container">
+    <div class="row user-profile-top">
+      <div class="user-left">     
+        <div class="user-face">
+          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic_url %>');"></div>
+        </div>
       </div>
-    </div>
-    <div class="user-data">
-      <h5><i class="fa fa-heart fa-lg" style="margin-top: 2px;"></i> <%= @user.swagger %> &nbsp;&nbsp;&nbsp;<i class="fa fa-users fa-lg"></i> <%= @user.lovers %></h5>
-    </div>
-    <div class="row">
-      <h2 style="width: 100%;"><%= @user.name %></h2>
-      <div class="user-buttons <% if signed_in? and @user.id != current_user.id %>other-user-buttons<% end %>">
-        <% if signed_in? and @user.id != current_user.id %>
-          <%= button_to 'MESSAGE', '#', :method => "get", :class => "btn-clear inline-button"%>
-          <%= button_to 'FOLLOW', '#', :method => "get", :class => "btn-clear inline-button"%>
-        <% elsif signed_in? and @user.id == current_user.id %>
-          <%= button_to 'EDIT', edit_user_path(@user), :method => "get", :class => "btn-clear inline-button"%>
+      <div class="user-right">
+        <div class="user-name">
+          <h1 style="display:inline-block; float: left"><%= @user.name %></h1>
+          <% if signed_in? and @user.id == current_user.id %>
+            <div style="display: inline-block; float: left;">
+              <%= button_to 'EDIT', edit_user_path(@user), :method => "get", :class => "btn-clear", style: 'margin: 35px 0 0 10px;' %>
+            </div>
         <% end %>
-          <!--<a href="#" class="btn-clear sm-button" style="margin-bottom: 5px;"><i class="fa fa-twitter fa-fw"></i></a>
-          <a href="#" class="btn-clear sm-button"><i class="fa fa-facebook fa-fw"></i></a>-->
-          <br></br>
+        </div>
+        <div class="under-name">
+          <div class="heat-box">
+            <div class="purple-numbers">
+              <h2 class="roboto-heavy"><%= @user.swagger.to_i.to_s %></h2>
+              <h2 class="roboto-heavy"><%= @user.creator_heat.to_i.to_s %></h2>
+            </div>
+            <div class="heat-titles">
+              <h2 class="roboto-font">Critiqer Heat</h2>
+              <h2 class="roboto-font">Creator Heat</h2>
+            </div>
+          </div>
+          <div class="user-bio">
+            <% if @user.bio %>
+              <h4 class="proxima-font" style="color: #fff;"><%= @user.bio %></h4>
+            <% else %>
+              <h4 class="proxima-font" style="color: #fff">This Critiqer doesn't want to share a bio yet</h4>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 <div class="container">
+  <%= render partial: '/users/recent_activity', locals: { user: @user } %>
   <div class="current-campaigns">
     <h1>Current Campaigns</h1>
     <div class="pretty-divider"></div>

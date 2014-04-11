@@ -26,6 +26,7 @@
 
 .user-thumb {
 	padding: 0px;
+	margin-left: 10px;
 	> a > img {
 		max-height: 100%;
     max-width: 100%;
@@ -44,8 +45,8 @@
 	  background: rgba(245, 245, 245, 0.8);
 	  position: relative;
 	  padding: 0px;
-	  margin-top: -75px;
-	  height: 35px;
+	  margin-top: -80px;
+	  height: 40px;
 	  color: #444444;
 	  overflow: hidden; 
 	  .user-mini-products {
@@ -96,15 +97,7 @@
 	border-bottom:2px solid #aaaaaa;
 }
 
-.user-face {
-	text-align: center;
-	position: relative;
-	z-index: 5;
-	margin-left: 0px;
-	> h1, h2, h3, h4 {
-		color: #fff;
-	}
-}
+
 
 .user-profile-top {
 	height: auto;
@@ -112,12 +105,81 @@
 	> h1, h2, h3, h4 {
 		color: #fff;
 	}
-	.user-middle {
-		padding-top: 40px;
-		width: auto;
-		height: auto;
+	.user-left {
+		padding-top: 30px;
+		width: 25%;
+		height: 300px;
+		min-width: 100px;
 		display: inline-block;
-		text-align: center;
+		float: left;
+		.user-face {
+			margin: 0 auto;
+			height: 200px;
+			width: 200px;
+			z-index: 10;
+			> h1, h2, h3, h4 {
+				color: #fff;
+			}
+		}
+	}
+	.user-right {
+		padding-top: 50px;
+		width: 85%;
+		margin-left: -10%;
+		padding-left: 20px;	
+		min-width: 480px;
+		float: left;
+		display: inline-block;
+		.user-name {
+			width: 95%;
+			float: left;
+			padding-bottom: 5px;
+			border-bottom: 1px solid #fff;
+			> h1, h2, h3, h4 {
+				color: #fff;
+				text-align: left;
+				margin-left: 20%;
+			}
+		}
+		.under-name {
+			width: 100%;
+			min-height: 120px;
+			.heat-box {
+				width: 35%;
+				float: left;	
+				min-width: 200px;
+				display: inline-block;
+				min-height: 120px;
+				background: rgba(255, 255, 255, 0.6);
+				.purple-numbers {
+					width: 30%;
+					float: left;
+					>h2 {
+						color: #6d2cfa;
+						text-align: right;
+					}
+				}
+				.heat-titles {
+					width: 70%;
+					float: left;
+					> h2 {
+						text-align: left;
+						padding-left: 9px;
+						color: #000;
+					}
+				}
+			}
+			.user-bio {
+				width: 40%;
+				display: inline-block;
+				min-height: 120px;
+				float: left;
+				> h4 {
+					display: inline-block; 
+					vertical-align: center;
+				}
+			}
+		}
 	}
 }
 
@@ -160,7 +222,7 @@
 }
 
 .user-face-pic {
-	border: solid 5px #cccccc;
+	border: solid 5px #fff;
 	height: 200px;
 	width: 200px;
 	text-align:center;
@@ -252,6 +314,7 @@
 			> h5, > h6 {
 				text-align: left;
 				line-height: 1.0;
+				font-family: proxima-nova-n9, proxima-nova, sans-serif;
 				color: #828282;
 			}
 			color: #828282;
@@ -260,8 +323,7 @@
 			background-color: #eef1f4;
 			border: 1px solid #d0d0d0;
 			border-top: none;
-			padding-top: 5px;
-			padding-left: 10px;
+			padding-top: 10px;
 			color: #828282;
 			z-index: 12;
 		}

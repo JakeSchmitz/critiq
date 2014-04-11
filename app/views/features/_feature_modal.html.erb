@@ -15,7 +15,7 @@
             </div>
           <% else %>
             <h4 class="robot-font" id="feature-votes"><%= feature.likes.size %> Votes</h4>
-            <a href=<%= product_feature_group_vote_path(product_id: @product.id, feature_id: feature.id, feature_group_id: feature.feature_group_id, up: true) %> class="btn btn-primary ftr-modal-btn" style="background-color: #6d2cfa" id="modalUpvoteFeature<%= feature.id %>" data-remote="true">VOTE</a>
+            <a href=<%= product_feature_group_vote_path(product_id: @product.id, feature_id: feature.id, feature_group_id: feature.feature_group_id, up: true) %> class="btn btn-primary ftr-modal-btn" style="background-color: #6d2cfa; float: left;" id="modalUpvoteFeature<%= feature.id %>" data-remote="true">VOTE</a>
           <% end %>
         <% else %>
           <a href="/signin" class="btn-clear">SIGN UP TO VOTE</a>

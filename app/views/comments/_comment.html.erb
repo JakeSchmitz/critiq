@@ -1,12 +1,12 @@
 <div class="comment">
 	<div class="comment-vote-buttons pull-left">
-		<%= link_to comment_upvote_path(:product_id => product.id, :comment_id => comment.id) do %>
+		<a href=<%= comment_vote_path(:product_id => product.id, :comment_id => comment.id, up: true)%> id="commentUpvote<%= comment.id %>" data-remote="true">
 			<i class="fa fa-play fa-rotate-270" style="color: #1ba573;"></i>
-		<% end %>
-		<h5 style="margin: 0px;"><%= comment.rating %></h5>
-		<%= link_to comment_downvote_path(:product_id => product.id, :comment_id => comment.id) do %>
+		</a>
+		<h5 style="margin: 0px;" id="commentRating<%= comment.id %>"><%= comment.rating %></h5>
+		<a href=<%= comment_vote_path(:product_id => product.id, :comment_id => comment.id, up: false)%> id="commentDownvote<%= comment.id %>" data-remote="true">
 			<i class="fa fa-play fa-rotate-90"  style="color: #c14b1b;"></i>
-		<% end %>
+		</a>
 	</div>
 	<div class="user-info pull-left">
 	</div>
@@ -20,3 +20,24 @@
 		<p style="float: left; padding: 5px 10px 5px 10px;"><%= comment.body %></p>
 	</div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('#commentUpvote<%= comment.id.to_s %>')
+      .bind("ajax:beforeSend", function(evt, xhr, settings){
+        console.log('attempting to Upvote comment');
+      }).bind("ajax:complete", function(evt, data, status, xhr) {
+        console.log('successfully upvoted comment');
+        var comment = jQuery.parseJSON(data.responseText);
+        $('#commentRating<%= comment.id %>').html(String(comment.rating));
+      });
+    $('#commentDownvote<%= comment.id.to_s %>')
+      .bind("ajax:beforeSend", function(evt, xhr, settings){
+        console.log('attempting to downvote comment');
+      }).bind("ajax:complete", function(evt, data, status, xhr) {
+        console.log('successfully downvoted comment');
+        var comment = jQuery.parseJSON(data.responseText);
+        $('#commentRating<%= comment.id %>').html(String(comment.rating));
+      });
+  });
+</script>

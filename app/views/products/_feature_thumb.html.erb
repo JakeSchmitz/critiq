@@ -10,9 +10,9 @@
 		<!-- signed in user has already voted, so add overlay -->
 	<% end %>
 	<div class="feature-thumb-content" <% if !vote %>style="padding-bottom: 10px;"<% end %>>
-		<h4><%= link_to feature.name, product_feature_group_feature_path(:id => feature.id, :product_id => @product.id, :feature_group_id => feature.feature_group_id) %></h4>
+		<h4><a data-toggle="modal" data-target="#feature-modal<%= feature.id %>" style="cursor: pointer;"> <%= feature.name.to_s %></a></h4>
 		<div class="feature-thumb-description">
-			<p style="line-height: 1.2;"><%= truncate feature.description, length: 60 %></p> 
+			<p style="line-height: 1.15;"><%= truncate feature.description, length: 100 %></p> 
 		</div>
 	</div>
 	<div class="feature-thumb-functions">

@@ -36,6 +36,10 @@ class Feature < ActiveRecord::Base
     end
   end
 
+  def product 
+    self.feature_group.product
+  end
+
   private
 
     def save_pictures

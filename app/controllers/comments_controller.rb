@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
       product = Product.find(params[:product_id])
       respond_to do |format|
         if @comment.save
-          Activity.create(timestamp: @comment.created_at, user_id: @user.id, activity_type: :comment, resource_type: @commentable.class.name, resource_id: @commentable.id)
+          Activity.create(timestamp: @comment.created_at, user_id: @user.id, activity_type: :comment, resource_type: @commentable.class.name, resource_id: @commentable.id).save
           format.html { render partial: '/comments/comment', locals: {comment: @comment, product: product || @comment.product }, notice: "Comment created.", :name => "tab[#{params[:tab]}]" }
           format.json { render action: 'show', status: :created, location: @comment }
           #format.js { render :js => 'function () {
@@ -83,26 +83,16 @@ class CommentsController < ApplicationController
     end
   end
 
-  def upvote
+  def vote
     @product = Product.find(params[:product_id])
     if signed_in? 
       @comment = Comment.find(params[:comment_id])
-      if !@comment.upvotes.nil? 
-        @comment.upvotes.where(:user_id => current_user.id).delete_all
-        @comment.upvotes.build(:user_id => current_user.id, :up => true, :product => @product.id)
-        ups = @comment.upvotes.where(:user_id => current_user.id).delete_all.to_i
-        downs = @comment.downvotes.where(:user_id => current_user.id).delete_all.to_i
-        @comment.rating = @comment.upvotes.size - @comment.downvotes.size
-        @comment.save
-        respond_to do |format|
-          format.html { redirect_to @product, notice: 'Comment was successfully updated.' }
-          format.json { head :no_content }
-        end
-      else
-        respond_to do |format|
-          format.html { redirect_to @product, notice: 'You can only give your support once for each comment.' }
-          format.json { render json: @comment.errors, status: :unprocessable_entity }
-        end
+      @comment.likes.where(:user_id => current_user.id).delete_all
+      @comment.likes.create(:user_id => current_user.id, :up => YAML.load(params[:up]), :product_id => @product.id)
+      @comment.rating = @comment.upvotes.size - @comment.downvotes.size
+      @comment.save!
+      respond_to do |format|
+        format.json { render json: @comment.to_json }
       end
     else
       respond_to do |format|
@@ -112,33 +102,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def downvote
-    @product = Product.find(params[:product_id])
-    if signed_in? 
-      @comment = Comment.find(params[:comment_id])
-      if !@comment.downvotes.nil?
-        ups = @comment.upvotes.where(:user_id => current_user.id).delete_all.to_i
-        downs = @comment.downvotes.where(:user_id => current_user.id).delete_all.to_i
-        @comment.downvotes.build(:user_id => current_user.id, :up => false, :product => @product.id)
-        @comment.rating =  @comment.upvotes.size - @comment.downvotes.size
-        @comment.save
-        respond_to do |format|
-          format.html { redirect_to @product, notice: 'Comment was successfully updated.' }
-          format.json { head :no_content }
-        end
-      else
-        respond_to do |format|
-          format.html { redirect_to @product, notice: 'You can only give your support once for each comment.' }
-          format.json { render json: @comment.errors, status: :unprocessable_entity }
-        end
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to @product, notice: 'Please sign in before weighing in.' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

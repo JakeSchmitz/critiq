@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 		else
 			#Complain
 			flash.now[:error] = 'Invalid email/ password combination'
-			render 'new'
+			redirect_to signin_path
 		end
 	end
 

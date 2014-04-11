@@ -34,6 +34,14 @@ class User < ActiveRecord::Base
     critiq_rating + like_rating
   end
 
+  def creator_heat
+    rating = 0
+    self.products.each do |p|
+      rating += p.rating 
+    end
+    rating
+  end
+
   def lovers
     luvrs = 0
     self.products.each do |p|

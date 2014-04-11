@@ -12,4 +12,5 @@ class ActivitiesController < ApplicationController
 		@user = Users.find(user_id)
 		@recent_activities = Activities.where(user_id: user_id).order('timestamp DESC').limit(10)
 	end
+	# move to User model
 end

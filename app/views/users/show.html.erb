@@ -40,6 +40,7 @@
   </div>
 </div>
 <div class="container">
+  <%= render partial: '/users/recent_activity', locals: { user: @user } %>
   <div class="current-campaigns">
     <h1>Current Campaigns</h1>
     <div class="pretty-divider"></div>

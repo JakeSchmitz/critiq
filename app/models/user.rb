@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
     return !self.pictures.empty?
   end
 
+  def first_name
+    self.name.split(' ')[0]
+  end
+
   private
 
     def create_remember_token

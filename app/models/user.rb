@@ -104,7 +104,7 @@ class User < ActiveRecord::Base
     def like_rating
       feature_likes = Like.where(likeable_type: 'Feature')
       rating = 0 || feature_likes.size
-      rating -= Like.where(likeable_type: 'Comment', up: false).size
+      rating -= Like.where(likeable_type: 'Comment', up: false, user_id: self.id).size
     end
 
 end

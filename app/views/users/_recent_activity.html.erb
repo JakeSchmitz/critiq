@@ -2,6 +2,7 @@
   <div class="row recent-activity">
     <h1><%= @user.name %>'s Recent Activity</h1>
     <ul class="activity thumbnails">
+      <!-- Don't show activity of liking features -->
       <% @recent_activity.each do |activity| %>
         <li class="activity" style="padding: 10px;">
           <p style="text-align: center;"><%= activity.timestamp.strftime('%F') %></p>

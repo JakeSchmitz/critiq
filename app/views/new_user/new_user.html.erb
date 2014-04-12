@@ -1,6 +1,24 @@
-<div class="new_user_email">
-	<div class="new_user_header">
-		<h1>Thanks for signing up <%= @user.first_name %></h1>
-	</div>
-	<h2>Critiq is a place for you to get feedback on whatever your working on from a variety of people, and earn rewards for giving constructive feedback to other Creators.</h2>
-</div>
+<html>
+	<head>
+		<style type="text/css">
+			.new_user_email {
+				.new_user_header {
+					width: 100%;
+					color: #fff;
+					height: 50px;
+					text-align: center;
+					background-color: #6d2cfa;
+					border-bottom: 1px solid #828282;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="new_user_email">
+			<div class="new_user_header">
+				<h1>Thanks for signing up <%= @user.first_name %></h1>
+			</div>
+			<h2>Critiq is a place for you to get feedback on whatever your working on from a variety of people, and earn rewards for giving constructive feedback to other Creators.</h2>
+		</div>
+	</body>
+</html>

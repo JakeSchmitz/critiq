@@ -48,6 +48,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         #@user.pictures.build
+        NewUser.registration_confirmation(@user).deliver
         sign_in @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }

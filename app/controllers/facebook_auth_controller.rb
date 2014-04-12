@@ -9,7 +9,7 @@ class FacebookAuthController < ApplicationController
 		puts profile
 		if User.where(email: profile["email"]).empty?
 			@user = User.create(name: profile["name"], email: profile["email"], password: fbcode)
-			@user.pictures.build
+			#NewUser.registration_confirmation(@user).deliver
 			@user.save
 		else
 			@user = User.find_by email: profile["email"]

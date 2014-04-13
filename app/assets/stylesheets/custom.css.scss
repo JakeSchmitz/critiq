@@ -322,13 +322,13 @@ div.file_upload_wrapper:hover {
 }
 
 .btn-clear {
-  background: rgba(254, 254, 254, 0.0);
+  background: rgba(64, 64, 64, 1);
   color: #fff;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   border-radius: 0px;
-  padding: 3px 10px 2px 15px;
+  padding: 8px 8px 8px 15px;
   text-align: center;
-  letter-spacing: 5px;
+  letter-spacing: 7px;
   font-family: proxima-nova-n9, proxima-nova, sans-serif;
   font-weight: 300;
   > h4 {
@@ -337,14 +337,16 @@ div.file_upload_wrapper:hover {
   }
 }
 .btn-clear:hover {
-  background: rgba(0, 0, 0, 0.8);
-  -moz-transition: all 0.3s ease-in;
+  background: rgba(255, 255, 255, 0.8);
+  color: #606060;
+  border: 2px solid #606060;
+  -moz-transition: all 0.2s ease-in;
   /* WebKit */
-  -webkit-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.2s ease-in;
   /* Opera */
-  -o-transition: all 0.3s ease-in;
+  -o-transition: all 0.2s ease-in;
   /* Standard */
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .outline {

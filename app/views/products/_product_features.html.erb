@@ -15,9 +15,11 @@
 		<% end %>
 	</div>
 <% else %>
-	<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal" style="background-color: #44a1ff;">
-			  CREATE A POLL
-	</button>
+	<% if signed_in? and current_user.id == @product.user.id %>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal" style="background-color: #44a1ff;">
+				  CREATE A POLL
+		</button>
+	<% end %>
 	<div class="single-features">
 		<% if !@single_features.nil? and !@single_features.features.empty? %>
 			<h2>Singletons</h2>
@@ -42,6 +44,8 @@
 	</div>
 <% end %>
 
-<%= render partial: '/feature_groups/new_feature_modal', locals: { feature_group: @product.single_features } %>
-<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: @product.single_features, feature: @product.single_features.features.new } %>
-<%= render partial: '/features/comparative_feature_form_modal', locals: { product: @product, feature_group: @product.feature_groups.new } %>
+<% if signed_in? and current_user.id == @product.user.id %>
+	<%= render partial: '/feature_groups/new_feature_modal', locals: { feature_group: @product.single_features } %>
+	<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: @product.single_features, feature: @product.single_features.features.new } %>
+	<%= render partial: '/features/comparative_feature_form_modal', locals: { product: @product, feature_group: @product.feature_groups.new } %>
+<% end %>

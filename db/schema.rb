@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224204110) do
+ActiveRecord::Schema.define(version: 20140412014407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,14 +43,17 @@ ActiveRecord::Schema.define(version: 20140224204110) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "rating",           default: 0
+    t.string   "ancestry"
   end
+
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
 
   create_table "feature_groups", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
     t.boolean  "singles",     default: false
   end
 

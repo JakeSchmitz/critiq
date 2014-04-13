@@ -1,7 +1,1 @@
-<div class="container" style="padding-top: 50px">
-	<h1>New comment</h1>
-
-	<%= render 'form' %>
-
-	<%= link_to 'Back', product_comments_path %>
-</div>
+<%= render partial: "reply_form", locals: {:comment => @comment, :commentable => @commentable} %>

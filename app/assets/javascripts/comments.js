@@ -29,12 +29,10 @@ var NestedComments = {
 	},
 
 	addComment: function(event, data, status, xhr){
-		console.log($(event.currentTarget).parents().eq(3))
 		var comment = $(event.currentTarget).parents().eq(3)
 		var comment_box = comment.children('.nested_comments')
 		$('.reply-section').empty()
 		data += '<div class="nested_comments"></div>'
-		console.log(data)
 		comment_box.append(data)
 	},
 

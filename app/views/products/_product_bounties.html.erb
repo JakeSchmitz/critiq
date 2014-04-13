@@ -25,7 +25,6 @@
 					<% if bounty.comments.empty? || bounty.comments.first.body.nil? %>
 						<h3>Be the first to respond!</h3>
 					<% else %>
-						<% p bounty.comments; puts "&&&&&&&&&&" * 100 %>
 						<%= render :partial => 'product_comments', locals: { comments: bounty.comments.order('rating DESC ').first(3), product: @product, thread_id: 'bounty' + bounty.id.to_s, bounty: bounty} %>
 						<% if bounty.comments.size > 3 %>
 							<%= link_to 'More Responses >>>', product_bounty_path(:product_id => @product.id, :bounty_id => bounty.id), class: 'btn show-bounty-button pull-right' %>

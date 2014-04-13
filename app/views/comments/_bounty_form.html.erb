@@ -1,5 +1,5 @@
 <div class="comment-box">
-  <%= nested_form_for [@product, bounty, bounty.comments.new], html: {id: 'bounty_submit' + thread_id, remote: true} do |f| %>
+  <%= nested_form_for [@product, bounty, bounty.comments.new], html: {id: 'bounty_submit' + thread_id, remote: true, :class => "bounty_comment"} do |f| %>
     <% if bounty.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(bounty.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -19,13 +19,19 @@
   <% end %>
 </div>
 
-<script>
+ <script>
   $(document).ready(function(){
     $('#bounty_submit<%= thread_id.to_s %>')
       .bind("ajax:beforeSend", function(evt, xhr, settings){
         console.log('attempting to create comment');
       }).bind("ajax:complete", function(evt, data, status, xhr) {
         console.log('successfully created comment');
+        var response_area = $(evt.currentTarget).parents().eq(2).children('.bounty-responses')
+        var response_thread = $('#thread_id<%= thread_id.to_s %>')
+        if(response_thread.length == 0) {
+          response_area.empty()
+          response_area.append('<div id="thread_id<%= thread_id %>" style="display: inline-block;" class="thread"></div>')
+        }
         $('#thread_id<%= thread_id.to_s %>').prepend(data.responseText);
         $('#bounty_comment_body<%= bounty.id %>').val('');
       });

@@ -4,7 +4,7 @@
     <div class="row user-profile-top">
       <div class="user-left">     
         <div class="user-face">
-          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic_url %>');"></div>
+          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic_url(:medium) %>');"></div>
         </div>
       </div>
       <div class="user-right">

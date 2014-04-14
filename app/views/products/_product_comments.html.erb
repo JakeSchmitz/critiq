@@ -1,7 +1,7 @@
-<div id="thread_id<%= thread_id %>" style="display: inline-block; text-align: center;" >
-	<% comments.each do |comment| %>
-		<% unless comment.user.nil? %>
-			<%= render partial: '/comments/comment', locals: {comment: comment, product: product } %>
-		<% end %>
+<div id="thread_id<%= thread_id %>" style="display: inline-block;" class="thread">
+	<% if defined? bounty%>
+		<%= nested_bounty_comments bounty.comments.arrange(order: :created_at), product, bounty %>
+	<% else %>
+		<%= nested_comments product.comments.arrange(order: :created_at), product %>
 	<% end %>
 </div>

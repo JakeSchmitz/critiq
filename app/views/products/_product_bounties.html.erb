@@ -12,6 +12,7 @@
 					<p><%= bounty.comments.length.to_s %> responses so far</p>
 				</div>
 				<div class="new-comment">
+		 		  <%= render :partial => '/comments/bounty_form', locals: { tab: 'product-bounties', bounty: bounty, thread_id: 'bounty' + bounty.id.to_s}, style: 'display: inline-block;' %>
           <div class="current-user">
             <% if signed_in? %>
               <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic_url %>');"></div>
@@ -19,13 +20,12 @@
               <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
             <% end %>
           </div>
-          <%= render :partial => '/comments/bounty_form', locals: { tab: 'product-bounties', bounty: bounty, thread_id: 'bounty' + bounty.id.to_s}, style: 'display: inline-block;' %>
         </div>
 				<div class="bounty-responses">
-					<% if bounty.comments.empty? %>
+					<% if bounty.comments.empty? || bounty.comments.first.body.nil? %>
 						<h3>Be the first to respond!</h3>
 					<% else %>
-						<%= render :partial => 'product_comments', locals: { comments: bounty.comments.order('rating DESC ').first(3), product: @product, thread_id: 'bounty' + bounty.id.to_s} %>
+						<%= render :partial => 'product_comments', locals: { comments: bounty.comments.order('rating DESC ').first(3), product: @product, thread_id: 'bounty' + bounty.id.to_s, bounty: bounty} %>
 						<% if bounty.comments.size > 3 %>
 							<%= link_to 'More Responses >>>', product_bounty_path(:product_id => @product.id, :bounty_id => bounty.id), class: 'btn show-bounty-button pull-right' %>
 						<% end %>

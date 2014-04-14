@@ -32,6 +32,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
+    ancestry (2.0.0)
+      activerecord (>= 3.0.0)
     arel (4.0.2)
     aws-sdk (1.38.0)
       json (~> 1.4)
@@ -250,6 +252,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ancestry
   aws-sdk
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (= 2.1)

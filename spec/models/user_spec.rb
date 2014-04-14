@@ -16,8 +16,8 @@ describe User do
 			(1..10).to_a.each {|n| create :like, likeable_id: n, likeable_type: "Product"}
 		end
 
-		it "has swagger" do 
-			expect(@user.swagger).to eq 100
+		it "has creator heat" do 
+			expect(@user.creator_heat).to eq 100
 		end
 
 		it "has lovers" do

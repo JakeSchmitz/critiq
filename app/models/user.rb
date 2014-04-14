@@ -51,16 +51,18 @@ class User < ActiveRecord::Base
   end
 
   def profile_pic
-    if !self.propic_id.nil?
+    p 'PROPIC = ' + self.propic_id.to_i.to_s + '\n\n/n/n'
+    if self.propic_id
       ImageAsset.find(self.propic_id)
-    elsif self.pictures.empty?
-      nil
-    else
+    elsif !self.pictures.empty?
       self.pictures.last
+    else
+      nil
     end
   end
 
   def profile_pic_url(size=:large)
+    p self.profile_pic
     case self.profile_pic
     when nil
       '/images/missing-user-avatar.png'
@@ -71,6 +73,10 @@ class User < ActiveRecord::Base
 
   def has_pics?
     return !self.pictures.empty?
+  end
+
+  def first_name
+    self.name.split(' ')[0]
   end
 
   private
@@ -100,7 +106,7 @@ class User < ActiveRecord::Base
     def like_rating
       feature_likes = Like.where(likeable_type: 'Feature')
       rating = 0 || feature_likes.size
-      rating -= Like.where(likeable_type: 'Comment', up: false).size
+      rating -= Like.where(likeable_type: 'Comment', up: false, user_id: self.id).size
     end
 
 end

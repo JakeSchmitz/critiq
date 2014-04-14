@@ -39,20 +39,16 @@ class CommentsController < ApplicationController
       @comment.user = current_user
       @user = current_user
       product = Product.find(params[:product_id])
+      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :comment, resource_type: @commentable.class.name, resource_id: @commentable.id)
       respond_to do |format|
         if @comment.save
           Activity.create(timestamp: @comment.created_at, user_id: @user.id, activity_type: :comment, resource_type: @commentable.class.name, resource_id: @commentable.id).save
           
           if @comment.commentable_type == "Bounty"
-            puts "$$$$$$$$$$$$" * 20
-            puts Bounty.find(@comment.commentable_id)
             format.html { render partial: '/comments/comment',locals: {comment: @comment, product: product || @comment.product, bounty: Bounty.find(@comment.commentable_id) }, notice: "Comment created.", :name => "tab[#{params[:tab]}]" }
           else 
             format.html { render partial: '/comments/comment', locals: {comment: @comment, product: product || @comment.product }, notice: "Comment created.", :name => "tab[#{params[:tab]}]" }
           end
-          
-
-
           format.json { render action: 'show', status: :created, location: @comment }
           #format.js { render :js => 'function () {
           # $(\'#product-tabs a[href="#product-comments"]\').tab(\'show\')

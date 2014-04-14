@@ -4,7 +4,7 @@
     <div class="row user-profile-top">
       <div class="user-left">     
         <div class="user-face">
-          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic_url %>');"></div>
+          <div class="thumb-ratio img-circle user-face-pic" style="background-image: url('<%= @user.profile_pic_url(:medium) %>');"></div>
         </div>
       </div>
       <div class="user-right">
@@ -12,7 +12,7 @@
           <h1 style="display:inline-block; float: left"><%= @user.name %></h1>
           <% if signed_in? and @user.id == current_user.id %>
             <div style="display: inline-block; float: left;">
-              <%= button_to 'EDIT', edit_user_path(@user), :method => "get", :class => "btn-clear", style: 'margin: 35px 0 0 10px;' %>
+              <%= button_to 'EDIT', edit_user_path(@user), :method => "get", :class => "btn-clear", style: 'margin: 28px 0 0 10px;' %>
             </div>
         <% end %>
         </div>

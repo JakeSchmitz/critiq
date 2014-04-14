@@ -16,10 +16,7 @@ class UsersController < ApplicationController
     @pictures = @user.pictures
     @top_products = @user.products.where(active: true).order('rating DESC')
     @old_products = @user.products.where(active: false).order('rating DESC')
-    @recent_activity = Activity.where(user_id: @user.id).order('timestamp DESC').limit(7)
-    if signed_in? and current_user.id == @user.id
-      @pictures.build
-    end
+    @recent_activity = Activity.where(user_id: @user.id).where.not(activity_type: :create).order('timestamp DESC').limit(7)
     if !@user.propic_id.nil?
       @propic = ImageAsset.find(@user.propic_id)
     else
@@ -48,9 +45,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         #@user.pictures.build
+        #NewUser.registration_confirmation(@user).deliver
         sign_in @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
+        #format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }

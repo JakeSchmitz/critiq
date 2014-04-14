@@ -9,14 +9,16 @@ class FacebookAuthController < ApplicationController
 		puts profile
 		if User.where(email: profile["email"]).empty?
 			@user = User.create(name: profile["name"], email: profile["email"], password: fbcode)
+			#NewUser.registration_confirmation(@user).deliver
 			@user.save
 		else
 			@user = User.find_by email: profile["email"]
 			current_user=@user
 		end
 		if @user.pictures.empty?
-			propic = @user.pictures.create(attachment: open(process_uri("http://graph.facebook.com/"+profile["id"]+"/picture?type=large").to_s))
+			propic = @user.pictures.build(attachment: open(process_uri("http://graph.facebook.com/"+profile["id"]+"/picture?type=large").to_s))
 			@user.propic_id = propic.id
+			propic.save
 			@user.save
 		end
 		if @user

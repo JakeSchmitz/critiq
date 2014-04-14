@@ -11,7 +11,7 @@
       </div>
     <% end %>
     <div class="comment-form">
-      <%= f.text_area :body, :placeholder => "Enter a Bounty Response Here", :maxlength => 1000, style: 'width: 100%; min-width: 350px; height: 100px; border-radius: 0px;', id: 'bounty_comment_body' + bounty.id.to_s %>
+      <%= f.text_area :body, :placeholder => "Enter a Bounty Response Here", :maxlength => 1000, style: ' min-height: 100px; min-width: 70%; width: 682px; border-radius: 0px;', id: 'bounty_comment_body' + bounty.id.to_s %>
     </div>
     <div class="actions">
       <%= f.submit nil, class: 'btn btn-primary', :name => "tab[#{tab}]" %>

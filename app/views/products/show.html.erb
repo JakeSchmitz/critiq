@@ -8,42 +8,44 @@
 <% end %>
 <div class="black-wrapper">
 <div class="container">
-  <div class="span">
-    <div class="product-left">
-      <h1 class="product-name"><%= @product.name %></h1>
-      <div class="product-creator" style="display: inline-block;">
-        <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>');"></div>
-        <div class="creator-data">
-          <h5 style="text-align: left;">Created By <%= link_to @product.user.name, @product.user, style: 'color: #cacaca' %></h5>
+  <div class="span" style="width: auto; float: center;">
+    <div class="span"> 
+      <div class="product-left">
+        <h1 class="product-name"><%= @product.name %></h1>
+        <div class="product-creator" style="display: inline-block;">
+          <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>');"></div>
+          <div class="creator-data">
+            <h5 style="text-align: left;">Created By <%= link_to @product.user.name, @product.user, style: 'color: #cacaca' %></h5>
+          </div>
         </div>
-      </div>
-      <div class="product-pictures">
-        <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>');"></div>
-        <div class="other-pics">
-          <% @top_pics.first(5).each_with_index do |pic, i| %>
-            <a class="thumb-ratio alt-pic"  style="background-image: url('<%= pic.attachment.url(:large) %>'); cursor: pointer;" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
-            </a>
-          <% end %>
+        <div class="product-pictures">
+          <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>');"></div>
+          <div class="other-pics">
+            <% @top_pics.first(5).each_with_index do |pic, i| %>
+              <a class="thumb-ratio alt-pic"  style="background-image: url('<%= pic.attachment.url(:large) %>'); cursor: pointer;" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
+              </a>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="product-right">
-    <div class="product-buttons" >
-      <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) %>
-        <%= button_to 'FOLLOW', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
-      <% elsif !signed_in? %>
-        <h4 style="margin-top: 0px; text-align: center; color: #fff;">Sign in to Vote and Comment</h4>
-      <% end %>
-      <% if signed_in? and current_user.id == @product.user.id %>
-        <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
-        <%= button_to 'DELETE', product_path(@btn), :method => 'delete', :class => "btn-clear inline-button", style: 'float: left;' %>
-      <% end %>
-    </div>
-    <div class="well span4 description-box">
-      <!-- Buy when complete button isn't ready yet! <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %> -->
-      <h2>Description</h2>
-      <p class="product-description"><%= @product.description %></p>
+    <div class="product-right">
+      <div class="product-buttons">
+        <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) %>
+          <%= button_to 'FOLLOW', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
+        <% elsif !signed_in? %>
+          <h4 style="margin-top: 0px; height: 30px; text-align: center; color: #fff;">Sign in to Vote and Comment</h4>
+        <% end %>
+        <% if signed_in? and current_user.id == @product.user.id %>
+          <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
+          <%= button_to 'DELETE', product_path(@btn), :method => 'delete', :class => "btn-clear inline-button", style: 'float: left;' %>
+        <% end %>
+      </div>
+      <div class="well span4 description-box">
+        <!-- Buy when complete button isn't ready yet! <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %> -->
+        <h2>Description</h2>
+        <p class="product-description"><%= @product.description %></p>
+      </div>
     </div>
   </div>
 </div>

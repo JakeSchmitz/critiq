@@ -6,20 +6,19 @@ class Comment < ActiveRecord::Base
 	has_ancestry
 
 	def product 
-		case self.product_id
-		when nil
-			case self.commentable_type.downcase
-			when 'Bounty'
-				self.commentable.product
-			when 'Feature'
-				self.commentable.feature_group.product
-			when 'Product'
-				self.commentable
+		case self.commentable_type.downcase
+		when 'bounty'
+			self.commentable.product
+		when 'feature'
+			self.commentable.feature_group.product
+		when 'product'
+			self.commentable
+		else
+			if self.product_id
+				Product.find(self.product_id)
 			else
 				nil
 			end
-		else 
-			Product.find(product_id)
 		end
 	end
 

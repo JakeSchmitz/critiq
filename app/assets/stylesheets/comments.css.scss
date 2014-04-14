@@ -17,6 +17,8 @@
 	float: right; 
 	.comment-body {
 		width: 750px;
+		float: center; 
+		margin-bottom: 5px;
 		min-height: 60px;
 		.commenter-info {
 			float: left;
@@ -30,7 +32,7 @@
 .new-comment {
 	min-height: 160px;
 	text-align: center;
-	float: right;
+	float: center;
 
 	display: inline-block;
 	margin-left: 100px;

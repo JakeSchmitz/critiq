@@ -1,12 +1,12 @@
 <div class="collapsed">
-<div class="comment-body pull-left collapsed-comment" style="padding: 0px;width: <%= 750 - comment.depth * 38 %>px">
-	<div class="commenter-info">
-		<div class="user-thumb-pic" style="width: 29px; height: 29px; display: inline-block;">
-			<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic_url(:medium) %>');"></div>
+	<div class="comment-body pull-left collapsed-comment" style="padding: 0px;width: <%= 750 - comment.depth * 38 %>px">
+		<div class="commenter-info">
+			<div class="user-thumb-pic" style="width: 29px; height: 29px; display: inline-block;">
+				<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic_url(:medium) %>');"></div>
+			</div>
+			<p style="display: inline-block; vertical-align: top; margin-top: 5px;"><%= link_to comment.user.name, user_path(comment.user) %> - <%= comment.created_at %> - <%= "#{comment.subtree.count - 1} replies" %>
+				<%= link_to "Expand", nil, :class => "unshrink" %> 
+			</p>
 		</div>
-		<p style="display: inline-block; vertical-align: top; margin-top: 5px;"><%= link_to comment.user.name, user_path(comment.user) %> - <%= comment.created_at %> - <%= "#{comment.subtree.count - 1} replies" %>
-			<%= link_to "Expand", nil, :class => "unshrink" %> 
-		</p>
 	</div>
-</div>
 </div>

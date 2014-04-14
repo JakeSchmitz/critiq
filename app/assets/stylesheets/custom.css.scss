@@ -323,6 +323,13 @@ div.file_upload_wrapper:hover {
 
 .btn-clear {
   background: rgba(64, 64, 64, 1);
+  -moz-transition: all 0.2s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.2s ease-in;
+  /* Opera */
+  -o-transition: all 0.2s ease-in;
+  /* Standard */
+  transition: all 0.2s ease-in;
   color: #fff;
   border: 2px solid #fff;
   border-radius: 0px;

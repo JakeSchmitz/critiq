@@ -46,8 +46,9 @@
 	}
 }
 
-.nested-comment {
-	border-left: 1px solid #d4d4d4
+.comment-nest {
+	width: 784px;
+	float: right;
 }
 
 .comment-body {
@@ -79,6 +80,10 @@
 	width: 100.5%;
 	margin-left: 31px;
 	overflow: visible;
+	float: left;
+	border-left: 1px solid #d4d4d4;
+	position: relative;
+	right: -3px;
 }
 
 .comment-vote-buttons {

@@ -32,7 +32,10 @@
           response_area.empty()
           response_area.append('<div id="thread_id<%= thread_id %>" style="display: inline-block;" class="thread"></div>')
         }
-        $('#thread_id<%= thread_id.to_s %>').prepend(data.responseText);
+        var response = data.responseText
+        response += '<div class="nested_comments"></div>'
+        $('#thread_id<%= thread_id.to_s %>').prepend("<div class='comment-nest'>" + response + "</div>");
+
         $('#bounty_comment_body<%= bounty.id %>').val('');
       });
   });

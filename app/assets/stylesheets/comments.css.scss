@@ -86,6 +86,10 @@
 	right: -3px;
 }
 
+.nested-comment {
+	float: left;
+}
+
 .comment-vote-buttons {
 	margin-top: 5px;
 	padding-left: 5px;
@@ -104,7 +108,8 @@
 }
 
 .collapsed-comment {
-	width: 750px;
+	margin-left: 34px;
+
 }
 
 .collapsed {

@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Comment do 
 	it {should belong_to :user}
-	it {should have_many :upvotes}
-	it {should have_many :downvotes}
-
+	it {should have_many :likes}
 
 
 	context "when it has a product id" do 
@@ -29,13 +27,6 @@ describe Comment do
 			@feature_comment = create :feature_comment
 			@product_comment = create :product_comment
 			@comments = [@bounty_comment, @feature_comment, @product_comment] 
-		end
-
-		it "can retrieve its parent object" do
-			comment_obj_pairs = @comments.zip @objects
-			comment_obj_pairs.each do |pair|
-				expect(pair[0].product).to eq pair[1]
-			end
 		end
 
 	end

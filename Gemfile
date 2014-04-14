@@ -55,6 +55,8 @@ gem 'open_uri_redirections'
 
 gem 'will_paginate'
 
+gem 'ancestry'
+
 group :production do
 
 end

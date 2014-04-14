@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Comment do 
 	it {should belong_to :user}
-	it {should have_many :likes}
+	it {should have_many :likes }
+
 
 
 	context "when it has a product id" do 

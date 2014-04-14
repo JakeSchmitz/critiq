@@ -11,7 +11,7 @@
       </div>
     <% end %>
     <div class="comment-form">
-      <%= f.text_area :body, :placeholder => "Enter a Critiq Here", :maxlength => 1000, style: ' min-height: 100px; min-width: 70%; width: 600px; border-radius: 0px;' %>
+      <%= f.text_area :body, :placeholder => "Enter a Critiq Here", :maxlength => 1000, style: ' min-height: 100px; min-width: 70%; width: 700px; border-radius: 0px;' %>
     </div>
     <div class="actions">
       <%= f.submit nil, :class => 'btn btn-primary pull-right', :name => "tab[#{tab}]" %>
@@ -26,7 +26,9 @@
         console.log('attempting to create comment');
       }).bind("ajax:complete", function(evt, data, status, xhr) {
         console.log('successfully created comment');
-        $('#thread_id<%= thread_id.to_s %>').prepend(data.responseText);
+        var response = data.responseText
+        response += '<div class="nested_comments"></div>'
+        $('#thread_id<%= thread_id.to_s %>').prepend("<div class='comment-nest'>" + response + "</div>");
         $('#comment_body').val('');
       });
   });

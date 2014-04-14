@@ -72,14 +72,15 @@
       <!-- Comment Tab -->
       <div class="tab-pane product-comments" id="product-comments" style="text-align: center;">
         <div class="new-comment">
-          <div class="current-user">
+         
+          <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments', thread_id: 'product' + @product.id.to_s}, style: 'display: inline-block;' %>
+           <div class="current-user">
             <% if signed_in? %>
               <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic_url %>');"></div>
             <% else %>
               <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
             <% end %>
           </div>
-          <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments', thread_id: 'product' + @product.id.to_s}, style: 'display: inline-block;' %>
         </div>
         <% if !@product.comments.empty? %> 
           <div style="padding-top: 20px;">

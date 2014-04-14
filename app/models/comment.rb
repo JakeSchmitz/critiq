@@ -2,7 +2,8 @@ class Comment < ActiveRecord::Base
 	belongs_to :commentable, polymorphic: true
 	belongs_to :user
 	has_many :likes, class_name: "Like", foreign_key: "likeable_id", as: :likeable
-	attr_accessible :product_id, :user_id, :title, :body, :created_at, :user
+	attr_accessible :product_id, :user_id, :title, :body, :created_at, :user, :parent_id, :ancestry
+	has_ancestry
 
 	def product 
 		case self.commentable_type.downcase
@@ -27,5 +28,19 @@ class Comment < ActiveRecord::Base
 
 	def downvotes
 		self.likes.where(up: false)
+	end
+
+	def path_to_reply #used in the polymorphic_url method
+		if self.commentable.class != Product 
+			[self.commentable.product, self.commentable, self]
+		else
+			[self.commentable, self ]
+		end
+	end
+
+	def reply # used in the reply form
+		parent_comment = self.parent.path_to_reply
+		parent_comment.pop
+		parent_comment << self
 	end
 end

@@ -7,13 +7,22 @@
         <li class="activity" style="padding: 10px;">
           <p style="text-align: center;"><%= activity.timestamp.strftime('%F') %></p>
           <% if activity.activity_type == 'comment' %>
-            <a href="/products/<%= Comment.find(activity.resource_id).product.id %>"><div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/chat.svg'); width: 100px;"></div></a>
-            ><h6>Critiqed a <%= activity.resource_type.to_s %></h6>
+            <a href="/products/<%= activity.product.id %>">
+              <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else  '/images/round-icons/chat.svg'  end %>'); width: 100px;">
+              </div>
+            </a>
+            <h6>Critiqed a <%= activity.resource_type.to_s %></h6>
           <% elsif activity.activity_type == 'like' %>
             <% if activity.resource_type == 'feature' %>
-              <a href="/products/<%= Feature.find(activity.resource_id).product.id %>"><div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/love.svg'); width: 100px;"></div></a>
-            <% elsif activity.resource_type == 'product' %>
-              <a href="/products/<%= Product.find(activity.resource_id).id %>"><div class="img-circle thumb-ratio activity-icon" style="background-image: url('/images/round-icons/select.svg'); width: 100px;"></div></a>
+              <a href="/products/<%= activity.product.id %>">
+                <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else '/images/round-icons/love.svg' end %>'); width: 100px;">
+                </div>
+              </a>
+            <% elsif activity.resource_type == 'product' and activity.activity_type == 'like' %>
+              <a href="/products/<%= activity.product.id %>">
+                <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else '/images/round-icons/select.svg' end %>'); width: 100px;">
+                </div>
+              </a>
             <% end %>
             <h6><%= "Supported a " + activity.resource_type.to_s %></h6>
           <% end %>

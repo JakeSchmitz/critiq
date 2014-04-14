@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @pictures = @user.pictures
     @top_products = @user.products.where(active: true).order('rating DESC')
     @old_products = @user.products.where(active: false).order('rating DESC')
-    @recent_activity = Activity.where(user_id: @user.id).order('timestamp DESC').limit(7)
+    @recent_activity = Activity.where(user_id: @user.id).where.not(activity_type: :create).order('timestamp DESC').limit(7)
     if !@user.propic_id.nil?
       @propic = ImageAsset.find(@user.propic_id)
     else

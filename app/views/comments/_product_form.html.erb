@@ -26,7 +26,9 @@
         console.log('attempting to create comment');
       }).bind("ajax:complete", function(evt, data, status, xhr) {
         console.log('successfully created comment');
-        $('#thread_id<%= thread_id.to_s %>').prepend(data.responseText);
+        var response = data.responseText
+        response += '<div class="nested_comments"></div>'
+        $('#thread_id<%= thread_id.to_s %>').prepend("<div class='comment-nest'>" + response + "</div>");
         $('#comment_body').val('');
       });
   });

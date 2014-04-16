@@ -79,6 +79,10 @@ class User < ActiveRecord::Base
     self.name.split(' ')[0]
   end
 
+  def self.test_reg_email(user)
+    NewUser.registration_confirmation(user).deliver
+  end
+
   private
 
     def create_remember_token

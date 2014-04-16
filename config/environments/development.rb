@@ -41,12 +41,23 @@ Critiq0::Application.configure do
   ActionMailer::Base.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => "gmail.com",
-    :user_name            => "jake.schmitz101",
+    :domain               => ENV['GMAIL_DOMAIN'],
+    :user_name            => ENV['GMAIL_NAME'],
     :password             => ENV['GMAIL_PASSWORD'],
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
+
+  #ActionMailer::Base.smtp_settings = {
+  #  :address              => "smtp.office365.com",
+  #  :port                 => 587,
+  #  :domain               => ENV['OUTLOOK_DOMAIN'],
+  #  :user_name            => ENV['OUTLOOK_NAME'],
+  #  :password             => ENV['OUTLOOK_PASSWORD'],
+  #  :authentication       => "plain",
+  #  :enable_starttls_auto => true
+  #}
+
 
   config.action_mailer.default_url_options = {host: 'localhost'}
 

@@ -19,4 +19,14 @@ module CommentsHelper
   		end.join.html_safe
 	end
 
+	def width_for comment
+		length = 750
+		indentation = 38
+		"#{750 - comment.depth * 38}px"
+	end
+
+	def reply_count_for comment
+		"#{comment.subtree.count - 1} replies" 
+	end
+
 end

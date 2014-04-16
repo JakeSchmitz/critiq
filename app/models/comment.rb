@@ -35,6 +35,7 @@ class Comment < ActiveRecord::Base
 		likes.where(:user_id => user.id).delete_all
 		likes.create(:user_id => user.id, :up => direction, :product_id => product_id)
 		self.rating = upvotes.size - downvotes.size
+		save
 	end
 
 	def path_to_reply #used in the polymorphic_url method

@@ -83,7 +83,7 @@
           </div>
         </div>
         <% if !@product.comments.empty? %> 
-          <div style="padding-top: 20px;">
+          <div style="padding-top: 20px;" id="comment-container">
             <%= render :partial => 'product_comments', locals: { comments: @product.sorted_comments, product: @product, thread_id: 'product' + @product.id.to_s} %>
           </div>
         <% else %>

@@ -198,7 +198,7 @@
 .product-right {
 	color: #fff;
 	display: inline-block;
-	text-align: center;
+	text-align: right;
 	> h2 {
 		color: #fff;
 	}
@@ -396,6 +396,18 @@
 		}
 		.comment-body {
 			width: 90%;
+		}
+	}
+}
+
+@media(max-width: 980px) {
+	.product-right {
+		text-align: center;
+		.description-box {
+			margin: 0 auto;
+			width: 90%;
+			min-height: 200px;
+			height: auto;
 		}
 	}
 }

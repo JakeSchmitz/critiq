@@ -1,35 +1,18 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :initial_uploads, :active_switch]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :initial_uploads, :active_switch, :upload_picture]
 
-  # GET /products
-  # GET /products.json
+
   def index
     @products = Product.all
   end
 
-  # GET /products/1
-  # GET /products/1.json
-  def show
-    update_rating
-    # puts "and the tab is...... " + params[:tab].to_s
-    @tab = params[:tab] || 'product-features'
-    @product ||= Product.find( id: params[:product_id])
-    if !@product.user.pictures.empty?
-      @user_pic = ImageAsset.find(@product.user.propic_id || @product.user.pictures.last)
-    end
+  def show  # what if there is no propic id?
+    @user_pic = ImageAsset.find_product_user_pic @product if !@product.user.pictures
     @feature_groups = @product.feature_groups
-    @comparison_features = @feature_groups.where(singles: false)
-    @single_features = @feature_groups.where(singles: true).first
-    @comments = @product.comments.order('rating DESC')
     @comment = @product.comments.new
-    @likers = Array.new
-    @top_pics = @product.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(5)
-    @product.likes.first(100).each do |like|
-      @likers << like.user
-    end
+    @likers = @product.likers
   end
 
-  # GET /products/new
   def new
     if signed_in?
       @product = Product.new
@@ -40,115 +23,66 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/1/edit
   def edit
     @product.pictures.build
   end
 
-  # POST /products
-  # POST /products.json
   def create
     if signed_in?
-      @product = Product.new(product_params)
-      @product.rating = 0
-      @single_features = @product.feature_groups.build(name: 'singletons', description: 'lorem', singles: true, product_id: @product.id)
-      @product.bounties.build(question: "What can we do better?")
+      @product = Product.new product_params
       @product.user_id = current_user.id 
-      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
-      respond_to do |format|
-        if @product.save
-          format.html { redirect_to product_initial_uploads_path(@product), notice: 'Product was successfully created.' }
-          #format.json { render action: 'initial_uploads', status: :created, location: @product }
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
-        end
+      if @product.save
+        redirect_to product_initial_uploads_path(@product), notice: 'Product was successfully created.'
+      else
+        render action: 'new' 
       end
     else
       redirect_to home
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      update_rating
-      @product.product_pic = product_pic = @product.pictures.last
-      if @product.update_attributes(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    @product.product_pic = product_pic = @product.pictures.last
+    if @product.update_attributes product_params 
+      redirect_to @product, notice: 'Product was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url }
-      format.json { head :no_content }
-    end
+    redirect_to products_url 
   end
 
   def upload_picture
-    @product = Product.find(params[:product_id]) || Product.find(params[:id])
-    respond_to do |format|
-      @image_asset = ImageAsset.new(params[:upload])
-      if @product.user.id == current_user.id
-        puts "Uploading image " + @image_asset.to_s
-        @product.pictures.build(params[:upload])
-        if @product.save
-          format.html {
-            render json: [@image_asset.to_jq_upload],
-            content_type: 'text/html',
-            layout: false
-          }
-          format.json { render json: {files: [@image_asset.to_jq_upload]}, status: :created, location: @image_asset}
-        else
-          format.json { render json: @image_asset.errors, status: :unprocessable_entity }
-        end
-      end
+    @image_asset = ImageAsset.new(params[:upload])
+    if @product.user.id == current_user.id
+      @product.pictures.build(params[:upload])
+      render json: [@image_asset.to_jq_upload], content_type: 'text/html', layout: false if @product.save
     end
   end
 
   def love
-    @product = Product.find(params[:product_id])
-    update_rating
+    @product = Product.find(params[:product_id])    
     @tab = 'product-comments'
     if signed_in?
       if !@product.likes.exists?(user_id: current_user.id)
-        respond_to do |format|
-          if  @product.likes.create(user_id: current_user.id)
-            update_rating
-            Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :product, resource_id: @product.id)
-            format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-            format.json { head :no_content }
-          else
-            format.html { redirect_to @product, notice: 'Not allowed to love' }
-            format.json { render json: @product.errors, status: :unprocessable_entity }
-          end
+        if @product.likes.create(user_id: current_user.id)
+          redirect_to @product, notice: 'Product was successfully updated.' 
+        else
+          redirect_to @product, notice: 'Not allowed to love'
         end
       else
-        respond_to do |format|
-          format.html { redirect_to @product, notice: 'User has already liked this!' }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
-        end
+        redirect_to @product, notice: 'User has already liked this!'
       end
     else
-      respond_to do |format|
-        format.html { redirect_to @product, notice: 'Please sign in before weighing in!' }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+      redirect_to @product, notice: 'Please sign in before weighing in!' 
     end
   end
 
   def active_switch
-    if signed_in? and @product.user.id == current_user.id
+    if signed_in? && @product.user.id == current_user.id
       @product.active = @product.active ? false : true
       @product.save
     end
@@ -162,7 +96,6 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = params[:id] ? Product.find(params[:id]) : Product.find(params[:product_id])
-      # @creator = @product.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

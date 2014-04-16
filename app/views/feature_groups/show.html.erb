@@ -5,5 +5,5 @@
   <%= @feature_group.name %>
 </p>
 
-<%= link_to 'Edit', edit_feature_group_path(@feature_group) %> |
-<%= link_to 'Back', feature_groups_path %>
+<%= link_to 'Edit', edit_product_feature_group_path(@product, @feature_group)  %> |
+<%= link_to 'Back', product_feature_groups_path(@product) %>

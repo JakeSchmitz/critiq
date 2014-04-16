@@ -43,4 +43,5 @@ class Comment < ActiveRecord::Base
 		parent_comment.pop
 		parent_comment << self
 	end
+
 end

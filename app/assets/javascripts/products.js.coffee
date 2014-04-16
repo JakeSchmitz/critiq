@@ -7,3 +7,12 @@
 	newPic = $('#alt-pic' + id).css("background-image")
 	$('#main-pic').css("background-image", newPic)
 	$('#alt-pic' + id).css("background-image", oldPic)
+
+Products = 
+	init: ->
+		@showFeatures()
+	showFeatures: ->
+		$('#product-tabs a[href="#product-features').tab 'show'
+
+$(document).ready ->
+	Products.init()

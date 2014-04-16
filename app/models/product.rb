@@ -13,6 +13,8 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :feature_groups, allow_destroy: true
   accepts_nested_attributes_for :comments, allow_destroy: true
   attr_accessible :name, :description, :rating, :likes, :pictures, :active, :pictures_attributes, :product_pic, feature_groups: [features: [:pictures]], likes: [:product_id, :user_id]
+  before_create :setup_feature_bounty_content
+  after_create :make_create_activity
 
   def liked?(id, type)
     if get_likes(id, type).length > 0
@@ -81,6 +83,27 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def single
+    feature_groups.where(singles: true).first
+  end
+
+  def comparisons
+    feature_groups.where singles: false
+  end
+
+  def sorted_comments
+    comments.order 'rating desc'
+  end
+
+  def top_pics
+    self.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(5)
+  end
+
+  def likers
+    Product.first.likes.first(100).map(&:user)
+  end
+
+
   private
 
     def get_likes(id, type)
@@ -107,5 +130,14 @@ class Product < ActiveRecord::Base
 
     def has_pictures?
     	!self.picture.empty?
+    end
+
+    def setup_feature_bounty_content
+      feature_groups.build(name: 'singletons', description: 'lorem', singles: true, product_id: self.id)
+      bounties.build(question: "What can we do better?")
+    end
+
+    def make_create_activity
+      Activity.create(timestamp: Time.now, user_id: self.user_id, activity_type: :create, resource_type: :product, resource_id: self.id)
     end
 end

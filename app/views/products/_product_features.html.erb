@@ -1,4 +1,4 @@
-<% if (@single_features.nil? or @single_features.features.empty?) and (@comparison_features.nil? or @comparison_features.empty?) %>
+<% if (@product.single.nil? or @product.single.features.empty?) and (@product.comparisons.nil? or @product.comparisons.empty?) %>
 	<div class="container new-product-features">
 		<div class="new-product-features-box">
 			<h3 style="color: #fff">Hey there, it looks like this Drive doesn't have Polls set up yet</h3>
@@ -21,10 +21,10 @@
 		</button>
 	<% end %>
 	<div class="single-features">
-		<% if !@single_features.nil? and !@single_features.features.empty? %>
+		<% if !@product.single.nil? and !@product.single.features.empty? %>
 			<h2>Singletons</h2>
-			<div class="row" id="feature-thumbnails<%= @single_features.id %>" style="text-align: center; display: inline-block;">
-		    <% @single_features.features.each do |feature| %>
+			<div class="row" id="feature-thumbnails<%= @product.single.id %>" style="text-align: center; display: inline-block;">
+		    <% @product.single.features.each do |feature| %>
 	      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
 		    <% end %>
 			</div>  
@@ -32,9 +32,9 @@
 	</div>
 	<div class="comparison-features" style="text-align: center;">
 		<h2>Comparisons</h2>
-		<% if !@comparison_features.nil? %>
+		<% if !@product.comparisons.nil? %>
 		  <div class="row">
-		    <% @comparison_features.each do |comp_feature| %>
+		    <% @product.comparisons.each do |comp_feature| %>
 		    	<div style="padding-top: 10px">
 		      	<%= render :partial => 'comparison_feature_thumb' , locals: { comp_feature: comp_feature } %>
 		      </div>

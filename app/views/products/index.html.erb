@@ -4,7 +4,7 @@
   <div class="pretty-divider"></div>
 
   <div class="row thumbnails" style="margin-top: 20px;">
-    <% @top_products.each do |p| %>
+    <% Product.top_products.each do |p| %>
       <%= render :partial => 'product_thumb', locals: { product: p } %>
       <%= render :partial => 'product_modal', :locals => { product: p } %>
     <% end %>

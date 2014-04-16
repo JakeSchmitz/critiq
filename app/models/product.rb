@@ -37,6 +37,10 @@ class Product < ActiveRecord::Base
     return lovers.uniq
   end
 
+  def self.top_products
+    order('rating desc')
+  end
+
   def top_users
     return self.followers.sort { |x, y| x.swagger <=> y.swagger }
   end

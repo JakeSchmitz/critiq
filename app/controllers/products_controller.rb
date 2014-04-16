@@ -5,8 +5,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    @top_products = @products.order("rating desc")
-    @user = current_user
   end
 
   # GET /products/1
@@ -14,7 +12,7 @@ class ProductsController < ApplicationController
   def show
     set_product
     update_rating
-    puts "and the tab is...... " + params[:tab].to_s
+    # puts "and the tab is...... " + params[:tab].to_s
     @tab = params[:tab] || 'product-features'
     @product ||= Product.find( id: params[:product_id])
     if !@product.user.pictures.empty?

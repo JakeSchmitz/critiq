@@ -18,6 +18,7 @@ var NestedComments = {
 		$('body').on("ajax:success", '.reply', this.addReplyForm)
 		$('body').on("click", '.shrink', this.toggleShrink)
 		$('body').on("click", '.unshrink', this.toggleShrink)
+		$('body').on("click", '.cancel', this.removeForm)
 		this.collapseGrandChildren()
 	},
 
@@ -26,6 +27,11 @@ var NestedComments = {
 		var reply_box = comment.children('.reply-section')
 		$('.reply-section').empty()
 		reply_box.html(data)
+	},
+
+	removeForm: function(event){
+		event.preventDefault()
+		$('.reply-section').empty()
 	},
 
 	addComment: function(event, data, status, xhr){

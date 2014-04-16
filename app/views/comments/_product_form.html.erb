@@ -14,7 +14,7 @@
       <%= f.text_area :body, :placeholder => "Enter a Critiq Here", :maxlength => 1000, style: ' min-height: 100px; min-width: 70%; width: 700px; border-radius: 0px;' %>
     </div>
     <div class="actions">
-      <%= f.submit nil, :class => 'btn btn-primary pull-right', :name => "tab[#{tab}]" %>
+      <%= f.submit 'POST', :class => 'btn btn-primary pull-right', :name => "tab[#{tab}]" %>
     </div>
   <% end %>
 </div>

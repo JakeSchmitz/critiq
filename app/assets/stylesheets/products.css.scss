@@ -155,7 +155,8 @@
 	.creator-data {
 		float: left;
 		text-align: left;
-		margin-left: 0px;
+		margin-left: 10px;
+		padding-top: 5px;
 		width: auto;
 		>h5 {
 			color: #fff;
@@ -164,8 +165,7 @@
 }
 
 .product-buttons {
-	padding-top: 10px;
-	margin-top: 105px;
+	margin-top: 100px;
 	display: inline-block;	
 }
 
@@ -178,13 +178,12 @@
 		background-size: cover;
 		border: 1px solid #4b4b4b;
 		margin: 0px;
-		margin-left: 5px;
 	}
 	.other-pics {
 		display: inline-block;
 		width: 90px;
 		max-height: 360px;
-		margin-left: 5px;
+		margin-left: 15px;
 		float: left;
 		.alt-pic {
 			width: 90px;

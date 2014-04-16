@@ -4,11 +4,13 @@
 			.new_user_email {
 				.new_user_header {
 					width: 100%;
-					color: #fff;
 					height: 50px;
 					text-align: center;
 					background-color: #6d2cfa;
 					border-bottom: 1px solid #828282;
+					> h1 {
+						color: #fff;
+					}
 				}
 			}
 		</style>
@@ -18,7 +20,11 @@
 			<div class="new_user_header">
 				<h1>Thanks for signing up <%= @user.first_name %></h1>
 			</div>
-			<h2>Critiq is a place for you to get feedback on whatever your working on from a variety of people, and earn rewards for giving constructive feedback to other Creators.</h2>
+			<p>Critiq is a place for you to get feedback on whatever your working on from a variety of people, and earn rewards for giving constructive feedback to other Creators.</p>
+			<div style="display: inline-block">
+				<%= link_to 'Visit Your Profile', 'http://critiq.me/users/' + @user.id.to_s , class: 'btn btn-primary' %>
+				<%= link_to 'Check Out Critiq', 'http://critiq.me', class: 'btn btn-primary' %>
+			</div>
 		</div>
 	</body>
 </html>

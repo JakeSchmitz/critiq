@@ -57,6 +57,10 @@ gem 'will_paginate'
 
 gem 'ancestry'
 
+# These gems allow us to apply css to html emails
+gem 'premailer-rails'
+gem 'nokogiri'
+
 group :production do
 
 end

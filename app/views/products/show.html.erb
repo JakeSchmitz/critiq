@@ -34,7 +34,7 @@
         <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) %>
           <%= button_to 'FOLLOW', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
         <% elsif !signed_in? %>
-          <h4 style="margin-top: 0px; height: 30px; text-align: center; color: #fff;">Sign in to Vote and Comment</h4>
+          <h4 style="margin-top: 15px; height: 50px; text-align: center; color: #fff;">Sign in to Vote and Comment</h4>
         <% end %>
         <% if signed_in? and current_user.id == @product.user.id %>
           <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>

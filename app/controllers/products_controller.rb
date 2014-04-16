@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :initial_uploads, :active_switch]
 
   # GET /products
   # GET /products.json
@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    set_product
     update_rating
     # puts "and the tab is...... " + params[:tab].to_s
     @tab = params[:tab] || 'product-features'
@@ -43,7 +42,6 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    set_product
     @product.pictures.build
   end
 
@@ -74,7 +72,6 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    set_product
     respond_to do |format|
       update_rating
       @product.product_pic = product_pic = @product.pictures.last
@@ -151,7 +148,6 @@ class ProductsController < ApplicationController
   end
 
   def active_switch
-    @product = Product.find(params[:product_id])
     if signed_in? and @product.user.id == current_user.id
       @product.active = @product.active ? false : true
       @product.save
@@ -160,14 +156,13 @@ class ProductsController < ApplicationController
   end
 
   def initial_uploads
-    @product = Product.find(params[:product_id])
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id]) || Product.find(params[:product_id])
-      @creator = @product.user
+      @product = params[:id] ? Product.find(params[:id]) : Product.find(params[:product_id])
+      # @creator = @product.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

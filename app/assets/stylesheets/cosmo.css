@@ -5094,12 +5094,15 @@ button.close {
 .modal {
   display: none;
   overflow: auto;
+  /* This was modified by Jake */
   overflow-y: scroll;
-  position: fixed;
+  position: relative;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  margin-bottom: 0;
+  margin-top: -25%;
   z-index: 1050;
   -webkit-overflow-scrolling: touch;
   outline: 0;

@@ -3,7 +3,7 @@ class Like < ActiveRecord::Base
 	belongs_to :likeable, polymorphic: true
 	belongs_to :user
 	attr_accessible :user, :user_id, :product_id, :likeable_id, :likeable_type, :up, :upvoteable, :downvoteable
-
+	after_create :make_like_activity
 	def product 
 		case self.likeable_type.downcase
 		when 'bounty'
@@ -18,4 +18,12 @@ class Like < ActiveRecord::Base
 			nil
 		end
 	end
+
+private
+	
+	def make_like_activity
+		Activity.create(timestamp: Time.now, user_id: user_id, activity_type: :like, resource_type: :product, resource_id: likeable_id)
+	end
+
+
 end

@@ -1,17 +1,8 @@
 <div class="comment-box">
-  <%= nested_form_for [@product, bounty, bounty.comments.new], html: {id: 'bounty_submit' + thread_id, remote: true, :class => "bounty_comment"} do |f| %>
-    <% if bounty.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(bounty.errors.count, "error") %> prohibited this comment from being saved:</h2>
-        <ul>
-        <% bounty.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <%= nested_form_for [@product, bounty, bounty.comments.new], html: {remote: true, :class => "bounty_comment_form"} do |f| %>
     <div class="comment-form">
-      <%= f.text_area :body, :placeholder => "Enter a Bounty Response Here", :maxlength => 1000, style: ' min-height: 100px; min-width: 70%; width: 682px; border-radius: 0px;', id: 'bounty_comment_body' + bounty.id.to_s %>
+      <%= f.text_area :body, :placeholder => "Enter a Bounty Response Here", :maxlength => 1000, style: ' min-height: 100px; min-width: 70%; width: 682px; border-radius: 0px;', :class => "comment_form_body" %>
+      <%= f.hidden_field :product_id, value: @product.id %>
     </div>
     <div class="actions">
       <%= f.submit nil, class: 'btn btn-primary', :name => "tab[#{tab}]" %>
@@ -19,24 +10,3 @@
   <% end %>
 </div>
 
- <script>
-  $(document).ready(function(){
-    $('#bounty_submit<%= thread_id.to_s %>')
-      .bind("ajax:beforeSend", function(evt, xhr, settings){
-        console.log('attempting to create comment');
-      }).bind("ajax:complete", function(evt, data, status, xhr) {
-        console.log('successfully created comment');
-        var response_area = $(evt.currentTarget).parents().eq(2).children('.bounty-responses')
-        var response_thread = $('#thread_id<%= thread_id.to_s %>')
-        if(response_thread.length == 0) {
-          response_area.empty()
-          response_area.append('<div id="thread_id<%= thread_id %>" style="display: inline-block;" class="thread"></div>')
-        }
-        var response = data.responseText
-        response += '<div class="nested_comments"></div>'
-        $('#thread_id<%= thread_id.to_s %>').prepend("<div class='comment-nest'>" + response + "</div>");
-
-        $('#bounty_comment_body<%= bounty.id %>').val('');
-      });
-  });
-</script>

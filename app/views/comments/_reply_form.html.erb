@@ -1,21 +1,17 @@
 <div class="comment-box">
   <%= nested_form_for @comment.reply, html: {id: 'comment-reply'}, remote: true do |f| %>
-    <% if @comment.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-        <ul>
-        <% @product.comments.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+  
     <div class="comment-form">
       <%= f.text_area :body, :placeholder => "Enter Your Reply Here", :maxlength => 1000, style: ' min-height: 100px; border-radius: 0px;', :id => 'reply-body', :class => 'reply-body' %>
       <%= f.hidden_field :parent_id %>
+      <%= f.hidden_field :product_id, value: @product.id %>
     </div>
     <div class="reply-but">
       <%= f.submit "Reply", :class => 'btn btn-primary pull-left' %>
-    </div>
+      <%= button_tag "Cancel", :class => 'btn btn-primary pull-left cancel' %>
   <% end %>
+      
+    </div>
+
+
 </div>

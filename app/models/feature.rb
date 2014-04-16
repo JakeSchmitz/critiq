@@ -40,6 +40,12 @@ class Feature < ActiveRecord::Base
     self.feature_group.product
   end
 
+  def rating
+    up_rating = self.likes.where(up: true).size
+    down_rating = self.likes.where(up: false).size
+    up_rating - down_rating
+  end
+
   private
 
     def save_pictures

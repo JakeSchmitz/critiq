@@ -173,27 +173,30 @@ input {
 .btn {
   font-size: 18px;
   text-shadow: none;
+  box-shadow: none;
 }
 
 .btn-primary {
   text-shadow: none;
+  box-shadow: none;
   background-color: #44a1ff;
   color: #fff;
   border: 2px solid #44a1ff;
   height: auto;
-  -moz-transition: all 0.2s ease-in;
+  -moz-transition: all 0.3s ease-in;
   /* WebKit */
-  -webkit-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.3s ease-in;
   /* Opera */
-  -o-transition: all 0.2s ease-in;
+  -o-transition: all 0.3s ease-in;
   /* Standard */
-  transition: all 0.2s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 .btn-primary:hover {
   text-shadow: none;
   background-color: #fff;
   color: #44a1ff;
+  border: 2px solid #44a1ff;
   -moz-transition: all 0.3s ease-in;
   /* WebKit */
   -webkit-transition: all 0.3s ease-in;

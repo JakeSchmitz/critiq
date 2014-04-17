@@ -6,9 +6,11 @@
 		<div class="thumb-ratio" style="background-image: url('/images/missing-product.jpg');"></div>
 	<% end %>
 	</a>
-	<div class="feature-delete-btn">
-    <%= link_to glyph(:trash), product_feature_group_feature_path(feature.product.id, feature.feature_group.id, feature.id), :method => :delete, data: { :confirm => "Really delete this forever?"} , style: 'color:#fff' %>
-  </div>
+	<% if signed_in? and (current_user.id == feature.product.user.id or is_admin?) %>
+		<div class="feature-delete-btn">
+		  <%= link_to glyph(:trash), product_feature_group_feature_path(feature.product.id, feature.feature_group.id, feature.id), :method => :delete, data: { :confirm => "Really delete this forever?"} , style: 'color:#fff' %>
+		</div>
+  <% end %>
 	<% if signed_in? and !vote %>
 		<!-- signed in user has already voted, so add overlay -->
 	<% end %>

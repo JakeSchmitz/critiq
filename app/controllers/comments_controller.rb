@@ -84,14 +84,12 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment = @commentable.comments.new(params[:comment])
+    @comment = Comment.find(params[:comment_id])
     if signed_in? and (current_user.id == @comment.user.id or is_admin?)
       @comment.body = 'Deleted'
+      @comment.deleted = true
       @comment.save
-      respond_to do |format|
-        format.html { redirect_to @comment.product }
-        format.json { head :no_content }
-      end
+      redirect_to @comment.product  
     else
       flash notice: 'You are not allowed to delete that'
     end

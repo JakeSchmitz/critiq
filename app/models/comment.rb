@@ -22,6 +22,10 @@ class Comment < ActiveRecord::Base
 		end
 	end
 
+	def modified?
+		updated_at == created_at
+	end
+
 	def upvotes
 		self.likes.where(up: true)
 	end

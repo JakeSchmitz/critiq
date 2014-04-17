@@ -6,7 +6,7 @@
 		<h4><%= link_to user.name, user %></h4>
 		<div class="user-mini-products">
 			<% if user.products.empty? %>
-				<h5 style="padding: 5px;"><%= user.name %> Hasn't Created Anything Yet</h5>
+				<p style="padding: 5px;"><%= user.name %> Hasn't Created Anything Yet</p>
 			<% else %>
 				<% user.products.order('created_at DESC').reverse.first(3).each do |product| %>
 					<div class="buffer" style="margin-left: 15%;">

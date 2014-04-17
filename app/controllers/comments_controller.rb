@@ -86,9 +86,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @commentable.comments.new(params[:comment])
     if signed_in? and (current_user.id == @comment.user.id or is_admin?)
-      @comment.destroy
+      @comment.body = 'Deleted'
+      @comment.save
       respond_to do |format|
-        format.html { redirect_to comments_url }
+        format.html { redirect_to @comment.product }
         format.json { head :no_content }
       end
     else

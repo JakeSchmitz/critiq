@@ -38,6 +38,10 @@ class Comment < ActiveRecord::Base
 		end
 	end
 
+	def path_to_delete
+		path_to_reply
+	end
+
 	def reply # used in the reply form
 		parent_comment = self.parent.path_to_reply
 		parent_comment.pop

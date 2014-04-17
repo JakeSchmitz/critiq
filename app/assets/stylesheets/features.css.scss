@@ -109,6 +109,9 @@
 				height: 100%; 
 				display: inline-block;
 				float: left;
+				> p {
+					line-height: 1.2;
+				}
 			}
 		}
 		.single-feature-thumb-functions {
@@ -143,9 +146,6 @@
 
 				padding-top: 3px;
 				float: left;
-				> p {
-					line-height: 1.2;
-				}
 			}
 		}
 	}

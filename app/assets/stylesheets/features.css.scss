@@ -100,7 +100,7 @@
 				.vote {
 					> h5 {
 						color: #fff;
-						line-height: 1.0;
+						line-height: 1.2;
 					}
 				}
 			}
@@ -143,6 +143,9 @@
 
 				padding-top: 3px;
 				float: left;
+				> p {
+					line-height: 1.2;
+				}
 			}
 		}
 	}

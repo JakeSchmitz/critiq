@@ -1,17 +1,8 @@
 <div class="comment-box">
-  <%= nested_form_for [@product, @comment], html: {id: 'comment_submit' + thread_id, remote: true} do |f| %>
-    <% if @comment.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-        <ul>
-        <% @product.comments.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <%= nested_form_for [@product, @comment], html: {remote: true, :class => "product_comment_form"} do |f| %>
     <div class="comment-form">
-      <%= f.text_area :body, :placeholder => "Enter a Critiq Here", :maxlength => 1000, style: ' min-height: 100px; min-width: 70%; width: 700px; border-radius: 0px;' %>
+      <%= f.text_area :body, :placeholder => "Enter a Critiq Here", :maxlength => 1000, style: ' min-height: 100px; min-width: 70%; width: 682px; border-radius: 0px;' %>
+      <%= f.hidden_field :product_id, value: @product.id %>
     </div>
     <div class="actions">
       <%= f.submit 'POST', :class => 'btn btn-primary pull-right', :name => "tab[#{tab}]" %>
@@ -19,17 +10,3 @@
   <% end %>
 </div>
 
-<script>
-  $(document).ready(function(){
-    $('#comment_submit<%= thread_id.to_s %>')
-      .bind("ajax:beforeSend", function(evt, xhr, settings){
-        console.log('attempting to create comment');
-      }).bind("ajax:complete", function(evt, data, status, xhr) {
-        console.log('successfully created comment');
-        var response = data.responseText
-        response += '<div class="nested_comments"></div>'
-        $('#thread_id<%= thread_id.to_s %>').prepend("<div class='comment-nest'>" + response + "</div>");
-        $('#comment_body').val('');
-      });
-  });
-</script>

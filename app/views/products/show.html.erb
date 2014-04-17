@@ -1,8 +1,8 @@
 <%- model_class = Product -%>
 <% if !@product.rand_pic.nil? %>
 <div class="product-header" style="background-image: url('<%= @product.rand_pic.attachment.url(:blurry) %>');">
-<% elsif !@top_pics.empty? %>
-<div class="product-header" style="background-image: url('<%= @top_pics.first.attachment.url(:blurry) %>');">
+<% elsif !@product.top_pics.empty? %>
+<div class="product-header" style="background-image: url('<%= @product.top_pics.first.attachment.url(:blurry) %>');">
 <% else %>
 <div class="product-header" style="background: rgba(0, 0, 0, .5); ">
 <% end %>
@@ -21,7 +21,7 @@
         <div class="product-pictures">
           <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>');"></div>
           <div class="other-pics">
-            <% @top_pics.first(5).each_with_index do |pic, i| %>
+            <% @product.top_pics.first(5).each_with_index do |pic, i| %>
               <a class="thumb-ratio alt-pic"  style="background-image: url('<%= pic.attachment.url(:large) %>'); cursor: pointer;" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
               </a>
             <% end %>
@@ -83,8 +83,8 @@
           </div>
         </div>
         <% if !@product.comments.empty? %> 
-          <div style="padding-top: 20px;">
-            <%= render :partial => 'product_comments', locals: { comments: @comments, product: @product, thread_id: 'product' + @product.id.to_s} %>
+          <div style="padding-top: 20px;" id="comment-container">
+            <%= render :partial => 'product_comments', locals: { comments: @product.sorted_comments, product: @product, thread_id: 'product' + @product.id.to_s} %>
           </div>
         <% else %>
           <h2>This Has No Comments!</h2>
@@ -131,8 +131,4 @@
   </div>
 </div>
 
-<script>
-  $(function () {
-    $('#product-tabs a[href="#<%= @tab || "product-features"%>').tab('show')
-  });
-</script>
+

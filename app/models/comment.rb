@@ -2,7 +2,8 @@ class Comment < ActiveRecord::Base
 	belongs_to :commentable, polymorphic: true
 	belongs_to :user
 	has_many :likes, class_name: "Like", foreign_key: "likeable_id", as: :likeable
-	attr_accessible :product_id, :user_id, :title, :body, :created_at, :user, :parent_id, :ancestry
+	attr_accessible :product_id, :user_id, :title, :body, :created_at, :user, :parent_id, :ancestry, :rating
+	after_create :make_comment_activity
 	has_ancestry
 
 	def product 
@@ -27,11 +28,18 @@ class Comment < ActiveRecord::Base
 	end
 
 	def upvotes
-		self.likes.where(up: true)
+		likes.where(up: true)
 	end
 
 	def downvotes
-		self.likes.where(up: false)
+		likes.where(up: false)
+	end
+
+	def vote user, direction
+		likes.where(:user_id => user.id).delete_all
+		likes.create(:user_id => user.id, :up => direction, :product_id => product_id)
+		self.rating = upvotes.size - downvotes.size
+		save
 	end
 
 	def path_to_reply #used in the polymorphic_url method
@@ -50,5 +58,11 @@ class Comment < ActiveRecord::Base
 		parent_comment = self.parent.path_to_reply
 		parent_comment.pop
 		parent_comment << self
+	end
+
+private
+	
+	def make_comment_activity
+		Activity.create(timestamp: Time.now, user_id: self.user_id, activity_type: :comment, resource_type: commentable.class.name.downcase, resource_id: commentable_id)
 	end
 end

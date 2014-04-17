@@ -28,4 +28,8 @@ class ImageAsset < ActiveRecord::Base
   def image_asset_from_url(url)
     self.attachment = open(url)
   end
+
+  def self.find_product_user_pic(product)
+    find(product.user.propic_id || product.user.pictures.last)
+  end
 end

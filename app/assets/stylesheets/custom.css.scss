@@ -176,7 +176,31 @@ input {
 }
 
 .btn-primary {
-  text-shadow: 0 -1px 0 rgba(.25, 0, 0, 0);
+  text-shadow: none;
+  background-color: #44a1ff;
+  color: #fff;
+  border: 2px solid #44a1ff;
+  height: auto;
+  -moz-transition: all 0.2s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.2s ease-in;
+  /* Opera */
+  -o-transition: all 0.2s ease-in;
+  /* Standard */
+  transition: all 0.2s ease-in;
+}
+
+.btn-primary:hover {
+  text-shadow: none;
+  background-color: #fff;
+  color: #44a1ff;
+  -moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
 }
 
 #nav_login_email, #nav_login_password, #nav_login_button, #nav_signup_button {

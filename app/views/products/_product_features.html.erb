@@ -5,7 +5,7 @@
 		</div>
 		<% if signed_in? and current_user.id == @product.user_id %>
 			<h3>Create a Poll to start getting feedback</h3>
-			<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal" style="background-color: #44a1ff;">
+			<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
 			  CREATE A POLL
 			</button>
 			<h3>Or you can ask critiqers more specific questions on the Bounties tab</h3>
@@ -16,7 +16,7 @@
 	</div>
 <% else %>
 	<% if signed_in? and current_user.id == @product.user.id %>
-		<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal" style="background-color: #44a1ff;">
+		<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
 				  CREATE A POLL
 		</button>
 	<% end %>

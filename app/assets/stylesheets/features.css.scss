@@ -4,16 +4,17 @@
 
 .single-features {
 	text-align: center;
+	display: inline-block;
 }
 
 .comparison-feature-callout {
 	text-align: center;
-	width: auto;
-	margin: 0 auto;
+	display: inline-block;
+	width: 99%;
+	border-top: 1px solid #d4d4d4;
 	.comparison-header {
 		padding-bottom: 10px;
 		margin-bottom: 10px;
-		border-bottom: 1px solid #d4d4d4;
 	}
 }
 
@@ -23,6 +24,10 @@
 
 .feature-thumb {
 	display: inline-block;
+	text-align: center;
+	.view-button {
+	  display: none;
+	}
 	.feature-thumb-content {
 		-moz-transition: all 0.3s ease-in;
 	  /* WebKit */
@@ -99,6 +104,15 @@
 			display: block;
 			color: #444444;
 		}
+	}
+	.view-button {
+		display: block;
+		width: 142px;
+		position: absolute;
+		margin-left: 43px;
+		margin-top: -200px;
+		padding-top: 8px !important;
+		padding-bottom: 6px !important;
 	}
 }
 
@@ -195,8 +209,9 @@
 		.feature-header{
 			margin-left: 30px;
 			#feature-name {
-				float: left;
+				text-align: left;
 				font-size: 24px;
+				width: 90%;
 			}
 			#feature-votes {
 				float: right;

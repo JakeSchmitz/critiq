@@ -20,27 +20,26 @@
 				  CREATE A POLL
 		</button>
 	<% end %>
-	<div class="single-features">
-		<% if !@product.single.nil? and !@product.single.features.empty? %>
-			<h2>Singletons</h2>
-			<div class="row" id="feature-thumbnails<%= @product.single.id %>" style="text-align: center; display: inline-block;">
-		    <% @product.single.features.each do |feature| %>
-	      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
-		    <% end %>
-			</div>  
-		<% end %>
-	</div>
-	<div class="comparison-features" style="text-align: center;">
-		<h2>Comparisons</h2>
-		<% if !@product.comparisons.nil? %>
-		  <div class="row">
+	<div class="container">
+		<div class="single-features">
+			<% if !@product.single.nil? and !@product.single.features.empty? %>
+				<h2 style="text-align: left; float: left">Singletons&nbsp;<h6 style="text-align: left; padding: 30px;">(Yes/No, Hot/Cold)</h6></h2>
+				<div class="row" id="feature-thumbnails<%= @product.single.id %>" style="text-align: left; display: inline-block;">
+			    <% @product.single.features.each do |feature| %>
+		      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
+			    <% end %>
+				</div>  
+			<% end %>
+		</div>
+		<div class="comparison-features" style="text-align: center;">
+			<% if !@product.comparisons.nil? %>
 		    <% @product.comparisons.each do |comp_feature| %>
 		    	<div style="padding-top: 10px">
 		      	<%= render :partial => 'comparison_feature_thumb' , locals: { comp_feature: comp_feature } %>
 		      </div>
 		    <% end %>
-		  </div>
-		<% end %> 
+			<% end %> 
+		</div>
 	</div>
 <% end %>
 

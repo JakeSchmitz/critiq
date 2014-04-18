@@ -5096,7 +5096,7 @@ button.close {
   overflow: auto;
   /* This was modified by Jake */
   overflow-y: scroll;
-  position: relative;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;

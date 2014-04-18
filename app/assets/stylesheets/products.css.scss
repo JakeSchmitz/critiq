@@ -297,7 +297,19 @@
 	
 }
 
-
+.product-password {
+	height: 100%;
+	width: 100%;
+	background-color: #000;
+	padding-top: 15%;
+	float: center;
+	.inline-form {
+		display: inline-block;
+	}
+	button {
+		float: center;
+	}
+}
 
 @media (max-width: 768px) {
 	.product-right {

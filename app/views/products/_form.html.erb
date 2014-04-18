@@ -4,6 +4,11 @@
     <%= f.text_field :name, :class => 'text_field', style: 'min-width: 250px; margin-bottom: 10px;' %>
     <h4>Description</h4>
     <%= f.text_area :description, maxlength: 1000, :class => 'text_field', style: 'height: 100px; min-width: 250px;' %>
+    <h4>Private? <p>(check for yes)</p></h4>
+    <div class="private">
+      <%= f.check_box :hidden, style: 'display: inline-block; float: left;' %>
+      <%= f.text_field :password, :class => "password", placeholder: "passphrase", style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
+    </div>
     <%= f.fields_for :pictures do |picture| %>
       <% if picture.object.new_record? %>
         <h4>Select a picture</h4>

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :initial_uploads, :active_switch, :upload_picture]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :initial_uploads, :active_switch, :upload_picture, :grant_access]
 
 
   def index
@@ -92,6 +92,19 @@ class ProductsController < ApplicationController
   def initial_uploads
   end
 
+  def grant_access
+    p params
+    puts "\n" * 100
+    if @product.password == params[:product][:password]
+      @product.access_list += ",#{current_user.id}"
+      @product.save
+      redirect_to @product
+    else
+      flash[:notice] = "You should have received an access password from #{@product.user.name}" +
+       "to access this."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -100,7 +113,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :rating, :feature_groups, :features, :image_asset, :description, :tab, :id, :pictures, :image_asset, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes],
+      params.require(:product).permit(:name, :hidden, :password, :rating, :feature_groups, :features, :image_asset, :description, :tab, :id, :pictures, :image_asset, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes],
                                       lovers: [:product_id, :user_id])
     end
 

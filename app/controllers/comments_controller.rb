@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_filter :load_commentable, except: [:new]
-  before_filter :load_reply_commentable, only: :new
+  before_filter :load_commentable, except: [:new, :destroy]
+  before_filter :load_reply_commentable, only: [:new, :destroy]
   before_action :load_product
 
   def new
@@ -41,12 +41,13 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment = Comment.find(params[:comment_id])
+    puts "$$\n" * 50
+    @comment = Comment.find(params[:id])
     if signed_in? and (current_user.id == @comment.user.id or is_admin?)
       @comment.body = 'Deleted'
       @comment.deleted = true
       @comment.save
-      redirect_to @comment.product  
+      render json: @comment.to_json 
     else
       flash notice: 'You are not allowed to delete that'
       redirect_to signup_path, notice: 'Please Sign In or Sign Up to Comment.' 

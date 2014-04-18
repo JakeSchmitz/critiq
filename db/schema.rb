@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20140417223536) do
-
+ActiveRecord::Schema.define(version: 20140418000841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,9 +52,9 @@ ActiveRecord::Schema.define(version: 20140417223536) do
   create_table "feature_groups", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "product_id"
     t.boolean  "singles",     default: false
   end
 
@@ -104,6 +102,9 @@ ActiveRecord::Schema.define(version: 20140417223536) do
     t.integer  "user_id"
     t.integer  "rating",      default: 0
     t.boolean  "active",      default: true
+    t.text     "access_list", default: ""
+    t.boolean  "hidden",      default: false
+    t.string   "password"
   end
 
   create_table "users", force: true do |t|

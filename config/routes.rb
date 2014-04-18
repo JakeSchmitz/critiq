@@ -23,6 +23,7 @@ Critiq0::Application.routes.draw do
       get 'vote'  => :vote
     end
     #get "feature_groups/new_comparative_feature" => 'feature_groups#new-comparitive-feature-modal'
+    get 'grant_access' => :grant_access, as: :access
     get 'love' => :love
     get 'active_switch' => :active_switch
     get 'initial_uploads' => :initial_uploads

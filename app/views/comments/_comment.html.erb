@@ -11,16 +11,22 @@
 
 			<!-- Comment Header -->
 				<% commentable = @commentable if @commentable %>
-				<%= link_to "Reply", polymorphic_url(comment.path_to_reply, action: :new, parent_id: comment.id), remote: true, :class => "reply" %> - 
-				<%= link_to "Collapse", nil, :class => "shrink" %> 
-				<% if signed_in? and (current_user.id == comment.user.id or is_admin?) %>
-					<%= link_to "Delete", polymorphic_url(comment.path_to_delete), method: :destroy %>
+				<% if !comment.deleted %>
+					<%= link_to "Reply", polymorphic_url(comment.path_to_reply, action: :new, parent_id: comment.id), remote: true, :class => "reply" %> - 
+					<% if signed_in? and (current_user.id == comment.user.id or is_admin?) %>
+					 <%= link_to "Delete", polymorphic_url(comment.path_to_delete), method: :delete, :class => "delete-comment", remote: true %> -
+					<% end %>
 				<% end %>
+				<% if comment.has_children? %>
+					<%= link_to "Collapse", nil, :class => "shrink" %>
+				<% end %> 
+				
+				
 			</p>
 		</div>
 
 		<!-- Text of Comment -->
-		<p style="float: left; padding: 5px 10px 5px 10px;"><%= comment.body %></p>
+		<p style="float: left; padding: 5px 10px 5px 10px;" class="comment-text"><%= comment.body %></p>
 	</div>
 
 	<!-- user picture -->

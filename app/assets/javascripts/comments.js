@@ -8,6 +8,7 @@ var Comments = {
 		$('body').on("ajax:success", '.vote', this.updateRating)
 		$('body').on("ajax:success", '.bounty_comment_form', this.addNewBountyComment)
 		$('body').on("ajax:success", '.product_comment_form', this.addNewProductComment)
+		$('body').on("ajax:success", '.delete-comment', this.deleteComment)
 		this.collapseGrandChildren()
 	},
 
@@ -63,6 +64,13 @@ var Comments = {
     var thread = $(evt.currentTarget).parents().eq(2).children('#comment-container').children('.thread')
     thread.prepend("<div class='comment-nest'>" + data + "</div>");
     $('#comment_body').val('');
+	},
+
+	deleteComment: function(evt, data, status, xhr) {
+		var commentBody = $(evt.currentTarget).parents().eq(2).children('.comment-text')
+		console.log(commentBody)
+		console.log(data.body)
+		commentBody[0].innerHTML = data.body
 	}
 }
 

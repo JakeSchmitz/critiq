@@ -96,12 +96,15 @@ class ProductsController < ApplicationController
     p params
     puts "\n" * 100
     if @product.password == params[:product][:password]
-      @product.access_list += ",#{current_user.id}"
-      @product.save
+      if !@product.parsed_list.include?(current_user.id)
+        @product.access_list += ",#{current_user.id}"
+        @product.save
+      end
       redirect_to @product
     else
-      flash[:notice] = "You should have received an access password from #{@product.user.name}" +
+      flash[:notice] = "You should have received an access password from #{@product.user.name} " +
        "to access this."
+       redirect_to request.referer
     end
   end
 

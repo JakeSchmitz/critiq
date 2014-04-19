@@ -6,25 +6,31 @@
     <% end %>
     </ul>
   <% end %>
-  <div class="control-group">
-    <%= f.label :name %>
-    <%= f.text_field :name  %>
+  <div class="signup clearfix">
+    <div class="control-group">
+      <%= f.text_field :name, placeholder: 'NAME', style: 'height: 40px !important;' %>
+      <%= f.text_field :email, placeholder: 'EMAIL', style: 'height: 40px !important;'  %>
+      <%= f.password_field :password, :class => 'password_field', placeholder: 'PASSWORD', style: 'height: 40px !important;'  %>
+      <%= f.password_field :password_confirmation, :class => 'password_field', placeholder: 'CONFIRM PASSWORD', style: 'height: 40px !important;'  %>
+    </div>
+    <div class="subscribe-options">
+      <div style="width: 100%;">
+        <%= f.check_box :critiq_subscription, style: 'display: inline-block; float: center;' %>
+        <p style="display: inline-block;">Update me on Critiq's growth</p>
+      </div>
+      <div style="width: 100%;">
+        <%= f.check_box :drive_subscription, style: 'display: inline-block; float: center;' %>
+        <p style="display: inline-block;">Update me on Drives I follow</p>
+      </div>
+    </div>
   </div>
-  <div class="control-group">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="control-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, :class => 'password_field' %>
-  </div>
-  <div class="control-group">
-    <%= f.label 'Re-Type ' %>
-    <%= f.password_field :password_confirmation, :class => 'password_field' %>
-  </div>
- <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn}' %>
+ <div>
+    <%= f.submit 'CREATE ACCOUNT', :class => 'btn btn-clear' %>
   </div>
 <% end %>
+
+<div class="fb_signup_button" style="text-align: center; margin-top: 20px;">
+    <%= button_to '/auth/facebook', class: 'btn btn-primary fb-btn' do %>
+        <i class="fa fa-facebook-square fa-lg"></i>&nbsp;&nbsp;Sign up with Facebook
+    <% end %>
+</div>

@@ -6,30 +6,21 @@
             </p>
             <div class="signin_form clearfix">
                 <%= form_for(:session, url: signin_path, html: { class: 'signin'}) do |f| %>
-                    <div class="control-group">
-                        <%= f.label :email %>
-                        <%= f.text_field :email %>
+                    <div class="form-group">
+                        <%= f.text_field :email, placeholder: 'EMAIL', class: 'session-form', style: 'height: 40px !important;' %>
+                        <%= f.password_field :password, placeholder: 'PASSWORD', class: 'session-form', style: 'height: 40px !important;' %>
                     </div>
-                    <div class="control-group">
-                        <%= f.label :password %>
-                        <%= f.password_field :password %>
-                    </div>
-                    <%= f.submit "Login", id: 'Login_button', class: "btn btn-large btn-primary" %>
+                    <%= f.submit "SIGN IN", id: 'Login_button', class: "btn btn-primary btn-purple" %>
                     <div id="Login_forgot_password_container">
                         <a id="Forgot_pasword_text_link" href="redirect to email activation page">
-                        <span id="Forgot_password_text">Forgot Password?</span><br>
+                        <p id="Forgot_password_text">Forgot Password?</p>
                         </a>
                     </div>
                 <% end %>
             </div>
             <div class="fb_signup_button" style="text-align: center;">
-                <%= button_to '/auth/facebook', class: 'btn btn-primary' do %>
-                    <i class="fa fa-facebook-square fa-lg"></i>&nbsp;&nbsp;Log In
-                <% end %>
-            </div>
-            <div class="fb_signup_button" style="text-align: center;">
-                <%= button_to '/auth/facebook', class: 'btn btn-primary' do %>
-                    <i class="fa fa-facebook-square fa-lg"></i>&nbsp;&nbsp;Sign up with Facebook
+                <%= button_to '/auth/facebook', class: 'btn btn-primary fb-btn' do %>
+                    <i class="fa fa-facebook-square fa-lg"></i>&nbsp;&nbsp;Log In With Facebook
                 <% end %>
             </div>
         </div>
@@ -45,11 +36,3 @@
         </div>
     </div>
 </div>
-<div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=692888684100799";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>

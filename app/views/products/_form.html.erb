@@ -7,7 +7,7 @@
     <h4>Private? <p>(check for yes)</p></h4>
     <div class="private">
       <%= f.check_box :hidden, style: 'display: inline-block; float: left;' %>
-      <%= f.text_field :password, :class => "password", placeholder: "passphrase", style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
+      <%= f.text_field :password, :class => "password", placeholder: "passcode", style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
     </div>
     <%= f.fields_for :pictures do |picture| %>
       <% if picture.object.new_record? %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418000841) do
+ActiveRecord::Schema.define(version: 20140418220933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20140418000841) do
     t.integer  "propic_id"
     t.text     "bio"
     t.boolean  "admin",               default: false
+    t.boolean  "critiq_subscription", default: true
+    t.boolean  "drive_subscription",  default: true
   end
 
 end

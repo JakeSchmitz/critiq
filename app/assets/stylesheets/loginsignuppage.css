@@ -7,8 +7,14 @@
 
 .signin {
     text-align: center;
-    width: 95%;
-    padding-left: 5%;
+    width: 90%;
+    padding-left: 10%;
+}
+
+.signup {
+    text-align: center;
+    width: 90%;
+    padding-left: 10%;
 }
 
 textarea,
@@ -37,6 +43,7 @@ input[type="color"],
   -moz-transition: border linear .2s, box-shadow linear .2s;
   -o-transition: border linear .2s, box-shadow linear .2s;
   transition: border linear .2s, box-shadow linear .2s;
+  margin-bottom: 1px;
 }
 
 /* This code is only meant for previewing your Reflow design. */
@@ -126,7 +133,6 @@ input[type="color"],
     width: 311.8719090875px;
     background-color: rgb(61, 61, 61);
     max-width: 600px;
-    background-image:url("images/svg/splatters-07.svg");
     background-attachment: scroll;
     background-size: auto;
     background-position: 0% 0%;
@@ -144,6 +150,7 @@ input[type="color"],
     margin-top: 33px;
     clear: none;
     min-height: 0px;
+    margin-bottom: 35px;
     color: rgb(255, 255, 255);
     min-width: 90.05px;
     margin-right: auto;
@@ -184,6 +191,7 @@ input[type="color"],
     font-family: proxima-nova;
     background-color: rgb(109, 44, 250);
     border-style: none;
+    border: 2px solid rgb(109, 44, 250);
     box-shadow: none;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -193,6 +201,12 @@ input[type="color"],
     display: block;
     margin-right: auto;
     min-width: 0px;
+}
+
+#Login_button:hover {
+    border-color: rgb(109, 44, 250);
+    color: rgb(109, 44, 250);
+    background-color: #fff;
 }
 
 #Forgot_pasword_text_link {

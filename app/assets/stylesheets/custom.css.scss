@@ -120,10 +120,15 @@ footer {
   .upper-footer {
     width: 100%;
     padding: 10px;
-    height: 55px;
+    height: auto;
     color: #fff;
     background-color: #6d2cfa;
-    margin-top: 20px;
+    margin-top: 0px;
+    p {
+      float: center;
+      display: inline-block;
+      padding-top: 10px;
+    }
   }
   .lower-footer {
     padding: 8px;
@@ -449,6 +454,28 @@ div.file_upload_wrapper:hover {
     font-size: 16px;
     margin-bottom: 5px;
   }
+}
+
+.fb-btn {
+  background-color: #4c66a4;  
+  border-color: #4c66a4;
+}
+
+.fb-btn:hover {
+  background-color: #fff;
+  color: #4c66a4;
+  border-color: #4c66a4;
+}
+
+.btn-purple {
+  background-color: #6d2cfa;  
+  border-color: #6d2cfa;
+}
+
+.btn-purple:hover {
+  background-color: #fff;
+  color: #6d2cfa;
+  border-color: #6d2cfa;
 }
 
 /* Mobile-ish */

@@ -24,8 +24,9 @@ class Product < ActiveRecord::Base
   end
 
   def can_be_accessed_by user
-    p parsed_list.include?(user.id)
-
+    if !user and hidden
+      return false
+    end
     !hidden || parsed_list.include?(user.id)
   end
 

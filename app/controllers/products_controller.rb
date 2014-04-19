@@ -96,11 +96,16 @@ class ProductsController < ApplicationController
     p params
     puts "\n" * 100
     if @product.password == params[:product][:pwd]
-      if !@product.parsed_list.include?(current_user.id)
-        @product.access_list += ",#{current_user.id}"
-        @product.save
+      if signed_in?
+        if !@product.parsed_list.include?(current_user.id)
+          @product.access_list += ",#{current_user.id}"
+          @product.save
+        end
+        redirect_to @product
+      else
+        flash[:notice] = "That drive was private, so please signup first"
+        redirect_to signup_path
       end
-      redirect_to @product
     else
       flash[:notice] = "You should have received an access password from #{@product.user.name} " +
        "to access this."

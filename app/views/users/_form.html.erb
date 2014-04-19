@@ -46,6 +46,14 @@
       </div>  
     <% end %>
   <% end %>
+  <div class="private">
+    <%= f.check_box :critiq_subscription, style: 'display: inline-block; float: left;' %>
+    <%= f.label 'Keep me updated as Critiq grows!', style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
+  </div>
+  <div class="private">
+    <%= f.check_box :drive_subscription, style: 'display: inline-block; float: left;' %>
+    <%= f.label 'OK to email me about the drives I follow', style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
+  </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

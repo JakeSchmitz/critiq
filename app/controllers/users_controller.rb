@@ -54,8 +54,10 @@ class UsersController < ApplicationController
           format.html { redirect_to @user, notice: 'User was successfully created.' }
           #format.json { render action: 'show', status: :created, location: @user }
         else
-          format.html { render action: 'new' }
+          format.html { nil }
+          flash[:error] = 'Signup Info contained an error, make sure password and confirmation matched'
           format.json { render json: @user.errors, status: :unprocessable_entity }
+          redirect_to request.referer
         end
       end
     end

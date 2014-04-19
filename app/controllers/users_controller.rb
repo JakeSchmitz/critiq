@@ -38,20 +38,25 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-    unless @user.pictures.first.nil?
-      @user.propic_id = @user.pictures.last.id
-    end
-    respond_to do |format|
-      if @user.save
-        #@user.pictures.build
-        NewUser.registration_confirmation(@user).deliver
-        sign_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        #format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if !User.where(:email => params[:user][:email]).empty?
+      flash[:error] = "We already have a user with this email address"
+      redirect_to request.referer
+    else
+      @user = User.new(user_params)
+      unless @user.pictures.first.nil?
+        @user.propic_id = @user.pictures.last.id
+      end
+      respond_to do |format|
+        if @user.save
+          #@user.pictures.build
+          NewUser.registration_confirmation(@user).deliver
+          sign_in @user
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          #format.json { render action: 'show', status: :created, location: @user }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

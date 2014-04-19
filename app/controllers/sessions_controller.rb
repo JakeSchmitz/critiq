@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
 			redirect_to user
 		else
 			#Complain
-			flash.now[:error] = 'Invalid email/ password combination'
-			redirect_to signin_path
+			flash[:error] = 'Invalid email/ password combination'
+			redirect_to request.referer
 		end
 	end
 

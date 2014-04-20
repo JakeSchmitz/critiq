@@ -6,11 +6,9 @@
 	display:inline-block;
 	height: 30px;
 	text-align: center;
-	.category {
+/*	.category {
 		padding-top: 10px;
 		min-width:100px;
-		border: 1px solid #f4f4f4;
-		background-color: #794f85;
 		display: inline-block;
 		border-right: none;
 		color: #fff;
@@ -23,7 +21,7 @@
 		display: inline-block;
 		background-color: #282828;
 		color: #828282;
-	}
+	}*/
 }
 
 .feature-modal {
@@ -40,4 +38,49 @@
 	padding-bottom: 10px;
 	float: left;
 	width: 100%;
+}
+
+#newFeatureModal {
+	height: 635px;
+	max-width: 735px;
+	width: 735px;
+	background-color: #f4f4f4;
+	overflow: auto;
+}
+
+.well {
+	height: 395px;
+	width: 300px;
+}
+
+.modal-body {
+	max-height: 92%;
+	height: 92%;
+	img {
+		height: 285px;
+		width: 245px;
+	}
+}
+
+.form-tab {
+	font-weight: 300;
+	letter-spacing: 2px;
+	font-size: 18pt;
+	width: 150px;
+	height: 45px;
+	display: inline-block;
+}
+
+.unselected {
+	background-color: #494949;
+	color: #fff;
+}
+
+.selected {
+	background-color: #6d2cfa;
+	color: #fff;
+}
+
+.tab-name {
+	margin-top: 12px;
 }

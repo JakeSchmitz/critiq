@@ -3,23 +3,23 @@
 	<div class="modal-body">
 		<div class="row">
 			<div class="form-indicators" style="margin-right: -3px;">
-				<div class="category form-tab selected">
+				<div class="form-tab selected">
 					<p class="tab-name">CATEGORY</p>
 				</div>
-				<div class="set-up form-tab unselected" style="margin-left: -3px;">
+				<div class="form-tab unselected" style="margin-left: -3px;">
 					<p class="tab-name">SET UP</p>
 				</div>
 			</div>
 		</div>
 		<h2>Choose a Poll Type:</h2>
 		<div class="row" style="margin-top: 20px; text-align: center; display: inline-block;">
-			<div class="span2 well" style="background-color: #d4d4d4;">
+			<div class="span2 well choice" style="background-color: #d4d4d4;">
 				<h4>Singleton</h4>
 				<button data-toggle="modal" data-target="#newFeatureModalGroup<%= feature_group.id %>" onclick="$('#newFeatureModal').modal('hide');" style="padding: 0px; border: none;">
 					<%= image_tag '/images/standalone.png' %>
 				</button>
 			</div>
-			<div class="span2 well" style="background-color: #d4d4d4;">
+			<div class="span2 well choice" style="background-color: #d4d4d4;">
 				<h4>Comparison</h4>
 				<button data-toggle="modal" data-target="#newCompFeatureModal" onclick="$('#newFeatureModal').modal('hide');" style="padding: 0px; border: none;">
 					<%= image_tag '/images/comparison.png' %>

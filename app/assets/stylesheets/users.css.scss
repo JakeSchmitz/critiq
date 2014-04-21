@@ -87,17 +87,15 @@
 }
 
 .user-cover {
-	background-image: url('/images/Profile-backgroundfull.svg');
+	background-image: url('/images/profile-background.png');
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: 40% 70%;
+	background-position: 30% 40%;
 	width: 100%;
 	text-align: center;
 	z-index: -1;
 	border-bottom:2px solid #aaaaaa;
 }
-
-
 
 .user-profile-top {
 	height: auto;
@@ -108,7 +106,6 @@
 	.user-left {
 		padding-top: 30px;
 		width: 25%;
-		height: 300px;
 		min-width: 100px;
 		display: inline-block;
 		float: left;
@@ -124,15 +121,16 @@
 	}
 	.user-right {
 		padding-top: 50px;
-		width: 85%;
+		width: 60%;
 		margin-left: -10%;
 		padding-left: 20px;	
 		min-width: 480px;
 		float: left;
 		display: inline-block;
 		.user-name {
-			width: 95%;
+			width: 100%;
 			float: left;
+			margin-top: -10px;
 			padding-bottom: 5px;
 			border-bottom: 1px solid #fff;
 			> h1, h2, h3, h4 {
@@ -143,41 +141,53 @@
 		}
 		.under-name {
 			width: 100%;
+			text-align: center;
 			min-height: 120px;
-			.heat-box {
-				width: 35%;
-				float: left;	
-				min-width: 200px;
-				display: inline-block;
-				min-height: 120px;
-				background: rgba(255, 255, 255, 0.6);
-				.purple-numbers {
-					width: 30%;
-					float: left;
-					>h2 {
-						color: #6d2cfa;
-						text-align: right;
-					}
-				}
-				.heat-titles {
-					width: 70%;
-					float: left;
-					> h2 {
-						text-align: left;
-						padding-left: 9px;
-						color: #000;
-					}
-				}
-			}
 			.user-bio {
 				width: 40%;
 				display: inline-block;
 				min-height: 120px;
-				float: left;
+				float: center;
 				> h4 {
 					display: inline-block; 
 					vertical-align: center;
 				}
+			}
+		}
+	}
+	.heat-box {
+		float: left;	
+		margin-left: 0px;
+		width: 250px;
+		display: inline-block;
+		min-height: 190px;
+		margin-top: 35px;
+		background: rgba(255, 255, 255, 0.6);
+		> h2 {
+			color: #000;
+			font-weight: 600;
+			line-height: 0.6;
+		}
+		> h1 {
+			color: #fc4c4c;
+			font-weight: 600;
+			line-height: 0.6;
+		}
+		.purple-numbers {
+			width: 30%;
+			float: left;
+			>h2 {
+				color: #6d2cfa;
+				text-align: right;
+			}
+		}
+		.heat-titles {
+			width: 70%;
+			float: left;
+			> h2 {
+				text-align: left;
+				padding-left: 9px;
+				color: #000;
 			}
 		}
 	}
@@ -301,7 +311,7 @@
 		}
 	}
 	.rating-box {
-		float: left;
+		float: right;
 		width: 100px;
 		height: 100px;
 		margin-left: -100px;

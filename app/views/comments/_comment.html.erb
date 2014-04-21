@@ -36,11 +36,11 @@
 	<!-- voting buttons -->
 	<div class="comment-vote-buttons pull-right">
 		<a href=<%= comment_vote_path(:product_id => product.id, :comment_id => comment.id, up: true)%> id="commentUpvote<%= comment.id %>" class="vote" data-remote="true">
-			<i class="fa fa-play fa-rotate-270" style="color: #1ba573;"></i>
+			<i class="fa fa-play fa-rotate-270" style="color: #fc4c4c;"></i>
 		</a>
 		<h5 style="margin: 0px;" id="commentRating<%= comment.id %>"><%= comment.rating %></h5>
 		<a href=<%= comment_vote_path(:product_id => product.id, :comment_id => comment.id, up: false)%> id="commentDownvote<%= comment.id %>" class="vote" data-remote="true">
-			<i class="fa fa-play fa-rotate-90"  style="color: #c14b1b;"></i>
+			<i class="fa fa-play fa-rotate-90"  style="color: #4c4cfc;"></i>
 		</a>
 	</div>
 

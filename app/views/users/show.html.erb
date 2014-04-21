@@ -9,7 +9,7 @@
       </div>
       <div class="user-right">
         <div class="user-name">
-          <h1 style="display:inline-block; float: left"><%= @user.name %></h1>
+          <h1 style="float: left"><%= @user.name %></h1>
           <% if signed_in? and @user.id == current_user.id %>
             <div style="display: inline-block; float: left;">
               <%= button_to 'EDIT', edit_user_path(@user), :method => "get", :class => "btn-clear", style: 'margin: 28px 0 0 10px;' %>
@@ -17,16 +17,6 @@
         <% end %>
         </div>
         <div class="under-name">
-          <div class="heat-box">
-            <div class="purple-numbers">
-              <h2 class="roboto-heavy"><%= @user.swagger.to_i.to_s %></h2>
-              <h2 class="roboto-heavy"><%= @user.creator_heat.to_i.to_s %></h2>
-            </div>
-            <div class="heat-titles">
-              <h2 class="roboto-font">Critiqer Heat</h2>
-              <h2 class="roboto-font">Creator Heat</h2>
-            </div>
-          </div>
           <div class="user-bio">
             <% if @user.bio %>
               <h4 class="proxima-font" style="color: #fff;"><%= @user.bio %></h4>
@@ -35,6 +25,12 @@
             <% end %>
           </div>
         </div>
+      </div>
+      <div class="heat-box">
+        <h2 class="roboto-font">Critiqer Heat</h2>
+        <h1 class="roboto-heavy"><%= @user.swagger.to_i.to_s %></h1>
+        <h2 class="roboto-font">Creator Heat</h2>
+        <h1 class="roboto-heavy"><%= @user.creator_heat.to_i.to_s %></h1>
       </div>
     </div>
   </div>

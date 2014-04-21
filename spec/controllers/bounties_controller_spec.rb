@@ -36,7 +36,7 @@ describe BountiesController do
 	context "show" do 
 		before :each do 
 			@bounty = create :bounty
-			get :show, :id => 1, :product_id => 1 
+			get :show, :id => 2, :product_id => 1 
 		end
 
 		it "should be an ok response" do 

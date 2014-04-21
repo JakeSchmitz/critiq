@@ -28,7 +28,7 @@ class BountiesController < ApplicationController
 	private 
 
 		def bounty_params
-			params.require(:bounty).permit(:question, :product_id, :product, :comment)
+			params.require(:bounty).permit(:question, :id, :product_id, :product, :comment)
 		end
 end
 

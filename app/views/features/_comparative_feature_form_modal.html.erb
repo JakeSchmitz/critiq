@@ -1,31 +1,35 @@
 <div class="modal fade feature-modal" id="newCompFeatureModal" tabindex="-1" role="dialog" aria-labelledby="newSingleFeatureModalLabel" aria-hidden="true">
 	<button type="button" class="close" data-dismiss="modal" area-hidden="true" style="padding-right: 10px">x</button>
-	<div class="modal-body" style="max-height: 90%;">
+	<div class="form-body">
 		<div class="row" style="margin-bottom: 20px;">
-			<div class="form-indicators" style="margin-right: -3px;">
+			<div class="form-indicators form-header" style="margin-right: -3px;">
 				<!-- note reverse class names to switch colors -->
 				<button data-toggle="modal" data-target="#newFeatureModal" onclick="$('#newCompFeatureModal').modal('hide');" style="padding: 0px; border: none;"> 
-					<div class="set-up" style="width: 120px;">
-						<p>CATEGORY <i class="fa fa-check"></i></p>
+					<div class="form-tab unselected" >
+						<p class="tab-name">CATEGORY <i class="fa fa-check"></i></p>
 					</div>
 				</button>
-				<div class="category" style="margin-left: -3px;">
-					<p>SET UP</p>
+				<div class="form-tab selected">
+					<p class="tab-name">SET UP</p>
+				</div>
+				<div class="form-tab unselected" >
+						<p class="tab-name">OPTIONS</p>
 				</div>
 			</div>
 		</div>
 		<div>
-			<%= nested_form_for [@product, FeatureGroup.new], :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
-			  <div class="well form-well field">
-			    <h4>Comparison Title</h4>
-			    <%= f.text_field :name %>
+			<%= nested_form_for [@product, FeatureGroup.new], :html => { :class => 'form-horizontal comparison-form-body', :multipart => true } do |f| %>
+			  <div class="form-field">
+			    <h3 class="field-title">Comparison<br> Question</h3>
+			    <%= f.text_area :name, :class => "form-input" %>
 			  </div>
-			  <div class="well form-well field">
-			    <h4>Description</h4>
-			    <%= f.text_area :description, :style => 'height: 150px'%>
+			  <div class="form-field">
+			    <h3 class="field-title">Explanation<br>(Optional)</h3>
+			    <%= f.text_area :description, :class => "form-input", id: "form-desc"%>
+			    <p class="explain">You can include a more in-depth explanation of your question to provide better context </p>
 			  </div>
-			  <div class="well actions" style="margin-top: 20px;">
-			    <%= f.submit nil, :class => 'btn btn-primary'%>
+			  <div class="form-submit">
+			    <%= f.submit nil, :class => 'btn btn-primary', id: "form-submit-button", value: "ADD OPTIONS"%>
 			  </div>
 			<% end %>
 		</div>

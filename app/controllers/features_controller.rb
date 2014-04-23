@@ -121,6 +121,7 @@ class FeaturesController < ApplicationController
       @feature.likes.create(user_id:  current_user.id, up: false)
       respond_to do |format|
         if @feature.save and @product.save
+          Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :feature, resource_id: @feature.id)
           format.html { redirect_to @product, notice: 'Feature was successfully updated.' }
           format.json { head :no_content }
         else

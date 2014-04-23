@@ -1,0 +1,23 @@
+<div class="activity">
+  <p style="text-align: center;"><%= activity.timestamp.strftime('%F') %></p>
+  <% if activity.activity_type == 'comment' %>
+    <a href="/products/<%= activity.product.id %>">
+      <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else  '/images/round-icons/chat.svg'  end %>'); width: 100px;">
+      </div>
+    </a>
+    <h3>Critiqed <%= activity.product.name %></h3>
+  <% elsif activity.activity_type == 'like' %>
+    <% if activity.resource_type == 'feature' %>
+      <a href="/products/<%= activity.product.id %>">
+        <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else '/images/round-icons/love.svg' end %>'); width: 100px;">
+        </div>
+      </a>
+    <% elsif activity.resource_type == 'product' and activity.activity_type == 'like' %>
+      <a href="/products/<%= activity.product.id %>">
+        <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else '/images/round-icons/select.svg' end %>'); width: 100px">
+        </div>
+      </a>
+    <% end %>
+    <h3><%= "Followed " + activity.product.name %></h3>
+  <% end %>
+</div>

@@ -104,6 +104,10 @@ class User < ActiveRecord::Base
         rating += c.upvotes.size * 10
         rating -= c.downvotes.size * 2
       end
+      # Grant creator permissions if this user for the first time has over 1000 creator heat
+      if !self.creator and rating > 1000 
+        self.update_attribute(creator: true)
+      end
       rating
     end
 

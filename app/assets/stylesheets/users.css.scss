@@ -263,17 +263,19 @@
 }
 
 .recent-activity {
+	display: inline-block;
+	text-align: center;
 	.activity {
-		position: relative;
 		display: inline-block;
 		float: center;
 		.activity-icon {
 			padding: 0px;
 			margin: 0 auto;
 			height: 100px;
+			width: 100px;
 		}
 		> h4 {
-			width: 160px;
+			width: 150px;
 		}
 	}
 }
@@ -355,5 +357,11 @@
 	}
 }
 
-
+@media (min-width: 980px) {
+	.recent-activity {
+		.activity {
+			margin-left: 20px;
+		}
+	}
+}
 

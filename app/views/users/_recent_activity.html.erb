@@ -1,32 +1,14 @@
 <% if !@recent_activity.empty? %>
-  <div class="row recent-activity">
+  <div class="row" id="recent_activity">
     <h1><%= @user.name %>'s Recent Activity</h1>
-    <ul class="activity thumbnails">
+    <ul class="recent-activity">
       <!-- Don't show activity of liking features -->
       <% @recent_activity.each do |activity| %>
-        <li class="activity" style="padding: 10px;">
-          <p style="text-align: center;"><%= activity.timestamp.strftime('%F') %></p>
-          <% if activity.activity_type == 'comment' %>
-            <a href="/products/<%= activity.product.id %>">
-              <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else  '/images/round-icons/chat.svg'  end %>'); width: 100px;">
-              </div>
-            </a>
-            <h6>Critiqed a <%= activity.resource_type.to_s %></h6>
-          <% elsif activity.activity_type == 'like' %>
-            <% if activity.resource_type == 'feature' %>
-              <a href="/products/<%= activity.product.id %>">
-                <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else '/images/round-icons/love.svg' end %>'); width: 100px;">
-                </div>
-              </a>
-            <% elsif activity.resource_type == 'product' and activity.activity_type == 'like' %>
-              <a href="/products/<%= activity.product.id %>">
-                <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else '/images/round-icons/select.svg' end %>'); width: 100px;">
-                </div>
-              </a>
-            <% end %>
-            <h6><%= "Supported a " + activity.resource_type.to_s %></h6>
-          <% end %>
-        </li>
+        <% if activity.product %>
+          <li class="activity">
+            <%= render partial: 'activity', locals: {activity: activity} %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

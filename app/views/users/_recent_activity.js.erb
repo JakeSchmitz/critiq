@@ -1,0 +1,7 @@
+$('#recent_activity').html('<%= escape_javascript(render("recent_activity"))%>');
+$(function(){
+		$("#recent_activity .pagination a").on('click', function() {
+			$.getScript(this.href);
+			return false;
+		});
+	});

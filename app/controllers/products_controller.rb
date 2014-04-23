@@ -31,13 +31,16 @@ class ProductsController < ApplicationController
     if signed_in?
       @product = Product.new product_params
       @product.user_id = current_user.id 
-      if @product.save
+      if current_user.creator and @product.save
+        Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
         redirect_to product_initial_uploads_path(@product), notice: 'Product was successfully created.'
       else
-        render action: 'new' 
+        flash[:warning] = "You don't yet have permission to create drives, try contributing to a few first!" 
+        redirect_to request.referer
       end
     else
-      redirect_to home
+      flash[:warning] = "You must be signed in to create a drive!"
+      redirect_to request.referer
     end
   end
 
@@ -69,6 +72,7 @@ class ProductsController < ApplicationController
     if signed_in?
       if !@product.likes.exists?(user_id: current_user.id)
         if @product.likes.create(user_id: current_user.id)
+          Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :product, resource_id: @product.id)
           redirect_to @product, notice: 'Product was successfully updated.' 
         else
           redirect_to @product, notice: 'Not allowed to love'

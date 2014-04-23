@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418220933) do
+ActiveRecord::Schema.define(version: 20140422233308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20140418220933) do
     t.boolean  "admin",               default: false
     t.boolean  "critiq_subscription", default: true
     t.boolean  "drive_subscription",  default: true
+    t.boolean  "creator",             default: false
   end
 
 end

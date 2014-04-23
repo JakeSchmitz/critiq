@@ -186,6 +186,7 @@ input {
   color: #fff;
   border: 2px solid #44a1ff;
   height: auto;
+  font-size: 20px;
   -moz-transition: all 0.3s ease-in;
   /* WebKit */
   -webkit-transition: all 0.3s ease-in;
@@ -458,6 +459,7 @@ div.file_upload_wrapper:hover {
 .fb-btn {
   background-color: #4c66a4;  
   border-color: #4c66a4;
+  color: #fff;
 }
 
 .fb-btn:hover {
@@ -476,6 +478,19 @@ div.file_upload_wrapper:hover {
   color: #6d2cfa;
   border-color: #6d2cfa;
 }
+
+.btn-black {
+  background-color: #000;  
+  border-color: #000;
+  color: #fff;
+}
+
+.btn-black:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
 
 /* Mobile-ish */
 @media (max-width: 480px) {

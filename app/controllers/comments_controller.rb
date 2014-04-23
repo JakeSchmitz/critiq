@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
       @comment = @commentable.comments.new(params[:comment])
       @comment.user_id = current_user.id
       if @comment.save
+        Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :comment, resource_type: @commentable.classify, resource_id: @commentable.id)
         render partial: '/comments/comment', locals: {comment: @comment, product: @product}, notice: "Comment created.", :name => "tab[#{params[:tab]}]" 
       end
     else 
@@ -58,6 +59,7 @@ class CommentsController < ApplicationController
     if signed_in? 
       @comment = Comment.find(params[:comment_id])
       @comment.vote current_user, YAML.load(params[:up])
+      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: @commentable.classify, resource_id: @commentable.id)
       render json: @comment.to_json 
     else
       redirect_to @product, notice: 'Please sign in before weighing in.' 

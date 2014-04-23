@@ -53,8 +53,12 @@ class UsersController < ApplicationController
           if @user.id < 50
             @user.update_attributes(creator: true)
           end
-          NewUser.registration_confirmation(@user).deliver
           sign_in @user
+          begin
+            NewUser.registration_confirmation(@user).deliver
+          rescue Exception
+            flash[:warning] = "Confirmation of your signup failed to be delivered to your inbox, please check your account's email at some point"
+          end
           format.html { redirect_to @user, notice: 'User was successfully created.' }
           #format.json { render action: 'show', status: :created, location: @user }
         else

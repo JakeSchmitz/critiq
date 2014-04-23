@@ -1,6 +1,7 @@
 Critiq0::Application.routes.draw do
 
   resources :activities
+  resources :password_resets
 
   resources :products do
     resources :pictures, controller: 'image_assets'

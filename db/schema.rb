@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422233308) do
+ActiveRecord::Schema.define(version: 20140423055347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,10 +123,12 @@ ActiveRecord::Schema.define(version: 20140422233308) do
     t.integer  "product_id"
     t.integer  "propic_id"
     t.text     "bio"
-    t.boolean  "admin",               default: false
-    t.boolean  "critiq_subscription", default: true
-    t.boolean  "drive_subscription",  default: true
-    t.boolean  "creator",             default: false
+    t.boolean  "admin",                  default: false
+    t.boolean  "critiq_subscription",    default: true
+    t.boolean  "drive_subscription",     default: true
+    t.boolean  "creator",                default: false
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

@@ -12,7 +12,7 @@
                     </div>
                     <%= f.submit "SIGN IN", id: 'Login_button', class: "btn btn-primary btn-purple", style: 'margin-bottom: 30px; margin-top: 40px' %>
                     <div id="Login_forgot_password_container">
-                        <a id="Forgot_pasword_text_link" href="redirect to email activation page">
+                        <a id="Forgot_pasword_text_link" href="<%= new_password_reset_path %>">
                         <p id="Forgot_password_text">Forgot Password?</p>
                         </a>
                     </div>

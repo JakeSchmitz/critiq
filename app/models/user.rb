@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   
   validates :name, presence: true
   validates_confirmation_of :password
-  validates :password, length: { minimum: 6 }
   validates_presence_of :password, on: :create
   validates_presence_of :email
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
@@ -20,6 +19,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, allow_destroy: true
 
   after_update :save_pictures
+  before_create { generate_token(:remember_token) }
+  
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
+  end
+
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -81,6 +88,13 @@ class User < ActiveRecord::Base
 
   def self.test_reg_email(user)
     NewUser.registration_confirmation(user).deliver
+  end
+
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
   end
 
   private

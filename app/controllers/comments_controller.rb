@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       @comment = @commentable.comments.new(params[:comment])
       @comment.user_id = current_user.id
       if @comment.save
-        Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :comment, resource_type: @commentable.classify, resource_id: @commentable.id)
+        Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :comment, resource_type: @commentable.class.name, resource_id: @commentable.id)
         render partial: '/comments/comment', locals: {comment: @comment, product: @product}, notice: "Comment created.", :name => "tab[#{params[:tab]}]" 
       end
     else 
@@ -42,7 +42,6 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    puts "$$\n" * 50
     @comment = Comment.find(params[:id])
     if signed_in? and (current_user.id == @comment.user.id or is_admin?)
       @comment.body = 'Deleted'
@@ -59,7 +58,7 @@ class CommentsController < ApplicationController
     if signed_in? 
       @comment = Comment.find(params[:comment_id])
       @comment.vote current_user, YAML.load(params[:up])
-      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: @commentable.classify, resource_id: @commentable.id)
+      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: "Comment", resource_id: @commentable.id)
       render json: @comment.to_json 
     else
       redirect_to @product, notice: 'Please sign in before weighing in.' 

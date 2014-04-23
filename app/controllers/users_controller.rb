@@ -50,8 +50,9 @@ class UsersController < ApplicationController
         if @user.save
           #@user.pictures.build
           # Give first 50 users creator permission
-          if @user.id < 50
+          if @user.id.to_i < 50
             @user.update_attributes(creator: true)
+            @user.save
           end
           sign_in @user
           begin

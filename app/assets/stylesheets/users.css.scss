@@ -268,13 +268,14 @@
 	.activity {
 		display: inline-block;
 		float: center;
+		padding: 5px 10px 5px 10px;
 		.activity-icon {
 			padding: 0px;
 			margin: 0 auto;
 			height: 100px;
 			width: 100px;
 		}
-		> h4 {
+		> h3 {
 			width: 150px;
 		}
 	}
@@ -358,10 +359,6 @@
 }
 
 @media (min-width: 980px) {
-	.recent-activity {
-		.activity {
-			margin-left: 20px;
-		}
-	}
+	
 }
 

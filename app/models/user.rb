@@ -112,7 +112,7 @@ class User < ActiveRecord::Base
 
     # Compute user's rating contributed by their critiq's
     def critiq_rating
-      user_comments = Comment.where(user_id: self.id)
+      user_comments = Comment.where(user_id: self.id, deleted: true)
       rating = 0
       user_comments.each do |c|
         rating += c.upvotes.size * 10

@@ -147,7 +147,7 @@
 				.vote {
 					> h5 {
 						color: #fff;
-						line-height: 1.2;
+						line-height: 1.1;
 					}
 				}
 			}
@@ -156,8 +156,9 @@
 				height: 100%; 
 				display: inline-block;
 				float: left;
-				> p {
-					line-height: 1.2;
+				> h5 {
+					color: #fff;
+					margin-top: 0px;
 				}
 			}
 		}
@@ -169,7 +170,7 @@
 				text-align: center;
 				height: 40px;
 				display: inline-block;
-				background-color: #2463a8;
+				background-color: #1488ff;
 				width: 25%;
 
 				padding-top: 3px;
@@ -189,7 +190,7 @@
 				display: inline-block;
 				height: 40px;
 				width: 25%;
-				background-color: #cb5050;
+				background-color: #fc4c4c;
 
 				padding-top: 3px;
 				float: left;

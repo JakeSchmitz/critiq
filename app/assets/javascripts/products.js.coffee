@@ -6,7 +6,6 @@
 	oldPic = $('#main-pic').css("background-image")
 	newPic = $('#alt-pic' + id).css("background-image")
 	$('#main-pic').css("background-image", newPic)
-	$('#alt-pic' + id).css("background-image", oldPic)
 
 Products = 
 	init: ->

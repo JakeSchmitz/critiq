@@ -51,7 +51,7 @@ class UsersController < ApplicationController
           #@user.pictures.build
           sign_in @user
           begin
-            NewUser.registration_confirmation(@user).delay.deliver
+            NewUser.delay.registration_confirmation(@user).deliver
           rescue Exception
             flash[:warning] = "Confirmation of your signup failed to be delivered to your inbox, please check your account's email at some point"
           end

@@ -58,7 +58,6 @@ class User < ActiveRecord::Base
   end
 
   def profile_pic
-    p 'PROPIC = ' + self.propic_id.to_i.to_s + '\n\n/n/n'
     if self.propic_id
       ImageAsset.find(self.propic_id)
     elsif !self.pictures.empty?
@@ -94,7 +93,7 @@ class User < ActiveRecord::Base
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
     save!
-    UserMailer.password_reset(self).delay.deliver
+    UserMailer.delay.password_reset(self).deliver
   end
 
   private

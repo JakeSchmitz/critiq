@@ -460,12 +460,26 @@ div.file_upload_wrapper:hover {
   background-color: #4c66a4;  
   border-color: #4c66a4;
   color: #fff;
+  -moz-transition: all 0.2s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.2s ease-in;
+  /* Opera */
+  -o-transition: all 0.2s ease-in;
+  /* Standard */
+  transition: all 0.2s ease-in;
 }
 
 .fb-btn:hover {
   background-color: #fff;
   color: #4c66a4;
   border-color: #4c66a4;
+  -moz-transition: all 0.2s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.2s ease-in;
+  /* Opera */
+  -o-transition: all 0.2s ease-in;
+  /* Standard */
+  transition: all 0.2s ease-in;
 }
 
 .btn-purple {

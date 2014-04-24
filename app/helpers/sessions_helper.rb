@@ -7,8 +7,10 @@ module SessionsHelper
 	end
 
 	def fb_sign_in(user, fb_token)
-		cookies.permanent[:remember_token] = fb_token
-		user.update_attribute(:remember_token, User.encrypt(fb_token))
+		remember_token = User.new_remember_token
+		cookies.permanent[:remember_token] = remember_token
+		user.update_attribute(:remember_token, User.encrypt(remember_token))
+		cookies.permanent[:fb_token] = fb_token
 		self.current_user = user
 	end
 

@@ -7,14 +7,14 @@
 
 .signin {
     text-align: center;
-    width: 90%;
-    padding-left: 10%;
+    width: 85%;
+    padding-left: 12.5%;
 }
 
 .signup {
     text-align: center;
-    width: 90%;
-    padding-left: 10%;
+    width: 85%;
+    padding-left: 12.5%;
 }
 
 textarea,
@@ -298,7 +298,7 @@ input[type="color"],
     margin-left: auto;
     margin-top: 25px;
     clear: none;
-    width: 50%;
+    width: 100%;
     color: rgb(255, 255, 255);
     font-family: proxima-nova;
     border-style: none;

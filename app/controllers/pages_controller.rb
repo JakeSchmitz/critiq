@@ -8,6 +8,9 @@ class PagesController < ApplicationController
 	def about
 	end
 
+	def community
+	end
+
 	def contact
 	end
 

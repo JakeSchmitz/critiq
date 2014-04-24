@@ -48,6 +48,8 @@ Critiq0::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/home', to: 'pages#home', via: 'get'
   match '/contact', to: 'pages#contact', via: 'get'
+  match '/community', to: 'pages#community', via: 'get'
+  match '/about', to: 'pages#about', via: 'get'
   match '/auth/facebook/callback', to: 'facebook_auth#new', via: 'get'
 
   post 'signin', to: 'sessions#create'

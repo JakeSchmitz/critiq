@@ -68,6 +68,11 @@ GEM
       addressable
     daemons (1.1.9)
     database_cleaner (1.2.0)
+    delayed_job (4.0.1)
+      activesupport (>= 3.0, < 4.2)
+    delayed_job_active_record (4.0.1)
+      activerecord (>= 3.0, < 4.2)
+      delayed_job (>= 3.0, < 4.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.0.3)
@@ -270,6 +275,7 @@ DEPENDENCIES
   cocaine
   coffee-rails (~> 4.0.0)
   database_cleaner
+  delayed_job_active_record
   factory_girl_rails
   faker
   font-awesome-rails

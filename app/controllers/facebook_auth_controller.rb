@@ -10,7 +10,7 @@ class FacebookAuthController < ApplicationController
 		if User.where(email: profile["email"]).empty?
 			@user = User.create(name: profile["name"], email: profile["email"], password: fbcode)
 			begin
-				NewUser.registration_confirmation(@user).deliver
+				NewUser.registration_confirmation(@user).delay.deliver
 			rescue Exception
         flash[:warning] = "Confirmation of your signup failed to be delivered to your inbox, please check your account's email at some point"
       end
@@ -18,11 +18,6 @@ class FacebookAuthController < ApplicationController
 		else
 			@user = User.find_by email: profile["email"]
 			current_user=@user
-			begin
-				NewUser.registration_confirmation(@user).deliver
-			rescue Exception
-        flash[:warning] = "Confirmation of your signup failed to be delivered to your inbox, please check your account's email at some point"
-      end
 		end
 		if @user.pictures.empty?
 			propic = @user.pictures.build(attachment: open(process_uri("http://graph.facebook.com/"+profile["id"]+"/picture?type=large").to_s))

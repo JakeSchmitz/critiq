@@ -49,14 +49,9 @@ class UsersController < ApplicationController
       respond_to do |format|
         if @user.save
           #@user.pictures.build
-          # Give first 50 users creator permission
-          if @user.id.to_i < 50
-            @user.update_attributes(creator: true)
-            @user.save
-          end
           sign_in @user
           begin
-            NewUser.registration_confirmation(@user).deliver
+            NewUser.registration_confirmation(@user).delay.deliver
           rescue Exception
             flash[:warning] = "Confirmation of your signup failed to be delivered to your inbox, please check your account's email at some point"
           end

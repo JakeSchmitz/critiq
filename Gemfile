@@ -61,6 +61,8 @@ gem 'ancestry'
 gem 'premailer-rails'
 gem 'nokogiri'
 
+gem 'delayed_job_active_record'
+
 group :production do
 
 end

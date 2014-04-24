@@ -22,6 +22,8 @@ Critiq0::Application.configure do
     :enable_starttls_auto => true
   }
 
+  config.action_mailer.default_url_options = {host: 'critiq.me'}
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

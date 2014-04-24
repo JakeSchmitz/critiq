@@ -10,7 +10,7 @@
                         <%= f.text_field :email, placeholder: 'EMAIL', class: 'session-form', style: 'height: 40px !important;' %>
                         <%= f.password_field :password, placeholder: 'PASSWORD', class: 'session-form', style: 'height: 40px !important;' %>
                     </div>
-                    <%= f.submit "SIGN IN", class: "btn btn-primary btn-purple", style: 'margin-bottom: 30px; margin-top: 40px; width: 100%' %>
+                    <%= f.submit "SIGN IN", class: "btn btn-primary btn-purple", style: 'margin-bottom: 30px; margin-top: 30px; width: 100%' %>
                     <div id="Login_forgot_password_container">
                         <a id="Forgot_pasword_text_link" href="<%= new_password_reset_path %>">
                         <p id="Forgot_password_text">Forgot Password</p>
@@ -18,8 +18,8 @@
                     </div>
                 <% end %>
             </div>
-            <p style="text-align: center; color: #fff; margin-top: 25px">- or -</p>
-            <div class="fb_signup_button" style="text-align: center; margin-top: 40px;">
+            <p style="text-align: center; color: #fff; margin-top: 20px">- or -</p>
+            <div class="fb_signup_button" style="text-align: center; margin-top: 25px;">
                 <%= button_to '/auth/facebook', class: 'btn fb-btn' do %>
                     <i class="fa fa-facebook-square fa-lg"></i>&nbsp;&nbsp;Log In With Facebook
                 <% end %>

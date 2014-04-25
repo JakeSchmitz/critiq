@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates_uniqueness_of :email
-  attr_accessible :id, :name, :email, :bio, :creator, :password_reset_token, :age, :password, :password_confirmation, :image_asset, :remember_token, :link, :user_id, :product_id,
+  attr_accessible :id, :name, :email, :bio, :creator, :creator_code, :password_reset_token, :age, :password, :password_confirmation, :image_asset, :remember_token, :link, :user_id, :product_id,
                   :pictures, :attachment, :attachment_attributes, :pictures_attributes, :profile_picture, :profile_picture_attibutes
   has_secure_password
   has_many :pictures, class_name: "ImageAsset", foreign_key: "attachable_id", as: :attachable, autosave: true

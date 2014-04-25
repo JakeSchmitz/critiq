@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     @user_pic = ImageAsset.find_product_user_pic @product if !@product.user.pictures
     @feature_groups = @product.feature_groups
     @comment = @product.comments.new
-    @likers = @product.likers
+    @likers = @product.followers
   end
 
   def new

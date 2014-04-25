@@ -145,6 +145,7 @@ class UsersController < ApplicationController
     if params[:user][:creator_code].to_s == ENV['CREATOR_PASSWORD'].to_s
       p 'Granting creator access to ' + @user.name + ' now'
       @user.creator = true
+      @user.creator_code = params[:user][:creator_code]
       @user.save
       flash[:notice] = "You've just recieved creator permissions"
       redirect_to new_product_path

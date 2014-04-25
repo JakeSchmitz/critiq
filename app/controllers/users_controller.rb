@@ -140,6 +140,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def make_creator
+    @user = User.find(params[:user_id])
+    if params[:user][:creator_code].to_s == ENV['CREATOR_PASSWORD'].to_s
+      p 'Granting creator access to ' + @user.name + ' now'
+      @user.creator = true
+      @user.save
+      flash[:notice] = "You've just recieved creator permissions"
+      redirect_to new_product_path
+    else
+      p 'Could not upgrade ' + @user.name + ' to creator status'
+      flash[:error] = "The creator password you gave didn't match our records"
+      redirect_to new_product_path
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -148,8 +163,8 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :username, :id, :age, :email, :bio, :page,
-          :link, :password, :password_confirmation, :profile_picture, :image_id, :product_id, :user_id,
+      params.require(:user).permit(:name, :username, :id, :user_id, :age, :email, :bio, :page,
+          :link, :creator_code, :password, :password_confirmation, :profile_picture, :image_id, :product_id, :user_id,
           pictures_attributes: [:attachment_attributes, :attachment, :attachable_id ,:id])
     end 
 

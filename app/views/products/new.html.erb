@@ -1,21 +1,34 @@
 <%- model_class = Product -%>
-<div class="hero-unit home-banner" style="height: 250px; margin-bottom: 0">
-	<div class="hero-text hero-header">
-		<h1>Welcome to your new feedback drive</h1>
+<% if signed_in? and (current_user.creator or current_user.admin)%>
+	<div class="hero-unit home-banner" style="height: 250px; margin-bottom: 0">
+		<div class="hero-text hero-header">
+			<h1>Welcome to your new feedback drive</h1>
+		</div>
 	</div>
-</div>
-<div class="pnav" style="text-align: center; width: 100%; margin: none;">
-  <ul class="nav nav-tabs product-nav product-nav-content row">
-    <li class="active"><a href="#basic-info" data-toggle="tab">1. Basic Info</a></li>
-    <li><a href="#upload-more" style="cursor: not-allowed;">2. Upload More</a></li>
-  </ul>
-</div>
-<div class="container">
-	<div style="text-align: center; margin: 0 auto; margin-top: 30px;">
-	  <h4>All you need to get started is a short description of your creation, a picture, and a Critiq account.</p>
-	  <h4>Start getting feedback today.</p>
+	<div class="pnav" style="text-align: center; width: 100%; margin: none;">
+	  <ul class="nav nav-tabs product-nav product-nav-content row">
+	    <li class="active"><a href="#basic-info" data-toggle="tab">1. Basic Info</a></li>
+	    <li><a href="#upload-more" style="cursor: not-allowed;">2. Upload More</a></li>
+	  </ul>
 	</div>
-	<div style="text-align: center; margin: 0 auto;">
-		<%= render :partial => 'form' %>
+	<div class="container">
+		<div style="text-align: center; margin: 0 auto; margin-top: 30px;">
+		  <h4>All you need to get started is a short description of your creation, a picture, and a Critiq account.</p>
+		  <h4>Start getting feedback today.</p>
+		</div>
+		<div style="text-align: center; margin: 0 auto;">
+			<%= render :partial => 'form' %>
+		</div>
 	</div>
-</div>
+<% else %>
+	<div class="product-password">
+		<%= form_for current_user, url: user_creator_path(current_user), method: :get do |f| %>
+			<div class="inline-form">
+				<h3 style="color: #fff;">Creating feedback drives is still being tested, you can request permission by emailing us <a href="mailto:critiqme@gmail.com?Subject=Make%20Me%20A%20Creator%20Please">here</a></h3>
+				<h3 style="color: #fff;">We will give you a passcode to enter here when we're ready for you</h3>
+				<%= f.text_field :creator_code, placeholder: 'Creator Passcode' %>
+				<%= f.submit 'ACCESS', :class => 'btn btn-primary', style: 'margin-top: 50px; margin-bottom: 15%;'%>
+			</div>
+		<% end %>
+	</div>
+<% end %>

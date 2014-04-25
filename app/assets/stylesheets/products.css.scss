@@ -204,7 +204,8 @@
 	}
 	.description-box {
 		text-align: center;
-		height: 360px;
+		height: auto;
+		min-height: 360px;
 		border-radius: 1px; 
 		color: #313131; 
 		padding: 10px;

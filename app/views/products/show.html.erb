@@ -44,8 +44,9 @@
         </div>
         <div class="well span4 description-box">
           <!-- Buy when complete button isn't ready yet! <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %> -->
-          <h2>Description</h2>
+          <h3>Description</h3>
           <p class="product-description"><%= @product.description %></p>
+          <% if !@product.link.nil? and @product.link != "" %><%= link_to 'OUR SITE', "http://#{@product.link}", class: 'btn btn-clear' %><% end %>
         </div>
       </div>
     </div>

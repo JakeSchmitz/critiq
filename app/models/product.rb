@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, allow_destroy: true
   accepts_nested_attributes_for :feature_groups, allow_destroy: true
   accepts_nested_attributes_for :comments, allow_destroy: true
-  attr_accessible :name, :description, :rating, :likes, :pictures, :active, :pictures_attributes, :product_pic, :hidden, :password, :access_list, feature_groups: [features: [:pictures]], likes: [:product_id, :user_id]
+  attr_accessible :name, :description, :rating, :link, :likes, :pictures, :active, :pictures_attributes, :product_pic, :hidden, :password, :access_list, feature_groups: [features: [:pictures]], likes: [:product_id, :user_id]
   before_create :setup_feature_bounty_content
   after_create :make_create_activity
 

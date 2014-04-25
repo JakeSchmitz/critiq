@@ -203,12 +203,16 @@
 		color: #fff;
 	}
 	.description-box {
+		text-align: center;
 		height: 360px;
 		border-radius: 1px; 
 		color: #313131; 
 		padding: 10px;
-		width: 320px;
+		width: 450px;
 		float: center;
+		.product-description {
+			text-align: left;
+		}
 	}
 }
 

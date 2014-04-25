@@ -97,8 +97,6 @@ class ProductsController < ApplicationController
   end
 
   def grant_access
-    p params
-    puts "\n" * 100
     if @product.password == params[:product][:pwd]
       if signed_in?
         if !@product.parsed_list.include?(current_user.id)
@@ -125,7 +123,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :hidden, :pwd, :rating, :feature_groups, :features, :image_asset, :description, :tab, :id, :pictures, :image_asset, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes],
+      params.require(:product).permit(:name, :hidden, :pwd, :rating, :feature_groups, :features, :image_asset, :link, :description, :tab, :id, :pictures, :image_asset, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes],
                                       lovers: [:product_id, :user_id])
     end
 

@@ -10,7 +10,7 @@ class FacebookAuthController < ApplicationController
 		if User.where(email: profile["email"]).empty?
 			@user = User.create(name: profile["name"], email: profile["email"], password: fbcode)
 			begin
-				NewUser.delay.registration_confirmation(@user).deliver
+				NewUser.registration_confirmation(@user).deliver
 			rescue Exception
         flash[:warning] = "Confirmation of your signup failed to be delivered to your inbox, please check your account's email at some point"
       end

@@ -13,13 +13,13 @@
       </div>
     <% end %>
     <div class="field">
-      <%= f.label :password %>
+      <p>Password</p>
       <%= f.password_field :password %>
     </div>
     <div class="field">
-      <%= f.label :password_confirmation %>
+      <p>Confirm Password</p>
       <%= f.password_field :password_confirmation %>
     </div>
-    <div class="actions"><%= f.submit "Update Password" %></div>
+    <div class="actions"><%= f.submit "Update Password", class: 'btn btn-primary', style: 'margin-top: 30px;'%></div>
   <% end %>
 </div>

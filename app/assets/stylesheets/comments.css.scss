@@ -122,5 +122,42 @@
 	margin-left: 20px
 }
 
-
-
+@media(max-width: 980px) {
+	.new-comment {
+		margin-left: 0;
+		.current-user {
+			display: none;
+		}
+		.comment-box {
+			margin-left: 0px;
+			width: 100%;
+		}
+	}
+	.comment-form {
+		width: auto;
+		#comment-body {
+			width: 100%;
+		}
+	}
+	.product-comments {
+		margin: 0;
+	}
+	.comment-nest {
+		width: 100%;
+	}
+	.comment {
+		display: inline-block; 
+		float: right; 
+		.comment-body {
+			width: 90%;
+			float: center; 
+			margin-bottom: 5px;
+			min-height: 60px;
+			.commenter-info {
+				float: left;
+				height: 29px;
+				width: 100%;
+			}
+		}
+	}
+}

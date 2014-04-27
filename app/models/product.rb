@@ -115,7 +115,7 @@ class Product < ActiveRecord::Base
   end
 
   def simple_link
-    self.link.sub(/^https?\:\/\//, '').sub(/^www./,'')
+    self.link.sub(/^https?\:\/\//, '').sub(/^www./,'').split('/')[0]
   end
 
   private

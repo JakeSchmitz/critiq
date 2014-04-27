@@ -2,7 +2,7 @@
   <p style="text-align: center;"><%= activity.timestamp.strftime('%F') %></p>
   <% if activity.activity_type == 'comment' %>
     <a href="/products/<%= activity.product.id %>">
-      <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else  '/images/round-icons/chat.svg'  end %>'); width: 100px;">
+      <div class="img-circle thumb-ratio activity-icon" style="background-image: url('<%= if activity.product.profile_pic_url then activity.product.profile_pic_url else  '/images/round-icons/chat.svg'  end %>'); width: 100px; background-position: center;">
       </div>
     </a>
     <h3 style="width: 125px;">Critiqed <%= activity.product.name %></h3>

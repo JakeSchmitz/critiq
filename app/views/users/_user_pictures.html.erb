@@ -5,7 +5,7 @@
       <% if pic.attachment.file? and pic.user_id == @user.id %>
         <div class="thumbnail span2" style="height: 140px; width: 140px; padding: 3px;">
           <a href="#user-picture-modal<%= pic.id.to_s %>" data-toggle="modal">
-            <div class="thumb-ratio" style="background-image: url('<%= asset_path pic.attachment.url(:thumb) %>');"></div>
+            <div class="thumb-ratio" style="background-image: url('<%= asset_path pic.attachment.url(:thumb) %>'); background-position: center;"></div>
           </a>
         </div>
         <%= render :partial => 'user_pic_modal', :locals => { pic: pic } %>

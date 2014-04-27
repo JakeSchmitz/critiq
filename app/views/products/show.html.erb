@@ -13,17 +13,17 @@
       <div class="product-left">
         <h1 class="product-name"><%= @product.name %></h1>
         <div class="product-creator" style="display: inline-block;">
-          <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>');"></div>
+          <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>'); background-position: center;"></div>
           <div class="creator-data">
             <h5 style="text-align: left;">Created By <%= link_to @product.user.name, @product.user, style: 'color: #cacaca' %></h5>
           </div>
         </div>
         <div class="product-pictures">
-          <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>');"></div>
+          <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>'); background-position: center;"></div>
           <div class="other-pics">
             <% @product.top_pics.first(5).each_with_index do |pic, i| %>
               <div class="alt-pic">
-                <a class="thumb-ratio alt-pic"  style="background-image: url('<%= pic.attachment.url(:large) %>'); cursor: pointer;" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
+                <a class="thumb-ratio alt-pic"  style="background-image: url('<%= pic.attachment.url(:large) %>'); cursor: pointer; background-position: center;" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
                 </a>
               </div>
             <% end %>

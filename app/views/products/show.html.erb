@@ -46,7 +46,7 @@
           <!-- Buy when complete button isn't ready yet! <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %> -->
           <h3 style="display: inline-block; float: left; margin: 0;">Description:&nbsp;</h3>
           <p class="product-description"><%= @product.description %></p>
-          <% if !@product.link.nil? and @product.link != "" %><%= link_to @product.link, "http://#{@product.link}", class: 'btn btn-clear' %><% end %>
+          <% if !@product.link.nil? and @product.link != "" %><%= link_to @product.simple_link, "http://#{@product.link}", class: 'btn btn-clear' %><% end %>
         </div>
       </div>
     </div>

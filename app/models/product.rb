@@ -114,6 +114,9 @@ class Product < ActiveRecord::Base
     Product.first.likes.first(100).map(&:user)
   end
 
+  def simple_link
+    self.link.sub(/^https?\:\/\//, '').sub(/^www./,'')
+  end
 
   private
 

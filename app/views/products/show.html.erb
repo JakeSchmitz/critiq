@@ -19,7 +19,13 @@
           </div>
         </div>
         <div class="product-pictures">
-          <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>'); background-position: center;"></div>
+          <% if @product.video_url %>
+            <div class="main-pic span6" id="main-pic">
+              <%= @product.embed_video.html_safe %>
+            </div>
+          <% else %>
+            <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>'); background-position: center;"></div>
+          <% end %>
           <div class="other-pics">
             <% @product.top_pics.first(5).each_with_index do |pic, i| %>
               <div class="alt-pic">

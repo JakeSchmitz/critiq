@@ -318,7 +318,7 @@ div.file_upload_wrapper:hover {
     padding-right: 100% ; /* % of width, defines aspect ratio*/
     
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: cover;  
 }
 
@@ -507,6 +507,17 @@ div.file_upload_wrapper:hover {
   border-color: #494949;
 }
 
+input[type="file"] {
+  border: none;
+  background: rgba(0,0,0,0);
+  display: inline-block;
+  height: 30px;
+  text-align: center;
+}
+
+.file_upload_wrapper {
+  width: 100%;
+}
 
 /* Mobile-ish */
 @media (max-width: 480px) {

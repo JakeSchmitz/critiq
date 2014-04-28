@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425070456) do
+ActiveRecord::Schema.define(version: 20140428020653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140425070456) do
     t.boolean  "hidden",      default: false
     t.string   "password"
     t.string   "link"
+    t.string   "video_url"
   end
 
   create_table "users", force: true do |t|

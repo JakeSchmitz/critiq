@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, allow_destroy: true
   accepts_nested_attributes_for :feature_groups, allow_destroy: true
   accepts_nested_attributes_for :comments, allow_destroy: true
-  attr_accessible :name, :description, :rating, :link, :likes, :pictures, :active, :pictures_attributes, :product_pic, :hidden, :password, :access_list, feature_groups: [features: [:pictures]], likes: [:product_id, :user_id]
+  attr_accessible :name, :description, :rating, :link, :likes, :video_url, :pictures, :active, :pictures_attributes, :product_pic, :hidden, :password, :access_list, feature_groups: [features: [:pictures]], likes: [:product_id, :user_id]
   before_create :setup_feature_bounty_content
   after_create :make_create_activity
 
@@ -107,7 +107,13 @@ class Product < ActiveRecord::Base
   end
 
   def top_pics
-    self.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(5)
+    pics = self.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(5)
+    # This doesn't work yet, need to get thumbnail from the video
+    #if self.video_url
+    #  pics << self.video_thumb
+    #  p self.video_thumb
+    #end
+    pics
   end
 
   def likers
@@ -116,6 +122,69 @@ class Product < ActiveRecord::Base
 
   def simple_link
     self.link.sub(/^https?\:\/\//, '').sub(/^www./,'').split('/')[0]
+  end
+
+  def embed_video
+    vid_host = self.video_url.sub(/^https?\:\/\//, '').sub(/^www./,'').split('/')[0]
+    if vid_host == 'youtube.com' or vid_host == 'youtu.be'
+      youtube_embed(self.video_url)
+    elsif vid_host == 'player.vimeo.com' or vid_host == 'vimeo.com'
+      vimeo_embed(self.video_url)
+    end
+  end
+
+  def video_thumb
+    vid_host = self.video_url.sub(/^https?\:\/\//, '').sub(/^www./,'').split('/')[0]
+    if vid_host == 'youtube.com' or vid_host == 'youtu.be'
+      youtube_thumbnail(self.video_url)
+    elsif vid_host == 'player.vimeo.com' or vid_host == 'vimeo.com'
+      vimeo_thumbnail(self.video_url)
+    end
+  end
+
+def youtube_embed(youtube_url)
+    if youtube_url[/youtu\.be\/([^\?]*)/]
+      youtube_id = $1
+    else
+      # Regex from # http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url/4811367#4811367
+      youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      youtube_id = $5
+    end
+
+    %Q{<iframe title="YouTube video player" width="480" height="360" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
+  end
+
+  def vimeo_embed(vimeo_url)
+    if vimeo_url[/vimeo\.com\/([^\?]*)/]
+      vimeo_id = $1
+    else
+      vimeo_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      vimeo_id = $5
+    end
+
+    %Q{<iframe title="Vimeo video player" width="480" height="360" src="\/\/player.vimeo.com\/video\/#{ vimeo_id }" frameborder="0" allowfullscreen></iframe>}
+  end
+
+  def vimeo_thumbnail(vimeo_url)
+    if vimeo_url[/vimeo\.com\/([^\?]*)/]
+      vimeo_id = $1
+    else
+      vimeo_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      vimeo_id = $5
+    end
+    vim_json = JSON.parse(open('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' + vimeo_id.to_s))
+    open(url(vim_json.thumbnail_url))
+  end
+
+  def youtube_thumbnail(youtube_url)
+    if youtube_url[/youtu\.be\/([^\?]*)/]
+      youtube_id = $1
+    else
+      # Regex from # http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url/4811367#4811367
+      youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      youtube_id = $5
+    end
+    open("http://img.youtube.com/vi/" + youtube_id.to_s + "/1.jpg")
   end
 
   private

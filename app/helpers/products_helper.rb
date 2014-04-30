@@ -4,6 +4,15 @@ module ProductsHelper
     !@product.features.empty?
   end
 
+
+  def product_like_url
+  	url = request.original_url
+  	url.gsub!(":", "%3A")
+  	url.gsub!("/", "%2F")
+  	url
+  end
+
+
 	def youtube_embed(youtube_url)
 	  if youtube_url[/youtu\.be\/([^\?]*)/]
 	    youtube_id = $1
@@ -49,3 +58,4 @@ module ProductsHelper
 	  url("http://img.youtube.com/vi/" + youtube_id.to_s + "/1.jpg")
 	end
 end
+

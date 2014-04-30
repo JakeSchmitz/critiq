@@ -11,8 +11,11 @@
 Products = 
 	init: ->
 		@showFeatures()
+		@showLikes()
 	showFeatures: ->
 		$('#product-tabs a[href="#product-features').tab 'show'
+	showLikes: ->
+		$('#u_0_2').css 'color', '#fff'
 
 $(document).ready ->
 	Products.init()

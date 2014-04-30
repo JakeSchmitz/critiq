@@ -1,0 +1,18 @@
+<%= form_for @user, {url: twitter_signup_path} do |f| %>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors alert fade in aler-failure">
+    <% for message_error in @user.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <div class="signup clearfix">
+    <div class="control-group">
+      <%= f.text_field :email, placeholder: 'EMAIL', style: 'height: 40px !important;margin-top: 25px'  %>
+    </div>
+  </div>
+ <div>
+    <%= f.submit 'CREATE ACCOUNT', :class => 'btn btn-primary btn-black', style: 'border: none; width: 100%;margin-top: 25px' %>
+  </div>
+<% end %>
+

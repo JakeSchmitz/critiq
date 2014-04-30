@@ -1,0 +1,14 @@
+    <div id="Background_image_box" class="clearfix">
+        <div id="Login_and_Signup_global_container" class="clearfix">
+            <div id="Sign_up_container" class="clearfix email-form" style="height: 300px;margin: 0px auto; float: center">
+                <p id="_Sign_up_title_text">
+                Enter your Email to Finish!<br>
+                </p>
+                <% @user = User.new %>
+                <% @user.pictures.build %>
+                <div class="signin_form clearfix">
+                    <%= render partial: '/users/email_form' %>
+                </div>
+            </div>
+    </div>
+    </div>

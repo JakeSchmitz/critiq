@@ -14,6 +14,14 @@ module SessionsHelper
 		self.current_user = user
 	end
 
+	def tw_sign_in(user, tw_token)
+		remember_token = User.new_remember_token
+		cookies.permanent[:remember_token] = remember_token
+		user.update_attribute(:remember_token, User.encrypt(remember_token))
+		cookies.permanent[:tw_token] = tw_token
+		self.current_user = user
+	end
+
 	def signed_in?
 		!current_user.nil?
 	end

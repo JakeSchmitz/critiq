@@ -19,6 +19,7 @@ gem "aws-sdk"
 gem "rails_12factor"
 gem "thin"
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -46,9 +47,11 @@ gem 'jquery-fileupload-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 gem 'koala'
-
+gem 'twitter', '5.8.0'
+gem 'dotenv'
 gem "rmagick", :require => 'RMagick'
 
 gem 'open_uri_redirections'

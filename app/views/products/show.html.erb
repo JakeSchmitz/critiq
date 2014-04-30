@@ -1,3 +1,11 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <%- model_class = Product -%>
 <% if @product.can_be_accessed_by current_user %>
   <% if !@product.rand_pic.nil? %>
@@ -12,7 +20,7 @@
     <div class="span" style="width: auto; float: center;">
       <div class="span"> 
         <div class="product-left">
-          <h1 class="product-name"><%= @product.name %></h1>
+          <h1 class="product-name"><%= @product.name %><div class="fb-like" data-href="<%= request.original_url %>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></h1>
           <div class="product-creator" style="display: inline-block;">
             <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>');"></div>
             <div class="creator-data">
@@ -134,5 +142,7 @@
 <% else %>
   <%= render partial: 'product_password_page' %>
 <% end %>
+
+
 
 

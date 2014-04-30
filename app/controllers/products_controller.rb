@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  layout 'product'
   before_action :set_product, only: [:show, :edit, :update, :destroy, :initial_uploads, :active_switch, :upload_picture, :grant_access]
 
 

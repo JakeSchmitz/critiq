@@ -11,7 +11,7 @@ class ImageAsset < ActiveRecord::Base
 	                      access_key_id:     ENV['AWS_ACCESS_KEY_ID'    ],
 	                      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']},
 	  s3_protocol: "https"                  
-  attr_accessible :attachment, :user_id, :attachable_id, :product_id, :attachment_attributes
+  attr_accessible :attachment, :user_id, :attachable_id, :id, :product_id, :attachment_attributes
 
   include Rails.application.routes.url_helpers
 

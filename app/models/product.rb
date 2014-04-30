@@ -110,7 +110,9 @@ class Product < ActiveRecord::Base
     pics = self.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(5)
     # This doesn't work yet, need to get thumbnail from the video
     #if self.video_url
-    #  pics << self.video_thumb
+    #  v = ImageAsset.new(attachment: self.video_thumb, user_id: self.user.id, id: 'video')
+    #  p v
+    #  pics << v
     #  p self.video_thumb
     #end
     pics
@@ -172,6 +174,8 @@ def youtube_embed(youtube_url)
       vimeo_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
       vimeo_id = $5
     end
+    jayson = open('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' + vimeo_id.to_s)
+    p open('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' + vimeo_id.to_s) 
     vim_json = JSON.parse(open('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' + vimeo_id.to_s))
     open(url(vim_json.thumbnail_url))
   end
@@ -184,6 +188,7 @@ def youtube_embed(youtube_url)
       youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
       youtube_id = $5
     end
+    p open("http://img.youtube.com/vi/" + youtube_id.to_s + "/1.jpg")
     open("http://img.youtube.com/vi/" + youtube_id.to_s + "/1.jpg")
   end
 

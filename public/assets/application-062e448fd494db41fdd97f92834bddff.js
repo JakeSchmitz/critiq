@@ -268,15 +268,25 @@ $(document).ready(function(){
     var newPic, oldPic;
     oldPic = $('#main-pic').css("background-image");
     newPic = $('#alt-pic' + id).css("background-image");
+    $('#main-pic').html("");
     return $('#main-pic').css("background-image", newPic);
+  };
+
+  this.embedVideo = function(video_url) {
+    $('#main-pic').html('');
+    return $('#main-pic').append(video_url);
   };
 
   Products = {
     init: function() {
-      return this.showFeatures();
+      this.showFeatures();
+      return this.showLikes();
     },
     showFeatures: function() {
       return $('#product-tabs a[href="#product-features').tab('show');
+    },
+    showLikes: function() {
+      return $('#u_0_2').css('color', '#fff');
     }
   };
 

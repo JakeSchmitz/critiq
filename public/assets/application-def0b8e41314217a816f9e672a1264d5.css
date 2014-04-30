@@ -7588,6 +7588,60 @@ form {
 .cancel {
   margin-left: 20px;
 }
+
+@media (max-width: 980px) {
+  /* line 126, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .new-comment {
+    margin-left: 0;
+  }
+  /* line 128, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .new-comment .current-user {
+    display: none;
+  }
+  /* line 131, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .new-comment .comment-box {
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  /* line 136, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .comment-form {
+    width: auto;
+  }
+  /* line 138, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .comment-form #comment-body {
+    width: 100%;
+  }
+
+  /* line 142, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .product-comments {
+    margin: 0;
+  }
+
+  /* line 145, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .comment-nest {
+    width: 100%;
+  }
+
+  /* line 148, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .comment {
+    display: inline-block;
+    float: right;
+  }
+  /* line 151, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .comment .comment-body {
+    width: 90%;
+    float: center;
+    margin-bottom: 5px;
+    min-height: 60px;
+  }
+  /* line 156, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/comments.css.scss */
+  .comment .comment-body .commenter-info {
+    float: left;
+    height: 29px;
+    width: 100%;
+  }
+}
 @import url("//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700");
 /*!
  * Bootswatch v3.1.0+1
@@ -14066,25 +14120,39 @@ div.file_upload_wrapper:hover {
   border-color: #494949;
 }
 
+/* line 511, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+input[type="file"] {
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  display: inline-block;
+  height: 30px;
+  text-align: center;
+}
+
+/* line 519, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+.file_upload_wrapper {
+  width: 100%;
+}
+
 /* Mobile-ish */
 @media (max-width: 480px) {
-  /* line 514, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 525, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     font-weight: 400;
   }
 
-  /* line 518, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 529, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   p {
     line-height: 1.2em;
   }
 
-  /* line 521, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 532, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   footer {
     width: 100%;
   }
 
-  /* line 524, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 535, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   .home-banner {
     padding-left: 0px;
     padding-right: 0px;
@@ -14093,19 +14161,19 @@ div.file_upload_wrapper:hover {
 }
 /* navbar on small screen ish */
 @media (max-width: 980px) {
-  /* line 533, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 544, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   .navbar {
     background-color: #828282;
   }
-  /* line 535, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 546, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   .navbar .brand {
     margin-top: -5px;
   }
-  /* line 538, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 549, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   .navbar .btn-navbar {
     padding: 5px;
   }
-  /* line 541, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 552, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   .navbar .navbar-inner {
     background-color: #6d2cfa;
     background-image: none;
@@ -14115,22 +14183,27 @@ div.file_upload_wrapper:hover {
     padding-left: 3%;
     padding-right: 3%;
   }
-  /* line 551, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 562, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   .navbar .nav > li {
     color: #fff;
   }
 }
 @media (min-width: 980px) {
-  /* line 560, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 571, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   .navbar .navbar-inner {
     padding-left: 3%;
     padding-right: 3%;
   }
 }
 @media (max-width: 768px) {
-  /* line 568, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  /* line 579, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
   .no-mobile {
     display: none;
+  }
+
+  /* line 582, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/custom.css.scss */
+  .row {
+    margin: 0;
   }
 }
 /* line 5, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/feature_groups.css.scss */
@@ -15916,6 +15989,12 @@ input[type="color"],
 }
 
 /* line 126, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+.product-left {
+  float: left;
+  display: inline-block;
+}
+
+/* line 131, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-name {
   padding-top: 15px;
   text-align: left;
@@ -15925,20 +16004,20 @@ input[type="color"],
   color: #fff;
 }
 
-/* line 135, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 140, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-description {
   text-align: left;
   font-size: 16px;
   font-weight: 300;
 }
 
-/* line 141, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 146, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-creator {
   width: 100%;
   display: inline-block;
   margin: 10px;
 }
-/* line 145, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 150, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-creator .creator-face {
   width: 60px;
   margin-top: -5px;
@@ -15949,7 +16028,7 @@ input[type="color"],
   background-size: cover;
   border: 2px solid #aaa;
 }
-/* line 155, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 160, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-creator .creator-data {
   float: left;
   text-align: left;
@@ -15957,22 +16036,22 @@ input[type="color"],
   padding-top: 5px;
   width: auto;
 }
-/* line 161, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 166, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-creator .creator-data > h5 {
   color: #fff;
 }
 
-/* line 167, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 172, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-buttons {
   margin-top: 100px;
   display: inline-block;
 }
 
-/* line 172, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 177, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-pictures {
   text-align: center;
 }
-/* line 174, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 179, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-pictures .main-pic {
   max-width: 95%;
   width: 480px;
@@ -15981,7 +16060,7 @@ input[type="color"],
   border: 1px solid #4b4b4b;
   margin: 0px;
 }
-/* line 182, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 187, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-pictures .other-pics {
   display: inline-block;
   width: 90px;
@@ -15989,26 +16068,25 @@ input[type="color"],
   margin-left: 15px;
   float: left;
 }
-/* line 188, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 193, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-pictures .other-pics .alt-pic {
   width: 90px;
   margin-bottom: 6px;
   display: block;
-  border: 1px solid #4b4b4b;
   height: 67px;
 }
 
-/* line 198, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 202, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-right {
   color: #fff;
   display: inline-block;
   text-align: right;
 }
-/* line 202, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 206, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-right > h2 {
   color: #fff;
 }
-/* line 205, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 209, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-right .description-box {
   text-align: center;
   height: auto;
@@ -16019,12 +16097,12 @@ input[type="color"],
   width: 450px;
   float: center;
 }
-/* line 214, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 218, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-right .description-box .product-description {
   text-align: left;
 }
 
-/* line 220, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 224, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .pnav {
   border-image: url(/images/blue-purple-border.png) 3 0 0 0 stretch;
   text-align: center;
@@ -16034,7 +16112,7 @@ input[type="color"],
   height: 46px;
 }
 
-/* line 229, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 233, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-nav {
   border: none;
   text-align: center;
@@ -16042,72 +16120,77 @@ input[type="color"],
   margin: 0px;
   height: auto;
 }
-/* line 235, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 239, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-nav .row {
   display: inline-block;
   text-align: center;
 }
-/* line 238, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 242, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-nav .row > li {
   display: inline-block;
   background-color: #494949;
 }
-/* line 242, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 246, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-nav .row .nav-tabs > li.active > a, .product-nav .row .nav-tabs > li.active > a:hover, .product-nav .row .nav-tabs > li.active > a:focus {
   background-color: #6d2cfa;
   border: none;
 }
-/* line 246, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 250, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-nav .row > a {
   display: inline-block;
   color: #fff;
 }
 
-/* line 253, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 257, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+.fb-like {
+  margin-left: 20px;
+}
+
+/* line 261, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   background-color: #6d2cfa;
   color: #fff;
   border: none;
 }
 
-/* line 259, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 267, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
   background-color: #494949;
   color: #fff;
   border: none;
 }
 
-/* line 265, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 273, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-comment {
   display: inline-block;
   margin-bottom: 20px;
   margin-left: 10%;
 }
 
-/* line 271, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 279, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-comments {
   margin-left: 10%;
   margin-right: 10%;
 }
 
-/* line 276, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 284, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-image-upload {
   margin-top: 20px;
 }
 
-/* line 280, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 288, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-likers {
   margin-top: 50px;
   margin-left: 0;
   width: 100%;
 }
 
-/* line 286, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 294, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-rewards {
   width: 95%;
 }
 
-/* line 290, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 298, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .pic-btns {
   display: inline-block;
   vertical-align: top;
@@ -16117,7 +16200,7 @@ input[type="color"],
 }
 
 /* product form style */
-/* line 305, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 313, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-password {
   height: 100%;
   width: 100%;
@@ -16126,19 +16209,30 @@ input[type="color"],
   float: center;
   text-align: center;
 }
-/* line 312, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 320, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-password .inline-form {
   display: inline-block;
   margin: 0 auto;
   float: center;
 }
-/* line 317, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+/* line 325, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
 .product-password button {
   float: center;
 }
 
 @media (max-width: 768px) {
-  /* line 323, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 331, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .navbar {
+    padding: 0 20px;
+  }
+
+  /* line 334, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  body {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  /* line 338, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-right {
     text-align: center;
     display: inline-block;
@@ -16147,31 +16241,28 @@ input[type="color"],
     margin-left: 2%;
   }
 
-  /* line 330, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
-  .other-pics {
-    display: none !important;
-  }
-  /* line 332, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
-  .other-pics .alt-pic {
-    display: none;
-  }
-
-  /* line 336, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /*.other-pics {
+  	display: none !important;
+  	.alt-pic {
+  		display: none;
+  	}
+  } */
+  /* line 351, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-thumb {
     width: 150px;
     height: 200px;
   }
 
-  /* line 340, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 355, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .thumbnail {
     margin-left: 10px;
   }
-  /* line 342, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 357, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .thumbnail .product-thumb-content {
     height: 85px;
     margin-top: -125px;
   }
-  /* line 346, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 361, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .thumbnail .active-button {
     position: absolute;
     margin-top: -190px;
@@ -16179,18 +16270,18 @@ input[type="color"],
   }
 }
 @media (min-width: 980px) {
-  /* line 355, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 370, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .other-pics {
     display: inline-block;
   }
 
-  /* line 358, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 373, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-thumb {
     width: 212px;
     height: 370px;
   }
 
-  /* line 364, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 379, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-thumb:hover .product-thumb-content {
     -moz-transition: all 0.2s ease-in;
     /* WebKit */
@@ -16202,13 +16293,13 @@ input[type="color"],
     margin-top: -102px;
     height: 62px;
   }
-  /* line 374, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 389, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-thumb:hover .product-thumb-content .product-thumb-description {
     text-align: center;
     display: none;
     color: rgba(68, 68, 68, 0.999);
   }
-  /* line 380, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 395, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-thumb:hover .view-button {
     display: block;
     width: 106px;
@@ -16219,7 +16310,7 @@ input[type="color"],
     padding-bottom: 6px !important;
   }
 
-  /* line 390, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 405, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .active-button {
     position: absolute;
     margin-top: -190px;
@@ -16227,68 +16318,117 @@ input[type="color"],
   }
 }
 @media (max-width: 640px) {
-  /* line 398, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 413, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .new-comment {
     text-align: left;
     position: absolute;
   }
-  /* line 401, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 416, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .new-comment .comment-box {
     position: absolute;
     width: 450px;
     min-height: 100px;
   }
-  /* line 406, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 421, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .new-comment .current-user-face {
     display: none;
   }
 
-  /* line 411, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 426, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-comment .user-info {
     display: none;
   }
-  /* line 414, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 429, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-comment .comment-vote-buttons {
     padding-right: 10px;
   }
-  /* line 417, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 432, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-comment .comment-body {
     width: 90%;
   }
 }
-@media (max-width: 980px) {
-  /* line 424, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+@media (max-width: 1200px) {
+  /* line 439, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .container {
+    padding: 10px;
+  }
+
+  /* line 442, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-right {
     text-align: center;
+    width: 95%;
   }
-  /* line 426, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 445, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-right .description-box {
     margin: 0 auto;
     width: 90%;
     min-height: 200px;
     height: auto;
   }
+
+  /* line 452, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .product-left {
+    width: 100%;
+    text-align: center;
+  }
+  /* line 455, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .product-left .product-name {
+    text-align: center;
+  }
+  /* line 458, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .product-left .product-creator {
+    width: auto;
+    float: center;
+  }
+  /* line 463, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .product-left .product-pictures .main-pic {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  /* line 467, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .product-left .product-pictures .other-pics {
+    display: inline-block;
+    max-height: 75px;
+    text-align: center;
+    width: 95%;
+    margin-top: 10px;
+  }
+  /* line 473, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .product-left .product-pictures .other-pics .alt-pic {
+    float: left;
+    width: 20%;
+    display: inline-block;
+    padding-right: none;
+    margin-bottom: 6px;
+    display: block;
+    height: 67px;
+  }
+
+  /* line 486, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  .product-right .product-buttons {
+    margin-top: 30px;
+  }
 }
 @media (min-height: 600px) {
-  /* line 436, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 493, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-password {
     min-height: 450px;
   }
 }
 @media (min-height: 900px) {
-  /* line 442, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 499, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-password {
     min-height: 750px;
   }
 }
 @media (min-height: 1200px) {
-  /* line 448, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 505, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-password {
     min-height: 1050px;
   }
 }
 @media (min-height: 1500px) {
-  /* line 454, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
+  /* line 511, /Users/Jacob/Desktop/critiq0/app/assets/stylesheets/products.css.scss */
   .product-password {
     min-height: 1350px;
   }

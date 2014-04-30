@@ -107,14 +107,12 @@ class Product < ActiveRecord::Base
   end
 
   def top_pics
-    pics = self.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(5)
-    # This doesn't work yet, need to get thumbnail from the video
-    #if self.video_url
-    #  v = ImageAsset.new(attachment: self.video_thumb, user_id: self.user.id, id: 'video')
-    #  p v
-    #  pics << v
-    #  p self.video_thumb
-    #end
+    lim = 5
+    # if there's a video, make first pic the thumbnail of video
+    if self.video_thumb
+      lim = 4
+    end
+    pics = self.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(lim)
     pics
   end
 
@@ -144,7 +142,7 @@ class Product < ActiveRecord::Base
     end
   end
 
-def youtube_embed(youtube_url)
+  def youtube_embed(youtube_url)
     if youtube_url[/youtu\.be\/([^\?]*)/]
       youtube_id = $1
     else
@@ -174,10 +172,8 @@ def youtube_embed(youtube_url)
       vimeo_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
       vimeo_id = $5
     end
-    jayson = open('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' + vimeo_id.to_s)
-    p open('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' + vimeo_id.to_s) 
-    vim_json = JSON.parse(open('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' + vimeo_id.to_s))
-    open(url(vim_json.thumbnail_url))
+    jayson = JSON.parse(open('http://vimeo.com/api/v2/video/' + vimeo_id.to_s + '.json').string)[0]
+    jayson["thumbnail_small"]
   end
 
   def youtube_thumbnail(youtube_url)
@@ -188,8 +184,7 @@ def youtube_embed(youtube_url)
       youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
       youtube_id = $5
     end
-    p open("http://img.youtube.com/vi/" + youtube_id.to_s + "/1.jpg")
-    open("http://img.youtube.com/vi/" + youtube_id.to_s + "/1.jpg")
+    "http://img.youtube.com/vi/" + youtube_id.to_s + "/0.jpg"
   end
 
   private

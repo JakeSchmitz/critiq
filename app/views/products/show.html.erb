@@ -40,7 +40,13 @@
             <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>'); background-position: center;"></div>
           <% end %>
           <div class="other-pics">
-            <% @product.top_pics.first(5).each_with_index do |pic, i| %>
+            <% if @product.video_url %>
+              <div class="alt-pic">
+                <a class="thumb-ratio alt-pic"  style="cursor: pointer; background-position: center; background-image: url(<%= @product.video_thumb %>);" id="video_thumb" onclick="embedVideo('<%= escape_javascript @product.embed_video %>')">
+                </a>
+              </div>
+            <% end %>
+            <% @product.top_pics.each_with_index do |pic, i| %>
               <div class="alt-pic">
                 <a class="thumb-ratio alt-pic"  style="background-image: url('<%= pic.attachment.url(:large) %>'); cursor: pointer; background-position: center;" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
                 </a>

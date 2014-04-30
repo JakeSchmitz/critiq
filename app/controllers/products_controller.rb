@@ -12,6 +12,9 @@ class ProductsController < ApplicationController
     @feature_groups = @product.feature_groups
     @comment = @product.comments.new
     @likers = @product.followers
+    # this is the html that renders an iframe containing the products video hosted by
+    # youtube or vimeo
+    @embed_link = @product.video_url
   end
 
   def new

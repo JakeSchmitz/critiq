@@ -8,6 +8,10 @@
 	$('#main-pic').html("")
 	$('#main-pic').css("background-image", newPic)
 
+@embedVideo = (video_url) ->
+	$('#main-pic').html('')
+	$('#main-pic').append(video_url)
+
 Products = 
 	init: ->
 		@showFeatures()

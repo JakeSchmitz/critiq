@@ -507,6 +507,17 @@ div.file_upload_wrapper:hover {
   border-color: #494949;
 }
 
+input[type="file"] {
+  border: none;
+  background: rgba(0,0,0,0);
+  display: inline-block;
+  height: 30px;
+  text-align: center;
+}
+
+.file_upload_wrapper {
+  width: 100%;
+}
 
 /* Mobile-ish */
 @media (max-width: 480px) {
@@ -566,5 +577,8 @@ div.file_upload_wrapper:hover {
 @media (max-width: 768px) {
   .no-mobile {
     display: none;
+  }
+  .row {
+    margin: 0;
   }
 }

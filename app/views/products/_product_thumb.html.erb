@@ -1,6 +1,6 @@
 <div class="thumbnail product-thumb" style="text-align: center;">
 	<a href="/products/<%= product.id %>" data-toggle="modal">
-		<div class="thumb-ratio" style="background-image: url('<%= product.profile_pic_url %>');"></div>
+		<div class="thumb-ratio" style="background-image: url('<%= product.profile_pic_url %>'); background-position: center;"></div>
 	</a>
 	<% if current_user?(product.user) %>
 		<div class="active-button">

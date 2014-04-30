@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
       @product.user_id = current_user.id 
       if current_user.creator and @product.save
         Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :create, resource_type: :product, resource_id: @product.id)
-        redirect_to product_initial_uploads_path(@product), notice: 'Product was successfully created.'
+        redirect_to product_initial_uploads_path(@product), notice: 'Drive was successfully created.'
       else
         flash[:warning] = "You don't yet have permission to create drives, try contributing to a few first!" 
         redirect_to request.referer
@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
   def update
     @product.product_pic = product_pic = @product.pictures.last
     if @product.update_attributes product_params 
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to @product, notice: 'Drive was successfully updated.'
     else
       render action: 'edit'
     end
@@ -74,9 +74,9 @@ class ProductsController < ApplicationController
       if !@product.likes.exists?(user_id: current_user.id)
         if @product.likes.create(user_id: current_user.id)
           Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :product, resource_id: @product.id)
-          redirect_to @product, notice: 'Product was successfully updated.' 
+          redirect_to @product, notice: 'Drive was successfully updated.' 
         else
-          redirect_to @product, notice: 'Not allowed to love'
+          redirect_to @product, error: 'UH OH!!!! Just kidding, probably no big deal'
         end
       else
         redirect_to @product, notice: 'User has already liked this!'
@@ -124,7 +124,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :hidden, :pwd, :rating, :feature_groups, :features, :image_asset, :link, :description, :tab, :id, :pictures, :image_asset, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes],
+      params.require(:product).permit(:name, :hidden, :pwd, :rating, :feature_groups, :features, :video_url,  :image_asset, :link, :description, :tab, :id, :pictures, :image_asset, :product_pic, pictures_attributes: [:attachment_attributes, :attachment, :id, :pictures_attributes],
                                       lovers: [:product_id, :user_id])
     end
 

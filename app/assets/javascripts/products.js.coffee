@@ -5,6 +5,7 @@
 @selectImage = (id) ->
 	oldPic = $('#main-pic').css("background-image")
 	newPic = $('#alt-pic' + id).css("background-image")
+	$('#main-pic').html("")
 	$('#main-pic').css("background-image", newPic)
 
 Products = 

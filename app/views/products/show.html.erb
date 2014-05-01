@@ -64,7 +64,7 @@
           <% end %>
           <% if signed_in? and (current_user.id == @product.user.id or is_admin?) %>
             <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
-            <%= button_to 'DELETE', product_path(@product), :method => 'delete', :class => "btn-clear inline-button", style: 'float: left;' %>
+            <%= button_to 'DELETE', product_path(@product), :method => 'delete', :class => "btn-clear inline-button", style: 'float: left;', confirm: 'Delete this forever??' %>
           <% end %>
         </div>
         <div class="well span4 description-box">

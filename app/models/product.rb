@@ -109,7 +109,7 @@ class Product < ActiveRecord::Base
   def top_pics
     lim = 5
     # if there's a video, make first pic the thumbnail of video
-    if self.video_thumb and self.video_thumb != ''
+    if self.video_url and self.video_url != ''
       lim = 4
     end
     pics = self.pictures.where.not(attachment_file_size: nil).order('created_at DESC').limit(lim)

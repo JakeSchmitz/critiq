@@ -15,15 +15,17 @@
 		<% end %>
 	</div>
 <% else %>
-	<% if signed_in? and current_user.id == @product.user.id %>
-		<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
-				  CREATE A POLL
-		</button>
-	<% end %>
 	<div class="container">
+		<% if signed_in? and current_user.id == @product.user.id %>
+			<div class="row">
+				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
+						  CREATE A POLL
+				</button>
+			</div>
+		<% end %>
 		<div class="single-features">
 			<% if !@product.single.nil? and !@product.single.features.empty? %>
-				<h2 style="text-align: left; float: left">Singletons&nbsp;<h6 style="text-align: left; padding: 30px;">(Yes/No, Hot/Cold)</h6></h2>
+				<h2 style="float: center">Singletons<h6 style="text-align: center;">(Yes/No, Hot/Cold)</h6></h2>
 				<div class="row" id="feature-thumbnails<%= @product.single.id %>" style="text-align: left; display: inline-block;">
 			    <% @product.single.features.each do |feature| %>
 		      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>

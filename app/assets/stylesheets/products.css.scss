@@ -52,11 +52,6 @@
 	}
 }
 
-.product-thumbnail {
-	height: 4px;
-	width: 250px;
-}
-
 .product-thumb {
 	display: inline-block;
 	padding: 0px;
@@ -81,7 +76,6 @@
 	  position: relative;
 	  padding: 7px;
 	  padding-top: 0px;
-		margin-top: -190px;
 		background: rgba(230, 235, 245, .999);
 		background-color: #e8eaee;
 		height: 150px;
@@ -181,7 +175,8 @@
 		width: 480px;
 		height: 360px;
 		background-size: cover;
-		border: 1px solid #4b4b4b;
+		border: none;
+		display: inline-block;
 		margin: 0px;
 	}
 	.other-pics {
@@ -373,10 +368,45 @@
 	.product-thumb{
 		width: 212px;
 		height: 370px;
+		.thumb-pic {
+			width: 212px;
+			height: 180px;
+		}
+		/* width: 370px;
+		height: 212px;
+		.thumb-pic {
+			display: inline-block;
+			width: 185px;
+			height: 212px;
+			padding: 0px;
+			border-right: 1px solid #828282;
+			float:left;
+			margin: 0px;
+		}
+		.product-thumb-content {
+			width: 185px;
+			padding-left: 10px;
+			float: left;
+			display: inline-block;
+			margin: 0px;
+		}*/
 	}
 	.product-thumb:hover {
-
-		.product-thumb-content {
+		-moz-transition: all 0.2s ease-in;
+		  /* WebKit */
+		  -webkit-transition: all 0.2s ease-in;
+		  /* Opera */
+		  -o-transition: all 0.2s ease-in;
+		  /* Standard */
+		  transition: all 0.2s ease-in;
+		.view-button {
+			display: block;
+			width: 106px;
+			position: absolute;
+			margin-left: 53px;
+			margin-top: -120px;
+			padding-top: 8px !important;
+			padding-bottom: 6px !important;
 			-moz-transition: all 0.2s ease-in;
 		  /* WebKit */
 		  -webkit-transition: all 0.2s ease-in;
@@ -384,22 +414,6 @@
 		  -o-transition: all 0.2s ease-in;
 		  /* Standard */
 		  transition: all 0.2s ease-in;
-		  margin-top: -102px;
-		  height: 62px;
-			.product-thumb-description {
-				text-align: center;
-				display: none;
-				color: rgba(68, 68, 68, .999);
-			}
-		}
-		.view-button {
-			display: block;
-			width: 106px;
-			position: absolute;
-			margin-left: 53px;
-			margin-top: -230px;
-			padding-top: 8px !important;
-			padding-bottom: 6px !important;
 		}
 	}
 	.active-button {

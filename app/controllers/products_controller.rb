@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
 
   def index
-    @products = Product.all
+    @products = Product.where(:private => false, active: true)
   end
 
   def show  # what if there is no propic id?

@@ -240,10 +240,11 @@ div.file_upload_wrapper:hover {
 }
 
 .navbar {
+  border: none;
   .navbar-inner {
     background-color: #6d2cfa;
     background-image: none;
-    box-shadow: 0px 1px 4px 1px #657;
+    box-shadow: none;
     border: none;
     padding-right: 3%;
     padding-left: 3%;
@@ -551,7 +552,7 @@ input[type="file"] {
     .navbar-inner {
       background-color: #6d2cfa;
       background-image: none;
-      box-shadow: 0px 1px 4px 1px #657;
+      box-shadow: none;
       border: none;
       height: 50px;
       padding-left: 3%;

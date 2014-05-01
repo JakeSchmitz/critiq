@@ -19,7 +19,7 @@
         <div class="under-name">
           <div class="user-bio">
             <% if @user.bio %>
-              <h4 class="proxima-font" style="color: #fff;"><%= @user.bio %></h4>
+              <h4 class="proxima-font" style="color: #fff; white-space: pre-wrap;"><%= @user.bio %></h4>
             <% else %>
               <h4 class="proxima-font" style="color: #fff">This Critiqer doesn't want to share a bio yet</h4>
             <% end %>

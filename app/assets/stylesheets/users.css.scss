@@ -98,6 +98,7 @@
 }
 
 .user-profile-top {
+	padding-bottom: 20px;
 	height: auto;
 	text-align: center;
 	> h1, h2, h3, h4 {
@@ -119,7 +120,7 @@
 		}
 	}
 	.user-right {
-		padding-top: 50px;
+		padding-top: 40px;
 		width: 60%;
 		margin-left: 0;
 		min-width: 480px;
@@ -130,11 +131,12 @@
 			float: left;
 			margin-top: -10px;
 			padding-bottom: 5px;
+			text-align: left;
 			border-bottom: 1px solid #fff;
 			> h1, h2, h3, h4 {
 				color: #fff;
 				text-align: left;
-				margin-left: 20%;
+				margin-left: 10%;
 			}
 		}
 		.under-name {
@@ -142,13 +144,15 @@
 			text-align: center;
 			min-height: 120px;
 			.user-bio {
-				width: 40%;
-				display: inline-block;
+				width: 80%;
 				min-height: 120px;
 				float: center;
+				margin-left: 10%;
+				text-align: left;
 				> h4 {
 					display: inline-block; 
 					vertical-align: center;
+					text-align: left;
 				}
 			}
 		}

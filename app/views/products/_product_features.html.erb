@@ -17,7 +17,7 @@
 <% else %>
 	<div class="container">
 		<% if signed_in? and current_user.id == @product.user.id %>
-			<div class="row">
+			<div >
 				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
 						  CREATE A POLL
 				</button>

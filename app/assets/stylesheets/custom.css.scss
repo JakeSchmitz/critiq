@@ -211,6 +211,68 @@ input {
   transition: all 0.3s ease-in;
 }
 
+.btn-success {
+  text-shadow: none;
+  box-shadow: none;
+  color: #fff;
+  background-color: #3fb618;
+  border: 2px solid #3fb618;
+  height: auto;
+  font-size: 20px;
+  -moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
+}
+
+.btn-success:hover {
+  text-shadow: none;
+  background-color: #fff;
+  color: #3fb618;
+  border: 2px solid #3fb618;
+  -moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
+}
+
+.btn-warning {
+  text-shadow: none;
+  box-shadow: none;
+  color: #fff;
+  background-color: #3fb618;
+  border: 2px solid #3fb618;
+  height: auto;
+  font-size: 20px;
+  -moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
+}
+
+.btn-warning:hover {
+  text-shadow: none;
+  background-color: #fff;
+  color: #3fb618;
+  border: 2px solid #3fb618;
+  -moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
+}
+
 #nav_login_email, #nav_login_password, #nav_login_button, #nav_signup_button {
   width: 75px;
   padding: 5px 10px 10px 5px;

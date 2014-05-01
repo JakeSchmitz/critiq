@@ -13,7 +13,7 @@ class Activity < ActiveRecord::Base
 		when 'feature'
 			Feature.find(self.resource_id).product
 		when 'product'
-			Product.find(self.resource_id)
+			Product.where(id: self.resource_id).first
 		else
 			case self.resource_type.to_s.downcase
 			when 'comment'
@@ -21,7 +21,7 @@ class Activity < ActiveRecord::Base
 			when 'feature'
 				Feature.find(self.resource_id).feature_group.product
 			when 'product'
-				Product.find(self.resource_id)
+				Product.where(id: self.resource_id).first
 			else
 				nil
 			end

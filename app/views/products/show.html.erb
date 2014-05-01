@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="product-pictures">
-          <% if @product.video_url != '' %>
+          <% if @product.video_url and @product.video_url != '' %>
             <div class="main-pic span6" id="main-pic">
               <%= @product.embed_video.html_safe %>
             </div>
@@ -40,7 +40,7 @@
             <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>'); background-position: center;"></div>
           <% end %>
           <div class="other-pics">
-            <% if @product.video_url != '' %>
+            <% if @product.video_url and @product.video_url != '' %>
               <div class="alt-pic">
                 <a class="thumb-ratio alt-pic"  style="cursor: pointer; background-position: center; background-image: url(<%= @product.video_thumb %>); " id="video_thumb" onclick="embedVideo('<%= escape_javascript @product.embed_video %>')">
                 </a>

@@ -583,12 +583,26 @@ div.file_upload_wrapper:hover {
   background-color: #6d2cfa;  
   border: 2px solid #6d2cfa;
   color: #fff;
+  -moz-transition: all 0.2s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.2s ease-in;
+  /* Opera */
+  -o-transition: all 0.2s ease-in;
+  /* Standard */
+  transition: all 0.2s ease-in;
 }
 
 .btn-purple:hover {
   background-color: #fff;
   color: #6d2cfa;
   border: 2px solid #6d2cfa;
+  -moz-transition: all 0.2s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.2s ease-in;
+  /* Opera */
+  -o-transition: all 0.2s ease-in;
+  /* Standard */
+  transition: all 0.2s ease-in;
 }
 
 .btn-black {

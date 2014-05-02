@@ -8,7 +8,7 @@
 		<% @product.bounties.each do |bounty| %>
 			<div class="single-bounty">
 				<div class="bounty-question">
-					<h3><%= bounty.question %></h3>
+					<h3 style="white-space: pre-wrap;"><%= bounty.question %></h3>
 					<p><%= bounty.comments.length.to_s %> responses so far</p>
 				</div>
 				<div class="new-comment">

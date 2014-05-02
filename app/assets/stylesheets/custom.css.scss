@@ -581,13 +581,14 @@ div.file_upload_wrapper:hover {
 
 .btn-purple {
   background-color: #6d2cfa;  
-  border-color: #6d2cfa;
+  border: 2px solid #6d2cfa;
+  color: #fff;
 }
 
 .btn-purple:hover {
   background-color: #fff;
   color: #6d2cfa;
-  border-color: #6d2cfa;
+  border: 2px solid #6d2cfa;
 }
 
 .btn-black {

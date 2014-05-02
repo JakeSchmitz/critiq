@@ -1,0 +1,29 @@
+<div class="container section-container">
+	<div class="section-header">
+		<h1>How it works</h1>
+	</div>
+	<div class="section-sub">
+		<h2>Feedback Drives:</h2>
+		<p>Critiq is about getting feedback, and at the very core of it is the Feedback Drive. Give it life with a few images on what you’re working on, and a short description telling people about what you’re working on. Drives are the hub for polls, critiques, and way to keep track of people following the project.</p>
+		<%= image_tag '/images/sample_drive.png' %>
+		<h2>Polls:</h2>
+		<p>Ask a question set options to vote on. There are two types: Comparison and Standalone.</p>
+		<div class="row" style="text-align: center;">
+			<%= image_tag '/images/standalone.png', style: 'display: inline-block; width: 235px; height: 285px; margin: 20px;' %>
+			<%= image_tag '/images/comparison.png', style: 'display: inline-block; width: 235px; height: 285px; margin: 20px;' %>
+		</div>
+		<h2>Critiques:</h2>
+		<p>Anyone can leave a comment! The best advice is voted to the top.</p>
+		<h2>Heat</h2>
+		<p>Heat can be earned by voting on polls, but you gain much more when you leave comments that are voted up by the community. You gain Critiqer heat from interacting with people’s Drives when you participate in polls and your comments get upvoted. You gain Creator heat from people interacting with your drive when they follow it or comment. It’s Critiq’s way of showing the value of your feedback. </p>
+		<p>For more information on how to leave good Critiques, please read our community policies by clicking the button below.</p>
+		<div class="row" style="text-align: center; margin: 30px;">
+			<%= link_to 'COMMUNITY GUIDELINES', '/community', class: 'btn btn-primary', style: 'float: center' %>
+		</div>
+		<p>Check out the newest drives or get started with a drive of your own by clicking below.</p>
+		<div class="row" style="text-align: center; margin-top: 30px;">
+			<%= link_to 'CURRENT DRIVES', '/products', class: 'btn btn-purple', style: 'float: center' %>
+			<%= link_to 'CREATE A DRIVE', new_product_path, class: 'btn btn-purple', style: 'float: center' %>
+		</div>
+	</div>
+</div>

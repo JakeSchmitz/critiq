@@ -79,13 +79,13 @@
   </div></div>
   <div class="pnav" style="text-align: center; width: 100%; margin: none;">
     <ul class="nav nav-tabs product-nav product-nav-content row" id="product-tabs">
-      <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> <span class="no-mobile">Vote</span></a></li>
-      <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> <span class="no-mobile">Critiqs</span> (<%= @product.comments.length - 1%>)</a></li>
-      <li><a href="#product-bounties" data-toggle="tab"><i class="fa fa-bullseye"></i> <span class="no-mobile">Bounties</span> (<%= @product.bounties.length.to_s %>)</a></li>
-      <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> <span class="no-mobile">Followers</span> (<%= @product.followers.length.to_s %>)</a></li>
+      <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> <span class="no-mobile">VOTE</span></a></li>
+      <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> <span class="no-mobile">CRITIQS</span> (<%= @product.comments.length - 1%>)</a></li>
+      <li><a href="#product-bounties" data-toggle="tab"><i class="fa fa-bullseye"></i> <span class="no-mobile">BOUNTIES</span> (<%= @product.bounties.length.to_s %>)</a></li>
+      <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> <span class="no-mobile">FOLLOWERS</span> (<%= @product.followers.length.to_s %>)</a></li>
       <!--<li><a href="#product-rewards" data-toggle="tab"><i class="fa fa-star"></i> <span class="no-mobile">Rewards</span></a></li>-->
       <% if signed_in? and (current_user.id == @product.user.id or is_admin?) %>
-        <li><a href="#product_edit" data-toggle="tab"><i class="fa fa-cogs"></i> <span class="no-mobile">Edit</span></a></li>
+        <li><a href="#product_edit" data-toggle="tab"><i class="fa fa-cogs"></i> <span class="no-mobile">EDIT</span></a></li>
       <% end %>
     </ul>
   </div>

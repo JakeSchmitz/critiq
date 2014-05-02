@@ -7,6 +7,7 @@
 	height: 370px;
 	width: 212px;
 	display: inline-block;
+	border: none;
 }
 
 .user-banner {
@@ -32,7 +33,7 @@
     max-width: 100%;
     height: auto;
     width: auto;
-    border-radius: 2px;
+    border-radius: 0px;
 	}
 	.user-thumb-content {
 		-moz-transition: all 0.2s ease-in;
@@ -351,6 +352,7 @@
 	.user-thumb {
 		width: 200px;
 		height: 300px;
+		border: none;
 	}
 	.thumbnail {
 		.user-thumb-content {

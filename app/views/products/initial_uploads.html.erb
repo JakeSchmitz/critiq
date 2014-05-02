@@ -1,7 +1,7 @@
 <div class="upload-product-images" style="min-height: 100%;">
 	<div class="hero-unit home-banner" style="height: 250px; margin-bottom: 0">
 		<div class="hero-text hero-header">
-			<h1>Meet your new feedback drive</h1>
+			<h1>Finish up your new feedback drive</h1>
 		</div>
 	</div>
 	<div class="pnav" style="text-align: center; width: 100%; margin: none;">
@@ -11,14 +11,16 @@
 	  </ul>
 	</div>
 	<div class="container" style="min-height: 80%">
-		<div style="text-align: center; margin: 0 auto; margin-top: 30px;">
-		  <h4>Add all of the additional photos </h4>
-		</div>
-		<div class="jquery-product-image-upload">
-	      <%= render :partial => 'jquery_image_uploader' %>
-	  </div>
-	  <div class="finished" style="float: center; text-align: center; margin-bottom: 80px;">
-	  	<%= link_to 'Finished!', @product, class: 'btn, btn-primary btn-lg' %>
+		<div class="well" style="padding: 0 100px 20px 100px; display: inline-block; border:none;">
+			<div style="text-align: center; margin: 0 auto; margin-top: 30px;">
+			  <h4>Add all of the additional photos </h4>
+			</div>
+			<div class="jquery-product-image-upload">
+		      <%= render :partial => 'jquery_image_uploader' %>
+		  </div>
+		  <div class="finished" style="float: center; text-align: center; margin-bottom: 80px;">
+		  	<%= link_to 'Finished!', @product, class: 'btn btn-primary' %>
+		  </div>
 	  </div>
 	</div>
 </div>

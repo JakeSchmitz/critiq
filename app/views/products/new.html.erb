@@ -12,12 +12,15 @@
 	  </ul>
 	</div>
 	<div class="container">
-		<div style="text-align: center; margin: 0 auto; margin-top: 30px;">
-		  <h4>All you need to get started is a short description of your creation, a picture, and a Critiq account.</p>
-		  <h4>Start getting feedback today.</p>
-		</div>
-		<div style="text-align: center; margin: 0 auto;">
-			<%= render :partial => 'form' %>
+		<div class="well" style="padding: 0 100px 20px 100px; display: inline-block; border:none;">
+			<div style="text-align: center; margin: 0 auto; margin-top: 30px;">
+			  <h4>All you need to get started is a short description</h4>
+			  <h4>of your creation, a picture, and a Critiq account.</h4>
+			  <p>Start getting feedback today.</p>
+			</div>
+			<div style="text-align: center; margin: 0 auto;">
+				<%= render :partial => 'form' %>
+			</div>
 		</div>
 	</div>
 <% else %>

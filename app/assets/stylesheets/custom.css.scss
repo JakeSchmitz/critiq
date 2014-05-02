@@ -246,8 +246,8 @@ input {
   text-shadow: none;
   box-shadow: none;
   color: #fff;
-  background-color: #3fb618;
-  border: 2px solid #3fb618;
+  background-color: #ff7518;
+  border: 2px solid #ff7518;
   height: auto;
   font-size: 20px;
   -moz-transition: all 0.3s ease-in;
@@ -262,8 +262,39 @@ input {
 .btn-warning:hover {
   text-shadow: none;
   background-color: #fff;
-  color: #3fb618;
-  border: 2px solid #3fb618;
+  color: #ff7518;
+  border: 2px solid #ff7518;
+  -moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
+}
+
+.btn-danger {
+  text-shadow: none;
+  box-shadow: none;
+  color: #fff;
+  background-color: #ff0039;
+  border: 2px solid #ff0039;
+  height: auto;
+  font-size: 20px;
+  -moz-transition: all 0.3s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.3s ease-in;
+  /* Opera */
+  -o-transition: all 0.3s ease-in;
+  /* Standard */
+  transition: all 0.3s ease-in;
+}
+
+.btn-danger:hover {
+  text-shadow: none;
+  background-color: #fff;
+  color: #ff0039;
+  border: 2px solid #ff0039;
   -moz-transition: all 0.3s ease-in;
   /* WebKit */
   -webkit-transition: all 0.3s ease-in;

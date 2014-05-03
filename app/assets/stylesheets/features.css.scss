@@ -17,11 +17,11 @@
 
 .comparison-feature-callout {
 	text-align: left;
-	display: inline-block;
 	width: 100%;
-	border-top: 1px solid #d4d4d4;
 	.comparison-header {
 		padding-bottom: 10px;
+		border-top: 1px solid #d4d4d4;
+		width: 90%;
 		margin-bottom: 10px;
 	}
 }
@@ -122,6 +122,14 @@
 		padding-top: 8px !important;
 		padding-bottom: 6px !important;
 	}
+}
+
+.feature-btn {
+	height: 280px;
+	width: 230px;
+	display: inline-block; 
+	vertical-align: top;
+	margin-top: 20px;
 }
 
 .feature-thumb {

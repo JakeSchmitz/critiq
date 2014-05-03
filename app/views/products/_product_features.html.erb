@@ -38,9 +38,11 @@
 			<div class="comparison-features" style="text-align: center;">
 				<% if !@product.comparisons.nil? %>
 			    <% @product.comparisons.each do |comp_feature| %>
-			    	<div style="margin-top: 20px">
-			      	<%= render :partial => 'comparison_feature_thumb' , locals: { comp_feature: comp_feature } %>
-			      </div>
+			    	<% if comp_feature.name and comp_feature.name != '' %>
+				    	<div style="margin-top: 20px">
+				      	<%= render :partial => 'comparison_feature_thumb' , locals: { comp_feature: comp_feature } %>
+				      </div>
+			      <% end %>
 			    <% end %>
 				<% end %> 
 			</div>

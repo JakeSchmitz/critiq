@@ -16,10 +16,10 @@
 			</div>
 		<% end %> 	
 		<% if current_user?(comp_feature.product.user) %>
-				<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#newFeatureModalGroup<%= comp_feature.id %>">
-				 + ADD OPTION
-				</button>
-				<%= render partial: '/features/comparative_feature_option_form_modal', locals: { product: @product, feature_group: comp_feature, feature: Feature.new(:user_id => @product.user.id, :product_id => @product.id, :feature_group_id => comp_feature.id) } %>
-			<% end %>
+			<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#newFeatureModalGroup<%= comp_feature.id %>">
+			 + ADD OPTION
+			</button>
+			<%= render partial: '/features/comparative_feature_option_form_modal', locals: { product: @product, feature_group: comp_feature, feature: Feature.new(:user_id => @product.user.id, :product_id => @product.id, :feature_group_id => comp_feature.id) } %>
+		<% end %>
 	</div>
 </div>

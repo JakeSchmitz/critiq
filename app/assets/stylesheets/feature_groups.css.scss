@@ -92,24 +92,27 @@
 .field-title {
 	float: left;
 	margin-left: 20px;
+	width: 160px;
 }
 
 .form-input {
 	height: 145px;
 	width: 390px;
 	float: right;
-	margin: 25px 25px 25px 96px;
+	margin: 25px 25px 25px 35px;
 }
 
 #form-desc {
-	margin-left: 99px;
+	margin-left: 29px;
 	margin-bottom: 25px;
 }
 
 .explain {
 	color: #494949;
 	font-size: 12px;
-	margin-left: 20px;
+	margin-left: 30px;
+	width: 140px;
+	float: left;
 }
 
 .form-submit {
@@ -121,7 +124,6 @@
 }
 
 #form-submit-button {
-	width: 220px;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	background-color: #494949;
@@ -130,10 +132,12 @@
 	color: #fff;
 	border: 2px #fff solid;
 }
+
 .form-body {
 	height: 700px;
 	width: 700px;
 }
+
 .form-header {
 	margin-top: 44px;
 	margin-bottom: 37px;
@@ -142,6 +146,7 @@
 .single-header {
 	margin-top: 25px;
 }
+
 .single-form {
 	height: 935px;
 	width: 735px;
@@ -151,11 +156,11 @@
 }
 
 #form-quest {
-	margin-left: 120px
+	margin-left: 30px
 }
 
 #form-img {
-	margin-left: 96px;
+	margin-left: 36px;
 	margin-right: 25px;
 	float: right;
 	padding-bottom: 115px;
@@ -163,7 +168,7 @@
 }
 
 #form-opt {
-	margin-left: 139px;
+	margin-left: 39px;
 	height: 72px;
 }
 

@@ -1,40 +1,48 @@
 <% if (@product.single.nil? or @product.single.features.empty?) and (@product.comparisons.nil? or @product.comparisons.empty?) %>
 	<div class="container new-product-features">
-		<div class="new-product-features-box">
+		<div class="new-product-features-box pull-left">
 			<h3 style="color: #fff">Hey there, it looks like this Drive doesn't have Polls set up yet</h3>
+			<% if signed_in? and current_user.id == @product.user_id %>
+				<h3 style="color: #fff">Create a Poll to start getting feedback</h3>
+				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
+				  CREATE A POLL
+				</button>
+				<h3 style="color: #fff">Or you can ask critiqers more specific questions on the Bounties tab</h3>
+			<% else %>
+				<h3>Follow this Drive and get notified whenever they get moving!</h3>
+				<%= button_to 'Follow Drive', product_love_path(@product.id), :method => "get", :class => "btn btn-purple", style: 'float: center; background-color: #6d2cfa; color: #fff;' %>
+			<% end %>
 		</div>
-		<% if signed_in? and current_user.id == @product.user_id %>
-			<h3>Create a Poll to start getting feedback</h3>
-			<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
-			  CREATE A POLL
-			</button>
-			<h3>Or you can ask critiqers more specific questions on the Bounties tab</h3>
-		<% else %>
-			<h3>Follow this Drive and get notified whenever they get moving!</h3>
-			<%= button_to 'Follow Drive', product_love_path(@product.id), :method => "get", :class => "btn btn-purple", style: 'float: center; background-color: #6d2cfa; color: #fff;' %>
-		<% end %>
+		<div class="pull-right" id="feature-thumbnails<%= @product.single.id %>" style="text-align: left; display: inline-block; margin-top: 10px;">
+		</div>
 	</div>
 <% else %>
 	<div class="container">
+		<% if signed_in? and current_user.id == @product.user.id %>
+			<div class="row" style="margin: 0;">
+				<h2>Add a new poll to get some feedback!</h2>
+				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">CREATE A POLL</button>
+			</div>
+		<% end %>
 		<div class="span4 pull-right" style="margin: 0;">
 			<div class="single-features">
 				<% if !@product.single.nil? and !@product.single.features.empty? %>
 					<h2 style="float: center">Singletons<h6 style="text-align: center;">(Yes/No, Hot/Cold)</h6></h2>
-					<div class="row" id="feature-thumbnails<%= @product.single.id %>" style="text-align: left; display: inline-block; margin-top: 10px;">
+					<div id="feature-thumbnails<%= @product.single.id %>" style="text-align: center; display: inline-block; margin-top: 10px;">
 				    <% @product.single.features.each do |feature| %>
 			      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
 				    <% end %>
+				    <% if current_user?(@product.user) %>
+							<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#newFeatureModalGroup<%= @product.single.id %>">
+							 + ADD ANOTHER
+							</button>
+							<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: @product.single, feature: Feature.new(:user_id => @product.user.id, :product_id => @product.id, :feature_group_id => @product.single.id) } %>
+						<% end %>
 					</div>  
 				<% end %>
 			</div>
 		</div>
 		<div class="span8 pull-left">
-			<% if signed_in? and current_user.id == @product.user.id %>
-					<div >
-						<h2>Add a new poll to get some feedback!</h2>
-						<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">CREATE A POLL</button>
-					</div>
-				<% end %>
 			<div class="comparison-features" style="text-align: center;">
 				<% if !@product.comparisons.nil? %>
 			    <% @product.comparisons.each do |comp_feature| %>

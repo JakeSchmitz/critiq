@@ -44,7 +44,7 @@ class FeatureGroupsController < ApplicationController
   def destroy
     @feature_group.destroy
     respond_to do |format|
-      format.html { redirect_to feature_groups_url }
+      format.html { redirect_to request.referrer }
       format.json { head :no_content }
     end
   end

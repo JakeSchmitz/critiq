@@ -6,7 +6,7 @@
 				<!-- note reverse class names to switch colors -->
 				<button data-toggle="modal" data-target="#newFeatureModal" onclick="$('#newFeatureModalGroup<%= feature_group.id %>').modal('hide');" style="padding: 0px; border: none;"> 
 					<div class="form-tab unselected">
-						<p class="tab-name">SINGLETON</p>
+						<p class="tab-name"><% if feature_group.singles? %>SINGLETON<% else %>COMPARISON<% end %></p>
 					</div>
 				</button>
 				<div class="form-tab selected" style="margin-left: -3px;">

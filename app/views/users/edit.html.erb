@@ -1,62 +1,64 @@
 <%- model_class = User -%>
 <% if signed_in? and (current_user.id == @user.id or is_admin?) %>
-	<div class="container" style="margin-left: auto; margin-right-auto; margin-top: 5%;">
+	<div class="container" style="margin-left: auto; margin-right: auto; margin-top: 5%;">
 		<div class="page-header">
-		  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+		  <h1>Edit Account</h1>
 		</div>
-		<%= nested_form_for @user, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
-		  <% if @user.errors.any? %>
-		    <ul class="Signup_Errors alert fade in alert-failure">
-		    <% for message_error in @user.errors.full_messages %>
-		      <li>* <%= message_error %></li>
-		    <% end %>
-		    </ul>
-		  <% end %>
-		  <div class="control-group">
-		    <%= f.label :name, :class => 'control-label' %>
-		    <div class="controls">
-		      <%= f.text_field :name, :class => 'text_field' %>
-		    </div>
-		  </div>
-		  <div class="control-group">
-		    <%= f.label :email, :class => 'control-label' %>
-		    <div class="controls">
-		      <%= f.text_field :email, :class => 'text_field' %>
-		    </div>
-		  </div>
-		  <div class="control-group">
-		    <%= f.label :bio, :class => 'control-label' %>
-		    <div class="controls">
-		      <%= f.text_area :bio, :class => 'text_area', style: 'height: 100px;' %>
-		    </div>
-		  </div>
-		  <%= f.fields_for :pictures do |picture| %>
-		    <% if picture.object.new_record? %>
-		      <div class="control-group">
-		        <%= picture.label "Image", :class => 'control-label' %>
-		        <div class="controls btn file_upload_wrapper"  style="float: left; display: inline">
-		          <%= picture.file_field :attachment  %>
-		        </div>
-		      </div>  
-		    <% end %>
-		  <% end %>
-		  <div class="row private" style="display: inline-block; float: center;">
-		    <%= f.check_box :critiq_subscription, style: 'display: inline-block; float: left;' %>
-		    <%= f.label 'Keep me updated as Critiq grows!', style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
-		  </div>
-		  <br>
-		  <div class="row private" style="display: inline-block; float: center;">
-		    <%= f.check_box :drive_subscription, style: 'display: inline-block; float: left;' %>
-		    <%= f.label 'OK to email me about the drives I follow', style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
-		  </div>
-		  <div class="form-actions">
-		    <%= f.submit nil, :class => 'btn btn-primary btn-black' %>
-		    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-		                users_path, :class => 'btn}' %>
-		  </div>
-		<% end %>
+		<div class="well" style="display: inline-block; float: center;">
+			<%= nested_form_for @user, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+			  <% if @user.errors.any? %>
+			    <ul class="Signup_Errors alert fade in alert-failure">
+			    <% for message_error in @user.errors.full_messages %>
+			      <li>* <%= message_error %></li>
+			    <% end %>
+			    </ul>
+			  <% end %>
+			  <div class="control-group">
+			    <%= f.label :name, :class => 'control-label' %>
+			    <div class="controls">
+			      <%= f.text_field :name, :class => 'text_field' %>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <%= f.label :email, :class => 'control-label' %>
+			    <div class="controls">
+			      <%= f.text_field :email, :class => 'text_field' %>
+			    </div>
+			  </div>
+			  <div class="control-group">
+			    <%= f.label :bio, :class => 'control-label' %>
+			    <div class="controls">
+			      <%= f.text_area :bio, :class => 'text_area', style: 'height: 100px;' %>
+			    </div>
+			  </div>
+			  <%= f.fields_for :pictures do |picture| %>
+			    <% if picture.object.new_record? %>
+			      <div class="control-group">
+			        <%= picture.label "Image", :class => 'control-label' %>
+			        <div class="controls btn file_upload_wrapper"  style="float: left; display: inline; width: auto;">
+			          <%= picture.file_field :attachment  %>
+			        </div>
+			      </div>  
+			    <% end %>
+			  <% end %>
+			  <div class="row private" style="display: inline-block; float: center;">
+			    <%= f.check_box :critiq_subscription, style: 'display: inline-block; float: left;' %>
+			    <%= f.label 'Keep me updated as Critiq grows!', style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
+			  </div>
+			  <br>
+			  <div class="row private" style="display: inline-block; float: center;">
+			    <%= f.check_box :drive_subscription, style: 'display: inline-block; float: left;' %>
+			    <%= f.label 'OK to email me about the drives I follow', style: 'display: inline-block; width: 362px; float: left; margin-left: 12px;' %>
+			  </div>
+			  <div class="form-actions">
+			    <%= f.submit 'EDIT ACCOUNT', :class => 'btn btn-primary' %>
+			    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+			                users_path, :class => 'btn}' %>
+			  </div>
+			<% end %>
+		</div>
 		<div class="row" style="text-align: center; margin-bottom: 30px;">
-			<%= link_to 'DELETE ACCOUNT', user_path(@user), method: :delete, class: 'btn btn-primary', confirm: 'Delete your account forever?' %>
+			<%= link_to 'delete account?', user_path(@user), method: :delete, confirm: 'Delete your account forever?' %>
 		</div>
 	</div>
 <% else %>

@@ -27,7 +27,7 @@
 			<div class="single-features">
 				<% if !@product.single.nil? and !@product.single.features.empty? %>
 					<h2 style="text-align: left; width: 100%;">Singletons</h2>
-					<h6 style="text-align: left;">(Yes/No, Hot/Cold)</h6>
+					<h6 style="text-align: left; margin-top: -10px; margin-bottom: 0;">(Yes/No, Hot/Cold)</h6>
 					<div id="feature-thumbnails<%= @product.single.id %>" style="text-align: left; display: inline-block; margin-top: 10px;">
 				    <% @product.single.features.each do |feature| %>
 			      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>

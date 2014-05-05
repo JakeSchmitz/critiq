@@ -26,8 +26,10 @@
 <% else %>
 	<div class="product-password">
 		<%= form_for current_user, url: user_creator_path(current_user), method: :get do |f| %>
-			<div class="inline-form">
-				<h3 style="color: #fff;">Creating feedback drives is still being tested, you can request permission by emailing us <a href="mailto:critiqme@gmail.com?Subject=Make%20Me%20A%20Creator%20Please">here</a></h3>
+			<div class="container inline-form">
+				<h3 style="color: #fff;">Creating feedback drives is still being tested</h3>
+				<h3 style="color: #fff;">We’ll be sending out 20 invites a week, so if you’re interested, shoot us a message at <a href="mailto:creator@critiq.me?Subject=Sign%20me%20up%20">creator@critiq.me</a> to reserve your spot. </h3>
+				<h3 style="color: #fff;">Include in the message: Project Title, Short Summary of your product, A link to your site, demo, or product intro, and we’ll get back to you as soon as possible, thanks!</h3>
 				<h3 style="color: #fff;">We will give you a passcode to enter here when we're ready for you</h3>
 				<%= f.text_field :creator_code, placeholder: 'Creator Passcode' %>
 				<%= f.submit 'ACCESS', :class => 'btn btn-primary', style: 'margin-top: 50px; margin-bottom: 15%;'%>

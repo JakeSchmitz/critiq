@@ -310,13 +310,15 @@
 .product-password {
 	height: 100%;
 	width: 100%;
-	background-color: #000;
+	background-color: #606060;
 	padding-top: 10%;
 	float: center;
 	text-align: center;
 	.inline-form {
 		display: inline-block;
-		margin: 0 auto;
+		margin-left: 10%;
+		margin-right: 10%;
+		width: 80%;
 		float: center;
 	}
 	button {

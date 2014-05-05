@@ -630,6 +630,14 @@ input[type="file"] {
   width: 100%;
 }
 
+.template-download {
+  .pic {
+    max-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+  }
+}
+
 /* Mobile-ish */
 @media (max-width: 480px) {
   h1, h2, h3, h4, h5, h6 {

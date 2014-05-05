@@ -63,10 +63,24 @@ class ProductsController < ApplicationController
   end
 
   def upload_picture
-    @image_asset = ImageAsset.new(params[:upload])
     if @product.user.id == current_user.id
-      @product.pictures.build(params[:upload])
-      render json: [@image_asset.to_jq_upload], content_type: 'text/html', layout: false if @product.save
+      @image_asset = @product.pictures.create(params[:upload])
+      p @image_asset
+      respond_to do |format|
+        if @image_asset.save
+          format.html {
+            render :json => [@image_asset.to_jq_upload].to_json,
+            :content_type => 'text/html',
+            :layout => false
+          }
+          format.json {render json: {files: [@image_asset.to_jq_upload]}, content_type: 'text/html', layout: false, status: :created, location: @image_asset }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @image_asset.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      flash[:warning] = 'It seems you either are not signed in or are not the correct user to upload here'
     end
   end
 

@@ -10,6 +10,7 @@
 
 @embedVideo = (video_url) ->
 	$('#main-pic').html('')
+	$('#main-pic').css('background-image', 'none')
 	$('#main-pic').append(video_url)
 
 Products = 

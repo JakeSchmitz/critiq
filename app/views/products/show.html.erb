@@ -20,10 +20,10 @@
   <% end %>
   <div class="black-wrapper">
   <div class="container">
-    <div class="span" style="width: auto; float: center;">
-      <div class="span"> 
+    <div class="span" style="width: 100%; float: center;">
+      <h1 class="product-name"><%= @product.name %><div class="fb-like" data-href="<%= request.original_url %>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></h1>
+      <div class="span" style="margin-left: 0px;"> 
         <div class="product-left">
-          <h1 class="product-name"><%= @product.name %><div class="fb-like" data-href="<%= request.original_url %>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></h1>
           <div class="product-creator" style="display: inline-block;">
             <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>');"></div>
             <div class="creator-data">
@@ -64,7 +64,6 @@
           <% end %>
           <% if signed_in? and (current_user.id == @product.user.id or is_admin?) %>
             <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
-            <%= button_to 'DELETE', product_path(@product), :method => 'delete', :class => "btn-clear inline-button", style: 'float: left;', confirm: 'Delete this forever??' %>
           <% end %>
         </div>
         <div class="well span4 description-box">
@@ -133,12 +132,12 @@
         <!-- Edit Tab (when signed in) -->
         <% if current_user?(@product.user)%>
           <div class="tab-pane" id="product_edit">
-            <h1>Edit Campaign</h1>
+            <h1>Edit Drive</h1>
             <div class="edit-info pull-left span5">
               <%= render :partial => 'form' %>
             </div>
             <div class="edit-pictures span5 pull-left">
-              <h3>Campaign Pictures</h3>
+              <h3>Drive Pictures</h3>
               <div class="row">
                 <% @product.pictures.where.not(:attachment_file_name => nil).each do |pic| %>
                   <div class="product-pic-thumb thumb-ratio" style="width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>'); display: inline-block;"></div>

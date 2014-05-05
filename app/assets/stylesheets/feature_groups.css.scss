@@ -41,6 +41,9 @@
 		height: 285px;
 		width: 245px;
 	}
+	.row {
+		text-align: center;
+	}
 }
 
 .form-tab {
@@ -93,6 +96,7 @@
 	float: left;
 	margin-left: 20px;
 	width: 160px;
+	text-align: left;
 }
 
 .form-input {
@@ -110,9 +114,10 @@
 .explain {
 	color: #494949;
 	font-size: 12px;
-	margin-left: 30px;
+	margin-left: 20px;
 	width: 140px;
 	float: left;
+	text-align: left;
 }
 
 .form-submit {
@@ -121,6 +126,7 @@
 	width: 100%;
 	background-color: #6d2cfa;
 	float: left;
+	text-align: center;
 }
 
 #form-submit-button {

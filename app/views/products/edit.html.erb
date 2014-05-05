@@ -1,18 +1,19 @@
 <%- model_class = Product -%>
 <div class="container">
 	<div class="page-header" style="margin-top: 80px;">
-	  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+	  <h1>Edit Drive</h1>
 	</div>
 	<div class="container" style="margin-left: auto; margin-right-auto;">
 		<%= render :partial => 'form' %>
 	</div>
 	<div class="edit-pictures">
-	  <h3>Campaign Pictures</h3>
-	  <div class="row">
+	  <h3>Drive Pictures</h3>
+	  <div class="row" style="max-width: 80%; margin-left: 10%;">
 	    <% @product.pictures.where.not(:attachment_file_name => nil).each do |pic| %>
-	      <div class="product-pic-thumb thumb-ratio" style="width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>'); display: inline-block;"></div>
-	      <div class="pic-btns">
-	        <%= link_to glyph(:trash), product_picture_path(@product.id, pic.id), :method => :delete, data: { :confirm => "You sure?"} , style: 'color:#ff0000' %>
+	      <div class="product-pic-thumb thumb-ratio" style="display: inline-block; width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>');">
+		      <div class="pic-btns">
+		        <%= link_to glyph(:trash), product_picture_path(@product.id, pic.id), :method => :delete, data: { :confirm => "You sure?"} , style: 'color:#ff0000' %>
+		      </div>
 	      </div>
 	    <% end %>
 	  </div>

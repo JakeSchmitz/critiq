@@ -23,7 +23,21 @@
 				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">CREATE A POLL</button>
 			</div>
 		<% end %>
-		<div class="span4 pull-right" style="margin-left: 0px;">
+		<div class="span8 pull-left comparison-features">
+			<div style="text-align: center;">
+				<% if !@product.comparisons.nil? and !@product.comparisons.empty? %>
+					<h2 style="width: 100%; text-align: left; margin-left: -15px;">Comparisons</h2>
+			    <% @product.comparisons.each do |comp_feature| %>
+			    	<% if comp_feature.name and comp_feature.name != '' %>
+				    	<div style="margin-top: 20px">
+				      	<%= render :partial => 'comparison_feature_thumb' , locals: { comp_feature: comp_feature } %>
+				      </div>
+			      <% end %>
+			    <% end %>
+				<% end %> 
+			</div>
+		</div>
+		<div class="span3 pull-left" style="margin-left: 0px;">
 			<div class="single-features">
 				<% if !@product.single.nil? and !@product.single.features.empty? %>
 					<h2 style="text-align: left; width: 100%;">Singletons</h2>
@@ -40,20 +54,6 @@
 						<% end %>
 					</div>  
 				<% end %>
-			</div>
-		</div>
-		<div class="span8 pull-left">
-			<h2 style="float: left margin-bottom: 20px; text-align: left;">Comparisons</h2>
-			<div class="comparison-features" style="text-align: center;">
-				<% if !@product.comparisons.nil? %>
-			    <% @product.comparisons.each do |comp_feature| %>
-			    	<% if comp_feature.name and comp_feature.name != '' %>
-				    	<div style="margin-top: 20px">
-				      	<%= render :partial => 'comparison_feature_thumb' , locals: { comp_feature: comp_feature } %>
-				      </div>
-			      <% end %>
-			    <% end %>
-				<% end %> 
 			</div>
 		</div>
 	</div>

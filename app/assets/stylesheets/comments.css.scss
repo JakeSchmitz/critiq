@@ -12,6 +12,14 @@
 	padding-top: 20px;
 }
 
+#comment_body {
+	border: 1px solid #d0d0d0;
+}
+
+#comment_form_body {
+	border: 1px solid #d0d0d0;
+}
+
 .comment {
 	display: inline-block; 
 	float: right; 
@@ -158,6 +166,9 @@
 				float: left;
 				height: 29px;
 				width: 100%;
+			}
+			#comment_body {
+				border: 1px solid #d0d0d0;
 			}
 		}
 	}

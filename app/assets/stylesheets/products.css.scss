@@ -307,7 +307,8 @@
 /* product form style */
 
 .product-info {
-	
+	border: none;
+	box-shadow: none;
 }
 
 .product-password {
@@ -515,14 +516,20 @@
 	}
 }
 
-@media(min-height: 1200px) {
+@media(min-height: 1100px) {
 	.product-password {
 		min-height: 1050px;
 	}
 }
 
-@media(min-height: 1500px) {
+@media(min-height: 1400px) {
 	.product-password {
 		min-height: 1350px;
+	}
+}
+
+@media(min-width: 1200px) {
+	.comparison-features {
+		margin-left: 5%;
 	}
 }

@@ -120,7 +120,7 @@ input[type="color"],
     margin-left: auto;
     margin-top: 5%;
     clear: none;
-    width: 634.1022625100001px;
+    width: 1000px;
     margin-right: auto;
 }
 
@@ -137,6 +137,14 @@ input[type="color"],
     background-size: auto;
     background-position: 0% 0%;
     background-repeat: repeat repeat;
+}
+
+#sm_container {
+    height: 481px;
+    width: 312px;
+    background-color: rgb(61, 61, 61);
+    float: left;
+    margin-left: 15px;
 }
 
 #_Log_in_title_text {
@@ -178,6 +186,29 @@ input[type="color"],
     margin-right: auto;
     border: 2px solid rgb(255, 255, 255);
 }
+
+.li_signup_button {
+    background-color: #4875B4;
+    border-color: #4875B4;
+    width: 277px;
+}
+
+.fa-linkedin-square {
+    margin-left: -10px;
+}
+
+.tw_signup_button {
+    background-color: #33CCFF;
+    border-color: #33CCFF;
+    width: 277px;
+}
+
+.fa-twitter-square {
+    margin-left: -20px;
+}
+
+
+
 
 #Login_button {
     float: none;

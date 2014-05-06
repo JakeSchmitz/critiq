@@ -55,6 +55,8 @@ Critiq0::Application.routes.draw do
   match '/get_started', to: 'pages#how_to', via: 'get'
   match '/auth/facebook/callback', to: 'auth#new_facebook', via: 'get'
   match '/auth/twitter/callback', to: "auth#new_twitter", via: 'get'
+  match '/auth/linkedin/callback', to: "auth#new_linkedin", via: 'get'
+
   post '/twitter_signup', to: 'auth#create_twitter', as: 'twitter_signup' 
 
   post 'signin', to: 'sessions#create'

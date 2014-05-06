@@ -1,25 +1,10 @@
 module SessionsHelper
-	def sign_in(user)
+	def sign_in(user, token= nil)
 		remember_token = User.new_remember_token
 		cookies.permanent[:remember_token] = remember_token
 		user.update_attribute(:remember_token, User.encrypt(remember_token))
 		self.current_user = user
-	end
-
-	def fb_sign_in(user, fb_token)
-		remember_token = User.new_remember_token
-		cookies.permanent[:remember_token] = remember_token
-		user.update_attribute(:remember_token, User.encrypt(remember_token))
-		cookies.permanent[:fb_token] = fb_token
-		self.current_user = user
-	end
-
-	def tw_sign_in(user, tw_token)
-		remember_token = User.new_remember_token
-		cookies.permanent[:remember_token] = remember_token
-		user.update_attribute(:remember_token, User.encrypt(remember_token))
-		cookies.permanent[:tw_token] = tw_token
-		self.current_user = user
+		cookies.permanent[:sm_token] = token if token
 	end
 
 	def signed_in?

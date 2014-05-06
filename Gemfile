@@ -48,7 +48,9 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 
+gem 'linkedin'
 gem 'koala'
 gem 'twitter', '5.8.0'
 gem 'dotenv'

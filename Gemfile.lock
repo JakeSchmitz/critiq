@@ -125,6 +125,10 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.5.0)
     libv8 (3.16.14.3)
+    linkedin (0.4.7)
+      hashie (~> 2.0)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -154,6 +158,8 @@ GEM
       rack (~> 1.0)
     omniauth-facebook (1.6.0)
       omniauth-oauth2 (~> 1.1)
+    omniauth-linkedin (0.1.0)
+      omniauth-oauth (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -315,10 +321,12 @@ DEPENDENCIES
   jquery-turbolinks
   koala
   less-rails
+  linkedin
   mocha
   nested_form!
   nokogiri
   omniauth-facebook
+  omniauth-linkedin
   omniauth-twitter
   open_uri_redirections
   paperclip (~> 3.0)

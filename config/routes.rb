@@ -63,6 +63,7 @@ Critiq0::Application.routes.draw do
 
   post 'signin', to: 'sessions#create'
   get 'signout', to: 'sessions#destroy', via: 'delete'
+  match '/deleteGAPPSnotBefore20140506utc.html', to: 'pages#google_delete', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

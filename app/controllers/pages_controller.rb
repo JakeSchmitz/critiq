@@ -20,4 +20,8 @@ class PagesController < ApplicationController
 	def how_to
 
 	end
+
+	def google_delete
+
+	end
 end

@@ -1,21 +1,5 @@
-<div class="hero-unit home-banner">
-	<div class="hero-text hero-header">
-		<h1>Feedback on Anything,</h1>
-		<h1>Curated by Everyone</h1>
-	</div>
-	<div class="hero-description">
-		<p>Launch a feedback drive for a project and crowdsource opinions from a spread of customers, enthusiasts, and experts.</p>
-	</div>
-	<div class="home-buttons">
-		<%= button_to 'LEARN MORE', '/how_to', :method => "get", :class => "btn-clear"%>
-	 	<% if signed_in? %>
-	 		<%= button_to 'START A DRIVE', new_product_path, :method => "get", :class => "btn-clear"%>
-	 	<% else %>
-	    <%= button_to 'SIGN UP OR SIGN IN', signin_path, :method => "get", :class => "btn-clear" %>
-	  <% end %>
-  </div>
-</div>
-</br>
+<%= render partial: 'banner' %>
+<br>
 <div class="container home-content" style="text-align: center;">
 	<div class="background-splatter1"></div>
 	<div class="blurb-row">

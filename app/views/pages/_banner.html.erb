@@ -1,0 +1,27 @@
+<div class="hero-unit home-banner">
+	<div class="hero-text hero-header">
+		<h1>A Feedback Platform to Engage Your Believers</h1>
+	</div>
+	<div class="hero-description">
+		<div class="critiqer-box">
+			<h3>Critiquer? Check out our community guidelines.</h3>
+			<p>Show your support for creative projects and businesses by giving encouragement and feedback.</p>
+			<p>Vote, discuss, critique</p>
+			<%= link_to 'ETIQUETTE', '/community', class: 'btn btn-clear', style: 'width: 90%; ' %>
+		</div>
+		<div class="middle-btns">
+			<%= link_to 'HOW IT WORKS', '/how_to', class: 'btn btn-clear', style: 'width: 260px;' %>
+			<%= link_to 'SIGN UP', '/signin', class: 'btn btn-clear', style: 'width: 260px; margin-top: 20px;' %>
+		</div>
+		<div class="creator-box">
+			<h3>Creator? Claim your spot!</h3>
+			<p>Set up a place for your audience and early adopters to give you valuable feedback on how to improve your works.</p>
+			<%= form_for :request_creator_status, url: request_creator_status_path(current_user) do %>
+				<div class="form-group">
+          <%= email_field_tag 'email', nil, class: 'form-control', placeholder: 'Your Email Address' %>
+       	</div>
+       	<%= submit_tag 'REQUEST INVITE', class: 'btn btn-clear' %>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -82,10 +82,10 @@ class AuthController < ApplicationController
 
 	def create_profile_picture user, pic_url
 		if user.pictures.empty? 
-			# propic = user.pictures.build(attachment: open(process_uri(pic_url).to_s))
-			# user.propic_id = propic.id
-			# propic.save
-			# user.save
+			propic = user.pictures.build(attachment: open(process_uri(pic_url).to_s))
+			user.propic_id = propic.id
+			propic.save
+			user.save
 		end
 	end
 end

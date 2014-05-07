@@ -36,6 +36,7 @@ Critiq0::Application.routes.draw do
     get 'propic/:image_id/' => :change_profile_picture, as: 'profile_pic'
     get 'dashboard' => :dashboard
     get '/make_creator' => :make_creator, as: 'creator'
+    post '/request_creator_status' => :request_creator_status, as: 'request_creator_status'
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :image_assets
@@ -44,6 +45,7 @@ Critiq0::Application.routes.draw do
   end
   root :to => "pages#home"
 
+  match '/request_creator_status', to: 'users#request_creator_status', via: 'post'
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'pages#login', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'

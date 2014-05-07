@@ -11,4 +11,8 @@ class UserMailer < ActionMailer::Base
     mail :to => user.email, :subject => "Reset Your Critiq Password"
   end
 
+  def creator_request(user_email)
+    mail :to => user_email, :subject => "So you wanna be a creator?"
+  end
+
 end

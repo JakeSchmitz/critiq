@@ -156,6 +156,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def request_creator_status
+    email = params[:email]
+    @user = current_user || User.where(email: params[:email]).first
+    if @user
+      if @user.creator
+        flash[:notice] = "You already are a creator, step to it and make something awesome!"
+        redirect_to new_product_path
+      else
+        flash[:warning] = "An email has been sent to your address with instructions for becoming a creator"
+        UserMailer.creator_request(email).deliver
+        redirect_to request.referer
+      end
+    else
+      flash[:error] = "You will need to create an account or sign in to create anything"
+      UserMailer.creator_request(email).deliver
+      redirect_to '/signin'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

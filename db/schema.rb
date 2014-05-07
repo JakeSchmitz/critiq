@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 20140502051353) do
   create_table "feature_groups", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
     t.boolean  "singles",     default: false
   end
 

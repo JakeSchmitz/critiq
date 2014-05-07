@@ -454,7 +454,6 @@ div.file_upload_wrapper:hover {
 }
 
 .btn-clear {
-  font-weight: 200;
   background: rgba(64, 64, 64, 0);
   -moz-transition: all 0.2s ease-in;
   /* WebKit */
@@ -468,9 +467,9 @@ div.file_upload_wrapper:hover {
   border-radius: 0px;
   padding: 8px 8px 8px 15px;
   text-align: center;
-  letter-spacing: 7px;
+  letter-spacing: 6px;
   font-family: proxima-nova-n9, proxima-nova, sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   > h4 {
     font-family: proxima-nova-n9, proxima-nova, sans-serif;
     color: #fff;

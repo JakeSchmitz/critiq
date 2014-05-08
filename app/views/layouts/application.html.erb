@@ -115,29 +115,31 @@
 
   </head>
   <body>
-    <%= render '/layouts/header' %>
-    <div class="header-flash">
-      <%= bootstrap_flash %>
-    </div>
-    <%= yield %>
-    <footer style="text-align: center;">
-      <div class="lower-footer">
-        <ul class="bottom-links">
-          <li>
-            <%= link_to 'Contacts', contact_path %>
-          </li>
-          <li>
-            <a href="/about">About Us</a>
-          </li>
-          <li>
-            <a href="/how_to">Help</a>
-          </li>
-          <li>
-            <a href="mailto:critiqme@gmail.com?Subject=Critiq%20Bug%20Found">Report Bug</a>
-          </li>
-        </ul>
+    <div class="everything">
+      <%= render '/layouts/header' %>
+      <div class="header-flash">
+        <%= bootstrap_flash %>
       </div>
-    </footer>
+      <%= yield %>
+      <footer style="text-align: center;">
+        <div class="lower-footer">
+          <ul class="bottom-links">
+            <li>
+              <%= link_to 'Contacts', contact_path %>
+            </li>
+            <li>
+              <a href="/about">About Us</a>
+            </li>
+            <li>
+              <a href="/how_to">Help</a>
+            </li>
+            <li>
+              <a href="mailto:critiqme@gmail.com?Subject=Critiq%20Bug%20Found">Report Bug</a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </div>
     <%= javascript_include_tag "application" %>
     <!-- Fonts that Ken Bought -->
     <script type="text/javascript" src="//use.typekit.net/mdx8vro.js"></script>

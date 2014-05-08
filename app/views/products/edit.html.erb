@@ -2,6 +2,7 @@
 <div class="container">
 	<div class="page-header" style="margin-top: 80px;">
 	  <h1>Edit Drive</h1>
+	  <%= link_to 'delete drive?', product_path(@product), method: :delete, confirm: 'Delete your account forever?' %>
 	</div>
 	<div class="container" style="margin-left: auto; margin-right-auto;">
 		<%= render :partial => 'form' %>
@@ -18,7 +19,7 @@
 	    <% end %>
 	  </div>
 	</div>
-	<div class="jquery-product-image-upload span10">
+	<div class="jquery-product-image-upload">
 	    <%= render :partial => 'jquery_image_uploader' %>
 	</div>
 </div>

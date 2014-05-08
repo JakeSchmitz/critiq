@@ -23,9 +23,9 @@ class Product < ActiveRecord::Base
     return false
   end
 
-  def can_be_accessed_by user
+  def can_be_accessed_by user, pwd=nil
     if !user and hidden
-      return false
+      return self.password == pwd
     end
     !hidden || parsed_list.include?(user.id)
   end

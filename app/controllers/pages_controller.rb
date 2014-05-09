@@ -21,7 +21,11 @@ class PagesController < ApplicationController
 
 	end
 
-	def google_delete
+	def terms
+
+	end
+
+	def privacy 
 
 	end
 end

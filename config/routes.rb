@@ -52,6 +52,8 @@ Critiq0::Application.routes.draw do
   match '/home', to: 'pages#home', via: 'get'
   match '/contact', to: 'pages#contact', via: 'get'
   match '/community', to: 'pages#community', via: 'get'
+  match '/privacy', to: 'pages#privacy', via: 'get'
+  match '/terms', to: 'pages#terms', via: 'get'
   match '/about', to: 'pages#about', via: 'get'
   match '/how_to', to: 'pages#how_to', via: 'get'
   match '/get_started', to: 'pages#how_to', via: 'get'
@@ -63,7 +65,6 @@ Critiq0::Application.routes.draw do
 
   post 'signin', to: 'sessions#create'
   get 'signout', to: 'sessions#destroy', via: 'delete'
-  match '/deleteGAPPSnotBefore20140506utc.html', to: 'pages#google_delete', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

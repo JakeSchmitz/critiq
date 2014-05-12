@@ -1,7 +1,8 @@
 <div class="single-feature-thumb-functions">
 	<div class="functions-left">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => false) %> data-remote="true" id="downvoteFeature<%= feature.id %>">
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => false) %> data-remote="true" id="downvoteFeature<%= feature.id %>"
+			data-toggle="tooltip" data-placement="bottom" title="<%= feature.downvotes.size %> vote<%= if feature.downvotes.size != 1 then 's' else '' end %>">
 		<% else %>
 			<span class="sign-in-first-tooltip" data-toggle="tooltip" data-placement="bottom" title="Sign In First">
 		<% end %>
@@ -19,7 +20,7 @@
 	</div>
 	<div class="functions-right">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true" id="upvoteFeature<%= feature.id %>">
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true" id="upvoteFeature<%= feature.id %>" data-toggle="tooltip" data-placement="bottom" title="<%= feature.upvotes.size %> vote<%= if feature.upvotes.size != 1 then 's' else '' end %>">
 		<% else %>
 			<span class="sign-in-first-tooltip" data-toggle="tooltip" data-placement="bottom" title="Sign In First">
 		<% end %>
@@ -46,8 +47,17 @@
 				$('#maybeUpvotedFeature<%= feature.id %>').css("color", "#fff");
 				$('#maybeDownvotedFeature<%= feature.id %>').css("color", "#828282");
 				console.log('completed like of feature <%= feature.id %>');
+				
 				var oldLike = jQuery.parseJSON(data.responseText);
-				var newVC = '<h4 id="feature' + oldLike.id + 'likeage">' + oldLike.oldCount + '% </h4>';
+				var end_ups = oldLike.upvotes == 1 ? '' : 's';
+				var end_downs = oldLike.downvotes == 1 ? '' : 's';
+				$('#upvoteFeature<%= feature.id %>').tooltip('hide')
+          .attr('data-original-title', oldLike.upvotes + ' vote' + end_ups)
+          .tooltip('fixTitle');
+				$('#downvoteFeature<%= feature.id %>').tooltip('hide')
+          .attr('data-original-title', oldLike.downvotes + ' vote' + end_downs)
+          .tooltip('fixTitle');
+				var newVC = '<h4 id="feature' + oldLike.id + 'likeage">' + oldLike.oldCount + '%</h4>';
 				$('#feature' + oldLike.id + 'likeage').replaceWith(newVC);
 				$('#feature-modal<%= feature.id %>').modal('hide');
 			});
@@ -60,9 +70,19 @@
 				/* Change the checkmark to white */
 				$('#maybeDownvotedFeature<%= feature.id %>').css("color", "#fff");
 				$('#maybeUpvotedFeature<%= feature.id %>').css("color", "#828282");
+				
 				console.log('completed downvote of feature <%= feature.id %>');
 				var oldLike = jQuery.parseJSON(data.responseText);
-				var newVC = '<h4 id="feature' + oldLike.id + 'likeage">' + oldLike.oldCount + '% </h4>';
+				var end_ups = oldLike.upvotes == 1 ? '' : 's';
+				var end_downs = oldLike.downvotes == 1 ? '' : 's';
+				$('#upvoteFeature<%= feature.id %>').tooltip('hide')
+          .attr('data-original-title', oldLike.upvotes + ' vote'
+          	 + end_ups)
+          .tooltip('fixTitle');
+				$('#downvoteFeature<%= feature.id %>').tooltip('hide')
+          .attr('data-original-title', oldLike.downvotes + ' vote' + end_downs)
+          .tooltip('fixTitle');
+				var newVC = '<h4 id="feature' + oldLike.id + 'likeage">' + oldLike.oldCount + '%</h4>';
 				$('#feature' + oldLike.id + 'likeage').replaceWith(newVC);
 				/* if vote was from modal, close the modal */
 				$('#feature-modal<%= feature.id %>').modal('hide');

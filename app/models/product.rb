@@ -25,7 +25,7 @@ class Product < ActiveRecord::Base
 
   def can_be_accessed_by(user, pwd)
     if self.hidden
-      return self.password == pwd.to_s
+      return self.password == pwd.to_s || parsed_list.include?(user.id)
     end
     !self.hidden || parsed_list.include?(user.id)
   end

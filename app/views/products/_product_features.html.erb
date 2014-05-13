@@ -44,10 +44,10 @@
 				    <% @product.single.features.each do |feature| %>
 			      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
 				    <% end %>
-				    <% if current_user?(@product.user) %>
+					</div>
+					 <% if current_user?(@product.user) %>
 							<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#newFeatureModalGroup<%= @product.single.id %>">+ ADD ANOTHER</button>
-						<% end %>
-					</div>  
+						<% end %>  
 				<% end %>
 			</div>
 		</div>

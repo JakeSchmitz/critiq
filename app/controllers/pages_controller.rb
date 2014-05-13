@@ -20,4 +20,12 @@ class PagesController < ApplicationController
 	def how_to
 
 	end
+
+	def terms
+
+	end
+
+	def privacy 
+
+	end
 end

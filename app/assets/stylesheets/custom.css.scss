@@ -1,5 +1,9 @@
 /* universal */
 
+.everything {
+  min-height: 100%;
+}
+
 .container {
   padding: 0;
   text-align: center;
@@ -18,6 +22,7 @@ body {
   background-color: #fff;
   width: auto !important;
   overflow-x: hidden !important;
+  min-height: 100%;
 }
 
 .background-splatter1 {
@@ -80,6 +85,9 @@ h4 {
   font-weight: 400;
 }
 
+> strong {
+  font-weight: 700;
+}
 
 p {
   font-size: 18px;

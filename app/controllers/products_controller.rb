@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
 
   def index
-    @products = Product.where(:private => false, active: true)
+    @products = Product.where(:hidden => false, active: true)
   end
 
   def show  # what if there is no propic id?
@@ -123,8 +123,9 @@ class ProductsController < ApplicationController
         end
         redirect_to @product
       else
-        flash[:notice] = "That drive was private, so please signup first"
-        redirect_to signup_path
+        flash[:notice] = "This drive is private, so sign up first if you want to vote"
+        cookies.permanent["product#{@product.id}"] = params[:product][:pwd]
+        redirect_to @product
       end
     else
       flash[:notice] = "You should have received an access password from #{@product.user.name} " +

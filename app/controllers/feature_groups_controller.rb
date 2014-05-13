@@ -68,7 +68,6 @@ class FeatureGroupsController < ApplicationController
       else
         @feature.likes.where(:user_id => current_user.id).delete_all
       end
-      puts 'creating like for feature ' + @feature.name + ' with id = ' + @feature.id.to_s
       @feature.likes.create(:user_id => current_user.id, :up => YAML.load(params[:up]))
       @feature.save
       @feature_group.save
@@ -83,6 +82,8 @@ class FeatureGroupsController < ApplicationController
     end
     formatted = previousLike.attributes 
     formatted['oldCount'] = oldCount
+    formatted['upvotes'] = @feature.upvotes.size.to_s
+    formatted['downvotes'] = @feature.downvotes.size.to_s
     formatted['newCount'] = @feature.likes.where(up: true).size.to_i
     respond_to do |format|
       format.json { render json: formatted.to_json }

@@ -1,24 +1,11 @@
 <%- model_class = User -%>
-<!--
-<div class="hero-unit user-banner">
-  <% if !signed_in? %>
-    <div class="row span3">
-      <h3 class="span3">Join the club</h3>
-      <%= link_to t('.new', :default => t("helpers.links.new")), new_user_path,
-                  :class => 'btn btn-primary offset1', :style => 'margin-left: 140px' %>
-    </div>
-  <% end %>
-</div>
--->
 <div class="container" style="min-height: 90%; margin-top: 5%; text-align: center;">
   <h1>Critiqers and Creators</h1>
   <% @users.each_slice(4).each do |four_users| %>
     <div class="row" style="text-align: center; display: inline-block;">
-      <ul class="thumbnails" style="padding-top: 20px; display: inline-block;">
-        <% four_users.each do |user| %>
-          <%= render :partial => 'user_thumb' , locals: { user: user } %>
-        <% end %>
-      </ul>
+      <% four_users.each do |user| %>
+        <%= render :partial => 'user_thumb' , locals: { user: user } %>
+      <% end %>
     </div>  
   <% end %>
 </div>

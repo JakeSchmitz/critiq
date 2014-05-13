@@ -10,7 +10,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <%- model_class = Product -%>
-<% if @product.can_be_accessed_by current_user %>
+<% if @product.can_be_accessed_by(current_user, cookies["product#{@product.id}"]) %>
   <% if !@product.rand_pic.nil? %>
   <div class="product-header" style="background-image: url('<%= @product.rand_pic.attachment.url(:blurry) %>');">
   <% elsif !@product.top_pics.empty? %>

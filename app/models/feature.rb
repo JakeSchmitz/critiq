@@ -49,6 +49,14 @@ class Feature < ActiveRecord::Base
     likes.where(up: true).size
   end
 
+  def upvotes 
+    self.likes.where(:up => true)
+  end
+
+  def downvotes 
+    self.likes.where(:up => false)
+  end
+
   private
 
     def save_pictures

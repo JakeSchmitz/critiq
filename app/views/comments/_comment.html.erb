@@ -12,9 +12,9 @@
 			<!-- Comment Header -->
 				<% commentable = @commentable if @commentable %>
 				<% if !comment.deleted %>
-					<%= link_to "Reply", polymorphic_url(comment.path_to_reply, action: :new, parent_id: comment.id), remote: true, :class => "reply" %> - 
+					<%= link_to "Reply", polymorphic_url(comment.path, action: :new, parent_id: comment.id), remote: true, :class => "reply" %> - 
 					<% if signed_in? and (current_user.id == comment.user.id or is_admin?) %>
-					 <%= link_to "Delete", polymorphic_url(comment.path_to_delete), method: :delete, :class => "delete-comment", remote: true %> -
+					 <%= link_to "Delete", polymorphic_url(comment.path), method: :delete, :class => "delete-comment", remote: true %> -
 					<% end %>
 				<% end %>
 				<% if comment.has_children? %>
@@ -35,11 +35,11 @@
 
 	<!-- voting buttons -->
 	<div class="comment-vote-buttons pull-right">
-		<a href=<%= comment_vote_path(:product_id => product.id, :comment_id => comment.id, up: true)%> id="commentUpvote<%= comment.id %>" class="vote" data-remote="true">
+		<a href=<%= comment_vote_path(:product_id => product.id, :comment_id => comment.id, up: true)%> id="commentUpvote<%= comment.id %>" class="vote upvote" data-remote="true">
 			<i class="fa fa-play fa-rotate-270" style="color: #fc4c4c;"></i>
 		</a>
 		<h5 style="margin: 0px;" id="commentRating<%= comment.id %>"><%= comment.rating %></h5>
-		<a href=<%= comment_vote_path(:product_id => product.id, :comment_id => comment.id, up: false)%> id="commentDownvote<%= comment.id %>" class="vote" data-remote="true">
+		<a href=<%= comment_vote_path(:product_id => product.id, :comment_id => comment.id, up: false)%> id="commentDownvote<%= comment.id %>" class="vote downvote" data-remote="true">
 			<i class="fa fa-play fa-rotate-90"  style="color: #4c4cfc;"></i>
 		</a>
 	</div>

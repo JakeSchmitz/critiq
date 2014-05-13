@@ -42,7 +42,7 @@ class Comment < ActiveRecord::Base
 		save
 	end
 
-	def path_to_reply #used in the polymorphic_url method
+	def path #used in the polymorphic_url method
 		if self.commentable.class != Product 
 			[self.commentable.product, self.commentable, self]
 		else
@@ -50,12 +50,8 @@ class Comment < ActiveRecord::Base
 		end
 	end
 
-	def path_to_delete
-		path_to_reply
-	end
-
 	def reply # used in the reply form
-		parent_comment = self.parent.path_to_reply
+		parent_comment = self.parent.path
 		parent_comment.pop
 		parent_comment << self
 	end

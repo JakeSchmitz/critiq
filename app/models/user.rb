@@ -68,7 +68,6 @@ class User < ActiveRecord::Base
   end
 
   def profile_pic_url(size=:large)
-    p self.profile_pic
     case self.profile_pic
     when nil
       '/images/missing-user-avatar.png'

@@ -124,7 +124,7 @@ class Product < ActiveRecord::Base
     self.link.sub(/^https?\:\/\//, '').sub(/^www./,'').split('/')[0]
   end
 
-  def embed_video
+  def embed_video #check to see if the video_url is valid first
     vid_host = self.video_url.sub(/^https?\:\/\//, '').sub(/^www./,'').split('/')[0]
     if vid_host == 'youtube.com' or vid_host == 'youtu.be'
       youtube_embed(self.video_url)
@@ -208,7 +208,6 @@ class Product < ActiveRecord::Base
         f.product_id = self.id
       	f.save!
       end
-
     end 
 
     def has_pictures?

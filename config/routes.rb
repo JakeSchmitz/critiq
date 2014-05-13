@@ -61,7 +61,7 @@ Critiq0::Application.routes.draw do
 
   post '/twitter_signup', to: 'auth#create_twitter', as: 'twitter_signup' 
 
-  post 'signin', to: 'sessions#create'
+  post 'signin', to: 'sessions#create', as: "login"
   get 'signout', to: 'sessions#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

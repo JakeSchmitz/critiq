@@ -17,15 +17,4 @@ class FeatureGroup < ActiveRecord::Base
   end # this method might be returning too early
   # why not where instead of includes?
   #include should be includes
-
-  def can_user_vote_andy(current_user)
-    if !current_user.nil? 
-      self.features.each do |f|
-        return false if f.upvotes.includes(user_id: current_user.id) or f.downvotes.includes(user_id: current_user.id)
-      end
-      return true
-    end
-    return false 
-  end
-
 end

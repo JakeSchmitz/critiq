@@ -9,7 +9,7 @@
 			<i class="fa fa-check fa-lg" style="color: <% if signed_in? and !feature.likes.where(:user_id => current_user.id).empty? %>#fff<% else %>#828282<% end %>;" id="maybeCheckedFeature<%= feature.id %>"></i> 
 		</div>
 		<div class="vote"> 
-			<h5> Vote</h5>
+			<h5>Vote</h5>
 		</div>
 	</div>
 	<% if signed_in? %>
@@ -18,7 +18,7 @@
 		</span>
 	<% end %>
 	<div class="functions-right" style="text-align: center; color: #fff;">
-		<h5 id="featureVoteCount<%= feature.id %>"><%= feature.likes.where(:up => true).size  %> Votes</h5>
+		<h5 id="featureVoteCount<%= feature.id %>"><%= feature.upvotes %> Votes</h5>
 	</div>
 </div>
 

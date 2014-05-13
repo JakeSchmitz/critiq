@@ -41,9 +41,12 @@ class Feature < ActiveRecord::Base
   end
 
   def rating
-    up_rating = self.likes.where(up: true).size
-    down_rating = self.likes.where(up: false).size
-    up_rating - down_rating
+    down_rating = likes.where(up: false).size
+    upvotes - down_rating
+  end
+
+  def upvotes
+    likes.where(up: true).size
   end
 
   private

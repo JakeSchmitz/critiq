@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div>
-			<%= nested_form_for [product, feature_group, feature], :html => { :'data-type' => 'json', :class => 'form-horizontal single-form-body', :remote => true, :id => 'feature_create_form' + feature_group.id.to_s } do |f| %>
+			<%= nested_form_for [product, feature_group, feature], :html => { :'data-type' => 'json', :class => 'random form-horizontal single-form-body', :remote => true, :id => 'feature_create_form' + feature_group.id.to_s } do |f| %>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
 				<div class="form-field">

@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="product-pictures">
-          <% if @product.video_url and @product.video_url != '' %>
+          <% if @product.video_url and @product.video_url != '' and @product.embed_video %>
             <div class="main-pic span6" id="main-pic">
               <%= @product.embed_video.html_safe %>
             </div>

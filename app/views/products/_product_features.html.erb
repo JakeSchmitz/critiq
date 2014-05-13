@@ -4,9 +4,7 @@
 			<h3 style="color: #fff">Hey there, it looks like this Drive doesn't have Polls set up yet</h3>
 			<% if signed_in? and current_user.id == @product.user_id %>
 				<h3 style="color: #fff">Create a Poll to start getting feedback</h3>
-				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">
-				  CREATE A POLL
-				</button>
+				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal" id="create-poll">CREATE A POLL</button>
 				<h3 style="color: #fff">Or you can ask critiqers more specific questions on the Bounties tab</h3>
 			<% else %>
 				<h3>Follow this Drive and get notified whenever they get moving!</h3>
@@ -20,7 +18,7 @@
 	<div class="container">
 		<% if signed_in? and current_user.id == @product.user.id %>
 			<div class="row" style="margin: 0;">
-				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal">CREATE A POLL</button>
+				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal" id="create-poll">CREATE A POLL</button>
 			</div>
 		<% end %>
 		<div class="span8 pull-left comparison-features">
@@ -47,10 +45,7 @@
 			      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
 				    <% end %>
 				    <% if current_user?(@product.user) %>
-							<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#newFeatureModalGroup<%= @product.single.id %>">
-							 + ADD ANOTHER
-							</button>
-							<%= render partial: '/features/single_feature_form_modal', locals: { product: @product, feature_group: @product.single, feature: Feature.new(:user_id => @product.user.id, :product_id => @product.id, :feature_group_id => @product.single.id) } %>
+							<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#newFeatureModalGroup<%= @product.single.id %>">+ ADD ANOTHER</button>
 						<% end %>
 					</div>  
 				<% end %>

@@ -16,13 +16,13 @@
 			<div class="span2 well choice" style="background-color: #d4d4d4;">
 				<h4>Singleton</h4>
 				<button data-toggle="modal" data-target="#newFeatureModalGroup<%= feature_group.id %>" onclick="$('#newFeatureModal').modal('hide');" style="padding: 0px; border: none;">
-					<%= image_tag '/images/standalone.png' %>
+					<%= image_tag '/images/standalone.png', id: "singleton-choice" %>
 				</button>
 			</div>
 			<div class="span2 well choice" style="background-color: #d4d4d4;">
 				<h4>Comparison</h4>
 				<button data-toggle="modal" data-target="#newCompFeatureModal" onclick="$('#newFeatureModal').modal('hide');" style="padding: 0px; border: none;">
-					<%= image_tag '/images/comparison.png' %>
+					<%= image_tag '/images/comparison.png', id: "comparison-choice" %>
 				</button>
 			</div>
 		</div>

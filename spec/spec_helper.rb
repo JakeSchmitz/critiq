@@ -6,7 +6,7 @@ require 'rspec/autorun'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
-  config.include WaitForAjax, type: :feature
+  config.include TestHelpers, type: :feature
   config.include FactoryGirl::Syntax::Methods
   config.use_transactional_fixtures = false
 
@@ -16,6 +16,8 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.start
   end
+
+
   config.after(:each) do
     DatabaseCleaner.clean
   end
@@ -25,3 +27,4 @@ RSpec.configure do |config|
   config.mock_with :mocha
   ActiveRecord::Base.logger.level = 1
 end
+

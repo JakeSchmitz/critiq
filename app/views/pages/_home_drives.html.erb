@@ -1,5 +1,5 @@
 <table class="featured-campaigns">
-	<tr class="row">
+	<tr class="row" style="float: center;">
 		<% @top_products.each do |product| %>
 			<td><%= render :partial => '/products/product_thumb', locals: { product: product } %></td>
 		<% end %>

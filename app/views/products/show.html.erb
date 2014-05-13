@@ -21,7 +21,7 @@
   <div class="black-wrapper">
   <div class="container">
     <div class="span" style="width: 100%; float: center;">
-      <h1 class="product-name"><%= @product.name %><div class="fb-like" data-href="<%= request.original_url %>" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></h1>
+      <h1 class="product-name"><%= @product.name %><%= render partial: 'fb_buttons' %></h1>
       <div class="span" style="margin-left: 0px;"> 
         <div class="product-left">
           <div class="product-creator" style="display: inline-block;">

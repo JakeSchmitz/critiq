@@ -1,7 +1,7 @@
 /* universal */
 
 .everything {
-  min-height: 100%;
+  height: 100%;
 }
 
 .container {
@@ -11,18 +11,17 @@
 
 html {
   width: auto !important;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
   margin-top: 40px;
   padding: 0px;
-  padding-top: 20px;
   height: 100%;
   background-color: #fff;
-  width: auto !important;
-  overflow-x: hidden !important;
-  min-height: 100%;
+  font-family: proxima-nova-n9, proxima-nova, sans-serif;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .background-splatter1 {
@@ -120,12 +119,18 @@ p {
   text-decoration: none;
 }
 
+.page-content {
+  min-height: 90%;
+}
+
 /* footer */
 
 footer {
   text-align: center;
   height: auto;
   width: 100%;
+  margin-top: 20px;
+  min-height: 5%;
   .upper-footer {
     width: 100%;
     padding: 10px;

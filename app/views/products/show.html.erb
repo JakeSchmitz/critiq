@@ -24,7 +24,7 @@
       <!-- start of navbar/ lower section -->
       <div class="pnav" style="text-align: center; width: 100%;">
         <ul class="nav nav-tabs product-nav product-nav-content row" id="product-tabs">
-          <li class="first"><a href="#drive-info" data-toggle="tab"><i class="fa fa-fa-info-circle"></i> <span class="no-mobile">DRIVE INFO</span></a></li>
+          <li style="border-left: none;"><a href="#drive-info" data-toggle="tab"><i class="fa fa-fa-info-circle"></i> <span class="no-mobile">DRIVE INFO</span></a></li>
           <li><a href="#product-features" data-toggle="tab"><span class="yes-mobile"><i class="fa fa-check"></i></span> <span class="no-mobile">VOTE</span></a></li>
           <li><a href="#product-comments" data-toggle="tab"><span class="yes-mobile"><i class="fa fa-comments"></i></span><%= @product.comments.length - 1%> <span class="no-mobile">CRITIQS</span></a></li>
           <li><a href="#product-bounties" data-toggle="tab"><span class="yes-mobile"><i class="fa fa-bullseye"></i></span><%= @product.bounties.length.to_s %> <span class="no-mobile">BOUNTIES</span></a></li>

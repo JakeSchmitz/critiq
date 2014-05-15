@@ -12,149 +12,97 @@
 <%- model_class = Product -%>
 <% if @product.can_be_accessed_by(current_user, cookies["product#{@product.id}"]) %>
   <% if !@product.rand_pic.nil? %>
-  <div class="product-header" style="background-image: url('<%= @product.rand_pic.attachment.url(:blurry) %>');">
+    <div class="product-header" style="background: url('<%= @product.rand_pic.attachment.url(:blurry) %>'); background-repeat: no-repeat; background-size: cover;">
   <% elsif !@product.top_pics.empty? %>
-  <div class="product-header" style="background-image: url('<%= @product.top_pics.first.attachment.url(:blurry) %>');">
+    <div class="product-header" style="background: url('<%= @product.top_pics.first.attachment.url(:blurry) %>'); background-repeat: no-repeat; background-size: cover;">
   <% else %>
-  <div class="product-header" style="background: rgba(0, 0, 0, .5); ">
+    <div class="product-header" style="background: rgba(0, 0, 0, .5) ;">
   <% end %>
   <div class="black-wrapper">
-  <div class="container">
-    <div class="span product-container">
-      <h1 class="product-name"><%= @product.name %><%= render partial: 'fb_buttons' %></h1>
-      <div class="span" style="margin-left: 0px;"> 
-        <div class="product-left">
-          <div class="product-creator" style="display: inline-block;">
-            <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>');"></div>
-            <div class="creator-data">
-              <h5 style="text-align: left;">Created By <%= link_to @product.user.name, @product.user, style: 'color: #cacaca' %></h5>
-            </div>
-          </div>
-        </div>
-        <div class="product-pictures">
-          <% if @product.video_url and @product.video_url != '' %>
-            <div class="main-pic span6" id="main-pic">
-              <%= @product.embed_video.html_safe %>
-            </div>
-          <% else %>
-            <div class="main-pic span6" id="main-pic" style="background-image: url('<%= @product.profile_pic_url %>'); background-position: center;"></div>
-          <% end %>
-          <div class="other-pics">
-            <% if @product.video_url and @product.video_url != '' %>
-              <div class="alt-pic">
-                <a class="thumb-ratio alt-pic"  style="cursor: pointer; background-position: center; background-image: url(<%= @product.video_thumb %>); " id="video_thumb" onclick="embedVideo('<%= escape_javascript @product.embed_video %>')">
-                </a>
-              </div>
-            <% end %>
-            <% @product.top_pics.each_with_index do |pic, i| %>
-              <div class="alt-pic">
-                <a class="thumb-ratio alt-pic"  style="cursor: pointer; background-position: center; background-image: url('<%= pic.attachment.url(:large) %>');" id="alt-pic<%= i %>" onclick="selectImage(<%= i %>)">
-                </a>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="product-right">
-        <div class="product-buttons">
-          <% if signed_in? and !@product.likes.exists?(:user_id => current_user.id) and !@product.user.id == current_user.id %>
-            <%= button_to 'FOLLOW', product_love_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
-          <% elsif !signed_in? %>
-            <h4 style="margin-top: 15px; height: 50px; text-align: center; color: #fff;">Sign in to Vote and Comment</h4>
-          <% end %>
-          <% if signed_in? and (current_user.id == @product.user.id or is_admin?) %>
-            <%= button_to 'EDIT', edit_product_path(@product.id), :method => "get", :class => "btn-clear inline-button", style: 'float: left;' %>
-          <% end %>
-        </div>
-        <div class="well span4 description-box">
-          <!-- Buy when complete button isn't ready yet! <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #313131; border-color: #313131;' %> -->
-          <h3 style="display: inline-block; float: left; margin: 0;">Description:&nbsp;</h3>
-          <p class="product-description" style="white-space: pre-wrap;"><%= @product.description %></p>
-          <% if !@product.link.nil? and @product.link != "" %><%= link_to @product.simple_link, "http://#{@product.link}", class: 'btn btn-black' %><% end %>
-        </div>
+    <div>
+      <h2 class="product-name"><%= @product.name %><%= render partial: 'fb_buttons' %></h2>
+      <!-- start of navbar/ lower section -->
+      <div class="pnav" style="text-align: center; width: 100%;">
+        <ul class="nav nav-tabs product-nav product-nav-content row" id="product-tabs">
+          <li class="first"><a href="#drive-info" data-toggle="tab"><i class="fa fa-fa-info-circle"></i> <span class="no-mobile">DRIVE INFO</span></a></li>
+          <li><a href="#product-features" data-toggle="tab"><span class="yes-mobile"><i class="fa fa-check"></i></span> <span class="no-mobile">VOTE</span></a></li>
+          <li><a href="#product-comments" data-toggle="tab"><span class="yes-mobile"><i class="fa fa-comments"></i></span><%= @product.comments.length - 1%> <span class="no-mobile">CRITIQS</span></a></li>
+          <li><a href="#product-bounties" data-toggle="tab"><span class="yes-mobile"><i class="fa fa-bullseye"></i></span><%= @product.bounties.length.to_s %> <span class="no-mobile">BOUNTIES</span></a></li>
+          <li><a href="#product-likers" data-toggle="tab"><span class="yes-mobile"><i class="fa fa-heart"></i></span><%= @product.followers.length.to_s %> <span class="no-mobile">FOLLOWERS</span></a></li>
+          <!--<li><a href="#product-rewards" data-toggle="tab"><i class="fa fa-star"></i> <span class="no-mobile">Rewards</span></a></li>-->
+        </ul>
       </div>
     </div>
   </div>
-  </div></div>
-  <div class="pnav" style="text-align: center; width: 100%; margin: none;">
-    <ul class="nav nav-tabs product-nav product-nav-content row" id="product-tabs">
-      <li><a href="#product-features" data-toggle="tab"><i class="fa fa-check"></i> <span class="no-mobile">VOTE</span></a></li>
-      <li><a href="#product-comments" data-toggle="tab"><i class="fa fa-comments"></i> <span class="no-mobile">CRITIQS</span> (<%= @product.comments.length - 1%>)</a></li>
-      <li><a href="#product-bounties" data-toggle="tab"><i class="fa fa-bullseye"></i> <span class="no-mobile">BOUNTIES</span> (<%= @product.bounties.length.to_s %>)</a></li>
-      <li><a href="#product-likers" data-toggle="tab"><i class="fa fa-heart"></i> <span class="no-mobile">FOLLOWERS</span> (<%= @product.followers.length.to_s %>)</a></li>
-      <!--<li><a href="#product-rewards" data-toggle="tab"><i class="fa fa-star"></i> <span class="no-mobile">Rewards</span></a></li>-->
-      <% if signed_in? and (current_user.id == @product.user.id or is_admin?) %>
-        <li><a href="#product_edit" data-toggle="tab"><i class="fa fa-cogs"></i> <span class="no-mobile">EDIT</span></a></li>
+</div>
+<div class="product-middle">
+  <div class="tab-content">
+    <!-- Vote Tab -->
+    <div class="tab-pane" id="product-features">
+      <%= render :partial => 'product_features' %>
+    </div>
+    <!-- Vote Tab -->
+    <div class="tab-pane" id="drive-info">
+      <%= render :partial => 'product_info' %>
+    </div>
+    <!-- Comment Tab -->
+    <div class="tab-pane product-comments" id="product-comments" style="text-align: center;">
+      <div class="new-comment">
+        <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments', thread_id: 'product' + @product.id.to_s}, style: 'display: inline-block;' %>
+         <div class="current-user">
+          <% if signed_in? %>
+            <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic_url %>');"></div>
+          <% else %>
+            <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
+          <% end %>
+        </div>
+      </div>
+      <% if !@product.comments.empty? %> 
+        <div style="padding-top: 20px;" id="comment-container">
+          <%= render :partial => 'product_comments', locals: { comments: @product.sorted_comments, product: @product, thread_id: 'product' + @product.id.to_s} %>
+        </div>
+      <% else %>
+        <h2>This Has No Comments!</h2>
       <% end %>
-    </ul>
-  </div>
-  <div class="container">
-    <div class="row product-middle">
-      <div class="tab-content">
-        <!-- Vote Tab -->
-        <div class="tab-pane" id="product-features">
-          <%= render :partial => 'product_features' %>
-        </div>
-        <!-- Comment Tab -->
-        <div class="tab-pane product-comments" id="product-comments" style="text-align: center;">
-          <div class="new-comment">
-           
-            <%= render :partial => '/comments/product_form', locals: { tab: 'product-comments', thread_id: 'product' + @product.id.to_s}, style: 'display: inline-block;' %>
-             <div class="current-user">
-              <% if signed_in? %>
-                <div class="thumb-ratio current-user-face" style="width: 100px; height: 100px; background-image: url('<%= current_user.profile_pic_url %>');"></div>
-              <% else %>
-                <div class="thumb-ratio current-user-face" style="background-image: url('/images/missing-user-avatar.png'); width: 100px; height: 100px; "></div>
-              <% end %>
-            </div>
-          </div>
-          <% if !@product.comments.empty? %> 
-            <div style="padding-top: 20px;" id="comment-container">
-              <%= render :partial => 'product_comments', locals: { comments: @product.sorted_comments, product: @product, thread_id: 'product' + @product.id.to_s} %>
-            </div>
-          <% else %>
-            <h2>This Has No Comments!</h2>
-          <% end %>
-        </div>
-        <!-- Likers Tab -->
-        <div class="tab-pane" id="product-likers">
-          <%= render :partial => 'product_likers' %>
-        </div>
-        <!-- Bounties Tab -->
-        <div class="tab-pane" id="product-bounties">
-          <h2>Bounties!</h2>
-          <%= render :partial => 'product_bounties' %>
-        </div>
-        <!-- Rewards Tab -->
-        <!--<div class="tab-pane" id="product-rewards">
-          <h2>Earn rewards for your critiqs!</h2>
-        </div>-->
-        <!-- Edit Tab (when signed in) -->
-        <% if current_user?(@product.user)%>
-          <div class="tab-pane" id="product_edit">
-            <h1>Edit Drive</h1>
-            <div class="edit-info pull-left span5">
-              <%= render :partial => 'form' %>
-            </div>
-            <div class="edit-pictures span5 pull-left">
-              <h3>Drive Pictures</h3>
-              <div class="row">
-                <% @product.pictures.where.not(:attachment_file_name => nil).each do |pic| %>
-                  <div class="product-pic-thumb thumb-ratio" style="width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>'); display: inline-block;"></div>
-                  <div class="pic-btns">
-                    <%= link_to glyph(:trash), product_picture_path(@product.id, pic.id), :method => :delete, data: { :confirm => "You sure?"} , style: 'color:#ff0000' %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-            <div class="jquery-product-image-upload span10">
-                <%= render :partial => 'jquery_image_uploader' %>
-            </div>
-          </div>  
-        <% end %>
-      </div>
     </div>
+    <!-- Likers Tab -->
+    <div class="tab-pane" id="product-likers">
+      <%= render :partial => 'product_likers' %>
+    </div>
+    <!-- Bounties Tab -->
+    <div class="tab-pane" id="product-bounties">
+      <h2>Bounties!</h2>
+      <%= render :partial => 'product_bounties' %>
+    </div>
+    <!-- Rewards Tab -->
+    <!--<div class="tab-pane" id="product-rewards">
+      <h2>Earn rewards for your critiqs!</h2>
+    </div>-->
+    <!-- Edit Tab (when signed in) -->
+    <% if current_user?(@product.user)%>
+      <div class="tab-pane" id="product_edit">
+        <h1>Edit Drive</h1>
+        <div class="edit-info pull-left span5">
+          <%= render :partial => 'form' %>
+        </div>
+        <div class="edit-pictures span5 pull-left">
+          <h3>Drive Pictures</h3>
+          <div class="row">
+            <% @product.pictures.where.not(:attachment_file_name => nil).each do |pic| %>
+              <div class="product-pic-thumb thumb-ratio" style="width: 100px; height: 100px; padding: 10px; background-image: url('<%= pic.attachment.url(:thumb) %>'); display: inline-block;"></div>
+              <div class="pic-btns">
+                <%= link_to glyph(:trash), product_picture_path(@product.id, pic.id), :method => :delete, data: { :confirm => "You sure?"} , style: 'color:#ff0000' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="jquery-product-image-upload span10">
+            <%= render :partial => 'jquery_image_uploader' %>
+        </div>
+      </div>  
+    <% end %>
   </div>
+</div>
 <% else %>
   <%= render partial: 'product_password_page' %>
 <% end %>

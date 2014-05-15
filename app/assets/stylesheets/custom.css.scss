@@ -729,10 +729,23 @@ input[type="file"] {
 }
 
 @media (max-width: 768px) {
+  .row {
+    margin: 0;
+  }
+  .yes-mobile {
+    display: inline-block;
+  }
   .no-mobile {
     display: none;
   }
-  .row {
-    margin: 0;
+}
+
+
+@media (min-width: 768px) {
+  .yes-mobile {
+    display: none;
+  }
+  .no-mobile {
+    display: inline-block;
   }
 }

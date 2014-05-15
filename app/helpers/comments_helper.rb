@@ -20,9 +20,9 @@ module CommentsHelper
 	end
 
 	def width_for comment
-		length = 750
+		length = 730
 		indentation = 38
-		"#{750 - comment.depth * 38}px"
+		"#{730 - comment.depth * 38}px"
 	end
 
 	def reply_count_for comment

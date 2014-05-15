@@ -3635,6 +3635,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .tab-content > .tab-pane {
   display: none;
+  padding: 25px 0 25px 0;
+  overflow-x: hidden;
 }
 .tab-content > .active {
   display: block;

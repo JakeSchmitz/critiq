@@ -1,6 +1,6 @@
 <div class="<%= comment.parent ? 'comment nested-comment' : 'comment' %>">
 <!-- body of comment -->
-	<div class="comment-body pull-right" style="padding: 0px;width: <%= width_for comment %>">
+	<div class="comment-body pull-right" style="padding: 0px; width: <%= width_for comment %>">
 		<div class="commenter-info">
 			<div class="user-thumb-pic" style="width: 29px; height: 29px; display: inline-block;">
 				<div class="thumb-ratio" style="background-image: url('<%= comment.user.profile_pic_url(:medium) %>');"></div>

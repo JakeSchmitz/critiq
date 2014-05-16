@@ -151,7 +151,7 @@ class Product < ActiveRecord::Base
       youtube_id = $5
     end
 
-    %Q{<div class="video-container"><iframe title="YouTube video player" width="100%" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe></div>}
+    %Q{<iframe title="YouTube video player" width="600px" height="450px" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
 
   def vimeo_embed(vimeo_url)
@@ -162,7 +162,7 @@ class Product < ActiveRecord::Base
       vimeo_id = $5
     end
 
-    %Q{<div class="video-container"><iframe title="Vimeo video player" width="100%" height="auto" src="\/\/player.vimeo.com\/video\/#{ vimeo_id }" frameborder="0" allowfullscreen></iframe></div>}
+    %Q{<iframe title="Vimeo video player" width="600px" height="450px" height="auto" src="\/\/player.vimeo.com\/video\/#{ vimeo_id }" frameborder="0" allowfullscreen></iframe>}
   end
 
   def vimeo_thumbnail(vimeo_url)

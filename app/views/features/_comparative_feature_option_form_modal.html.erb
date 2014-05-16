@@ -4,7 +4,7 @@
 		<div class="row center-row" style="margin-bottom: 20px;">
 			<div class="form-indicators form-header single-header" style="margin-right: -3px;">
 				<!-- note reverse class names to switch colors -->
-				<button data-toggle="modal" data-target="#newFeatureModal" onclick="$('#newFeatureModalGroup<%= feature_group.id %>').modal('hide');" style="padding: 0px; border: none;"> 
+				<button data-toggle="modal" data-target="#newFeatureModal" style="padding: 0px; border: none;" class="comp-button"> 
 					<div class="form-tab unselected">
 						<p class="tab-name"><% if feature_group.singles? %>SINGLETON<% else %>COMPARISON<% end %></p>
 					</div>
@@ -36,40 +36,6 @@
 			  <div class="form-submit center-row" id="single-submit">
 			    <%= f.submit nil, :class => 'btn btn-primary', id: "form-submit-button", value: "FINISH", style: "width: auto"%>
 			  </div>
-
-<!-- 
-			  <div style="display: inline-block; width: 90%; text-align: center;">
-		      <div class="well form-well">
-		      	<div class="control-group">
-					    <%= f.label :name, :class => 'control-label' %>
-					    <div class="controls">
-					      <%= f.text_field :name, :class => 'text_field' %>
-					    </div>
-					  </div>
-		      </div>
-		      <div class="well form-well">
-		      	<div class="control-group">
-					    <%= f.label :description, :class => 'control-label' %>
-					    <div class="controls">
-					      <%= f.text_area :description, :class => 'text_area' %>
-					    </div>
-					  </div>
-		      </div>
-			    <div>
-	          <div class="control-group well form-well">
-	            <%= f.label "Image (optional)", :class => 'control-label' %>
-	            <div class="controls btn file_upload_wrapper" style="margin-left: -30px;">
-	              <%= f.file_field :attachment, name: 'feature[attachment]', class: 'file_field' %>
-	            </div>
-	          </div>  
-			    </div>
-			  </div>
-			  <div class="actions" style="margin-top: 20px; height: 60px; padding-top: 15px; background-color: #794f85; width: 100%;">
-			    <%= f.submit 'SAVE AND CONTINUE', class: 'btn btn-primary btn-clear', id: 'submitFeature' + feature_group.id.to_s %>
-			  </div> -->
-
-
-
 			<% end %>
 		</div>
 	</div>

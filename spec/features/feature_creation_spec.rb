@@ -8,10 +8,7 @@ describe "Feature Creation" do
 	describe "Feature creation from a new product" do 
 	
 		before :each do
-			login_user
-			feature_group
-			visit product_path product
-			click_link 'VOTE'
+			visit_product_tab 'VOTE'
 			click_button 'create-poll'
 		end
 

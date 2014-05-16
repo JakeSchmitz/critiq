@@ -1,0 +1,8 @@
+open up active record base and create an has_activity method, use metaprogramming
+create a social media class to thin out the auth controller
+
+Things in need of refactoring: 
+	all in javascript in erb files
+	vote action in feature groups controller
+	upvote and downvote in feature controller
+	maybe create seed_data for dashboard visualization

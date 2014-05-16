@@ -1,3 +1,15 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+Features = 
+	init: () ->
+		$('body').on 'click', '.comp-button', @showCompForm
+
+	showCompForm: (event) ->
+		console.log(event.currentTarget)
+		compForm = $(event.currentTarget).parents().eq 3
+		compForm.modal 'hide'
+
+$(document).ready ->
+	Features.init()
+
+
+		
+

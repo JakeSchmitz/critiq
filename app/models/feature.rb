@@ -9,9 +9,10 @@ class Feature < ActiveRecord::Base
 
   def percent_like
     if self.likes.empty?
-      return 0
+      0
     else
-      return self.likes.where(up: true).size.to_f / self.likes.size.to_f
+      ratio = likes.where(up: true).size.to_f / self.likes.size.to_f
+      (ratio * 100.0).round(2)
     end
   end
 
@@ -41,12 +42,7 @@ class Feature < ActiveRecord::Base
   end
 
   def rating
-    down_rating = likes.where(up: false).size
-    upvotes - down_rating
-  end
-
-  def upvotes
-    likes.where(up: true).size
+    upvotes.size - downvotes.size
   end
 
   def upvotes 

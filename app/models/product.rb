@@ -30,8 +30,9 @@ class Product < ActiveRecord::Base
     !self.hidden || parsed_list.include?(user.id)
   end
 
-  def parsed_list
-    access_list.split(",").map(&:to_i)
+  def add_to_access_list user
+    access_list += ",#{user.id}"
+    save
   end
 
   #Return a unique array of users that have liked elements of this product
@@ -188,6 +189,10 @@ class Product < ActiveRecord::Base
   end
 
   private
+
+    def parsed_list
+      access_list.split(",").map(&:to_i)
+    end
 
     def get_likes(id, type)
       return Like.where(user_id: self.id, likeable_type: type, likeable_id: id)

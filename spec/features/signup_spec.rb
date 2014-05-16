@@ -1,5 +1,4 @@
 =begin
-Voting on Features
 Answering Bounties
 Creating Bounties
 =end

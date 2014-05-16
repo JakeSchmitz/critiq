@@ -4,7 +4,7 @@ describe "Drive Creation" do
 
 	describe "getting creator access" do 
 		before :each do
-			login_user 
+			actual_login_user 
 			visit new_product_path
 		end
 
@@ -26,7 +26,7 @@ describe "Drive Creation" do
 		let(:product) {build :product}
 
 		before :each do 
-			login_user 
+			actual_login_user 
 			visit new_product_path
 			fill_in 'user_creator_code', with: "gimmefeedback"
 			click_on "ACCESS"

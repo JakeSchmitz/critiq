@@ -11,14 +11,15 @@
 		<div class="vote"> 
 			<h5>Vote</h5>
 		</div>
+		<% if signed_in? %>
+			</a>
+		<% else %>
+			</span>
+		<% end %>
 	</div>
-	<% if signed_in? %>
-		</a>
-	<% else %>
-		</span>
-	<% end %>
+	
 	<div class="functions-right" style="text-align: center; color: #fff;">
-		<h5 id="featureVoteCount<%= feature.id %>"><%= feature.upvotes %> Votes</h5>
+		<h5 id="featureVoteCount<%= feature.id %>"><%= feature.upvotes.size %> Votes</h5>
 	</div>
 </div>
 

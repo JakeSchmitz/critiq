@@ -49,7 +49,7 @@ class FeatureGroupsController < ApplicationController
     end
   end
 
-  def vote
+  def vote #is failing because previous like is nil the first time when there is no previous like
     @feature_group = FeatureGroup.find(params[:feature_group_id])
     @tab = 'product-features'
     previousLike = nil
@@ -77,7 +77,7 @@ class FeatureGroupsController < ApplicationController
     # whatever the current user used to likes
     if @feature_group.singles?
       # In the singleton case, oldCount is actually the updated likeage percentage
-      oldCount = (@feature.percent_like*100).round(3)
+      oldCount = @feature.percent_like
       previousLike = @feature
     end
     formatted = previousLike.attributes 

@@ -118,8 +118,7 @@ class ProductsController < ApplicationController
     if @product.password == params[:product][:pwd]
       if signed_in?
         if !@product.parsed_list.include?(current_user.id)
-          @product.access_list += ",#{current_user.id}"
-          @product.save
+          @product.add_to_access_list current_user
         end
         redirect_to @product
       else

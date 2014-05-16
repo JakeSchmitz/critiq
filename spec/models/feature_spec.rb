@@ -16,7 +16,7 @@ describe Feature do
 				down_count = 10 - up_count
 				up_count.times { create :like, likeable_type: "Feature", likeable_id: 1}
 				down_count.times {create :like, {likeable_type: "Feature", up: false, likeable_id: 1}}
-				expect(@feature.percent_like).to eq up_count/(up_count + down_count).to_f
+				expect(@feature.percent_like).to eq up_count/(up_count + down_count).to_f * 100.0
 			end
 		end
 

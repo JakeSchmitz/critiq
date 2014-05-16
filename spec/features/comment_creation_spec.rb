@@ -63,9 +63,7 @@ describe "Comments" do
 		end
 
 		context "with an existing comment" do 
-			before :each do
-				p Product.all
-				puts "\n" * 10 
+			before :each do 
 				@comment = create :product_comment
 				visit product_path @product
 				click_on "CRITIQS"

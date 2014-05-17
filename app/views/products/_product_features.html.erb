@@ -26,10 +26,10 @@
 		<div class="comparison-features">
 			<div style="text-align: center;">
 				<% if !@product.comparisons.nil? and !@product.comparisons.empty? %>
-					<h2 style="width: 100%; text-align: left; margin-left: -15px;">Comparisons</h2>
+					<h2 style="width: 100%; text-align: left;">Comparisons</h2>
 			    <% @product.comparisons.each do |comp_feature| %>
 			    	<% if comp_feature.name and comp_feature.name != '' %>
-				    	<div style="margin-top: 20px">
+				    	<div>
 				      	<%= render :partial => 'comparison_feature_thumb' , locals: { comp_feature: comp_feature } %>
 				      </div>
 			      <% end %>

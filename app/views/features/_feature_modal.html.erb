@@ -1,4 +1,4 @@
-<div class="modal fade feature-modal" id="feature-modal<%= feature.id.to_s %>" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade feature-modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-content">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="float: right; padding-top: 3px; margin-right: -12px;"><i class="fa fa-times"></i></button>
     <div class="feature-header">
@@ -6,16 +6,9 @@
       <div class="feature-modal-buttons">
         <% if signed_in? %>
           <% if feature.is_single? %>
-            <div class="single-downvote">
-              <a href=<%= product_feature_group_vote_path(product_id: @product.id, feature_id: feature.id, feature_group_id: feature.feature_group_id, up: false) %> class="btn btn-primary ftr-modal-btn" style="background-color: #0000ff; float: left;" data-remote="true" id="modalDownvoteFeature<%= feature.id %>"><i class="fa fa-angle-double-down fa-lg"></i>&nbsp;<%= feature.likes.where(up: false).size.to_s %></a>
-            </div>
-            <h4 class="robot-font" style="float: left; margin-left: 70px;" id="feature-votes"><%= (feature.percent_like * 100).round(2) %>%</h4>
-            <div class="single-upvote">
-              <a href=<%= product_feature_group_vote_path(product_id: @product.id, feature_id: feature.id, feature_group_id: feature.feature_group_id, up: true) %> class="btn btn-primary ftr-modal-btn" style="background-color: #ff0000; float: right;" data-remote="true" id="modalUpvoteFeature<%= feature.id %>"><%= feature.likes.where(up: true).size.to_s %>&nbsp;<i class="fa fa-angle-double-up fa-lg"></i></a>
-            </div>
+            <%= render partial: 'features/singleton_modal', locals: {feature: feature}%>
           <% else %>
-            <h4 class="robot-font" id="feature-votes"><%= feature.likes.size %> Votes</h4>
-            <a href=<%= product_feature_group_vote_path(product_id: @product.id, feature_id: feature.id, feature_group_id: feature.feature_group_id, up: true) %> class="btn btn-primary ftr-modal-btn" style="background-color: #6d2cfa; float: left;" id="modalUpvoteFeature<%= feature.id %>" data-remote="true">VOTE</a>
+            <%= render partial: 'features/comparison_modal', locals: {feature: feature}%>
           <% end %>
         <% else %>
           <a href="/signin" class="btn-clear">SIGN UP TO VOTE</a>

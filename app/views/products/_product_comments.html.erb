@@ -1,4 +1,4 @@
-<div id="thread_id<%= thread_id %>" style="display: inline-block;" class="thread">
+<div style="display: inline-block;" class="thread">
 	<% if defined? bounty%>
 		<%= nested_bounty_comments bounty.comments.arrange(order: :created_at), product, bounty %>
 	<% else %>

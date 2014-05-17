@@ -1,10 +1,10 @@
-<div class="modal fade single-form" id="newFeatureModalGroup<%= feature_group.id %>" tabindex="-1" role="dialog" aria-labelledby="newFeatureModalGroup<%= feature_group.id %>Label" aria-hidden="true">
-	<button type="button" class="close" data-dismiss="modal" area-hidden="true" style="padding-right: 4px"><i class="fa fa-times"></i></button>
+<div class="modal fade single-form " id="singleton-form" tabindex="-1" role="dialog" >
+	<button type="button" class="close" data-dismiss="modal" style="padding-right: 4px"><i class="fa fa-times"></i></button>
 	<div class="modal-body" style="max-height: 90%;">
 		<div class="row" style="margin-bottom: 20px;">
 			<div class="form-indicators form-header single-header" style="margin-right: -3px;">
 				<!-- note reverse class names to switch colors -->
-				<button data-toggle="modal" data-target="#newFeatureModal" onclick="$('#newFeatureModalGroup<%= feature_group.id %>').modal('hide');" style="padding: 0px; border: none;"> 
+				<button data-toggle="modal" data-target="#newFeatureModal" style="padding: 0px; border: none;" class="form-button"> 
 					<div class="form-tab unselected">
 						<p class="tab-name"><% if feature_group.singles? %>SINGLETON<% else %>COMPARISON<% end %></p>
 					</div>
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div>
-			<%= nested_form_for [product, feature_group, feature], :html => { :'data-type' => 'json', :class => 'random form-horizontal single-form-body', :remote => true, :id => 'feature_create_form' + feature_group.id.to_s } do |f| %>
+			<%= nested_form_for [product, feature_group, feature], :html => { :'data-type' => 'json', :class => 'form-horizontal single-form-body', :remote => true, :id => 'singleton-create-form' } do |f| %>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
 				<div class="form-field">
@@ -36,67 +36,7 @@
 			  <div class="form-submit" id="single-submit">
 			    <%= f.submit nil, :class => 'btn btn-primary', id: "form-submit-button", value: "FINISH"%>
 			  </div>
-
-<!-- 
-			  <div style="display: inline-block; width: 90%; text-align: center;">
-		      <div class="well form-well">
-		      	<div class="control-group">
-					    <%= f.label :name, :class => 'control-label' %>
-					    <div class="controls">
-					      <%= f.text_field :name, :class => 'text_field' %>
-					    </div>
-					  </div>
-		      </div>
-		      <div class="well form-well">
-		      	<div class="control-group">
-					    <%= f.label :description, :class => 'control-label' %>
-					    <div class="controls">
-					      <%= f.text_area :description, :class => 'text_area' %>
-					    </div>
-					  </div>
-		      </div>
-			    <div>
-	          <div class="control-group well form-well">
-	            <%= f.label "Image (optional)", :class => 'control-label' %>
-	            <div class="controls btn file_upload_wrapper" style="margin-left: -30px;">
-	              <%= f.file_field :attachment, name: 'feature[attachment]', class: 'file_field' %>
-	            </div>
-	          </div>  
-			    </div>
-			  </div>
-			  <div class="actions" style="margin-top: 20px; height: 60px; padding-top: 15px; background-color: #794f85; width: 100%;">
-			    <%= f.submit 'SAVE AND CONTINUE', class: 'btn btn-primary btn-clear', id: 'submitFeature' + feature_group.id.to_s %>
-			  </div> -->
-
-
-
 			<% end %>
 		</div>
 	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-		// This is the submit button
-		var $singleFeatureButton = $('#submitFeature<%= feature_group.id.to_s %>');
-		$singleFeatureButton.attr('value', 'SUBMIT');
-		console.log('binding ajax actions to single feature modal for group <%= feature_group.id %>');
-		$('#feature_create_form<%= feature_group.id.to_s %>')
-			.bind("ajax:beforeSend", function(evt, xhr, settings){
-				console.log('attempting to create single feature');
-				// save its text
-				$singleFeatureButton.data('origText', $(this).text());
-				// replace text with SUBMITTING...
-				$singleFeatureButton.attr('value', 'SUBMITTING...');
-
-			}).bind("ajax:complete", function(evt, data, status, xhr) {
-				console.log('successfully created single feature');
-				// Change text to complete
-				$singleFeatureButton.attr('value', 'SUCCESS');
-				//this div is located in /products/_product_features
-				//renders a new thumbnail in the right section
-				$('#feature-thumbnails<%= feature_group.id.to_s %>').append(data.responseText);
-				$('#newFeatureModalGroup<%= feature_group.id %>').modal('hide');
-			});
-	});
-</script>

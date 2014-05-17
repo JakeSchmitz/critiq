@@ -4,13 +4,8 @@
 
 FeatureGroup = 
 	init: ->
-		@addOption()
 		$('.another').on "click", @addAnotherOption
-	addOption: () ->
-		if $('.alert').text() == "×Feature group was successfully created."
-			$('.alert').remove()
-			$('.comparison-header').last().parent().children('button').click()
-			$('html, body').animate scrollTop: 950, duration: 1
+
 	addAnotherOption: () ->
 		delay = (ms, func) -> setTimeout func, ms
 		delay 1000, ->

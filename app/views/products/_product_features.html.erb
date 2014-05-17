@@ -11,7 +11,7 @@
 				<%= button_to 'Follow Drive', product_love_path(@product.id), :method => "get", :class => "btn btn-purple", style: 'float: center; background-color: #6d2cfa; color: #fff;' %>
 			<% end %>
 		</div>
-		<div class="pull-right" id="feature-thumbnails<%= @product.single.id %>" style="text-align: left; display: inline-block; margin-top: 10px;">
+		<div class="pull-right" id="singleton-thumbnails" style="text-align: left; display: inline-block; margin-top: 10px;">
 		</div>
 	</div>
 <% else %>
@@ -40,13 +40,13 @@
 				<% if !@product.single.nil? and !@product.single.features.empty? %>
 					<h2 style="text-align: left; width: 100%;">Singletons</h2>
 					<h6 style="text-align: left; margin-top: -10px; margin-bottom: 0;">(Yes/No, Hot/Cold)</h6>
-					<div id="feature-thumbnails<%= @product.single.id %>" style="text-align: left; display: inline-block; margin-top: 10px;">
+					<div id="singleton-thumbnails" style="text-align: left; display: inline-block; margin-top: 10px;">
 				    <% @product.single.features.each do |feature| %>
 			      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
 				    <% end %>
 					</div>
 					 <% if current_user?(@product.user) %>
-							<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#newFeatureModalGroup<%= @product.single.id %>">+ ADD ANOTHER</button>
+							<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#singleton-form">+ ADD ANOTHER</button>
 						<% end %>  
 				<% end %>
 			</div>

@@ -1,6 +1,6 @@
 <!-- requires local param comp_feature -->
 <div class="comparison-feature-callout">
-	<div class="row" id="feature-thumbnails<%= comp_feature.id %>" style="text-align: left;" >
+	<div class="row feature-thumbnails"  style="text-align: left;" >
 		<div class="comparison-header">
 			<% #Sorry about this mess here, but the whitespace was messing everything up %>
 			<h3 style="text-align: left; display: inline-block; float:left"><%= comp_feature.name %><% if signed_in? and (current_user.id == comp_feature.product.user.id or is_admin?) %><div class="feature-delete-btn" style="display: inline-block; padding-left: 10px; float: right;"><%= link_to glyph(:trash), product_feature_group_path(comp_feature.product.id, comp_feature.id), :method => :delete, data: { :confirm => "Really delete this forever?"} , style: 'color:#ff4c4c' %></div><% end %>
@@ -13,7 +13,7 @@
 			</div>
 		<% end %> 	
 		<% if current_user?(comp_feature.product.user) %>
-			<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#newFeatureModalGroup<%= comp_feature.id %>">+ ADD OPTION</button>
+			<button class="btn btn-primary feature-btn add-option">+ ADD OPTION</button>
 			<%= render partial: '/features/comparative_feature_option_form_modal', locals: { product: @product, feature_group: comp_feature, feature: Feature.new(:user_id => @product.user.id, :product_id => @product.id, :feature_group_id => comp_feature.id) } %>
 		<% end %>
 	</div>

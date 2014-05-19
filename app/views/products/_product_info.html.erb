@@ -28,7 +28,7 @@
     <div class="product-creator" style="display: inline-block;">
       <div class="img-circle creator-face" style="background-image: url('<%= @product.user.profile_pic_url(:medium) %>');"></div>
       <div class="creator-data">
-        <h5 style="text-align: left; color: #000">Created By <%= link_to @product.user.name, @product.user, style: 'color: #626262' %></h5>
+        <h4 style="text-align: left; color: #000">Created By <%= link_to @product.user.name, @product.user, style: 'color: #626262' %></h4>
       </div>
     </div>
     <div class="product-buttons">
@@ -43,7 +43,6 @@
     </div>
     <div class="description-box">
       <!-- Buy when complete button isn't ready yet! <%= button_to 'BUY WHEN COMPLETE', @product, :method => "get", :class => "btn-clear inline-button", style: 'margin-bottom: 0px; color: #s; border-color: #313131;' %> -->
-      <h3 style="display: inline-block; float: left; margin: 0;">Description:&nbsp;</h3>
       <p class="product-description" style="white-space: pre-wrap;"><%= @product.description %></p>
       <% if !@product.link.nil? and @product.link != "" %><%= link_to @product.simple_link, "http://#{@product.link}", class: 'btn btn-black' %><% end %>
     </div>

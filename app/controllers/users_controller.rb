@@ -47,6 +47,8 @@ class UsersController < ApplicationController
         @user.propic_id = @user.pictures.last.id
       end
       respond_to do |format|
+        # hack so everyone is a creator temporarily
+        @user.creator = true
         if @user.save
           #@user.pictures.build
           sign_in @user

@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
       @product.pictures.build
       @product.user_id = current_user.id
     else
-      redirect_to signup_path, notice: 'Please sign up before creating anything!'
+      redirect_to signup_path, warning: 'Please sign up before creating anything!'
     end
   end
 
@@ -96,10 +96,10 @@ class ProductsController < ApplicationController
           redirect_to @product, error: 'UH OH!!!! Just kidding, probably no big deal'
         end
       else
-        redirect_to @product, notice: 'User has already liked this!'
+        redirect_to @product, warning: 'User has already liked this!'
       end
     else
-      redirect_to @product, notice: 'Please sign in before weighing in!' 
+      redirect_to @product, warning: 'Please sign in before weighing in!' 
     end
   end
 
@@ -120,9 +120,10 @@ class ProductsController < ApplicationController
         if !@product.parsed_list.include?(current_user.id)
           @product.add_to_access_list current_user
         end
+        flash[:notice] = "Thanks a lot for checking out #{@product.name}"
         redirect_to @product
       else
-        flash[:notice] = "This drive is private, so sign up first if you want to vote"
+        flash[:warning] = "This drive is private, so sign up first if you want to vote"
         cookies.permanent["product#{@product.id}"] = params[:product][:pwd]
         redirect_to @product
       end

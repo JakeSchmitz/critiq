@@ -33,7 +33,7 @@ describe 'Feature Voting', js: true do
 			find('.thumb-up').click
 			expect(page).to have_content @singleton.percent_like.to_i.to_s + "%"
 			find('.thumb-down').click
-			expect(page).to have_content @singleton.percent_like.to_i.to_s + "%"
+			expect(page).to have_content "0%"
 		end
 	end
 end

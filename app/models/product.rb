@@ -25,7 +25,7 @@ class Product < ActiveRecord::Base
 
   def can_be_accessed_by(user, pwd)
     if self.hidden
-      return self.password == pwd.to_s || parsed_list.include?(user.id)
+      return self.password == pwd.to_s || (user and parsed_list.include?(user.id))
     end
     !self.hidden || parsed_list.include?(user.id)
   end
@@ -152,7 +152,7 @@ class Product < ActiveRecord::Base
       youtube_id = $5
     end
 
-    %Q{<iframe title="YouTube video player" width="480" height="360" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
+    %Q{<iframe title="YouTube video player" width="600px" height="450px" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
 
   def vimeo_embed(vimeo_url)
@@ -163,7 +163,7 @@ class Product < ActiveRecord::Base
       vimeo_id = $5
     end
 
-    %Q{<iframe title="Vimeo video player" width="480" height="360" src="\/\/player.vimeo.com\/video\/#{ vimeo_id }" frameborder="0" allowfullscreen></iframe>}
+    %Q{<iframe title="Vimeo video player" width="600px" height="450px" height="auto" src="\/\/player.vimeo.com\/video\/#{ vimeo_id }" frameborder="0" allowfullscreen></iframe>}
   end
 
   def vimeo_thumbnail(vimeo_url)

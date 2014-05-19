@@ -24,7 +24,7 @@
 	display: inline-block; 
 	float: right; 
 	.comment-body {
-		width: 750px;
+		width: 730px;
 		float: center; 
 		margin-bottom: 5px;
 		min-height: 60px;
@@ -88,12 +88,16 @@
 
 .nested_comments {
 	width: 100.5%;
-	margin-left: 31px;
+	margin-left: 51px;
 	overflow: visible;
 	float: left;
 	border-left: 1px solid #d4d4d4;
 	position: relative;
 	right: -3px;
+}
+
+.nested_comments .nested_comments{
+	margin-left: 31px
 }
 
 .nested-comment {
@@ -119,7 +123,7 @@
 
 .collapsed-comment {
 	margin-left: 34px;
-
+	margin-bottom: 5px
 }
 
 .collapsed {

@@ -18,7 +18,7 @@ Products =
 		@showFeatures()
 		@showLikes()
 	showFeatures: ->
-		$('#product-tabs a[href="#product-features').tab 'show'
+		$('#product-tabs a[href="#drive-info').tab 'show'
 	showLikes: ->
 		$('#u_0_2').css 'color', '#fff'
 

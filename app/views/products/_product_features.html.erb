@@ -15,13 +15,13 @@
 		</div>
 	</div>
 <% else %>
-	<div class="container">
+	<div class="container" style="width: auto; height: auto;">
 		<% if signed_in? and current_user.id == @product.user.id %>
 			<div class="row" style="margin: 0;">
 				<button class="btn btn-primary" data-toggle="modal" data-target="#newFeatureModal" id="create-poll">CREATE A POLL</button>
 			</div>
 		<% end %>
-		<div class="span8 pull-left comparison-features">
+		<div class="comparison-features">
 			<div style="text-align: center;">
 				<% if !@product.comparisons.nil? and !@product.comparisons.empty? %>
 					<h2 style="width: 100%; text-align: left; margin-left: -15px;">Comparisons</h2>
@@ -35,21 +35,21 @@
 				<% end %> 
 			</div>
 		</div>
-		<div class="span3 pull-left" style="margin-left: 0px;">
-			<div class="single-features">
-				<% if !@product.single.nil? and !@product.single.features.empty? %>
-					<h2 style="text-align: left; width: 100%;">Singletons</h2>
-					<h6 style="text-align: left; margin-top: -10px; margin-bottom: 0;">(Yes/No, Hot/Cold)</h6>
-					<div id="singleton-thumbnails" style="text-align: left; display: inline-block; margin-top: 10px;">
-				    <% @product.single.features.each do |feature| %>
-			      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
-				    <% end %>
-					</div>
-					 <% if current_user?(@product.user) %>
-							<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#singleton-form">+ ADD ANOTHER</button>
-						<% end %>  
-				<% end %>
-			</div>
+		<div class="single-features">
+			<% if !@product.single.nil? and !@product.single.features.empty? %>
+				<h2 style="text-align: left; width: 100%; padding-left: 25px">Singletons</h2>
+				<h6 style="text-align: left; margin-top: -10px; margin-bottom: 0; padding-left: 25px;">(Yes/No, Hot/Cold)</h6>
+				<div class="single-thumbs" id="singleton-thumbnails" style="text-align: left; display: inline-block; margin-top: 10px; padding-left: 20px;">
+			    <% @product.single.features.each do |feature| %>
+		      	<%= render :partial => 'feature_thumb' , locals: { feature: feature, vote: true } %>
+			    <% end %>
+				  <% if current_user?(@product.user) %>
+						<button class="btn btn-primary feature-btn" data-toggle="modal" data-target="#singleton-form">
+						 + ADD ANOTHER
+						</button>
+					<% end %>  
+				</div>
+			<% end %>
 		</div>
 	</div>
 <% end %>

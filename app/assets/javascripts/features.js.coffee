@@ -21,7 +21,6 @@ Features =
 		featureModal = $(@).parent().next()
 		featureModal.modal 'show'
 
-
 	addOption: (event, data, status, xhr) ->
 		optionForm = $($(@).context.parentNode).parent().parent()
 		thumbnails = $(optionForm).parent()
@@ -33,12 +32,10 @@ Features =
 		$('#singleton-thumbnails').append data.responseText 
 
 	proceedToOption: () ->
-		console.log("called")
 		if $('.alert').text() == "×Feature group was successfully created."
 			$('.alert').remove()
 			$('.add-option').last().click()
 			$('html, body').animate scrollTop: 950, duration: 1
-
 
 $(document).ready ->
 	Features.init()

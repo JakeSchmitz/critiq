@@ -21,7 +21,6 @@ describe "Feature Creation" do
 					click_on 'form-submit-button'
 				end
 				expect(page).to have_content feature.name
-				expect(page).to have_content feature.description
 			end
 		end
 

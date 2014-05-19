@@ -5,6 +5,7 @@ describe 'Bounty Response' do
 	let(:comment) {build :bounty_comment}
 
 	before :each do
+		Capybara.use_default_driver
 		visit_product_tab 'BOUNTIES'
 	end
 

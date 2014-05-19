@@ -22,6 +22,10 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # config.before(:all) do #uncomment to run all tests in the browser
+  #   Capybara.current_driver = :selenium
+  # end
+
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
   config.mock_with :mocha

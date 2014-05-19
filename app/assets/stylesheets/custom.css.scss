@@ -1,28 +1,27 @@
 /* universal */
 
 .everything {
-  min-height: 100%;
+  height: 100%;
 }
 
 .container {
-  padding: 0;
+  padding: 15px;
   text-align: center;
 }
 
 html {
   width: auto !important;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
   margin-top: 40px;
   padding: 0px;
-  padding-top: 20px;
   height: 100%;
   background-color: #fff;
-  width: auto !important;
-  overflow-x: hidden !important;
-  min-height: 100%;
+  font-family: proxima-nova-n9, proxima-nova, sans-serif;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .background-splatter1 {
@@ -120,12 +119,18 @@ p {
   text-decoration: none;
 }
 
+.page-content {
+  min-height: 90%;
+}
+
 /* footer */
 
 footer {
   text-align: center;
   height: auto;
   width: 100%;
+  margin-top: 20px;
+  min-height: 5%;
   .upper-footer {
     width: 100%;
     padding: 10px;
@@ -394,6 +399,10 @@ div.file_upload_wrapper:hover {
   color: #fff;
 }
 
+.signin-dropdown {
+  min-width: 300px;
+  min-height: 200px;
+}
 
 .alert {
   width: 100%;
@@ -724,10 +733,23 @@ input[type="file"] {
 }
 
 @media (max-width: 768px) {
+  .row {
+    margin: 0;
+  }
+  .yes-mobile {
+    display: inline-block;
+  }
   .no-mobile {
     display: none;
   }
-  .row {
-    margin: 0;
+}
+
+
+@media (min-width: 768px) {
+  .yes-mobile {
+    display: none;
+  }
+  .no-mobile {
+    display: inline-block;
   }
 }

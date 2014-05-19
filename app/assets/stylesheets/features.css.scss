@@ -9,7 +9,9 @@
 	padding-bottom: 100px;
 	margin-right: 5%;
 	margin-left: 0;
-	border-left: 1px solid #d4d4d4;
+	.single-thumbs {
+		border-left: 1px solid #d4d4d4;
+	}
 }
 
 .comparison-feature-callout {
@@ -249,5 +251,23 @@
 				width: 100px;
 			}
 		}
+	}
+}
+
+@media(min-width: 980px){
+	.comparison-features {
+		width: 70%;
+		min-height: 50%;
+		float: left;
+		display: inline-block;
+		margin-top: -60px;
+		padding-left: 15px;
+	}
+	.single-features {
+		width: 25%;	
+		margin: 0%;
+		float: left;
+		display: inline-block;
+		margin-top: -60px;
 	}
 }

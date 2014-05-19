@@ -80,7 +80,7 @@ class FeaturesController < ApplicationController
     end
   end
 
-  def upvote
+  def upvote #not used
     @product = Product.find(params[:product_id])
     @tab = 'product-features'
     if signed_in? 
@@ -114,7 +114,7 @@ class FeaturesController < ApplicationController
     end
   end
 
-  def downvote
+  def downvote #not used
     if signed_in?
       @feature = Feature.find(params[:feature_id])
       @feature.likes.where(user_id: current_user.id).delete_all

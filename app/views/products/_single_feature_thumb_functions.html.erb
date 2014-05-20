@@ -20,7 +20,7 @@
 	</div>
 	<div class="functions-right">
 		<% if signed_in? %>
-			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true" id="upvoteFeature<%= feature.id %>" data-toggle="tooltip" data-placement="bottom" title="<%= feature.upvotes.size %> vote<%= if feature.upvotes.size != 1 then 's' else '' end %>">
+			<a href=<%= product_feature_group_vote_path(:product_id => @product.id, :feature_id => feature.id, :feature_group_id => feature.feature_group_id, :up => true) %> data-remote="true" id="upvoteFeature<%= feature.id %>" data-toggle="tooltip" data-placement="bottom" title="<%= feature.upvotes %> vote<%= if feature.upvotes != 1 then 's' else '' end %>">
 		<% else %>
 			<span class="sign-in-first-tooltip" data-toggle="tooltip" data-placement="bottom" title="Sign In First">
 		<% end %>

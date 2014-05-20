@@ -19,7 +19,7 @@
 	</div>
 	
 	<div class="functions-right" style="text-align: center; color: #fff;">
-		<h5 id="featureVoteCount<%= feature.id %>"><%= feature.upvotes.size %> Votes</h5>
+		<h5 id="featureVoteCount<%= feature.id %>"><%= feature.upvotes %> Votes</h5>
 	</div>
 </div>
 
@@ -35,7 +35,7 @@
 				console.log('completed like of feature <%= feature.id %>');
 				var oldLike = jQuery.parseJSON(data.responseText);
 				console.log(oldLike)
-				$('#featureVoteCount<%= feature.id %>').replaceWith('<h5 id="featureVoteCount<%= feature.id %>">' + oldLike.newCount + ' Votes</h5>');
+				$('#featureVoteCount<%= feature.id %>').replaceWith('<h5 id="featureVoteCount<%= feature.id %>">' + oldLike.upvotes + ' Votes</h5>');
 				/* if the user had already voted, grey out their previous selection and decrease that features vote count */
 				if(typeof oldLike.id != "undefined" && oldLike.id != '<%= feature.id %>'){
 					console.log('previously liked feature was = ' + oldLike);

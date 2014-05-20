@@ -29,7 +29,6 @@ class FeatureGroupsController < ApplicationController
   end
 
   def update
-    set_feature_group
     respond_to do |format|
       if @feature_group.update(feature_group_params)
         format.html { redirect_to @product, notice: 'Feature group was successfully updated.' }
@@ -49,44 +48,12 @@ class FeatureGroupsController < ApplicationController
     end
   end
 
-  def vote #is failing because previous like is nil the first time when there is no previous like
+  def vote 
     @feature_group = FeatureGroup.find(params[:feature_group_id])
-    @tab = 'product-features'
-    previousLike = nil
-    oldCount = 0
     @feature = Feature.find(params[:feature_id])
-    if @feature_group.features.includes(@feature) and !current_user.nil?
-      if !@feature_group.singles?
-        @feature_group.features.each do |f|
-          if !f.likes.where(user_id: current_user.id).empty?
-            f.likes.where(user_id: current_user.id).delete_all
-            # Necessary so clientside js can uncheck previous vote and update vote count
-            previousLike = f
-            oldCount = f.likes.where(up: true).size.to_i
-          end
-        end
-      else
-        @feature.likes.where(:user_id => current_user.id).delete_all
-      end
-      @feature.likes.create(:user_id => current_user.id, :up => YAML.load(params[:up]))
-      @feature.save
-      @feature_group.save
-      Activity.create(timestamp: Time.now, user_id: current_user.id, activity_type: :like, resource_type: :feature, resource_id: @feature.id)
-    end
-    # Shitty workaround so that ajax liking works and response contains the old like count of 
-    # whatever the current user used to likes
-    if @feature_group.singles?
-      # In the singleton case, oldCount is actually the updated likeage percentage
-      oldCount = @feature.percent_like
-      previousLike = @feature
-    end
-    formatted = previousLike.attributes 
-    formatted['oldCount'] = oldCount
-    formatted['upvotes'] = @feature.upvotes.size.to_s
-    formatted['downvotes'] = @feature.downvotes.size.to_s
-    formatted['newCount'] = @feature.likes.where(up: true).size.to_i
-    respond_to do |format|
-      format.json { render json: formatted.to_json }
+    if @feature_group.features.includes(@feature) and signed_in?
+      vote = @feature_group.vote_on @feature, current_user, params[:up].to_bool
+      render json: vote
     end
   end
 

@@ -113,8 +113,8 @@ class User < ActiveRecord::Base
       user_comments = Comment.where(user_id: self.id, deleted: true)
       rating = 0
       user_comments.each do |c|
-        rating += c.upvotes.size * 10
-        rating -= c.downvotes.size * 2
+        rating += c.upvotes * 10
+        rating -= c.downvotes * 2
       end
       # Grant creator permissions if this user for the first time has over 1000 creator heat
       if !self.creator and rating > 1000 

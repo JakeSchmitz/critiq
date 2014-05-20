@@ -42,15 +42,27 @@ class Feature < ActiveRecord::Base
   end
 
   def rating
-    upvotes.size - downvotes.size
+    upvotes - downvotes
   end
 
   def upvotes 
-    self.likes.where(:up => true)
+    self.likes.where(:up => true).size
   end
 
   def downvotes 
-    self.likes.where(:up => false)
+    self.likes.where(:up => false).size
+  end
+
+  def delete_likes_from user
+    likes.where(:user_id => user).delete_all
+  end
+
+  def self.to_vote_json voted_feature, updated_feature, old_count
+    vote = updated_feature.attributes
+    vote['upvotes'] = voted_feature.upvotes
+    vote['downvotes'] = voted_feature.downvotes
+    vote['oldCount'] = old_count
+    vote.to_json
   end
 
   private

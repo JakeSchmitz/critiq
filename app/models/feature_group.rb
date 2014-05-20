@@ -17,4 +17,29 @@ class FeatureGroup < ActiveRecord::Base
   end # this method might be returning too early
   # why not where instead of includes?
   #include should be includes
+
+  def reset_likes_for user, feature
+    if singles?
+      feature.delete_likes_from user
+      {:updated_feature => feature}
+    else
+      features.each do |f| 
+        if !f.likes.where(user_id: user.id).empty?
+          f.delete_likes_from user
+          return {:old_count => f.upvotes, :updated_feature => f}
+        end
+      end
+      {old_count: 0, updated_feature: feature } 
+    end
+  end
+
+  def vote_on feature, user, direction
+    reset_feature = reset_likes_for user, feature
+    old_count = reset_feature[:old_count]
+    updated_feature = reset_feature[:updated_feature]
+    feature.likes.create(:user_id => user.id, :up => direction)
+    old_count = feature.percent_like if singles?
+    Feature.to_vote_json(feature, updated_feature, old_count)
+  end
+
 end

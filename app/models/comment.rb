@@ -28,17 +28,17 @@ class Comment < ActiveRecord::Base
 	end
 
 	def upvotes
-		likes.where(up: true)
+		likes.where(up: true).size
 	end
 
 	def downvotes
-		likes.where(up: false)
+		likes.where(up: false).size
 	end
 
 	def vote user, direction
 		likes.where(:user_id => user.id).delete_all
 		likes.create(:user_id => user.id, :up => direction, :product_id => product_id)
-		self.rating = upvotes.size - downvotes.size
+		self.rating = upvotes - downvotes
 		save
 	end
 
